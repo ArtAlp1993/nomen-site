@@ -41,10 +41,10 @@ export default function SiteSpiral() {
       const phase = scroll * 0.006 + (reduce ? 0 : time * 0.00018);
 
       // Спираль скрыта на первом экране (Hero) и плавно проявляется, когда
-      // пользователь уходит ниже. Порог — ~85% высоты первого экрана; к началу
-      // следующей секции (Hook) спираль уже полностью видна.
-      const start = height * 0.55;
-      const full = height * 1.0;
+      // пользователь уходит ниже — чуть раньше середины экрана, чтобы при
+      // прокрутке не было тёмного «пробела» между Hero и первой секцией.
+      const start = height * 0.35;
+      const full = height * 0.8;
       const visibility = Math.max(0, Math.min(1, (scroll - start) / (full - start)));
       if (visibility <= 0) {
         rafId = requestAnimationFrame(render);
@@ -53,8 +53,12 @@ export default function SiteSpiral() {
       // Плавное проявление всей спирали (fade-in при уходе с первого экрана).
       ctx.globalAlpha = visibility;
 
+      // «Дыхание»: амплитуда медленно гуляет и по длине страницы, и во времени —
+      // спираль по всей длине лендинга плавно то расширяется, то сужается.
+      const breatheT = reduce ? 0 : time * 0.00035;
+      const ampAt = (y) => amp * (1 + 0.16 * Math.sin(y * 0.0016 + breatheT));
       const strandX = (y, offset) =>
-        cx + amp * Math.sin((y / wavelength) * Math.PI * 2 + phase + offset);
+        cx + ampAt(y) * Math.sin((y / wavelength) * Math.PI * 2 + phase + offset);
 
       // Перекладины между двумя нитями
       for (let y = -amp; y < height + amp; y += 26) {

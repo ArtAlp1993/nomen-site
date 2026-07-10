@@ -61,7 +61,8 @@ export default function AuthoritySection() {
       />
 
       {/* Верхний ряд — три карточки, всегда вместе от sm и выше.
-          Нижний ряд — Пифагор и Готтман, каждый на половину ширины, центрированы. */}
+          Нижний ряд — Пифагор и Готтман, на половину ширины, выравнивание
+          влево как у верхнего ряда. */}
       <div className="mt-16 grid gap-6 sm:grid-cols-3">
         {topRow.map((s, i) => (
           <SchoolCard key={s.name} s={s} delay={i * 0.06} />
@@ -69,7 +70,7 @@ export default function AuthoritySection() {
       </div>
       <div className="mt-6 grid gap-6 sm:grid-cols-2">
         {bottomRow.map((s, i) => (
-          <SchoolCard key={s.name} s={s} delay={(topRow.length + i) * 0.06} centered />
+          <SchoolCard key={s.name} s={s} delay={(topRow.length + i) * 0.06} />
         ))}
       </div>
     </section>

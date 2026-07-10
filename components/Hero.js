@@ -15,7 +15,7 @@ export default function Hero() {
       />
 
       <Reveal className="relative">
-        <span className="font-heading text-xs uppercase tracking-[0.4em] text-accent-turquoise">
+        <span className="font-heading text-sm sm:text-base uppercase tracking-[0.4em] text-accent-turquoise">
           NOMEN
         </span>
       </Reveal>

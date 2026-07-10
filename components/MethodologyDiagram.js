@@ -96,7 +96,7 @@ export default function MethodologyDiagram() {
                   className={`mt-4 gap-x-8 gap-y-3 text-sm text-foreground-muted ${
                     wide
                       ? "grid sm:grid-cols-3 justify-center"
-                      : "flex flex-col items-center"
+                      : "flex flex-col items-start"
                   }`}
                 >
                   {items.map((p) => (

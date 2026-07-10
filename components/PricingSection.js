@@ -35,10 +35,10 @@ export default function PricingSection() {
               <p className="mt-3 text-sm text-foreground-muted">
                 {tier.description}
               </p>
-              <ul className="mt-4 flex flex-1 flex-col items-center gap-2 text-sm text-foreground-muted">
+              <ul className="mt-4 flex flex-1 flex-col items-start gap-2 text-sm text-foreground-muted">
                 {tier.features.map((f) => (
-                  <li key={f} className="flex gap-2">
-                    <span className="text-accent-turquoise">✓</span>
+                  <li key={f} className="flex items-start gap-2 text-left">
+                    <span className="shrink-0 text-accent-turquoise">✓</span>
                     {f}
                   </li>
                 ))}
