@@ -15,12 +15,8 @@ export default function Footer() {
           <Link href="/terms" className="hover:text-accent-turquoise">
             Terms
           </Link>
-          <a
-            href="mailto:hello@nomen.example"
-            className="hover:text-accent-turquoise"
-          >
-            Contact
-          </a>
+          {/* Ссылка Contact вернётся, когда появится реальный почтовый ящик
+              (hello@nomen.example был заглушкой — письма туда не доходили). */}
         </div>
 
         <span>&copy; {new Date().getFullYear()} NOMEN. All rights reserved.</span>

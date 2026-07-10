@@ -31,15 +31,21 @@ function Wheel({ values, value, onChange, format = String, ariaLabel }) {
   const mid = Math.floor(REPEAT / 2) * period;
   const padding = ((VISIBLE - 1) / 2) * ITEM_H;
 
-  // Стартовая позиция и реакция на внешнее изменение значения
-  // (например, 31-е число схлопнулось в 28 из-за смены месяца).
+  // Стартовая позиция и реакция на ВНЕШНЕЕ изменение значения (например,
+  // 31-е число схлопнулось в 28 из-за смены месяца). Изменения, которые
+  // породил сам скролл (value === emitted.current), позицию не трогают —
+  // иначе колесо «подтягивало» бы палец к засечке во время прокрутки.
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    if (value !== emitted.current) emitted.current = value;
     const idx = Math.max(0, values.indexOf(value));
     const target = mid + idx * ITEM_H;
-    if (Math.abs(el.scrollTop - target) % period !== 0) el.scrollTop = target;
+    if (el.scrollTop === 0) {
+      el.scrollTop = target; // первый маунт
+    } else if (value !== emitted.current) {
+      emitted.current = value;
+      el.scrollTop = target; // значение поменяли снаружи
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value]);
 
@@ -78,6 +84,9 @@ function Wheel({ values, value, onChange, format = String, ariaLabel }) {
       <div
         ref={ref}
         onScroll={onScroll}
+        // data-lenis-prevent: иначе Lenis (плавный скролл страницы)
+        // перехватывает колесо мыши, и барабан на десктопе не крутится.
+        data-lenis-prevent
         className="h-full overflow-y-scroll overscroll-contain [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         <div style={{ height: padding }} />

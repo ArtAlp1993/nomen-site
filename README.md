@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# NOMEN — сайт
 
-## Getting Started
+Лендинг NOMEN (nomen.website): 13-пунктный разбор личности по имени и дате
+рождения — нумерология, западная и китайская астрология, таро.
 
-First, run the development server:
+## Как устроено
+
+- **Next.js 16**, статический экспорт (`output: "export"`, `trailingSlash: true`) —
+  собирается в `out/` как обычные HTML/JS/CSS.
+- **Хостинг: GitHub Pages.** Пуш в `main` → GitHub Actions
+  (`.github/workflows/deploy.yml`) собирает и публикует автоматически.
+  Домен nomen.website подключён в настройках Pages, DNS — у Beget.
+- **Квиз считает тизер прямо в браузере**: `lib/teaser.js` — порт расчётов
+  из `../nomen-engine` (13 базовых пунктов + английский тизерный слой).
+  Бэкенда нет; email из формы пока никуда не сохраняется.
+
+## ВАЖНО: синхронизация с движком
+
+`lib/teaser.js` обязан считать байт в байт как `nomen-engine`. Если в движке
+меняется методология — правь `lib/teaser.js` и прогоняй сверку:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# эталонные кейсы готовит Python (см. шапку scripts/verify-teaser.mjs):
+node scripts/verify-teaser.mjs <файл-с-кейсами.json>   # должно быть PASS N/N
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Единственное осознанное отличие от движка: латинская диакритика в имени
+сводится к базовой букве (José → JOSE) вместо ошибки.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Локальная разработка
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run dev      # дев-сервер
+npm run build    # статическая сборка в out/
+```
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Переключатель предпросмотра Desktop/Mobile виден только на localhost
+или с параметром `?preview` в адресе.
