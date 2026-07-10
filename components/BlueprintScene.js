@@ -10,22 +10,42 @@ import * as THREE from "three";
 // светящиеся кончики, глубина по Z, bloom. Сцена живёт сама (медленное
 // вращение, дыхание), цвет мягко подкрашивается под активную категорию.
 // Вся геометрия — один LineSegments + один Points: дёшево и быстро.
+//
+// Все параметры вынесены в DEFAULT_CONFIG: страница-лаборатория /lab передаёт
+// свой config и «лепит» шарик вживую; без config сцена ведёт себя ровно как
+// раньше (дефолты = прежние константы).
 
 const BG = "#05040f";
 const WHITE_TIP = new THREE.Color("#eaf6ff");
 
-// Палитра тел волокон: глубокий синий/фиолет + редкие бирюзовые акценты.
-const FIBER_COLORS = [
-  new THREE.Color("#2b3bff"),
-  new THREE.Color("#4a3df0"),
-  new THREE.Color("#6c4ff6"),
-  new THREE.Color("#2b6bff"),
-  new THREE.Color("#33e6e0"),
-];
-// Веса: бирюза — редкий акцент, как искры в референсе.
+export const DEFAULT_CONFIG = {
+  // Форма
+  fibers: 1450, // число волокон
+  pupil: 0.66, // радиус зрачка (диск; кромка и старт волокон привязаны)
+  spread: 2.35, // базовый разлёт наружу
+  spreadVar: 0.9, // разброс разлёта (рваность кромки)
+  twist: 0.5, // спиральная закрутка
+  depth: 0.9, // объём по Z
+  // Лепка — растянуть/сплющить как глину
+  scaleX: 1, // длина (по горизонтали)
+  scaleY: 1, // ширина (по вертикали)
+  scaleZ: 1, // глубина (к зрителю)
+  zoom: 1, // общий размер в кадре
+  // Движение
+  rotSpeed: 0.05, // скорость вращения
+  breathe: 0.02, // амплитуда «дыхания»
+  tilt: 1, // множитель покачиваний по x/y
+  // Свет
+  opacity: 0.72, // яркость нитей
+  tipSize: 0.055, // размер светящихся кончиков
+  bloom: 1.15, // интенсивность свечения
+  // Палитра тел волокон: глубокий синий/фиолет + редкий бирюзовый акцент
+  colors: ["#2b3bff", "#4a3df0", "#6c4ff6", "#2b6bff", "#33e6e0"],
+};
+
+// Веса цветов: последний в палитре — редкий акцент, как искры в референсе.
 const COLOR_WEIGHTS = [0.3, 0.25, 0.2, 0.17, 0.08];
 
-const FIBERS = 1450;
 const SEGS = 14;
 
 // Детерминированный псевдослучайный шум (без Math.random — воспроизводимо).
@@ -34,18 +54,26 @@ function rnd(i, salt) {
   return x - Math.floor(x);
 }
 
-function pickColor(i) {
+function pickColor(i, palette) {
+  const weights =
+    palette.length === COLOR_WEIGHTS.length
+      ? COLOR_WEIGHTS
+      : palette.map(() => 1 / palette.length);
   let t = rnd(i, 9.17);
-  for (let k = 0; k < COLOR_WEIGHTS.length; k++) {
-    if (t < COLOR_WEIGHTS[k]) return FIBER_COLORS[k];
-    t -= COLOR_WEIGHTS[k];
+  for (let k = 0; k < weights.length; k++) {
+    if (t < weights[k]) return palette[k];
+    t -= weights[k];
   }
-  return FIBER_COLORS[0];
+  return palette[0];
 }
 
 // Строим все волокна одним буфером: пары вершин для LineSegments + отдельный
 // буфер точек-кончиков для Points.
-function buildFibers() {
+function buildFibers(cfg) {
+  const FIBERS = Math.max(50, Math.round(cfg.fibers));
+  const palette = cfg.colors.map((c) => new THREE.Color(c));
+  const rInBase = cfg.pupil + 0.06; // волокна стартуют у кромки зрачка
+
   const linePos = new Float32Array(FIBERS * SEGS * 2 * 3);
   const lineCol = new Float32Array(FIBERS * SEGS * 2 * 3);
   const tipPos = new Float32Array(FIBERS * 3);
@@ -58,11 +86,11 @@ function buildFibers() {
   let L = 0;
   for (let i = 0; i < FIBERS; i++) {
     const ang0 = (i / FIBERS) * Math.PI * 2 + (rnd(i, 1) - 0.5) * 0.06;
-    const rIn = 0.72 + rnd(i, 2) * 0.45; // старт у зрачка
-    const rOut = 2.35 + rnd(i, 3) * 0.9; // разлёт наружу, кромка ровнее
-    const twist = (rnd(i, 4) - 0.5) * 0.5; // лёгкий спиральный увод
-    const zAmp = (rnd(i, 5) - 0.5) * 0.9; // объём по глубине
-    const body = pickColor(i);
+    const rIn = rInBase + rnd(i, 2) * 0.45; // старт у зрачка
+    const rOut = cfg.spread + rnd(i, 3) * cfg.spreadVar; // разлёт наружу
+    const twist = (rnd(i, 4) - 0.5) * cfg.twist; // лёгкий спиральный увод
+    const zAmp = (rnd(i, 5) - 0.5) * cfg.depth; // объём по глубине
+    const body = pickColor(i, palette);
     const dim = 0.55 + rnd(i, 7) * 0.45; // яркость конкретной нити
 
     for (let s = 0; s <= SEGS; s++) {
@@ -115,15 +143,18 @@ function buildFibers() {
   return { linePos, lineCol, tipPos, tipCol };
 }
 
-function FiberIris({ accent, reduce }) {
+function FiberIris({ accent, reduce, cfg }) {
   const group = useRef();
   const lineMat = useRef();
   const tipMat = useRef();
   const accentColor = useMemo(() => new THREE.Color(accent || "#ffffff"), [accent]);
   const tintTarget = useMemo(() => new THREE.Color(), []);
 
+  // Геометрия пересобирается только при смене параметров ФОРМЫ/цветов;
+  // движение и свет геометрию не трогают.
+  const geomKey = `${cfg.fibers}|${cfg.pupil}|${cfg.spread}|${cfg.spreadVar}|${cfg.twist}|${cfg.depth}|${cfg.colors.join(",")}`;
   const { lineGeom, tipGeom } = useMemo(() => {
-    const { linePos, lineCol, tipPos, tipCol } = buildFibers();
+    const { linePos, lineCol, tipPos, tipCol } = buildFibers(cfg);
     const lg = new THREE.BufferGeometry();
     lg.setAttribute("position", new THREE.BufferAttribute(linePos, 3));
     lg.setAttribute("color", new THREE.BufferAttribute(lineCol, 3));
@@ -131,16 +162,24 @@ function FiberIris({ accent, reduce }) {
     tg.setAttribute("position", new THREE.BufferAttribute(tipPos, 3));
     tg.setAttribute("color", new THREE.BufferAttribute(tipCol, 3));
     return { lineGeom: lg, tipGeom: tg };
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [geomKey]);
 
   useFrame((state, delta) => {
     const t = state.clock.elapsedTime;
-    if (group.current && !reduce) {
-      group.current.rotation.z += delta * 0.05;
-      group.current.rotation.x = Math.sin(t * 0.28) * 0.09;
-      group.current.rotation.y = Math.cos(t * 0.21) * 0.07;
-      const s = 1 + Math.sin(t * 0.85) * 0.02;
-      group.current.scale.setScalar(s);
+    if (group.current) {
+      if (!reduce) {
+        group.current.rotation.z += delta * cfg.rotSpeed;
+        group.current.rotation.x = Math.sin(t * 0.28) * 0.09 * cfg.tilt;
+        group.current.rotation.y = Math.cos(t * 0.21) * 0.07 * cfg.tilt;
+      }
+      // Лепка: дыхание × растяжение по осям × общий размер.
+      const s = reduce ? 1 : 1 + Math.sin(t * 0.85) * cfg.breathe;
+      group.current.scale.set(
+        s * cfg.scaleX * cfg.zoom,
+        s * cfg.scaleY * cfg.zoom,
+        s * cfg.scaleZ * cfg.zoom
+      );
     }
     // Мягкая подкраска всей радужки под активную категорию.
     tintTarget.set("#ffffff").lerp(accentColor, 0.38);
@@ -155,7 +194,7 @@ function FiberIris({ accent, reduce }) {
           ref={lineMat}
           vertexColors
           transparent
-          opacity={0.72}
+          opacity={cfg.opacity}
           blending={THREE.AdditiveBlending}
           depthWrite={false}
           toneMapped={false}
@@ -165,7 +204,7 @@ function FiberIris({ accent, reduce }) {
         <pointsMaterial
           ref={tipMat}
           vertexColors
-          size={0.055}
+          size={cfg.tipSize}
           sizeAttenuation
           transparent
           opacity={0.95}
@@ -177,11 +216,11 @@ function FiberIris({ accent, reduce }) {
 
       {/* Тёмный «зрачок» с тонкой светящейся кромкой */}
       <mesh renderOrder={2}>
-        <circleGeometry args={[0.66, 48]} />
+        <circleGeometry args={[cfg.pupil, 48]} />
         <meshBasicMaterial color={BG} />
       </mesh>
       <mesh renderOrder={3}>
-        <ringGeometry args={[0.64, 0.7, 64]} />
+        <ringGeometry args={[Math.max(cfg.pupil - 0.02, 0.01), cfg.pupil + 0.04, 64]} />
         <meshBasicMaterial
           color="#3b57ff"
           transparent
@@ -209,10 +248,11 @@ function ResponsiveCamera() {
   return null;
 }
 
-export default function BlueprintScene({ accent }) {
+export default function BlueprintScene({ accent, config }) {
   const reduce =
     typeof window !== "undefined" &&
     window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const cfg = { ...DEFAULT_CONFIG, ...config };
 
   return (
     <Canvas
@@ -231,11 +271,11 @@ export default function BlueprintScene({ accent }) {
       <color attach="background" args={[BG]} />
 
       <ResponsiveCamera />
-      <FiberIris accent={accent} reduce={reduce} />
+      <FiberIris accent={accent} reduce={reduce} cfg={cfg} />
 
       <EffectComposer multisampling={0}>
         <Bloom
-          intensity={1.15}
+          intensity={cfg.bloom}
           luminanceThreshold={0.16}
           luminanceSmoothing={0.75}
           mipmapBlur
