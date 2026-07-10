@@ -27,7 +27,9 @@ export default function QuizSection() {
       // Небольшая пауза «калькуляции»: мгновенный ответ выглядит как заглушка.
       await new Promise((resolve) => setTimeout(resolve, 900));
       ymGoal("quiz_completed");
-      setResult({ firstName: data.firstName, points });
+      // Сохраняем все поля квиза (email и пр.) — они нужны крипто-чекауту,
+      // чтобы отправить заказ Артёму. Тизер читает firstName/points как раньше.
+      setResult({ ...data, points });
     } catch (err) {
       setError(
         "We couldn't read that name — use letters of one alphabet and try again."

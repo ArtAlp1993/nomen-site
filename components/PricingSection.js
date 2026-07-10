@@ -1,16 +1,37 @@
+"use client";
+
+import { useState } from "react";
 import Button from "./ui/Button";
 import Card from "./ui/Card";
 import SectionHeading from "./ui/SectionHeading";
 import Reveal from "./ui/Reveal";
+import CryptoCheckout from "./CryptoCheckout";
+import { useResult } from "./ResultProvider";
 import pricing from "@/data/pricing.json";
 
 export default function PricingSection() {
+  const { result } = useResult();
+  const [checkoutTier, setCheckoutTier] = useState(null);
+
+  // Открыть оплату можно только после квиза — иначе нет имени/email, чтобы
+  // сформировать заказ. Без результата мягко возвращаем к квизу.
+  const startCheckout = (tier) => {
+    if (!result) {
+      const el = document.querySelector("#quiz");
+      if (typeof window !== "undefined" && window.__lenis && el)
+        window.__lenis.scrollTo(el, { offset: -20 });
+      else el?.scrollIntoView({ behavior: "smooth" });
+      return;
+    }
+    setCheckoutTier(tier);
+  };
+
   return (
     <section id="pricing" className="mx-auto max-w-6xl px-6 py-24 sm:py-32">
       <SectionHeading
         eyebrow="Pricing"
         title="Choose your reading"
-        subtitle="Every tier is generated the moment you pay and lands in your inbox as a PDF. Pay with crypto today — card coming soon."
+        subtitle="Pay in crypto — we confirm your payment on-chain and email your reading, usually within a few hours. Card payments coming soon."
       />
 
       {/* Два тарифа по $9.90 в ряд, комбо Best Value — во всю ширину под ними */}
@@ -45,7 +66,7 @@ export default function PricingSection() {
               </ul>
               <span className={`mt-6 ${tier.highlight ? "btn-wiggle" : "w-full"}`}>
                 <Button
-                  href={`#quiz`}
+                  onClick={() => startCheckout(tier)}
                   variant={tier.highlight ? "primary" : "secondary"}
                   pulse={tier.highlight}
                   className={tier.highlight ? "" : "w-full"}
@@ -57,6 +78,12 @@ export default function PricingSection() {
           </Reveal>
         ))}
       </div>
+
+      <CryptoCheckout
+        tier={checkoutTier}
+        open={!!checkoutTier}
+        onClose={() => setCheckoutTier(null)}
+      />
     </section>
   );
 }

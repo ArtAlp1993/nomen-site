@@ -5,19 +5,12 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import faq from "@/data/faq.json";
 import kb from "@/data/chat-kb.json";
 import { ymGoal } from "./Analytics";
+import { notifyTelegram } from "@/lib/notify";
 
 // Мини-чат без бэкенда: отвечает по базе знаний (data/chat-kb.json) и FAQ.
 // Тупик (два промаха подряд или просьба позвать человека) → предлагает
-// оставить email; переписка и email улетают Артёму в Telegram, если задан
-// TG_TOKEN/TG_CHAT_ID (без них чат работает, просто без уведомлений).
-
-// Бот @NOMEN_site_bot шлёт уведомления Артёму в личку. Реквизиты живут в
-// секретах GitHub (NEXT_PUBLIC_TG_TOKEN / NEXT_PUBLIC_TG_CHAT_ID) и
-// подставляются при сборке — в исходниках репозитория их нет. В собранном
-// бандле токен всё же виден (без бэкенда иначе никак) — осознанный MVP-риск;
-// при переезде на бэкенд унести отправку на сервер.
-const TG_TOKEN = process.env.NEXT_PUBLIC_TG_TOKEN || null;
-const TG_CHAT_ID = process.env.NEXT_PUBLIC_TG_CHAT_ID || null;
+// оставить email; переписка и email улетают Артёму в Telegram (notifyTelegram
+// из lib/notify.js; без заданных реквизитов чат работает, просто без уведомлений).
 
 const EASE = [0.22, 1, 0.36, 1];
 const STOP_WORDS = new Set(
@@ -49,19 +42,6 @@ function findAnswer(text) {
     if (score > bestScore && score >= 2) { bestScore = score; best = { answer: item.answer }; }
   }
   return bestScore >= 2 ? best : null;
-}
-
-async function notifyTelegram(text) {
-  if (!TG_TOKEN || !TG_CHAT_ID) return;
-  try {
-    await fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ chat_id: TG_CHAT_ID, text: text.slice(0, 3900) }),
-    });
-  } catch {
-    /* уведомление не должно ломать чат */
-  }
 }
 
 const GREETING = {

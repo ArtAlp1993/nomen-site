@@ -28,17 +28,19 @@ export default function TermsPage() {
       </p>
 
       <p>
-        <strong>Delivery.</strong> Paid readings are generated automatically on
-        a successful payment and delivered by email within minutes. If you
-        haven&apos;t received your reading shortly after paying, contact us and
-        we&apos;ll follow up.
+        <strong>Delivery.</strong> Paid readings are delivered by email after
+        your payment is confirmed. Because payments are settled and verified
+        manually, delivery typically takes a few hours rather than minutes. If
+        you haven&apos;t received your reading, contact us and we&apos;ll follow up.
       </p>
 
       <p>
-        <strong>Payments and refunds.</strong> All prices are in US dollars.
-        Payments are processed securely through Stripe (and, where available,
-        our crypto payment provider). If something goes wrong with your
-        order, email us before requesting a refund so we can make it right.
+        <strong>Payments and refunds.</strong> All prices are in US dollars and
+        paid in cryptocurrency directly to our wallets — there is no third-party
+        payment provider, and we never take custody of your card or bank details.
+        Each payment is confirmed manually before your reading is sent. If
+        something goes wrong with your order, email us before requesting a
+        refund so we can make it right.
       </p>
 
       <p>

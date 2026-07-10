@@ -27,10 +27,11 @@ export default function PrivacyPage() {
       </p>
 
       <p>
-        <strong>Payments.</strong> Card payments are processed by Stripe;
-        crypto payments (when available) are processed by our crypto payment
-        provider. We never see or store your full card details — that
-        information goes directly to our payment processor.
+        <strong>Payments.</strong> Payments are made in cryptocurrency directly
+        to our wallets — there is no third-party payment provider involved, and
+        we never see or store any card or bank details. To match your payment to
+        your order, we use the order details you provide (name, email) together
+        with the payment amount and reference shown at checkout.
       </p>
 
       <p>

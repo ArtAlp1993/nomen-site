@@ -1,0 +1,86 @@
+[
+  {
+    "id": "usdt-trc20",
+    "coin": "USDT",
+    "network": "TRC-20",
+    "label": "USDT · TRC-20 (Tron)",
+    "address": "PLACEHOLDER_USDT_TRC20",
+    "memo": false,
+    "memoLabel": null,
+    "coingeckoId": "tether",
+    "isStable": true,
+    "uri": null
+  },
+  {
+    "id": "usdt-ton",
+    "coin": "USDT",
+    "network": "TON",
+    "label": "USDT · TON",
+    "address": "PLACEHOLDER_USDT_TON",
+    "memo": true,
+    "memoLabel": "Comment",
+    "coingeckoId": "tether",
+    "isStable": true,
+    "uri": "ton"
+  },
+  {
+    "id": "usdt-bep20",
+    "coin": "USDT",
+    "network": "BEP-20",
+    "label": "USDT · BEP-20 (BNB Chain)",
+    "address": "PLACEHOLDER_USDT_BEP20",
+    "memo": false,
+    "memoLabel": null,
+    "coingeckoId": "tether",
+    "isStable": true,
+    "uri": null
+  },
+  {
+    "id": "btc",
+    "coin": "BTC",
+    "network": "Bitcoin",
+    "label": "Bitcoin (BTC)",
+    "address": "PLACEHOLDER_BTC",
+    "memo": false,
+    "memoLabel": null,
+    "coingeckoId": "bitcoin",
+    "isStable": false,
+    "uri": "bitcoin"
+  },
+  {
+    "id": "eth-erc20",
+    "coin": "ETH",
+    "network": "ERC-20",
+    "label": "Ethereum (ETH · ERC-20)",
+    "address": "PLACEHOLDER_ETH_ERC20",
+    "memo": false,
+    "memoLabel": null,
+    "coingeckoId": "ethereum",
+    "isStable": false,
+    "uri": "ethereum"
+  },
+  {
+    "id": "ton",
+    "coin": "TON",
+    "network": "TON",
+    "label": "Toncoin (TON)",
+    "address": "PLACEHOLDER_TON",
+    "memo": true,
+    "memoLabel": "Comment",
+    "coingeckoId": "the-open-network",
+    "isStable": false,
+    "uri": "ton"
+  },
+  {
+    "id": "xrp",
+    "coin": "XRP",
+    "network": "XRP Ledger",
+    "label": "XRP",
+    "address": "PLACEHOLDER_XRP",
+    "memo": true,
+    "memoLabel": "Destination Tag",
+    "coingeckoId": "ripple",
+    "isStable": false,
+    "uri": "xrp"
+  }
+]
