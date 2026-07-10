@@ -3,9 +3,17 @@
 import { useState } from "react";
 import Button from "./ui/Button";
 import DateWheel from "./DateWheel";
+import TimeWheel from "./TimeWheel";
 import { ymGoal } from "./Analytics";
 
 const TOTAL_STEPS = 4;
+
+// Движок считает имя по буквам одного алфавита (латиница ИЛИ кириллица) и
+// отвергает смешанные. Валидируем это на входе, иначе мусорное имя («12»,
+// «😀», «Ivan Иванов») тихо давало тизер без именных пунктов.
+const LAT_RE = /[A-Za-z]/;
+const CYR_RE = /[А-Яа-яЁё]/;
+const countLetters = (s) => (s.match(/[A-Za-zА-Яа-яЁё]/g) || []).length;
 
 export default function QuizWizard({ onSubmit, submitting }) {
   const [step, setStep] = useState(0);
@@ -20,15 +28,35 @@ export default function QuizWizard({ onSubmit, submitting }) {
   const [consent, setConsent] = useState(false);
   const [error, setError] = useState("");
 
+  // Проверка имени: у каждого поля минимум 2 буквы, и весь набор — в одном
+  // алфавите (не смешивать латиницу с кириллицей). Возвращает текст ошибки
+  // или null, если всё ок.
+  const nameError = () => {
+    const f = firstName.trim();
+    const l = lastName.trim();
+    if (countLetters(f) < 2 || countLetters(l) < 2) {
+      return "Please enter your real first and last name (letters only).";
+    }
+    const both = f + l;
+    if (LAT_RE.test(both) && CYR_RE.test(both)) {
+      return "Use one alphabet for your name — Latin or Cyrillic, not both.";
+    }
+    return null;
+  };
+
   const canAdvance = () => {
-    if (step === 0) return firstName.trim().length > 1 && lastName.trim().length > 1;
+    if (step === 0) return !nameError();
     if (step === 1) return birthDate.length > 0;
     return true; // шаг 2 (время/место) — опциональный, можно пропустить
   };
 
   const handleNext = () => {
     if (!canAdvance()) {
-      setError("Please fill this in before continuing.");
+      setError(
+        step === 0
+          ? nameError() || "Please fill this in before continuing."
+          : "Please fill this in before continuing."
+      );
       return;
     }
     setError("");
@@ -55,7 +83,19 @@ export default function QuizWizard({ onSubmit, submitting }) {
     "rounded-lg border border-foreground-muted/60 bg-background-alt px-4 py-3 text-foreground placeholder:text-foreground-muted/60 transition-colors hover:border-foreground-muted/80 focus:border-accent-turquoise focus:outline-none focus:ring-1 focus:ring-accent-turquoise";
 
   return (
-    <div className="mx-auto w-full max-w-md">
+    <div className="relative mx-auto w-full max-w-md">
+      {/* Возврат на шаг назад — еле заметный крестик, почти сливается с фоном
+          (по просьбе: без явной кнопки «Back»). Появляется со 2-го шага. */}
+      {step > 0 && (
+        <button
+          type="button"
+          onClick={handleBack}
+          aria-label="Go back one step"
+          className="absolute -top-1 right-0 z-10 text-xl leading-none text-foreground-muted/25 transition-colors hover:text-foreground-muted/70"
+        >
+          ×
+        </button>
+      )}
       <div className="mb-8 flex gap-2">
         {Array.from({ length: TOTAL_STEPS }).map((_, i) => (
           <div
@@ -107,13 +147,7 @@ export default function QuizWizard({ onSubmit, submitting }) {
               Skip this and your 13-point reading still works fully. Add it to
               unlock the deeper time-based layers as they arrive.
             </p>
-            <input
-              type="time"
-              value={birthTime}
-              onChange={(e) => setBirthTime(e.target.value)}
-              className={inputClass}
-              aria-label="Birth time (optional)"
-            />
+            <TimeWheel value={birthTime} onChange={setBirthTime} />
             <input
               type="text"
               placeholder="City of birth (optional)"
@@ -178,16 +212,6 @@ export default function QuizWizard({ onSubmit, submitting }) {
             <Button type="submit" disabled={submitting}>
               {submitting ? "Calculating…" : "Reveal my preview"}
             </Button>
-          )}
-
-          {step > 0 && (
-            <button
-              type="button"
-              onClick={handleBack}
-              className="text-sm text-foreground-muted underline-offset-4 transition-colors hover:text-foreground hover:underline"
-            >
-              Back
-            </button>
           )}
         </div>
       </form>

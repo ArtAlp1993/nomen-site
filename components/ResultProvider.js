@@ -8,10 +8,12 @@ import { createContext, useContext, useEffect, useState } from "react";
 // Форма: { firstName, lastName, birthDate, birthTime, birthPlace, brand, email, points }
 const ResultContext = createContext(null);
 
-// Сохраняем в localStorage, чтобы результат пережил обновление страницы и был
-// доступен на отдельном роуте /thank-you. Данные не чувствительные и лежат в
-// собственном браузере пользователя.
+// Храним в sessionStorage: результат переживает обновление страницы (та же
+// вкладка), но чистится при закрытии вкладки — не держим имя/email/дату
+// рождения в браузере бессрочно (меньше следов PII на общем устройстве).
 const STORAGE_KEY = "nomen-result";
+const store =
+  typeof window !== "undefined" ? window.sessionStorage : undefined;
 
 export function ResultProvider({ children }) {
   const [result, setResult] = useState(null);
@@ -20,7 +22,7 @@ export function ResultProvider({ children }) {
   // инициализаторе useState — иначе рассинхрон гидрации SSR/клиента).
   useEffect(() => {
     try {
-      const saved = localStorage.getItem(STORAGE_KEY);
+      const saved = store?.getItem(STORAGE_KEY);
       if (saved) {
         const parsed = JSON.parse(saved);
         if (parsed && Array.isArray(parsed.points) && parsed.points.length) {
@@ -34,7 +36,7 @@ export function ResultProvider({ children }) {
 
   useEffect(() => {
     try {
-      if (result) localStorage.setItem(STORAGE_KEY, JSON.stringify(result));
+      if (result) store?.setItem(STORAGE_KEY, JSON.stringify(result));
     } catch {
       /* переполненный storage не критичен */
     }

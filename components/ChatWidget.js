@@ -87,6 +87,7 @@ export default function ChatWidget({ open, onClose }) {
         if (Array.isArray(s.messages) && s.messages.length) {
           setMessages(s.messages);
           setLeadSent(!!s.leadSent);
+          alerted.current = !!s.alerted; // не слать Артёму повторный алерт после reload
         }
       }
     } catch { /* повреждённый storage игнорируем */ }
@@ -95,7 +96,7 @@ export default function ChatWidget({ open, onClose }) {
     try {
       sessionStorage.setItem(
         "nomen-chat",
-        JSON.stringify({ messages, leadSent })
+        JSON.stringify({ messages, leadSent, alerted: alerted.current })
       );
     } catch { /* переполненный storage не критичен */ }
   }, [messages, leadSent]);

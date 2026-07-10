@@ -5,7 +5,12 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import wallets from "@/data/wallets.json";
 import { useResult } from "./ResultProvider";
-import { notifyTelegram, makeOrderCode } from "@/lib/notify";
+import {
+  notifyTelegram,
+  makeOrderCode,
+  makeNumericTag,
+  cleanField,
+} from "@/lib/notify";
 import { fetchCryptoAmount } from "@/lib/rates";
 import { ymGoal } from "./Analytics";
 import QRCode from "./QRCode";
@@ -94,10 +99,13 @@ export default function CryptoCheckout({ tier, open, onClose }) {
   // Текст заказа для Telegram.
   const buildOrderText = (paid, w, amount) => {
     const r = result || {};
-    const name = [r.firstName, r.lastName].filter(Boolean).join(" ") || "—";
-    const birth = [r.birthDate, r.birthTime, r.birthPlace]
-      .filter(Boolean)
-      .join(", ");
+    // Поля клиента чистим от переносов строк — иначе можно подделать строки
+    // «Адрес:/Сумма:» в сообщении оператору.
+    const name =
+      cleanField([r.firstName, r.lastName].filter(Boolean).join(" ")) || "—";
+    const birth = cleanField(
+      [r.birthDate, r.birthTime, r.birthPlace].filter(Boolean).join(", ")
+    );
     const memo = memoValueFor(w, order);
     return [
       paid
@@ -107,8 +115,8 @@ export default function CryptoCheckout({ tier, open, onClose }) {
       `Тариф: ${tier?.name} — $${tier?.price}`,
       `Имя: ${name}`,
       birth ? `Дата рождения: ${birth}` : null,
-      r.brand ? `Бренд/ник: ${r.brand}` : null,
-      `Email: ${r.email || "—"}`,
+      r.brand ? `Бренд/ник: ${cleanField(r.brand)}` : null,
+      `Email: ${cleanField(r.email) || "—"}`,
       `Оплата: ${w.label}`,
       `Сумма: ${amount}`,
       memo ? `${w.memoLabel}: ${memo}` : null,
@@ -125,20 +133,20 @@ export default function CryptoCheckout({ tier, open, onClose }) {
       if (!leadRef.current) {
         leadRef.current = true;
         const code = makeOrderCode();
-        const numericTag = String(100000 + Math.floor(Math.random() * 899999));
+        const numericTag = makeNumericTag();
         const tail = 1 + Math.floor(Math.random() * 8); // 1..8 центов
         setOrder({ code, numericTag });
         setTailCents(tail);
         ymGoal("checkout_opened");
-        const amount = selected.isStable
-          ? `${(basePrice + tail / 100).toFixed(2)} ${selected.coin}`
-          : `≈ $${basePrice.toFixed(2)} in ${selected.coin}`;
-        // order ещё не в стейте на этот тик — строим текст с локальными данными.
+        // Лид «новый заказ»: монету/сумму НЕ пишем — они ещё не выбраны
+        // (иначе лид покажет USDT по умолчанию, а платёж может уйти в другой).
+        // Финальное сообщение по «I've paid» содержит выбранную монету и сумму.
         const r = result || {};
-        const name = [r.firstName, r.lastName].filter(Boolean).join(" ") || "—";
-        const birth = [r.birthDate, r.birthTime, r.birthPlace]
-          .filter(Boolean)
-          .join(", ");
+        const name =
+          cleanField([r.firstName, r.lastName].filter(Boolean).join(" ")) || "—";
+        const birth = cleanField(
+          [r.birthDate, r.birthTime, r.birthPlace].filter(Boolean).join(", ")
+        );
         notifyTelegram(
           [
             "🛒 NOMEN — новый заказ (ждём оплату)",
@@ -146,10 +154,8 @@ export default function CryptoCheckout({ tier, open, onClose }) {
             `Тариф: ${tier?.name} — $${tier?.price}`,
             `Имя: ${name}`,
             birth ? `Дата рождения: ${birth}` : null,
-            r.brand ? `Бренд/ник: ${r.brand}` : null,
-            `Email: ${r.email || "—"}`,
-            `Оплата: ${selected.label}`,
-            `Сумма: ${amount}`,
+            r.brand ? `Бренд/ник: ${cleanField(r.brand)}` : null,
+            `Email: ${cleanField(r.email) || "—"}`,
           ]
             .filter(Boolean)
             .join("\n")
@@ -165,27 +171,32 @@ export default function CryptoCheckout({ tier, open, onClose }) {
   }, [open]);
 
   // Курс для не-стейбла — при открытии и смене монеты (сеть курс не меняет).
+  // Считаем от УНИКАЛЬНОЙ суммы (цена + хвостик центов), чтобы у каждого заказа
+  // была своя сумма — так BTC/ETH (без memo) тоже опознаются при сверке.
   useEffect(() => {
-    if (!open || selected.isStable) {
+    if (!open || selected.isStable || !tailCents) {
       setCryptoAmount(null);
       return;
     }
     let cancelled = false;
     setRateLoading(true);
     setCryptoAmount(null);
-    fetchCryptoAmount(selected.coingeckoId, basePrice).then((amt) => {
-      if (!cancelled) {
-        setCryptoAmount(amt);
-        setRateLoading(false);
+    fetchCryptoAmount(selected.coingeckoId, basePrice + tailCents / 100).then(
+      (amt) => {
+        if (!cancelled) {
+          setCryptoAmount(amt);
+          setRateLoading(false);
+        }
       }
-    });
+    );
     return () => {
       cancelled = true;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [open, coinName]);
+  }, [open, coinName, tailCents]);
 
   const copy = async (field, text) => {
+    if (!text) return; // нечего копировать (напр. курс не пришёл) — без ложной «✓»
     try {
       await navigator.clipboard.writeText(text);
       setCopied(field);
@@ -194,6 +205,14 @@ export default function CryptoCheckout({ tier, open, onClose }) {
       /* буфер недоступен — не критично */
     }
   };
+
+  // Значение суммы для копирования: то же, что показано (стейбл — точное;
+  // не-стейбл — форматированное количество монеты, либо пусто если курс не пришёл).
+  const amountCopy = selected.isStable
+    ? stableAmount
+    : cryptoAmount != null
+      ? formatCrypto(cryptoAmount)
+      : "";
 
   const handlePaid = () => {
     if (!paidRef.current) {
@@ -361,19 +380,14 @@ export default function CryptoCheckout({ tier, open, onClose }) {
               </span>
               <button
                 type="button"
-                onClick={() =>
-                  copy(
-                    "amount",
-                    selected.isStable ? stableAmount : String(cryptoAmount ?? "")
-                  )
-                }
+                onClick={() => copy("amount", amountCopy)}
                 className="mt-1 flex w-full items-center justify-between gap-2 text-left"
               >
                 <span className="font-heading text-lg font-semibold text-foreground">
                   {rateLoading ? "…" : amountText}
                 </span>
                 <span className="shrink-0 text-xs text-accent-turquoise">
-                  {copied === "amount" ? "✓" : "copy"}
+                  {copied === "amount" ? "✓" : amountCopy ? "copy" : ""}
                 </span>
               </button>
             </div>
@@ -404,9 +418,10 @@ export default function CryptoCheckout({ tier, open, onClose }) {
             )}
 
             {isPlaceholder && (
-              <p className="mt-3 text-xs text-amber-400/80">
-                Demo address — real wallet not set yet.
-              </p>
+              <div className="mt-3 rounded-lg border border-amber-400/40 bg-amber-400/10 px-3 py-2.5 text-xs text-amber-300">
+                Payments aren&apos;t live yet — this is a demo address, so don&apos;t
+                send funds. Checkout will activate once real wallets are set.
+              </div>
             )}
 
             <p className="mt-4 text-xs text-foreground-muted">
@@ -419,9 +434,10 @@ export default function CryptoCheckout({ tier, open, onClose }) {
               <button
                 type="button"
                 onClick={handlePaid}
-                className="inline-flex w-full items-center justify-center rounded-full bg-gradient-to-r from-accent-violet to-accent-turquoise px-8 py-3 font-heading text-sm font-semibold tracking-wide text-background glow-violet transition-transform duration-200 hover:scale-[1.02]"
+                disabled={isPlaceholder}
+                className="inline-flex w-full items-center justify-center rounded-full bg-gradient-to-r from-accent-violet to-accent-turquoise px-8 py-3 font-heading text-sm font-semibold tracking-wide text-background glow-violet transition-transform duration-200 hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:scale-100"
               >
-                I&apos;ve paid
+                {isPlaceholder ? "Payments coming soon" : "I've paid"}
               </button>
               <button
                 type="button"

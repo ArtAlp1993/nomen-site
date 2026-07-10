@@ -22,7 +22,7 @@ for (let y = 1930; y <= 2020; y++) YEARS.push(y);
 
 const daysInMonth = (m, y) => new Date(y, m, 0).getDate();
 
-function Wheel({ values, value, onChange, format = String, ariaLabel }) {
+export function Wheel({ values, value, onChange, format = String, ariaLabel }) {
   const ref = useRef(null);
   const emitted = useRef(value);
   const idleTimer = useRef(null);
@@ -84,10 +84,25 @@ function Wheel({ values, value, onChange, format = String, ariaLabel }) {
       <div
         ref={ref}
         onScroll={onScroll}
+        // Доступность: колонку можно сфокусировать и крутить стрелками ↑/↓.
+        tabIndex={0}
+        role="listbox"
+        aria-label={ariaLabel}
+        onKeyDown={(e) => {
+          const el = ref.current;
+          if (!el) return;
+          if (e.key === "ArrowDown") {
+            e.preventDefault();
+            el.scrollBy({ top: ITEM_H, behavior: "smooth" });
+          } else if (e.key === "ArrowUp") {
+            e.preventDefault();
+            el.scrollBy({ top: -ITEM_H, behavior: "smooth" });
+          }
+        }}
         // data-lenis-prevent: иначе Lenis (плавный скролл страницы)
         // перехватывает колесо мыши, и барабан на десктопе не крутится.
         data-lenis-prevent
-        className="h-full overflow-y-scroll overscroll-contain [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className="h-full overflow-y-scroll overscroll-contain outline-none focus-visible:ring-1 focus-visible:ring-accent-turquoise/50 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         <div style={{ height: padding }} />
         {Array.from({ length: REPEAT }).map((_, r) =>

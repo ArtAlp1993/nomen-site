@@ -37,6 +37,11 @@ export default function Analytics() {
       a.parentNode.insertBefore(k, a);
     })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
+    // ВНИМАНИЕ (безопасность/PII): webvisor записывает ввод в поля. Перед
+    // включением Метрики замаскировать PII квиза (имя/дата/email) — навесить
+    // на эти input class "ym-disable-keys" (или отключить webvisor), иначе
+    // персональные данные уйдут в записи сессий на mc.yandex.ru. И раскрыть
+    // сбор в Privacy Policy + добавить mc.yandex.ru в CSP connect-src/script-src.
     window.ym(YM_ID, "init", {
       webvisor: true,
       clickmap: true,
