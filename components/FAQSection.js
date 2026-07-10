@@ -32,7 +32,7 @@ export default function FAQSection() {
     <section className="mx-auto max-w-3xl px-6 py-24 sm:py-32">
       <SectionHeading eyebrow="FAQ" title="Questions, answered honestly" />
 
-      <div className="mt-12">
+      <div className="mt-12 rounded-2xl bg-background/70 backdrop-blur-md px-6 sm:px-8">
         {faq.map((item, i) => (
           <FaqItem
             key={item.question}

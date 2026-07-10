@@ -41,7 +41,7 @@ export default function TeaserReveal({ firstName, points }) {
             {rest.map((p) => (
               <div
                 key={p.code}
-                className="flex items-center gap-3 rounded-xl border border-foreground-muted/20 bg-background-alt/40 px-4 py-3"
+                className="flex items-center gap-3 rounded-xl border border-foreground-muted/20 bg-background-alt/75 backdrop-blur-md px-4 py-3"
               >
                 <span className="text-foreground-muted">
                   <PointIcon code={p.code} size={22} />

@@ -80,7 +80,7 @@ export default function MethodologyDiagram() {
       <div className="mx-auto mt-10 grid max-w-4xl gap-4">
         {(() => {
           const panel =
-            "rounded-xl border border-foreground-muted/30 bg-background-alt/40 p-6";
+            "rounded-xl border border-foreground-muted/30 bg-background-alt/75 backdrop-blur-md p-6";
           const renderPanel = (block, wide) => {
             const items = methodology.filter((p) => p.block === block);
             const color = CATEGORY_COLOR[block];

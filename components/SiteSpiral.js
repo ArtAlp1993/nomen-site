@@ -78,9 +78,9 @@ export default function SiteSpiral() {
           else ctx.lineTo(x, y);
         }
         const grad = ctx.createLinearGradient(0, 0, 0, height);
-        grad.addColorStop(0, "rgba(51,230,224,0.42)");
-        grad.addColorStop(0.5, "rgba(108,79,246,0.42)");
-        grad.addColorStop(1, "rgba(51,230,224,0.42)");
+        grad.addColorStop(0, "rgba(51,230,224,0.32)");
+        grad.addColorStop(0.5, "rgba(108,79,246,0.32)");
+        grad.addColorStop(1, "rgba(51,230,224,0.32)");
         ctx.strokeStyle = grad;
         ctx.lineWidth = 1.6;
         ctx.shadowColor = "rgba(51,230,224,0.5)";
@@ -95,7 +95,7 @@ export default function SiteSpiral() {
           const depth = (Math.sin((y / wavelength) * Math.PI * 2 + phase + offset) + 1) / 2;
           ctx.beginPath();
           ctx.arc(x, y, 1.2 + depth * 1.8, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(190,240,255,${0.25 + depth * 0.5})`;
+          ctx.fillStyle = `rgba(190,240,255,${0.2 + depth * 0.4})`;
           ctx.shadowColor = "rgba(51,230,224,0.8)";
           ctx.shadowBlur = 8;
           ctx.fill();
