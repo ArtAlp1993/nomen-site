@@ -33,7 +33,7 @@ export default function QuizSection() {
   };
 
   return (
-    <section id="quiz" className="mx-auto max-w-5xl px-6 py-24 sm:py-32">
+    <section id="quiz" className="mx-auto max-w-5xl px-6 pt-24 pb-14 sm:py-32">
       <SectionHeading
         eyebrow="Your free preview"
         title="Let's read your blueprint"

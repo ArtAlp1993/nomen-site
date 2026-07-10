@@ -49,7 +49,7 @@ export default function MethodologyDiagram() {
   const accent = CATEGORY_COLOR[BLOCK_ORDER[activeBlock]];
 
   return (
-    <section className="mx-auto max-w-5xl px-6 py-24 sm:py-32">
+    <section className="mx-auto max-w-5xl px-6 pt-16 pb-24 sm:py-32">
       <SectionHeading
         eyebrow="The methodology"
         title={personalized ? "Your Blueprint, mapped" : "Your Blueprint of Potential"}
@@ -85,9 +85,12 @@ export default function MethodologyDiagram() {
             const items = methodology.filter((p) => p.block === block);
             const color = CATEGORY_COLOR[block];
             return (
-              <div key={block} className={`${panel} flex flex-col items-center`}>
+              <div
+                key={block}
+                className={`${panel} flex flex-col items-start sm:items-center`}
+              >
                 <h3
-                  className="text-center font-heading text-xs uppercase tracking-[0.2em]"
+                  className="self-center text-center font-heading text-xs uppercase tracking-[0.2em]"
                   style={{ color }}
                 >
                   {block}
@@ -95,7 +98,7 @@ export default function MethodologyDiagram() {
                 <ul
                   className={`mt-4 gap-x-8 gap-y-3 text-sm text-foreground-muted ${
                     wide
-                      ? "grid sm:grid-cols-3 justify-center"
+                      ? "grid sm:grid-cols-3 justify-start sm:justify-center"
                       : "flex flex-col items-start"
                   }`}
                 >
