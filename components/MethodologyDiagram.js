@@ -36,6 +36,19 @@ export default function MethodologyDiagram() {
   }
   const personalized = Boolean(result?.points?.length);
 
+  // WebGL бывает недоступен (выключено аппаратное ускорение, сбой GPU,
+  // старые машины) — тогда вместо живой сцены показываем её кадр
+  // (public/blueprint-still.jpg) с медленным вращением.
+  const [webgl, setWebgl] = useState(null);
+  useEffect(() => {
+    try {
+      const probe = document.createElement("canvas");
+      setWebgl(!!(probe.getContext("webgl2") || probe.getContext("webgl")));
+    } catch {
+      setWebgl(false);
+    }
+  }, []);
+
   // Авто-цикл категорий: радужка мягко перекрашивается, легенда подсвечивает
   // активную традицию. Живёт сама, без взаимодействия.
   const [activeBlock, setActiveBlock] = useState(0);
@@ -70,7 +83,16 @@ export default function MethodologyDiagram() {
               "radial-gradient(ellipse 62% 56% at 50% 50%, black 50%, transparent 76%)",
           }}
         >
-          <BlueprintScene accent={accent} />
+          {webgl === false ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src="/blueprint-still.jpg"
+              alt=""
+              className="h-full w-full scale-110 animate-[spin_160s_linear_infinite] object-contain"
+            />
+          ) : webgl ? (
+            <BlueprintScene accent={accent} />
+          ) : null}
         </div>
       </div>
 
