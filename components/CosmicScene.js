@@ -166,11 +166,11 @@ export default function CosmicScene({ className = "" }) {
     const drawGeometry = (ax, ay) => {
       const pts = RAW_VERTICES.map((v) => project(v, ax, ay));
       // Рёбра со свечением и градиентом.
-      ctx.lineWidth = 1.1;
+      ctx.lineWidth = 1.25;
       for (const [i, j] of EDGES) {
         const a = pts[i], b = pts[j];
         const depth = (a.depth + b.depth) / 2;
-        const alpha = 0.28 + (1 - (depth + PHI) / (2 * PHI)) * 0.5;
+        const alpha = 0.38 + (1 - (depth + PHI) / (2 * PHI)) * 0.55;
         const grad = ctx.createLinearGradient(a.x, a.y, b.x, b.y);
         grad.addColorStop(0, `rgba(108,79,246,${alpha})`);
         grad.addColorStop(1, `rgba(51,230,224,${alpha})`);
@@ -213,22 +213,27 @@ export default function CosmicScene({ className = "" }) {
       if (fx) {
         const t = time - fx.t0;
         if (fx.phase === "cower") {
-          orbScale = 1 - 0.2 * easeOut(Math.min(1, t / 350));
-          if (t >= 350) fx = { phase: "shake", t0: time };
+          // Глубокое сжатие — «испугался».
+          orbScale = 1 - 0.3 * easeOut(Math.min(1, t / 380));
+          if (t >= 380) fx = { phase: "shake", t0: time };
         } else if (fx.phase === "shake") {
           const k = Math.min(1, t / 450);
-          orbScale = 0.8;
-          shX = Math.sin(t * 0.09) * 5 * (1 - k);
-          shY = Math.cos(t * 0.13) * 3 * (1 - k);
+          orbScale = 0.7;
+          shX = Math.sin(t * 0.09) * 6 * (1 - k);
+          shY = Math.cos(t * 0.13) * 4 * (1 - k);
           if (t >= 450) {
             burst(ax, ay);
             fx = { phase: "release", t0: time };
           }
         } else {
-          const k = Math.min(1, t / 400);
-          // Возврат с лёгким «перелётом» — как будто отряхнулся.
-          orbScale = 0.8 + 0.2 * easeOut(k) + 0.05 * Math.sin(k * Math.PI);
-          if (k >= 1) {
+          // «Взрыв»: резко расправляется с перелётом, стряхивая крошки,
+          // затем спокойно оседает к обычному размеру.
+          if (t < 180) {
+            orbScale = 0.7 + 0.46 * easeOut(t / 180); // 0.7 → 1.16
+          } else {
+            orbScale = 1.16 - 0.16 * easeOut(Math.min(1, (t - 180) / 380));
+          }
+          if (t >= 560) {
             fx = null;
             charge = 0;
             taps = 0;
