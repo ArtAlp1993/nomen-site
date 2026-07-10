@@ -87,7 +87,7 @@ export default function MethodologyDiagram() {
             return (
               <div
                 key={block}
-                className={`${panel} flex flex-col items-start sm:items-center`}
+                className={`${panel} flex flex-col items-center`}
               >
                 <h3
                   className="self-center text-center font-heading text-xs uppercase tracking-[0.2em]"
@@ -95,19 +95,24 @@ export default function MethodologyDiagram() {
                 >
                   {block}
                 </h3>
+                {/* Мобильные — «таблетки» по центру (ровно при любой длине
+                    текста); от sm — прежняя десктопная раскладка списками. */}
                 <ul
-                  className={`mt-4 gap-x-8 gap-y-3 pl-10 sm:pl-0 text-sm text-foreground-muted ${
+                  className={`mt-4 flex flex-wrap justify-center gap-2 text-sm text-foreground-muted sm:gap-x-8 sm:gap-y-3 ${
                     wide
-                      ? "grid sm:grid-cols-3 justify-start sm:justify-center"
-                      : "flex flex-col items-start"
+                      ? "sm:grid sm:grid-cols-3 sm:justify-center"
+                      : "sm:flex sm:flex-col sm:items-start"
                   }`}
                 >
                   {items.map((p) => (
-                    <li key={p.code} className="flex items-start gap-2.5">
-                      <span className="mt-0.5 shrink-0" style={{ color }}>
+                    <li
+                      key={p.code}
+                      className="flex items-center gap-2 rounded-full border border-foreground-muted/25 bg-background-alt/60 px-3 py-1.5 sm:items-start sm:gap-2.5 sm:rounded-none sm:border-0 sm:bg-transparent sm:px-0 sm:py-0"
+                    >
+                      <span className="shrink-0 sm:mt-0.5" style={{ color }}>
                         <PointIcon code={p.code} size={17} />
                       </span>
-                      <span className={wide ? "max-w-[10rem]" : ""}>
+                      <span className={wide ? "sm:max-w-[10rem]" : ""}>
                         {labels[p.code] ? (
                           <span className="text-foreground">{labels[p.code]}</span>
                         ) : (
