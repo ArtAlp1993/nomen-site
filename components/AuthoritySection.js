@@ -62,12 +62,11 @@ export default function AuthoritySection() {
         subtitle="Not “the universe says” — each of the 13 points traces back to a documented framework."
       />
 
-      {/* Верхний ряд — три карточки, всегда вместе от sm и выше.
-          Нижний ряд — Пифагор и Готтман, на половину ширины: на десктопе
-          по центру, на мобильном — влево, как верхний ряд. */}
+      {/* Оба ряда: на десктопе содержимое карточек по центру,
+          на мобильном — по левому краю. */}
       <div className="mt-16 grid gap-6 sm:grid-cols-3">
         {topRow.map((s, i) => (
-          <SchoolCard key={s.name} s={s} delay={i * 0.06} />
+          <SchoolCard key={s.name} s={s} delay={i * 0.06} centered />
         ))}
       </div>
       <div className="mt-6 grid gap-6 sm:grid-cols-2">
