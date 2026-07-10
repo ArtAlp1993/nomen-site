@@ -1,26 +1,103 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #05040f;
+  --background-alt: #0b0a2a;
+  --foreground: #f5f3ff;
+  --foreground-muted: #a6a0c6;
+  --accent-violet: #6c4ff6;
+  --accent-turquoise: #33e6e0;
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-background-alt: var(--background-alt);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-foreground-muted: var(--foreground-muted);
+  --color-accent-violet: var(--accent-violet);
+  --color-accent-turquoise: var(--accent-turquoise);
+  --font-heading: var(--font-space-grotesk);
+  --font-sans: var(--font-inter);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+.text-gradient-cta {
+  background: linear-gradient(90deg, var(--accent-violet), var(--accent-turquoise));
+}
+
+.glow-violet {
+  box-shadow: 0 0 40px -10px rgba(108, 79, 246, 0.6);
+}
+
+.glow-turquoise {
+  box-shadow: 0 0 40px -10px rgba(51, 230, 224, 0.6);
+}
+
+/* Мягкий тёмный ореол за текстом, лежащим поверх спирали, — чтобы её
+   светящиеся нити не «прожигали» буквы. Форма по буквам, без прямоугольной
+   подложки. Слои тени дают плотное, но незаметное затемнение вокруг глифов. */
+.readable-on-spiral {
+  text-shadow:
+    0 0 6px rgba(5, 4, 15, 0.9),
+    0 0 16px rgba(5, 4, 15, 0.8),
+    0 0 30px rgba(5, 4, 15, 0.6);
+}
+
+/* Мягкая «живая» пульсация свечения узлов диаграммы (волной по кругу). */
+@keyframes nodePulse {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.75; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .node-halo { animation: none !important; opacity: 0.4 !important; }
+}
+
+/* Кнопка «дышит»: лёгкая пульсация свечения, чтобы притягивала взгляд.
+   Только box-shadow — transform на этой кнопке уже занят инлайновым
+   магнитным эффектом (Button.js), который перебил бы CSS-анимацию scale. */
+@keyframes btnPulse {
+  0%, 100% {
+    box-shadow: 0 0 14px -6px rgba(51, 230, 224, 0.45);
+  }
+  50% {
+    box-shadow: 0 0 24px -2px rgba(51, 230, 224, 0.7);
+  }
+}
+
+.btn-pulse {
+  animation: btnPulse 2.2s ease-in-out infinite;
+}
+
+.btn-pulse:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-pulse { animation: none !important; }
+}
+
+/* Лёгкое покачивание кнопки-обёртки — качается сама, независимо от
+   магнитного transform на кнопке внутри (разные элементы, transform не конфликтует). */
+@keyframes btnWiggle {
+  0%, 100% { transform: rotate(-1.5deg); }
+  50% { transform: rotate(1.5deg); }
+}
+
+.btn-wiggle {
+  display: inline-block;
+  animation: btnWiggle 2.6s ease-in-out infinite;
+}
+
+.btn-wiggle:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-wiggle { animation: none !important; }
 }

@@ -1,0 +1,15 @@
+[
+  { "code": "A1", "title": "Life Path Number", "block": "Numerology", "about": "Your core life path and central lesson — why you're here." },
+  { "code": "A2", "title": "Birthday Number", "block": "Numerology", "about": "Your innate talent — the gift you were handed for the road." },
+  { "code": "A3", "title": "Expression Number", "block": "Numerology", "about": "Your mission — what you're meant to build and become." },
+  { "code": "A4", "title": "Soul Urge Number", "block": "Numerology", "about": "What your soul secretly wants most — your hidden engine." },
+  { "code": "A5", "title": "Personality Number", "block": "Numerology", "about": "Your facade — how people read you before they know you." },
+  { "code": "A7", "title": "Maturity Number", "block": "Numerology", "about": "Who you grow into — the direction life converges on after ~40." },
+  { "code": "A10", "title": "Pythagorean Square", "block": "Numerology", "about": "A nine-cell map of your strongest and weakest traits." },
+  { "code": "A11", "title": "Karmic Debt Numbers", "block": "Numerology", "about": "Unfinished lessons carried in — if you have any." },
+  { "code": "A9", "title": "Karmic Lessons & Hidden Passion", "block": "Numerology", "about": "What you lack and must develop, plus your natural strength." },
+  { "code": "B1", "title": "Sun Sign", "block": "Western Astrology", "about": "Your core will and identity — how you shine into the world." },
+  { "code": "C1", "title": "Chinese Zodiac Animal", "block": "Chinese Astrology", "about": "Your base temperament — how you read on a gut level." },
+  { "code": "C2", "title": "Year Element", "block": "Chinese Astrology", "about": "The 'temperature' of your nature, layered over your animal." },
+  { "code": "D1", "title": "Tarot Birth Card", "block": "Tarot", "about": "The archetype of your fate, drawn from the major arcana." }
+]
