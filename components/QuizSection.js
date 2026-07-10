@@ -5,6 +5,7 @@ import SectionHeading from "./ui/SectionHeading";
 import QuizWizard from "./QuizWizard";
 import TeaserReveal from "./TeaserReveal";
 import { useResult } from "./ResultProvider";
+import { calculateTeaser } from "@/lib/teaser";
 
 export default function QuizSection() {
   const { result, setResult } = useResult();
@@ -15,17 +16,19 @@ export default function QuizSection() {
     setSubmitting(true);
     setError("");
     try {
-      const res = await fetch("/api/quiz", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+      // Тизер считается прямо в браузере (порт nomen-engine, lib/teaser.js) —
+      // сайт статический, сервера нет. Сверено с движком автотестом.
+      const { points } = calculateTeaser({
+        name: `${data.firstName} ${data.lastName}`,
+        date: data.birthDate,
       });
-      if (!res.ok) throw new Error("Request failed");
-      const json = await res.json();
-      setResult({ firstName: data.firstName, points: json.points });
+      if (!points.length) throw new Error("empty result");
+      // Небольшая пауза «калькуляции»: мгновенный ответ выглядит как заглушка.
+      await new Promise((resolve) => setTimeout(resolve, 900));
+      setResult({ firstName: data.firstName, points });
     } catch (err) {
       setError(
-        "Something went wrong on our end — please try again in a moment."
+        "We couldn't read that name — use letters of one alphabet and try again."
       );
     } finally {
       setSubmitting(false);
