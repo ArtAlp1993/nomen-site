@@ -96,7 +96,7 @@ export default function MethodologyDiagram() {
                   {block}
                 </h3>
                 <ul
-                  className={`mt-4 gap-x-8 gap-y-3 text-sm text-foreground-muted ${
+                  className={`mt-4 gap-x-8 gap-y-3 pl-10 sm:pl-0 text-sm text-foreground-muted ${
                     wide
                       ? "grid sm:grid-cols-3 justify-start sm:justify-center"
                       : "flex flex-col items-start"

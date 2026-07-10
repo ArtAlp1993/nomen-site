@@ -67,6 +67,15 @@ export default function CosmicScene({ className = "" }) {
     resize();
     window.addEventListener("resize", resize);
 
+    // Пасхалка: быстрые тапы по шарику «заряжают» его кончики (с 4-го тапа
+    // свечение нарастает), на пике шарик пугается — сжимается, встряхивается
+    // и вытряхивает пыль, которая разлетается по всему экрану (ловит SiteSpiral).
+    let taps = 0;
+    let lastTap = 0;
+    let charge = 0; // 0..1 — насколько «заряжены» кончики
+    let fx = null; // {phase: "cower" | "shake" | "release", t0}
+    let orbScale = 1;
+
     const project = (v, ax, ay) => {
       // Поворот вокруг Y и X, затем перспективная проекция.
       const cosY = Math.cos(ay), sinY = Math.sin(ay);
@@ -75,13 +84,47 @@ export default function CosmicScene({ className = "" }) {
       let z = v[0] * sinY + v[2] * cosY;
       let y = v[1] * cosX - z * sinX;
       z = v[1] * sinX + z * cosX;
-      const scale = width < 768 ? 74 : 104;
+      const scale = (width < 768 ? 74 : 104) * orbScale;
       const persp = 4 / (4 + z);
       return {
         x: width / 2 + x * scale * persp,
         y: height / 2 + y * scale * persp,
         depth: z,
       };
+    };
+
+    const onTap = (e) => {
+      if (fx) return;
+      // Кнопки и ссылки работают как обычно — их тапы не считаем.
+      if (e.target.closest && e.target.closest("a,button,input,label")) return;
+      const rect = canvas.getBoundingClientRect();
+      if (rect.bottom < 0 || rect.top > window.innerHeight) return;
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const r = (width < 768 ? 74 : 104) * 2.4; // зона шарика вокруг центра
+      const dx = x - width / 2;
+      const dy = y - height / 2;
+      if (dx * dx + dy * dy > r * r) return;
+      const now = performance.now();
+      if (now - lastTap > 800) taps = 0; // серия прервана — начинаем заново
+      lastTap = now;
+      taps += 1;
+      if (taps >= 4) charge = Math.min(1, (taps - 3) / 6);
+      if (charge >= 1) fx = { phase: "cower", t0: now };
+    };
+    if (!reduce) window.addEventListener("pointerdown", onTap);
+
+    // Вытряхнутая пыль: координаты кончиков в системе окна → событие,
+    // которое подхватывает полноэкранный слой пыльцы (SiteSpiral).
+    const burst = (ax, ay) => {
+      const rect = canvas.getBoundingClientRect();
+      const points = RAW_VERTICES.map((v) => project(v, ax, ay)).map((p) => ({
+        x: rect.left + p.x,
+        y: rect.top + p.y,
+      }));
+      window.dispatchEvent(
+        new CustomEvent("nomen-dust-burst", { detail: { points } })
+      );
     };
 
     const drawNebula = () => {
@@ -135,14 +178,15 @@ export default function CosmicScene({ className = "" }) {
         ctx.stroke();
       }
       ctx.shadowBlur = 0;
-      // Вершины — светящиеся узлы.
+      // Вершины — светящиеся узлы. Заряд от тапов усиливает их свечение.
+      const glow = 1 + charge * 1.4;
       for (const p of pts) {
         const front = (p.depth + PHI) / (2 * PHI);
         ctx.beginPath();
-        ctx.arc(p.x, p.y, 1.6 + front * 2.2, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(180,240,255,${0.4 + front * 0.6})`;
+        ctx.arc(p.x, p.y, (1.6 + front * 2.2) * (1 + charge * 0.7), 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(180,240,255,${Math.min(1, (0.4 + front * 0.6) * glow)})`;
         ctx.shadowColor = "rgba(51,230,224,0.9)";
-        ctx.shadowBlur = 12;
+        ctx.shadowBlur = 12 * glow;
         ctx.fill();
       }
       ctx.shadowBlur = 0;
@@ -151,11 +195,51 @@ export default function CosmicScene({ className = "" }) {
     let raf;
     let ax = -0.3;
     let ay = 0;
+    const easeOut = (k) => 1 - (1 - k) * (1 - k);
     const render = (time) => {
       ctx.clearRect(0, 0, width, height);
       drawNebula();
       drawStars(time);
+
+      // Сценарий испуга: сжаться → задрожать → вытряхнуть пыль и вернуться.
+      let shX = 0;
+      let shY = 0;
+      orbScale = 1;
+      if (fx) {
+        const t = time - fx.t0;
+        if (fx.phase === "cower") {
+          orbScale = 1 - 0.2 * easeOut(Math.min(1, t / 350));
+          if (t >= 350) fx = { phase: "shake", t0: time };
+        } else if (fx.phase === "shake") {
+          const k = Math.min(1, t / 450);
+          orbScale = 0.8;
+          shX = Math.sin(t * 0.09) * 5 * (1 - k);
+          shY = Math.cos(t * 0.13) * 3 * (1 - k);
+          if (t >= 450) {
+            burst(ax, ay);
+            fx = { phase: "release", t0: time };
+          }
+        } else {
+          const k = Math.min(1, t / 400);
+          // Возврат с лёгким «перелётом» — как будто отряхнулся.
+          orbScale = 0.8 + 0.2 * easeOut(k) + 0.05 * Math.sin(k * Math.PI);
+          if (k >= 1) {
+            fx = null;
+            charge = 0;
+            taps = 0;
+          }
+        }
+      } else if (charge > 0 && performance.now() - lastTap > 2500) {
+        // Серию бросили на полпути — заряд плавно стекает.
+        charge = Math.max(0, charge - 0.008);
+        if (charge === 0) taps = 0;
+      }
+
+      ctx.save();
+      ctx.translate(shX, shY);
       drawGeometry(ax, ay);
+      ctx.restore();
+
       if (!reduce) {
         ay += 0.0032;
         ax += 0.0011;
@@ -176,6 +260,7 @@ export default function CosmicScene({ className = "" }) {
     return () => {
       cancelAnimationFrame(raf);
       window.removeEventListener("resize", resize);
+      if (!reduce) window.removeEventListener("pointerdown", onTap);
     };
   }, []);
 

@@ -59,6 +59,30 @@ export default function SiteSpiral() {
     initDust();
     window.addEventListener("resize", initDust);
 
+    // Пыль, «вытряхнутая» шариком (пасхалка в CosmicScene): рождается на его
+    // кончиках, резво разлетается по экрану и за несколько секунд растворяется.
+    const onBurst = (ev) => {
+      const points = (ev.detail && ev.detail.points) || [];
+      for (const pt of points) {
+        for (let k = 0; k < 4; k++) {
+          const angle = Math.random() * Math.PI * 2;
+          const speed = 40 + Math.random() * 90;
+          dust.push({
+            x: pt.x,
+            y: pt.y,
+            vx: Math.cos(angle) * speed,
+            vy: Math.sin(angle) * speed,
+            size: 0.8 + Math.random() * 1.6,
+            color: DUST_COLORS[(Math.random() * DUST_COLORS.length) | 0],
+            tw: Math.random() * Math.PI * 2,
+            wander: Math.random() * Math.PI * 2,
+            life: 7 + Math.random() * 4, // секунды до растворения
+          });
+        }
+      }
+    };
+    window.addEventListener("nomen-dust-burst", onBurst);
+
     let prevTime = 0;
     const drawDust = (time, dt) => {
       const isMobile = width < 768;
@@ -80,9 +104,15 @@ export default function SiteSpiral() {
         else if (p.y > height + 6) p.y = -6;
 
         const twinkle = 0.5 + 0.5 * Math.sin(time * 0.001 + p.tw);
+        let alpha = 0.05 + twinkle * 0.2;
+        if (p.life !== undefined) {
+          p.life -= dt;
+          // Вытряхнутая пыль ярче обычной и тает в последние 3 секунды.
+          alpha = (0.15 + twinkle * 0.25) * Math.max(0, Math.min(1, p.life / 3));
+        }
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${p.color},${0.05 + twinkle * 0.2})`;
+        ctx.fillStyle = `rgba(${p.color},${alpha})`;
         if (!isMobile) {
           ctx.shadowColor = `rgba(${p.color},0.5)`;
           ctx.shadowBlur = 5;
@@ -90,6 +120,9 @@ export default function SiteSpiral() {
         ctx.fill();
       }
       ctx.shadowBlur = 0;
+      if (dust.some((p) => p.life !== undefined && p.life <= 0)) {
+        dust = dust.filter((p) => p.life === undefined || p.life > 0);
+      }
     };
 
     const render = (time) => {
@@ -184,6 +217,7 @@ export default function SiteSpiral() {
       cancelAnimationFrame(rafId);
       window.removeEventListener("resize", resize);
       window.removeEventListener("resize", initDust);
+      window.removeEventListener("nomen-dust-burst", onBurst);
     };
   }, []);
 
