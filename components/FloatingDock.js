@@ -9,7 +9,7 @@ import { ymGoal } from "./Analytics";
 // (появляется после ~одного экрана прокрутки). Едут вместе.
 
 const btnClass =
-  "flex h-11 w-11 items-center justify-center rounded-full border border-foreground-muted/30 bg-background-alt/80 text-foreground-muted shadow-lg backdrop-blur-md transition-colors hover:border-accent-turquoise/60 hover:text-foreground";
+  "flex h-11 w-11 items-center justify-center rounded-full border border-accent-turquoise/50 bg-background-alt/90 text-foreground shadow-[0_0_14px_rgba(51,230,224,0.18)] backdrop-blur-md transition-colors hover:border-accent-turquoise hover:text-accent-turquoise";
 
 export default function FloatingDock() {
   const [showTop, setShowTop] = useState(false);
