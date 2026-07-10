@@ -24,6 +24,10 @@ jobs:
         env:
           NEXT_PUBLIC_TG_TOKEN: ${{ secrets.NEXT_PUBLIC_TG_TOKEN }}
           NEXT_PUBLIC_TG_CHAT_ID: ${{ secrets.NEXT_PUBLIC_TG_CHAT_ID }}
+          # Соль подписи персональных ссылок /reading (lib/readingLink.js).
+          # Без секрета берётся dev-соль — ссылки продолжат работать, но
+          # подпись предсказуема. Задать: Settings → Secrets → Actions.
+          NEXT_PUBLIC_READING_SALT: ${{ secrets.NEXT_PUBLIC_READING_SALT || 'nomen-dev-salt' }}
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
