@@ -11,8 +11,13 @@ import { ymGoal } from "./Analytics";
 // оставить email; переписка и email улетают Артёму в Telegram, если задан
 // TG_TOKEN/TG_CHAT_ID (без них чат работает, просто без уведомлений).
 
-const TG_TOKEN = null; // ← токен бота из @BotFather
-const TG_CHAT_ID = null; // ← chat_id Артёма
+// Бот @NOMEN_site_bot шлёт уведомления Артёму в личку. Реквизиты живут в
+// секретах GitHub (NEXT_PUBLIC_TG_TOKEN / NEXT_PUBLIC_TG_CHAT_ID) и
+// подставляются при сборке — в исходниках репозитория их нет. В собранном
+// бандле токен всё же виден (без бэкенда иначе никак) — осознанный MVP-риск;
+// при переезде на бэкенд унести отправку на сервер.
+const TG_TOKEN = process.env.NEXT_PUBLIC_TG_TOKEN || null;
+const TG_CHAT_ID = process.env.NEXT_PUBLIC_TG_CHAT_ID || null;
 
 const EASE = [0.22, 1, 0.36, 1];
 const STOP_WORDS = new Set(

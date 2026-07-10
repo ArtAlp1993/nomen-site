@@ -21,6 +21,9 @@ jobs:
           static_site_generator: next
       - run: npm ci
       - run: npm run build
+        env:
+          NEXT_PUBLIC_TG_TOKEN: ${{ secrets.NEXT_PUBLIC_TG_TOKEN }}
+          NEXT_PUBLIC_TG_CHAT_ID: ${{ secrets.NEXT_PUBLIC_TG_CHAT_ID }}
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
