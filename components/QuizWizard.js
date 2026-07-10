@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "./ui/Button";
 import DateWheel from "./DateWheel";
 import TimeWheel from "./TimeWheel";
@@ -27,6 +27,16 @@ export default function QuizWizard({ onSubmit, submitting }) {
   const [email, setEmail] = useState("");
   const [consent, setConsent] = useState(false);
   const [error, setError] = useState("");
+  // Барабан времени — только для тач-экранов (на телефоне нативный
+  // time-picker неудобен). На десктопе обычное поле ввода привычнее.
+  const [touchUI, setTouchUI] = useState(false);
+  useEffect(() => {
+    try {
+      setTouchUI(window.matchMedia("(pointer: coarse)").matches);
+    } catch {
+      /* нет matchMedia — остаёмся на обычном поле */
+    }
+  }, []);
 
   // Проверка имени: у каждого поля минимум 2 буквы, и весь набор — в одном
   // алфавите (не смешивать латиницу с кириллицей). Возвращает текст ошибки
@@ -147,7 +157,17 @@ export default function QuizWizard({ onSubmit, submitting }) {
               Skip this and your 13-point reading still works fully. Add it to
               unlock the deeper time-based layers as they arrive.
             </p>
-            <TimeWheel value={birthTime} onChange={setBirthTime} />
+            {touchUI ? (
+              <TimeWheel value={birthTime} onChange={setBirthTime} />
+            ) : (
+              <input
+                type="time"
+                value={birthTime}
+                onChange={(e) => setBirthTime(e.target.value)}
+                className={inputClass}
+                aria-label="Birth time (optional)"
+              />
+            )}
             <input
               type="text"
               placeholder="City of birth (optional)"
