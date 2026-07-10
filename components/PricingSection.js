@@ -39,7 +39,7 @@ export default function PricingSection() {
                 {tier.features.map((f) => (
                   <li key={f} className="flex items-start gap-2 text-left">
                     <span className="shrink-0 text-accent-turquoise">✓</span>
-                    {f}
+                    <span className="whitespace-pre-line">{f}</span>
                   </li>
                 ))}
               </ul>
