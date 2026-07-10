@@ -71,7 +71,7 @@ const GREETING = {
 const FALLBACK =
   "Hmm, that one's beyond me — I'm a small assistant. The free quiz above answers most things better, and the FAQ covers the rest.";
 const DEAD_END =
-  "Looks like I'm not nailing it. Leave your email — Artem will get back to you personally.";
+  "Looks like I'm not nailing it. Leave your email — our team will get back to you personally.";
 
 export default function ChatWidget({ open, onClose }) {
   const reduce = useReducedMotion();
@@ -185,7 +185,7 @@ export default function ChatWidget({ open, onClose }) {
     notifyTelegram(
       `🔥 NOMEN — гость #${visitorTag.current} оставил контакт!\nEmail: ${email}\n\nПереписка:\n${transcriptOf(messages)}`
     );
-    pushBot("Done — Artem will reach out to you soon. Meanwhile, the free quiz above is worth a try.");
+    pushBot("Done — our team will reach out to you soon. Meanwhile, the free quiz above is worth a try.");
   };
 
   const chips = faq.slice(0, 4).map((f) => f.question);
