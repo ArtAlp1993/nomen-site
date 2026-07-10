@@ -5,7 +5,6 @@ import dynamic from "next/dynamic";
 import SectionHeading from "./ui/SectionHeading";
 import PointIcon from "./PointIcon";
 import { useResult } from "./ResultProvider";
-import EyeBlink from "./EyeBlink";
 import methodology from "@/data/methodology.json";
 
 // 3D-сцена рендерится только на клиенте (WebGL) — иначе SSR падает.
@@ -97,8 +96,6 @@ export default function MethodologyDiagram() {
           ) : webgl ? (
             <BlueprintScene accent={accent} />
           ) : null}
-          {/* Глаз изредка моргает — веки обрезаются маской контейнера */}
-          {webgl !== null && <EyeBlink />}
         </div>
       </div>
 

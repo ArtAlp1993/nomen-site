@@ -115,10 +115,23 @@ function buildFibers() {
   return { linePos, lineCol, tipPos, tipCol };
 }
 
+// Плавности для «вау»-сжатия зрачка.
+const easeInCubic = (p) => p * p * p;
+const easeOutBack = (p) => {
+  const c1 = 1.70158;
+  const c3 = c1 + 1;
+  return 1 + c3 * Math.pow(p - 1, 3) + c1 * Math.pow(p - 1, 2);
+};
+
 function FiberIris({ accent, reduce }) {
   const group = useRef();
   const lineMat = useRef();
   const tipMat = useRef();
+  const pupil = useRef(); // группа зрачка (диск + кромка)
+  const ringMat = useRef();
+  // Внезапное «смыкание» зрачка: резко сжался (~0.12с) → упруго вернулся
+  // (~0.7с, с лёгким перелётом). Живёт в refs — без React-рендеров.
+  const blink = useRef({ next: 6, phase: null, t0: 0 });
   const accentColor = useMemo(() => new THREE.Color(accent || "#ffffff"), [accent]);
   const tintTarget = useMemo(() => new THREE.Color(), []);
 
@@ -146,6 +159,36 @@ function FiberIris({ accent, reduce }) {
     tintTarget.set("#ffffff").lerp(accentColor, 0.38);
     if (lineMat.current) lineMat.current.color.lerp(tintTarget, 0.045);
     if (tipMat.current) tipMat.current.color.lerp(tintTarget, 0.045);
+
+    // Зрачок: редкое внезапное смыкание. Сжатие резкое, возврат упругий с
+    // перелётом (easeOutBack); кромка в момент сжатия вспыхивает.
+    if (pupil.current && !reduce) {
+      const b = blink.current;
+      let scale = 1;
+      if (!b.phase && t >= b.next) {
+        b.phase = "in";
+        b.t0 = t;
+      }
+      if (b.phase === "in") {
+        const p = Math.min((t - b.t0) / 0.12, 1);
+        scale = 1 - 0.58 * easeInCubic(p); // смыкается до 42%
+        if (p >= 1) {
+          b.phase = "out";
+          b.t0 = t;
+        }
+      } else if (b.phase === "out") {
+        const p = Math.min((t - b.t0) / 0.7, 1);
+        scale = 0.42 + 0.58 * easeOutBack(p);
+        if (p >= 1) {
+          b.phase = null;
+          b.next = t + 7 + Math.random() * 7; // следующее — через 7–14 сек
+        }
+      }
+      pupil.current.scale.setScalar(scale);
+      if (ringMat.current) {
+        ringMat.current.opacity = 0.35 + (1 - Math.min(scale, 1)) * 0.85;
+      }
+    }
   });
 
   return (
@@ -175,22 +218,26 @@ function FiberIris({ accent, reduce }) {
         />
       </points>
 
-      {/* Тёмный «зрачок» с тонкой светящейся кромкой */}
-      <mesh renderOrder={2}>
-        <circleGeometry args={[0.66, 48]} />
-        <meshBasicMaterial color={BG} />
-      </mesh>
-      <mesh renderOrder={3}>
-        <ringGeometry args={[0.64, 0.7, 64]} />
-        <meshBasicMaterial
-          color="#3b57ff"
-          transparent
-          opacity={0.35}
-          blending={THREE.AdditiveBlending}
-          depthWrite={false}
-          toneMapped={false}
-        />
-      </mesh>
+      {/* Тёмный «зрачок» с тонкой светящейся кромкой; группа пульсирует —
+          редкое внезапное смыкание с упругим возвратом (см. useFrame). */}
+      <group ref={pupil}>
+        <mesh renderOrder={2}>
+          <circleGeometry args={[0.66, 48]} />
+          <meshBasicMaterial color={BG} />
+        </mesh>
+        <mesh renderOrder={3}>
+          <ringGeometry args={[0.64, 0.7, 64]} />
+          <meshBasicMaterial
+            ref={ringMat}
+            color="#3b57ff"
+            transparent
+            opacity={0.35}
+            blending={THREE.AdditiveBlending}
+            depthWrite={false}
+            toneMapped={false}
+          />
+        </mesh>
+      </group>
     </group>
   );
 }
