@@ -5,7 +5,8 @@ import { createContext, useContext, useEffect, useState } from "react";
 // Общий результат квиза: квиз кладёт сюда все введённые поля + посчитанные
 // пункты, а диаграмма, тизер и крипто-чекаут их читают — так весь сайт
 // «оживает» по данным пользователя, а оплата знает, кому и что выставлять.
-// Форма: { firstName, lastName, birthDate, birthTime, birthPlace, brand, email, points }
+// Форма: { gender, firstName, lastName, birthDate, birthTime, birthPlace, brand, email, points }
+// gender: "f" | "m" — окрашивает сущность на странице результата (/reading).
 const ResultContext = createContext(null);
 
 // Храним в sessionStorage: результат переживает обновление страницы (та же

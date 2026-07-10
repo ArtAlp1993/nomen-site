@@ -6,7 +6,7 @@ import DateWheel from "./DateWheel";
 import TimeWheel from "./TimeWheel";
 import { ymGoal } from "./Analytics";
 
-const TOTAL_STEPS = 4;
+const TOTAL_STEPS = 5;
 
 // Движок считает имя по буквам одного алфавита (латиница ИЛИ кириллица) и
 // отвергает смешанные. Валидируем это на входе, иначе мусорное имя («12»,
@@ -17,6 +17,9 @@ const countLetters = (s) => (s.match(/[A-Za-zА-Яа-яЁё]/g) || []).length;
 
 export default function QuizWizard({ onSubmit, submitting }) {
   const [step, setStep] = useState(0);
+  // Пол окрашивает «энергетическую сущность» на странице результата
+  // (f — розовое свечение, m — синее) и пригодится для совместимости.
+  const [gender, setGender] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   // Дата предзаполнена серединой диапазона: барабаны сразу стоят на значении.
@@ -55,15 +58,16 @@ export default function QuizWizard({ onSubmit, submitting }) {
   };
 
   const canAdvance = () => {
-    if (step === 0) return !nameError();
-    if (step === 1) return birthDate.length > 0;
-    return true; // шаг 2 (время/место) — опциональный, можно пропустить
+    if (step === 0) return gender === "f" || gender === "m";
+    if (step === 1) return !nameError();
+    if (step === 2) return birthDate.length > 0;
+    return true; // шаг 3 (время/место) — опциональный, можно пропустить
   };
 
   const handleNext = () => {
     if (!canAdvance()) {
       setError(
-        step === 0
+        step === 1
           ? nameError() || "Please fill this in before continuing."
           : "Please fill this in before continuing."
       );
@@ -86,7 +90,7 @@ export default function QuizWizard({ onSubmit, submitting }) {
       return;
     }
     setError("");
-    onSubmit({ firstName, lastName, birthDate, birthTime, birthPlace, brand, email });
+    onSubmit({ gender, firstName, lastName, birthDate, birthTime, birthPlace, brand, email });
   };
 
   const inputClass =
@@ -120,6 +124,41 @@ export default function QuizWizard({ onSubmit, submitting }) {
       <form onSubmit={handleSubmit}>
         {step === 0 && (
           <div className="flex flex-col gap-4">
+            <h3 className="text-center font-heading text-xl font-semibold">You are…</h3>
+            <div className="flex gap-4">
+              {[
+                { value: "f", label: "Female", symbol: "♀", ring: "focus-visible:ring-pink-400", active: "border-pink-400/80 text-pink-300 shadow-[0_0_24px_rgba(244,114,182,0.35)]" },
+                { value: "m", label: "Male", symbol: "♂", ring: "focus-visible:ring-sky-400", active: "border-sky-400/80 text-sky-300 shadow-[0_0_24px_rgba(56,189,248,0.35)]" },
+              ].map((opt) => (
+                <button
+                  key={opt.value}
+                  type="button"
+                  onClick={() => {
+                    setGender(opt.value);
+                    setError("");
+                    ymGoal("quiz_step", { step: 1 });
+                    setStep(1);
+                  }}
+                  aria-pressed={gender === opt.value}
+                  className={`flex flex-1 flex-col items-center gap-2 rounded-xl border bg-background-alt px-4 py-6 transition-all focus:outline-none focus-visible:ring-1 ${opt.ring} ${
+                    gender === opt.value
+                      ? opt.active
+                      : "border-foreground-muted/60 text-foreground hover:border-foreground-muted"
+                  }`}
+                >
+                  <span className="text-3xl leading-none">{opt.symbol}</span>
+                  <span className="text-sm">{opt.label}</span>
+                </button>
+              ))}
+            </div>
+            <p className="text-center text-xs text-foreground-muted/70">
+              This tunes the color of your reading. Nothing else changes.
+            </p>
+          </div>
+        )}
+
+        {step === 1 && (
+          <div className="flex flex-col gap-4">
             <h3 className="text-center font-heading text-xl font-semibold">What&apos;s your name?</h3>
             <input
               type="text"
@@ -138,7 +177,7 @@ export default function QuizWizard({ onSubmit, submitting }) {
           </div>
         )}
 
-        {step === 1 && (
+        {step === 2 && (
           <div className="flex flex-col gap-4">
             <h3 className="text-center font-heading text-xl font-semibold">
               When were you born?
@@ -147,7 +186,7 @@ export default function QuizWizard({ onSubmit, submitting }) {
           </div>
         )}
 
-        {step === 2 && (
+        {step === 3 && (
           <div className="flex flex-col gap-4">
             <h3 className="text-center font-heading text-xl font-semibold">
               Exact time &amp; place?{" "}
@@ -185,7 +224,7 @@ export default function QuizWizard({ onSubmit, submitting }) {
           </div>
         )}
 
-        {step === 3 && (
+        {step === 4 && (
           <div className="flex flex-col gap-4">
             <h3 className="text-center font-heading text-xl font-semibold">
               Where should we send your preview?
@@ -224,7 +263,8 @@ export default function QuizWizard({ onSubmit, submitting }) {
         {error && <p className="mt-3 text-sm text-red-400">{error}</p>}
 
         <div className="mt-8 flex flex-col items-center gap-3">
-          {step < TOTAL_STEPS - 1 ? (
+          {/* На шаге пола Continue не нужен — тап по карточке сам ведёт дальше. */}
+          {step === 0 ? null : step < TOTAL_STEPS - 1 ? (
             <Button type="button" onClick={handleNext}>
               Continue
             </Button>
