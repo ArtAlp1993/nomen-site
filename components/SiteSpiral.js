@@ -30,8 +30,77 @@ export default function SiteSpiral() {
     resize();
     window.addEventListener("resize", resize);
 
+    // «Пыльца»: лёгкие светящиеся частицы. Рождаются у шарика (центр первого
+    // экрана), разлетаются наружу и дальше медленно, хаотично дрейфуют по
+    // всему экрану. Очень прозрачные — подсвечивают фон, не мешая чтению.
+    const DUST_COLORS = ["190,240,255", "51,230,224", "150,120,255"];
+    let dust = [];
+    const initDust = () => {
+      const isMobile = width < 768;
+      const count = Math.max(
+        24,
+        Math.min(isMobile ? 40 : 80, Math.round((width * height) / 26000))
+      );
+      dust = Array.from({ length: count }, () => {
+        const angle = Math.random() * Math.PI * 2;
+        const r = Math.random() * Math.min(width, height) * 0.2;
+        const speed = 6 + Math.random() * 14; // пикселей в секунду
+        return {
+          x: width / 2 + Math.cos(angle) * r,
+          y: height * 0.45 + Math.sin(angle) * r,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed,
+          size: 0.6 + Math.random() * 1.3,
+          color: DUST_COLORS[(Math.random() * DUST_COLORS.length) | 0],
+          tw: Math.random() * Math.PI * 2, // фаза мерцания
+          wander: Math.random() * Math.PI * 2, // фаза блуждания
+        };
+      });
+    };
+    initDust();
+    window.addEventListener("resize", initDust);
+
+    let prevTime = 0;
+    const drawDust = (time, dt) => {
+      const isMobile = width < 768;
+      for (const p of dust) {
+        if (!reduce) {
+          // Хаотичное блуждание: курс частицы плавно и случайно меняется.
+          p.wander += dt * 0.6;
+          p.vx += Math.cos(p.wander) * 3 * dt;
+          p.vy += Math.sin(p.wander * 0.9) * 3 * dt;
+          p.vx *= 0.998;
+          p.vy *= 0.998;
+          p.x += p.vx * dt;
+          p.y += p.vy * dt;
+        }
+        // Уходя за край, частица появляется с противоположной стороны.
+        if (p.x < -6) p.x = width + 6;
+        else if (p.x > width + 6) p.x = -6;
+        if (p.y < -6) p.y = height + 6;
+        else if (p.y > height + 6) p.y = -6;
+
+        const twinkle = 0.5 + 0.5 * Math.sin(time * 0.001 + p.tw);
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${p.color},${0.05 + twinkle * 0.2})`;
+        if (!isMobile) {
+          ctx.shadowColor = `rgba(${p.color},0.5)`;
+          ctx.shadowBlur = 5;
+        }
+        ctx.fill();
+      }
+      ctx.shadowBlur = 0;
+    };
+
     const render = (time) => {
       ctx.clearRect(0, 0, width, height);
+
+      const dt = Math.min(0.05, prevTime ? (time - prevTime) / 1000 : 0.016);
+      prevTime = time;
+      // Пыльца видна всегда, в том числе на первом экране (летит от шарика).
+      ctx.globalAlpha = 1;
+      drawDust(time, dt);
 
       const cx = width / 2;
       const amp = width < 768 ? 60 : 120;
@@ -115,6 +184,7 @@ export default function SiteSpiral() {
     return () => {
       cancelAnimationFrame(rafId);
       window.removeEventListener("resize", resize);
+      window.removeEventListener("resize", initDust);
     };
   }, []);
 
