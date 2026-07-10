@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Button from "./ui/Button";
+import DateWheel from "./DateWheel";
 
 const TOTAL_STEPS = 4;
 
@@ -9,7 +10,8 @@ export default function QuizWizard({ onSubmit, submitting }) {
   const [step, setStep] = useState(0);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [birthDate, setBirthDate] = useState("");
+  // Дата предзаполнена серединой диапазона: барабаны сразу стоят на значении.
+  const [birthDate, setBirthDate] = useState("1995-06-15");
   const [birthTime, setBirthTime] = useState("");
   const [birthPlace, setBirthPlace] = useState("");
   const [brand, setBrand] = useState("");
@@ -66,7 +68,7 @@ export default function QuizWizard({ onSubmit, submitting }) {
       <form onSubmit={handleSubmit}>
         {step === 0 && (
           <div className="flex flex-col gap-4">
-            <h3 className="font-heading text-xl font-semibold">What&apos;s your name?</h3>
+            <h3 className="text-center font-heading text-xl font-semibold">What&apos;s your name?</h3>
             <input
               type="text"
               placeholder="First name"
@@ -86,19 +88,16 @@ export default function QuizWizard({ onSubmit, submitting }) {
 
         {step === 1 && (
           <div className="flex flex-col gap-4">
-            <h3 className="font-heading text-xl font-semibold">When were you born?</h3>
-            <input
-              type="date"
-              value={birthDate}
-              onChange={(e) => setBirthDate(e.target.value)}
-              className={inputClass}
-            />
+            <h3 className="text-center font-heading text-xl font-semibold">
+              When were you born?
+            </h3>
+            <DateWheel value={birthDate} onChange={setBirthDate} />
           </div>
         )}
 
         {step === 2 && (
           <div className="flex flex-col gap-4">
-            <h3 className="font-heading text-xl font-semibold">
+            <h3 className="text-center font-heading text-xl font-semibold">
               Exact time &amp; place?{" "}
               <span className="text-sm font-normal text-foreground-muted">(optional)</span>
             </h3>
@@ -132,21 +131,27 @@ export default function QuizWizard({ onSubmit, submitting }) {
 
         {step === 3 && (
           <div className="flex flex-col gap-4">
-            <h3 className="font-heading text-xl font-semibold">
+            <h3 className="text-center font-heading text-xl font-semibold">
               Where should we send your preview?
             </h3>
             <input
               type="email"
               placeholder="you@email.com"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => {
+                setEmail(e.target.value);
+                if (error) setError("");
+              }}
               className={inputClass}
             />
             <label className="flex items-start gap-2 text-sm text-foreground-muted">
               <input
                 type="checkbox"
                 checked={consent}
-                onChange={(e) => setConsent(e.target.checked)}
+                onChange={(e) => {
+                  setConsent(e.target.checked);
+                  if (error) setError("");
+                }}
                 className="mt-1"
               />
               <span>
@@ -165,7 +170,7 @@ export default function QuizWizard({ onSubmit, submitting }) {
         <div className="mt-8 flex flex-col items-center gap-3">
           {step < TOTAL_STEPS - 1 ? (
             <Button type="button" onClick={handleNext}>
-              {step === 2 ? "Skip / Continue" : "Continue"}
+              Continue
             </Button>
           ) : (
             <Button type="submit" disabled={submitting}>
