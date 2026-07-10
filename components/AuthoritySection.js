@@ -38,7 +38,9 @@ function SchoolCard({ s, delay, centered = false }) {
     <Reveal delay={delay}>
       <Card
         className={`h-full ${
-          centered ? "flex flex-col items-center text-center" : ""
+          // На широких экранах карточка центрирована, на узких (мобильных)
+          // содержимое перестраивается по левому краю.
+          centered ? "sm:flex sm:flex-col sm:items-center sm:text-center" : ""
         }`}
       >
         <h3 className="font-heading text-lg font-semibold">{s.name}</h3>
@@ -61,8 +63,8 @@ export default function AuthoritySection() {
       />
 
       {/* Верхний ряд — три карточки, всегда вместе от sm и выше.
-          Нижний ряд — Пифагор и Готтман, на половину ширины, выравнивание
-          влево как у верхнего ряда. */}
+          Нижний ряд — Пифагор и Готтман, на половину ширины: на десктопе
+          по центру, на мобильном — влево, как верхний ряд. */}
       <div className="mt-16 grid gap-6 sm:grid-cols-3">
         {topRow.map((s, i) => (
           <SchoolCard key={s.name} s={s} delay={i * 0.06} />
@@ -70,7 +72,7 @@ export default function AuthoritySection() {
       </div>
       <div className="mt-6 grid gap-6 sm:grid-cols-2">
         {bottomRow.map((s, i) => (
-          <SchoolCard key={s.name} s={s} delay={(topRow.length + i) * 0.06} />
+          <SchoolCard key={s.name} s={s} delay={(topRow.length + i) * 0.06} centered />
         ))}
       </div>
     </section>
