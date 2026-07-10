@@ -9,7 +9,7 @@ import { calculateTeaser } from "@/lib/teaser";
 import { ymGoal } from "./Analytics";
 
 export default function QuizSection() {
-  const { result, setResult } = useResult();
+  const { result, setResult, resetResult } = useResult();
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
 
@@ -53,7 +53,20 @@ export default function QuizSection() {
           <p className="mt-4 text-center text-sm text-red-400">{error}</p>
         )}
         {result && (
-          <TeaserReveal firstName={result.firstName} points={result.points} />
+          <>
+            <TeaserReveal firstName={result.firstName} points={result.points} />
+            {/* Пересдать квиз: чистит сохранённый результат (и для тестов,
+                и для клиента, который опечатался в имени). */}
+            <p className="mt-10 text-center">
+              <button
+                type="button"
+                onClick={resetResult}
+                className="text-sm text-foreground-muted underline-offset-4 transition-colors hover:text-foreground hover:underline"
+              >
+                Start over with a different name →
+              </button>
+            </p>
+          </>
         )}
       </div>
     </section>

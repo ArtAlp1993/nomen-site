@@ -42,8 +42,19 @@ export function ResultProvider({ children }) {
     }
   }, [result]);
 
+  // Полный сброс: пройти квиз заново (кнопка «Start over» в тизере).
+  const resetResult = () => {
+    try {
+      store?.removeItem(STORAGE_KEY);
+      store?.removeItem("nomen-cta-seen");
+    } catch {
+      /* storage недоступен */
+    }
+    setResult(null);
+  };
+
   return (
-    <ResultContext.Provider value={{ result, setResult }}>
+    <ResultContext.Provider value={{ result, setResult, resetResult }}>
       {children}
     </ResultContext.Provider>
   );
