@@ -5,15 +5,22 @@ import { useEffect, useState } from "react";
 export function DevicePreviewProvider({ children }) {
   const [mode, setMode] = useState("desktop"); // "desktop" | "mobile"
   const [url, setUrl] = useState("/");
-  const [isEmbedded, setIsEmbedded] = useState(false);
+  const [enabled, setEnabled] = useState(false);
 
   useEffect(() => {
     setUrl(window.location.pathname + window.location.search + window.location.hash);
-    // Внутри iframe-превью переключатель не показываем, иначе получится матрёшка
-    setIsEmbedded(window.self !== window.top);
+    // Служебный инструмент: посетителям не показываем. Включается только
+    // локально или параметром ?preview в адресе; внутри iframe-превью
+    // скрыт всегда, иначе получится матрёшка.
+    const isEmbedded = window.self !== window.top;
+    const isDev =
+      window.location.hostname === "localhost" ||
+      window.location.hostname === "127.0.0.1" ||
+      window.location.search.includes("preview");
+    setEnabled(isDev && !isEmbedded);
   }, []);
 
-  if (isEmbedded) {
+  if (!enabled) {
     return children;
   }
 

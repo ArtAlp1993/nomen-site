@@ -30,27 +30,26 @@ export default function SiteSpiral() {
     resize();
     window.addEventListener("resize", resize);
 
-    // «Пыльца»: лёгкие светящиеся частицы. Рождаются у шарика (центр первого
-    // экрана), разлетаются наружу и дальше медленно, хаотично дрейфуют по
-    // всему экрану. Очень прозрачные — подсвечивают фон, не мешая чтению.
+    // «Пыльца»: лёгкие светящиеся частицы, с первого кадра рассеяны по всему
+    // экрану и медленно, хаотично дрейфуют. Очень прозрачные — подсвечивают
+    // тёмный фон «вкраплениями», не мешая чтению.
     const DUST_COLORS = ["190,240,255", "51,230,224", "150,120,255"];
     let dust = [];
     const initDust = () => {
       const isMobile = width < 768;
       const count = Math.max(
-        24,
-        Math.min(isMobile ? 40 : 80, Math.round((width * height) / 26000))
+        30,
+        Math.min(isMobile ? 50 : 100, Math.round((width * height) / 20000))
       );
       dust = Array.from({ length: count }, () => {
         const angle = Math.random() * Math.PI * 2;
-        const r = Math.random() * Math.min(width, height) * 0.2;
         const speed = 6 + Math.random() * 14; // пикселей в секунду
         return {
-          x: width / 2 + Math.cos(angle) * r,
-          y: height * 0.45 + Math.sin(angle) * r,
+          x: Math.random() * width,
+          y: Math.random() * height,
           vx: Math.cos(angle) * speed,
           vy: Math.sin(angle) * speed,
-          size: 0.6 + Math.random() * 1.3,
+          size: 0.7 + Math.random() * 1.5,
           color: DUST_COLORS[(Math.random() * DUST_COLORS.length) | 0],
           tw: Math.random() * Math.PI * 2, // фаза мерцания
           wander: Math.random() * Math.PI * 2, // фаза блуждания
