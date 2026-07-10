@@ -81,7 +81,22 @@ export default function ChatWidget({ open, onClose }) {
   const [leadMode, setLeadMode] = useState(false);
   const [leadSent, setLeadSent] = useState(false);
   const listRef = useRef(null);
-  const notifiedStart = useRef(false);
+  const alerted = useRef(false); // уведомление Артёму — не чаще раза за диалог
+  // Метка посетителя (#a7k2) — чтобы в Telegram различать одновременные
+  // диалоги разных людей. Живёт на всю сессию.
+  const visitorTag = useRef("");
+  useEffect(() => {
+    try {
+      let tag = sessionStorage.getItem("nomen-chat-tag");
+      if (!tag) {
+        tag = Math.random().toString(36).slice(2, 6);
+        sessionStorage.setItem("nomen-chat-tag", tag);
+      }
+      visitorTag.current = tag;
+    } catch {
+      visitorTag.current = "anon";
+    }
+  }, []);
 
   // Восстановление/сохранение диалога на время сессии.
   useEffect(() => {
@@ -92,7 +107,6 @@ export default function ChatWidget({ open, onClose }) {
         if (Array.isArray(s.messages) && s.messages.length) {
           setMessages(s.messages);
           setLeadSent(!!s.leadSent);
-          notifiedStart.current = !!s.notified;
         }
       }
     } catch { /* повреждённый storage игнорируем */ }
@@ -101,10 +115,13 @@ export default function ChatWidget({ open, onClose }) {
     try {
       sessionStorage.setItem(
         "nomen-chat",
-        JSON.stringify({ messages, leadSent, notified: notifiedStart.current })
+        JSON.stringify({ messages, leadSent })
       );
     } catch { /* переполненный storage не критичен */ }
   }, [messages, leadSent]);
+
+  const transcriptOf = (msgs) =>
+    msgs.map((m) => `${m.role === "bot" ? "🤖" : "🧑"} ${m.text}`).join("\n");
 
   useEffect(() => {
     const el = listRef.current;
@@ -114,16 +131,23 @@ export default function ChatWidget({ open, onClose }) {
   const pushBot = (text, cta) =>
     setMessages((m) => [...m, { role: "bot", text, cta: cta || null }]);
 
+  // Одно уведомление Артёму на диалог — с меткой гостя и всей перепиской.
+  // Шлём в двух случаях: (1) тупик; (2) длинный диалог (>5 вопросов), где
+  // человек всё ещё что-то спрашивает — значит бот не справляется.
+  const notifyArtem = (reason, msgs) => {
+    if (alerted.current) return;
+    alerted.current = true;
+    notifyTelegram(
+      `⚠️ NOMEN — нужна ваша помощь (${reason})\nГость #${visitorTag.current}\n\nПереписка:\n${transcriptOf(msgs)}`
+    );
+  };
+
   const ask = (text) => {
     if (!text.trim()) return;
-    setMessages((m) => [...m, { role: "user", text }]);
+    const withUser = [...messages, { role: "user", text }];
+    setMessages(withUser);
     ymGoal("chat_question");
-    if (!notifiedStart.current) {
-      notifiedStart.current = true;
-      notifyTelegram(`💬 NOMEN: новый диалог в чате\nПервый вопрос: ${text}`);
-    } else {
-      notifyTelegram(`💬 NOMEN чат: ${text}`);
-    }
+    const userCount = withUser.filter((m) => m.role === "user").length;
 
     const wantsHuman = HUMAN_WORDS.some((w) => text.toLowerCase().includes(w));
     const hit = wantsHuman ? null : findAnswer(text);
@@ -131,14 +155,23 @@ export default function ChatWidget({ open, onClose }) {
       if (hit) {
         setMisses(0);
         pushBot(hit.answer, hit.cta);
+        // Диалог затянулся (>5 вопросов), а человек продолжает спрашивать —
+        // пересылаем всё Артёму, даже если бот вроде бы отвечает.
+        if (userCount > 5) {
+          notifyArtem("длинный диалог", [...withUser, { role: "bot", text: hit.answer }]);
+        }
       } else {
         const missCount = misses + 1;
         setMisses(missCount);
         if (wantsHuman || missCount >= 2) {
           setLeadMode(true);
           pushBot(DEAD_END);
+          notifyArtem("тупик", [...withUser, { role: "bot", text: DEAD_END }]);
         } else {
           pushBot(FALLBACK, { label: "Open the free quiz", href: "#quiz" });
+          if (userCount > 5) {
+            notifyArtem("длинный диалог", [...withUser, { role: "bot", text: FALLBACK }]);
+          }
         }
       }
     }, reduce ? 0 : 550);
@@ -149,10 +182,9 @@ export default function ChatWidget({ open, onClose }) {
     setLeadSent(true);
     setLeadMode(false);
     ymGoal("chat_lead");
-    const transcript = messages
-      .map((m) => `${m.role === "bot" ? "🤖" : "🧑"} ${m.text}`)
-      .join("\n");
-    notifyTelegram(`🔥 NOMEN: посетитель оставил контакт!\nEmail: ${email}\n\nПереписка:\n${transcript}`);
+    notifyTelegram(
+      `🔥 NOMEN — гость #${visitorTag.current} оставил контакт!\nEmail: ${email}\n\nПереписка:\n${transcriptOf(messages)}`
+    );
     pushBot("Done — Artem will reach out to you soon. Meanwhile, the free quiz above is worth a try.");
   };
 
