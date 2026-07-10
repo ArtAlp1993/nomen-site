@@ -20,7 +20,8 @@ const CALC_TEXT = {
 };
 const STEP_MS = 2600; // «вычисление» одного пункта
 const REST_MS = 900; // пауза перед остальными пунктами
-const IDLE_MS = 9000; // предложение всплывает только когда человек «залип»
+const IDLE_MS = 20000; // предложение — только после долгой паузы без действий
+const CTA_SEEN_KEY = "nomen-cta-seen"; // показ один раз за сессию вкладки
 
 const EASE = [0.22, 1, 0.36, 1];
 
@@ -35,7 +36,15 @@ export default function TeaserReveal({ firstName, points }) {
   const [ctaClosed, setCtaClosed] = useState(false);
   // После закрытия попапа (любым способом) остальные пункты «запираются»:
   // значения мягко блюрятся — их толкование живёт в платном разборе.
+  // Если попап уже показывали в этой сессии (reload) — сразу заперты.
   const [restLocked, setRestLocked] = useState(false);
+  useEffect(() => {
+    try {
+      if (sessionStorage.getItem(CTA_SEEN_KEY)) setRestLocked(true);
+    } catch {
+      /* storage недоступен */
+    }
+  }, []);
 
   const closeCta = () => {
     setCtaClosed(true);
@@ -56,16 +65,26 @@ export default function TeaserReveal({ firstName, points }) {
     return () => clearTimeout(t);
   }, [revealed, showRest, featured.length]);
 
-  // Предложение полного разбора — НЕ по грубому таймеру, а когда человек
-  // «залип»: пауза без прокрутки/жестов. Пока листает и читает — не трогаем.
-  // Любой скролл/wheel/touch сбрасывает отсчёт; всплывает один раз.
+  // Предложение полного разбора — НЕ по грубому таймеру, а после долгой паузы
+  // без прокрутки/жестов. Пока человек листает и рассматривает — не трогаем.
+  // Показывается максимум ОДИН раз за сессию вкладки (reload не повторяет).
   useEffect(() => {
     if (!showRest || cta || ctaClosed) return;
+    try {
+      if (sessionStorage.getItem(CTA_SEEN_KEY)) return; // уже показывали
+    } catch {
+      /* storage недоступен — просто показываем по idle */
+    }
     let idle;
     const arm = () => {
       clearTimeout(idle);
       idle = setTimeout(() => {
         setCta(true);
+        try {
+          sessionStorage.setItem(CTA_SEEN_KEY, "1");
+        } catch {
+          /* не критично */
+        }
         ymGoal("cta_shown");
       }, IDLE_MS);
     };
