@@ -214,6 +214,40 @@ export default function CryptoCheckout({ tier, open, onClose }) {
       ? formatCrypto(cryptoAmount)
       : "";
 
+  // Счёт для пересылки тому, кто платит (пример: квиз прошла она, платит он):
+  // телефон открывает нативное «поделиться», на десктопе — копирование.
+  const invoiceText = () => {
+    const memo = memoValueFor(selected, order);
+    return [
+      `NOMEN — ${tier?.name} ($${tier?.price})`,
+      order ? `Order ${order.code}` : null,
+      ``,
+      `Pay with ${selected.coin} (${selected.network}):`,
+      `Amount: ${amountText}`,
+      `Address: ${selected.address}`,
+      memo ? `${selected.memoLabel} (required): ${memo}` : null,
+      ``,
+      `Send the exact amount — the reading is emailed after the payment is confirmed.`,
+    ]
+      .filter((l) => l !== null)
+      .join("\n");
+  };
+
+  const shareInvoice = async () => {
+    const text = invoiceText();
+    ymGoal("invoice_shared");
+    try {
+      if (navigator.share) {
+        await navigator.share({ title: "NOMEN — payment details", text });
+        return;
+      }
+    } catch {
+      /* пользователь закрыл шэринг — не ошибка */
+      return;
+    }
+    copy("invoice", text); // десктоп без Web Share — копируем счёт целиком
+  };
+
   const handlePaid = () => {
     if (!paidRef.current) {
       paidRef.current = true;
@@ -329,17 +363,32 @@ export default function CryptoCheckout({ tier, open, onClose }) {
                 <div className="mt-2 flex flex-wrap gap-2">
                   {coin.networks.map((n, i) => {
                     const active = i === netIdx;
+                    const c = networkColor(n.network);
                     return (
                       <button
                         key={n.id}
                         type="button"
                         onClick={() => setNetIdx(i)}
-                        className={`rounded-full border px-3 py-1.5 text-xs font-semibold transition-colors ${
+                        className={`rounded-full border px-3.5 py-1.5 text-xs font-bold tracking-wide transition-all duration-200 ${
                           active
-                            ? "border-transparent text-background"
-                            : "border-foreground-muted/30 text-foreground-muted hover:text-foreground"
+                            ? "scale-105 border-transparent text-white"
+                            : "text-foreground-muted hover:text-foreground"
                         }`}
-                        style={active ? { background: networkColor(n.network) } : {}}
+                        style={
+                          active
+                            ? {
+                                // Неоновый бейдж в стиле сайта: сочная заливка
+                                // + свечение цветом сети (как glow у кнопок).
+                                background: `linear-gradient(135deg, ${c}, ${c}cc)`,
+                                boxShadow: `0 0 18px -2px ${c}, inset 0 0 8px ${c}55`,
+                                textShadow: "0 1px 2px rgba(0,0,0,0.45)",
+                              }
+                            : {
+                                borderColor: `${c}66`,
+                                color: c,
+                                background: `${c}14`,
+                              }
+                        }
                       >
                         {n.network}
                       </button>
@@ -438,6 +487,13 @@ export default function CryptoCheckout({ tier, open, onClose }) {
                 className="inline-flex w-full items-center justify-center rounded-full bg-gradient-to-r from-accent-violet to-accent-turquoise px-8 py-3 font-heading text-sm font-semibold tracking-wide text-background glow-violet transition-transform duration-200 hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:scale-100"
               >
                 {isPlaceholder ? "Payments coming soon" : "I've paid"}
+              </button>
+              <button
+                type="button"
+                onClick={shareInvoice}
+                className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-accent-turquoise/50 px-8 py-2.5 font-heading text-sm font-semibold tracking-wide text-accent-turquoise transition-colors hover:bg-accent-turquoise/10"
+              >
+                {copied === "invoice" ? "Invoice copied ✓" : "Share invoice ↗"}
               </button>
               <button
                 type="button"

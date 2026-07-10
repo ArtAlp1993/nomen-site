@@ -28,10 +28,13 @@ const BLOCK_ORDER = ["Numerology", "Western Astrology", "Chinese Astrology", "Ta
 
 export default function MethodologyDiagram() {
   const { result } = useResult();
+  // Персональные значения: открыто показываем только избранные (featured) —
+  // те же, что раскрыты в тизере. Остальные значения — под блюром: их
+  // толкование живёт в платном разборе (иначе пейвол обходится этим блоком).
   const labels = {};
   if (result?.points) {
     for (const p of result.points) {
-      labels[p.code] = p.label;
+      labels[p.code] = { label: p.label, featured: !!p.featured };
     }
   }
   const personalized = Boolean(result?.points?.length);
@@ -136,7 +139,18 @@ export default function MethodologyDiagram() {
                       </span>
                       <span className={wide ? "sm:max-w-[10rem]" : ""}>
                         {labels[p.code] ? (
-                          <span className="text-foreground">{labels[p.code]}</span>
+                          labels[p.code].featured ? (
+                            <span className="text-foreground">
+                              {labels[p.code].label}
+                            </span>
+                          ) : (
+                            <span
+                              className="select-none text-foreground opacity-70 blur-[5px]"
+                              aria-hidden
+                            >
+                              {labels[p.code].label}
+                            </span>
+                          )
                         ) : (
                           p.title
                         )}
