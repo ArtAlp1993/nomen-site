@@ -110,6 +110,11 @@ export default function CosmicScene({ className = "" }) {
       lastTap = now;
       taps += 1;
       if (taps >= 4) charge = Math.min(1, (taps - 3) / 6);
+      // Тактильный отклик (Android; iOS Safari вибрацию из веба не даёт):
+      // с 4-го тапа — мягкий импульс, нарастающий с зарядом.
+      if (taps >= 4 && navigator.vibrate) {
+        navigator.vibrate(charge >= 1 ? [40, 60, 80] : 8 + Math.round(charge * 18));
+      }
       if (charge >= 1) fx = { phase: "cower", t0: now };
     };
     if (!reduce) window.addEventListener("pointerdown", onTap);
