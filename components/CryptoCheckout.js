@@ -9,6 +9,7 @@ import { notifyTelegram, makeOrderCode } from "@/lib/notify";
 import { fetchCryptoAmount } from "@/lib/rates";
 import { ymGoal } from "./Analytics";
 import QRCode from "./QRCode";
+import CoinIcon, { networkColor } from "./CoinIcon";
 
 const EASE = [0.22, 1, 0.36, 1];
 
@@ -20,25 +21,25 @@ function formatCrypto(n) {
 
 // Значение memo/тега для опознания платежа. XRP требует числовой Destination
 // Tag → используем numericTag; для TON (текстовый comment) — код заказа.
-function memoValueFor(wallet, order) {
-  if (!wallet.memo || !order) return null;
-  return wallet.coin === "XRP" ? order.numericTag : order.code.replace("#", "");
+function memoValueFor(w, order) {
+  if (!w.memo || !order) return null;
+  return w.coin === "XRP" ? order.numericTag : order.code.replace("#", "");
 }
 
 // Что кодируем в QR: базовая схема с адресом там, где кошельки её понимают;
 // иначе просто адрес. Сумму и memo пользователь ставит вручную (надёжнее, чем
 // зашивать в URI, который часть кошельков не разберёт).
-function qrValueFor(wallet) {
-  if (!wallet?.address) return "";
-  switch (wallet.uri) {
+function qrValueFor(w) {
+  if (!w?.address) return "";
+  switch (w.uri) {
     case "bitcoin":
-      return `bitcoin:${wallet.address}`;
+      return `bitcoin:${w.address}`;
     case "ethereum":
-      return `ethereum:${wallet.address}`;
+      return `ethereum:${w.address}`;
     case "ton":
-      return `ton://transfer/${wallet.address}`;
+      return `ton://transfer/${w.address}`;
     default:
-      return wallet.address;
+      return w.address;
   }
 }
 
@@ -46,7 +47,10 @@ export default function CryptoCheckout({ tier, open, onClose }) {
   const router = useRouter();
   const { result } = useResult();
 
-  const [selectedId, setSelectedId] = useState(wallets[0].id);
+  // Двухуровневый выбор: сначала монета, затем (если у неё несколько) сеть.
+  const [coinName, setCoinName] = useState(wallets[0].coin);
+  const [netIdx, setNetIdx] = useState(0);
+  const [coinDropOpen, setCoinDropOpen] = useState(false);
   const [order, setOrder] = useState(null); // { code, numericTag }
   const [tailCents, setTailCents] = useState(0);
   const [cryptoAmount, setCryptoAmount] = useState(null);
@@ -56,7 +60,24 @@ export default function CryptoCheckout({ tier, open, onClose }) {
   const leadRef = useRef(false); // лид Артёму — один раз за открытие
   const paidRef = useRef(false); // «оплатил» — один раз за открытие
 
-  const selected = wallets.find((w) => w.id === selectedId) || wallets[0];
+  const coin = wallets.find((c) => c.coin === coinName) || wallets[0];
+  const net = coin.networks[netIdx] || coin.networks[0];
+  const multiNetwork = coin.networks.length > 1;
+
+  // Плоский объект выбранного кошелька (монета + сеть) — удобно для отрисовки,
+  // QR, memo и текста заказа.
+  const selected = {
+    coin: coin.coin,
+    isStable: coin.isStable,
+    coingeckoId: coin.coingeckoId,
+    network: net.network,
+    address: net.address,
+    memo: net.memo,
+    memoLabel: net.memoLabel,
+    uri: net.uri,
+    label: `${coin.coin} (${net.network})`,
+  };
+
   const basePrice = parseFloat(tier?.price || "0");
 
   // Сумма к оплате: стейбл — точная с «хвостиком» центов (для опознания);
@@ -71,13 +92,13 @@ export default function CryptoCheckout({ tier, open, onClose }) {
   const memoValue = memoValueFor(selected, order);
 
   // Текст заказа для Telegram.
-  const buildOrderText = (paid, wallet, amount) => {
+  const buildOrderText = (paid, w, amount) => {
     const r = result || {};
     const name = [r.firstName, r.lastName].filter(Boolean).join(" ") || "—";
     const birth = [r.birthDate, r.birthTime, r.birthPlace]
       .filter(Boolean)
       .join(", ");
-    const memo = memoValueFor(wallet, order);
+    const memo = memoValueFor(w, order);
     return [
       paid
         ? "💰 NOMEN — клиент отметил ОПЛАТУ"
@@ -88,10 +109,10 @@ export default function CryptoCheckout({ tier, open, onClose }) {
       birth ? `Дата рождения: ${birth}` : null,
       r.brand ? `Бренд/ник: ${r.brand}` : null,
       `Email: ${r.email || "—"}`,
-      `Оплата: ${wallet.label}`,
+      `Оплата: ${w.label}`,
       `Сумма: ${amount}`,
-      memo ? `${wallet.memoLabel}: ${memo}` : null,
-      `Адрес: ${wallet.address}`,
+      memo ? `${w.memoLabel}: ${memo}` : null,
+      `Адрес: ${w.address}`,
     ]
       .filter(Boolean)
       .join("\n");
@@ -109,10 +130,9 @@ export default function CryptoCheckout({ tier, open, onClose }) {
         setOrder({ code, numericTag });
         setTailCents(tail);
         ymGoal("checkout_opened");
-        const w = wallets.find((x) => x.id === selectedId) || wallets[0];
-        const amount = w.isStable
-          ? `${(basePrice + tail / 100).toFixed(2)} ${w.coin}`
-          : `≈ $${basePrice.toFixed(2)} in ${w.coin}`;
+        const amount = selected.isStable
+          ? `${(basePrice + tail / 100).toFixed(2)} ${selected.coin}`
+          : `≈ $${basePrice.toFixed(2)} in ${selected.coin}`;
         // order ещё не в стейте на этот тик — строим текст с локальными данными.
         const r = result || {};
         const name = [r.firstName, r.lastName].filter(Boolean).join(" ") || "—";
@@ -128,7 +148,7 @@ export default function CryptoCheckout({ tier, open, onClose }) {
             birth ? `Дата рождения: ${birth}` : null,
             r.brand ? `Бренд/ник: ${r.brand}` : null,
             `Email: ${r.email || "—"}`,
-            `Оплата: ${w.label}`,
+            `Оплата: ${selected.label}`,
             `Сумма: ${amount}`,
           ]
             .filter(Boolean)
@@ -144,7 +164,7 @@ export default function CryptoCheckout({ tier, open, onClose }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open]);
 
-  // Курс для не-стейбла — при открытии и смене монеты.
+  // Курс для не-стейбла — при открытии и смене монеты (сеть курс не меняет).
   useEffect(() => {
     if (!open || selected.isStable) {
       setCryptoAmount(null);
@@ -163,7 +183,7 @@ export default function CryptoCheckout({ tier, open, onClose }) {
       cancelled = true;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [open, selectedId]);
+  }, [open, coinName]);
 
   const copy = async (field, text) => {
     try {
@@ -231,28 +251,95 @@ export default function CryptoCheckout({ tier, open, onClose }) {
               </p>
             )}
 
-            {/* Выбор монеты/сети — выпадающий список */}
+            {/* Шаг 1 — монета (выпадающий список со значками) */}
             <label className="mt-5 block text-xs uppercase tracking-wide text-foreground-muted">
-              Coin & network
+              Coin
             </label>
-            <select
-              value={selectedId}
-              onChange={(e) => setSelectedId(e.target.value)}
-              className="mt-2 w-full rounded-lg border border-foreground-muted/40 bg-background px-3 py-2.5 text-sm text-foreground focus:border-accent-turquoise focus:outline-none"
-            >
-              {wallets.map((w) => (
-                <option key={w.id} value={w.id}>
-                  {w.label}
-                </option>
-              ))}
-            </select>
+            <div className="relative mt-2">
+              <button
+                type="button"
+                onClick={() => setCoinDropOpen((o) => !o)}
+                className="flex w-full items-center justify-between gap-2 rounded-lg border border-foreground-muted/40 bg-background px-3 py-2.5 text-left transition-colors hover:border-accent-turquoise"
+              >
+                <span className="flex items-center gap-2.5">
+                  <CoinIcon coin={coin.coin} size={26} />
+                  <span className="text-sm text-foreground">{coin.coin}</span>
+                </span>
+                <span
+                  className={`text-foreground-muted transition-transform ${coinDropOpen ? "rotate-180" : ""}`}
+                >
+                  ▾
+                </span>
+              </button>
+              {coinDropOpen && (
+                <div className="absolute z-20 mt-1 max-h-72 w-full overflow-y-auto rounded-lg border border-foreground-muted/30 bg-background shadow-2xl">
+                  {wallets.map((c) => (
+                    <button
+                      key={c.coin}
+                      type="button"
+                      onClick={() => {
+                        setCoinName(c.coin);
+                        setNetIdx(0);
+                        setCoinDropOpen(false);
+                      }}
+                      className={`flex w-full items-center gap-2.5 px-3 py-2.5 text-left transition-colors hover:bg-foreground/5 ${
+                        c.coin === coinName ? "bg-foreground/10" : ""
+                      }`}
+                    >
+                      <CoinIcon coin={c.coin} size={22} />
+                      <span className="flex-1 text-sm text-foreground">
+                        {c.coin}
+                      </span>
+                      {c.networks.length > 1 && (
+                        <span className="text-[10px] text-foreground-muted">
+                          {c.networks.length} networks
+                        </span>
+                      )}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Шаг 2 — сеть (только если у монеты их несколько) */}
+            {multiNetwork && (
+              <>
+                <label className="mt-4 block text-xs uppercase tracking-wide text-foreground-muted">
+                  Network
+                </label>
+                <div className="mt-2 flex flex-wrap gap-2">
+                  {coin.networks.map((n, i) => {
+                    const active = i === netIdx;
+                    return (
+                      <button
+                        key={n.id}
+                        type="button"
+                        onClick={() => setNetIdx(i)}
+                        className={`rounded-full border px-3 py-1.5 text-xs font-semibold transition-colors ${
+                          active
+                            ? "border-transparent text-background"
+                            : "border-foreground-muted/30 text-foreground-muted hover:text-foreground"
+                        }`}
+                        style={active ? { background: networkColor(n.network) } : {}}
+                      >
+                        {n.network}
+                      </button>
+                    );
+                  })}
+                </div>
+              </>
+            )}
 
             {/* QR + адрес */}
             <div className="mt-5 flex flex-col items-center gap-3">
-              <QRCode value={qrValueFor(selected)} size={190} />
+              <QRCode
+                value={qrValueFor(selected)}
+                size={190}
+                overlay={<CoinIcon coin={selected.coin} size={34} />}
+              />
               <div className="w-full">
                 <span className="text-xs uppercase tracking-wide text-foreground-muted">
-                  Address
+                  Address · {selected.network}
                 </span>
                 <button
                   type="button"

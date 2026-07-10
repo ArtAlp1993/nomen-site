@@ -20,7 +20,7 @@ const CALC_TEXT = {
 };
 const STEP_MS = 2600; // «вычисление» одного пункта
 const REST_MS = 900; // пауза перед остальными пунктами
-const CTA_MS = 3500; // пауза после всего — и предложение
+const IDLE_MS = 9000; // предложение всплывает только когда человек «залип»
 
 const EASE = [0.22, 1, 0.36, 1];
 
@@ -45,20 +45,44 @@ export default function TeaserReveal({ firstName, points }) {
     }
   };
 
+  // Поэтапное раскрытие: считаем избранные пункты, затем показываем остальные.
   useEffect(() => {
     let t;
     if (revealed < featured.length) {
       t = setTimeout(() => setRevealed((r) => r + 1), STEP_MS);
     } else if (!showRest) {
       t = setTimeout(() => setShowRest(true), REST_MS);
-    } else if (!cta && !ctaClosed) {
-      t = setTimeout(() => {
-        setCta(true);
-        ymGoal("cta_shown");
-      }, CTA_MS);
     }
     return () => clearTimeout(t);
-  }, [revealed, showRest, cta, ctaClosed, featured.length]);
+  }, [revealed, showRest, featured.length]);
+
+  // Предложение полного разбора — НЕ по грубому таймеру, а когда человек
+  // «залип»: пауза без прокрутки/жестов. Пока листает и читает — не трогаем.
+  // Любой скролл/wheel/touch сбрасывает отсчёт; всплывает один раз.
+  useEffect(() => {
+    if (!showRest || cta || ctaClosed) return;
+    let idle;
+    const arm = () => {
+      clearTimeout(idle);
+      idle = setTimeout(() => {
+        setCta(true);
+        ymGoal("cta_shown");
+      }, IDLE_MS);
+    };
+    const onActivity = () => arm();
+    arm(); // начать отсчёт после раскрытия
+    window.addEventListener("wheel", onActivity, { passive: true });
+    window.addEventListener("touchmove", onActivity, { passive: true });
+    window.addEventListener("scroll", onActivity, { passive: true });
+    if (window.__lenis) window.__lenis.on("scroll", onActivity);
+    return () => {
+      clearTimeout(idle);
+      window.removeEventListener("wheel", onActivity);
+      window.removeEventListener("touchmove", onActivity);
+      window.removeEventListener("scroll", onActivity);
+      if (window.__lenis) window.__lenis.off("scroll", onActivity);
+    };
+  }, [showRest, cta, ctaClosed, reduce]);
 
   const calcNow = revealed < featured.length ? featured[revealed] : null;
 
