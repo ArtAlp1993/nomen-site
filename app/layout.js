@@ -36,7 +36,7 @@ const CSP = [
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob:",
   "font-src 'self' data:",
-  "connect-src 'self' https://api.telegram.org https://api.coingecko.com",
+  "connect-src 'self' https://api.telegram.org https://api.coingecko.com https://api.anthropic.com",
   "worker-src 'self' blob:",
   "base-uri 'none'",
   "form-action 'self'",

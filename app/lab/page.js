@@ -3,6 +3,8 @@
 import { useState } from "react";
 import dynamic from "next/dynamic";
 import { DEFAULT_CONFIG } from "@/components/BlueprintScene";
+import { FORMULA } from "@/lib/ballFormula";
+import LabChat from "@/components/LabChat";
 
 // Лаборатория шарика: скрытая страница (нигде не залинкована). Шарик всегда
 // в центре экрана (fixed-фон), вокруг — компактные сворачиваемые панельки
@@ -13,33 +15,9 @@ const BlueprintScene = dynamic(() => import("@/components/BlueprintScene"), {
   ssr: false,
 });
 
-// [key, подпись, min, max, step]
-const GROUPS = {
-  "Лепка": [
-    ["scaleX", "Длина (X)", 0.2, 3, 0.05],
-    ["scaleY", "Ширина (Y)", 0.2, 3, 0.05],
-    ["scaleZ", "Глубина (Z)", 0.2, 3, 0.05],
-    ["zoom", "Размер", 0.3, 2.5, 0.05],
-  ],
-  "Форма": [
-    ["fibers", "Волокна", 100, 3000, 50],
-    ["pupil", "Зрачок", 0.05, 1.6, 0.01],
-    ["spread", "Разлёт", 1, 5, 0.05],
-    ["spreadVar", "Рваность кромки", 0, 2.5, 0.05],
-    ["twist", "Закрутка", 0, 6, 0.1],
-    ["depth", "Объём", 0, 3, 0.05],
-  ],
-  "Движение": [
-    ["rotSpeed", "Скорость вращения", -0.6, 0.6, 0.01],
-    ["breathe", "Дыхание", 0, 0.15, 0.005],
-    ["tilt", "Покачивание", 0, 3, 0.1],
-  ],
-  "Свет": [
-    ["opacity", "Яркость нитей", 0.1, 1, 0.02],
-    ["tipSize", "Кончики", 0, 0.2, 0.005],
-    ["bloom", "Свечение", 0, 3, 0.05],
-  ],
-};
+// Ползунки строятся из «формулы шарика» (lib/ballFormula.js) — единый
+// источник для панелей, чата и Claude.
+const GROUPS = FORMULA;
 
 const panelCls =
   "pointer-events-auto w-60 rounded-xl border border-foreground-muted/25 bg-background/80 backdrop-blur-md";
@@ -176,6 +154,9 @@ export default function LabPage() {
           Крути ползунки — шарик в центре меняется вживую. Понравилось → «Copy
           preset» → пришли пресет Клоду.
         </p>
+
+        {/* Чат: голосом/текстом/картинкой меняет шарик */}
+        <LabChat cfg={cfg} setCfg={setCfg} />
       </div>
     </main>
   );
