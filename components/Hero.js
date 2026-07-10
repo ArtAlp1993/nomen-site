@@ -5,7 +5,7 @@ import KineticHeadline from "./KineticHeadline";
 
 export default function Hero() {
   return (
-    <section className="relative flex min-h-[78svh] sm:min-h-screen flex-col items-center justify-center overflow-hidden px-6 text-center">
+    <section className="relative flex min-h-[86svh] sm:min-h-screen flex-col items-center justify-center overflow-hidden px-6 text-center">
       {/* Живая 3D-сцена: вращающаяся сакральная геометрия + звёздное поле (Canvas). */}
       <CosmicScene className="pointer-events-none absolute inset-0 h-full w-full" />
       {/* Затемнение снизу — для читаемости текста поверх сцены. */}
