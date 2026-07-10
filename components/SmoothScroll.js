@@ -21,6 +21,15 @@ export default function SmoothScroll() {
       smoothWheel: true,
     });
 
+    // Инстанс наружу — им пользуется кнопка «наверх» (FloatingDock).
+    window.__lenis = lenis;
+
+    // Страница растёт после инициализации (3D-сцены, результаты квиза,
+    // поэтапные раскрытия) — без пересчёта Lenis упирается в старую высоту
+    // и не даёт долистать до подвала. Следим за высотой контента сами.
+    const ro = new ResizeObserver(() => lenis.resize());
+    ro.observe(document.body);
+
     let rafId;
     const raf = (time) => {
       lenis.raf(time);
@@ -45,6 +54,8 @@ export default function SmoothScroll() {
     return () => {
       cancelAnimationFrame(rafId);
       document.removeEventListener("click", onClick);
+      ro.disconnect();
+      if (window.__lenis === lenis) delete window.__lenis;
       lenis.destroy();
     };
   }, []);

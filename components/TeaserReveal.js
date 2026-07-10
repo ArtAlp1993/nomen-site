@@ -5,6 +5,7 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import Card from "./ui/Card";
 import Button from "./ui/Button";
 import PointIcon from "./PointIcon";
+import { ymGoal } from "./Analytics";
 
 // Поэтапная выдача результата: каждый избранный пункт «вычисляется» на глазах
 // (колёсико + подпись, что именно считаем), затем раскрывается. После
@@ -32,6 +33,17 @@ export default function TeaserReveal({ firstName, points }) {
   const [showRest, setShowRest] = useState(!!reduce);
   const [cta, setCta] = useState(false);
   const [ctaClosed, setCtaClosed] = useState(false);
+  // После закрытия попапа (любым способом) остальные пункты «запираются»:
+  // значения мягко блюрятся — их толкование живёт в платном разборе.
+  const [restLocked, setRestLocked] = useState(false);
+
+  const closeCta = () => {
+    setCtaClosed(true);
+    if (!restLocked) {
+      setRestLocked(true);
+      ymGoal("rest_locked");
+    }
+  };
 
   useEffect(() => {
     let t;
@@ -40,7 +52,10 @@ export default function TeaserReveal({ firstName, points }) {
     } else if (!showRest) {
       t = setTimeout(() => setShowRest(true), REST_MS);
     } else if (!cta && !ctaClosed) {
-      t = setTimeout(() => setCta(true), CTA_MS);
+      t = setTimeout(() => {
+        setCta(true);
+        ymGoal("cta_shown");
+      }, CTA_MS);
     }
     return () => clearTimeout(t);
   }, [revealed, showRest, cta, ctaClosed, featured.length]);
@@ -106,19 +121,41 @@ export default function TeaserReveal({ firstName, points }) {
           transition={{ duration: 0.8, ease: EASE }}
         >
           <p className="mt-10 text-center text-sm text-foreground-muted">
-            We calculated the rest of your chart too — here&apos;s what came
-            back. The full interpretation of each is in your complete reading.
+            {restLocked ? (
+              <span className="inline-flex items-center gap-2">
+                <span aria-hidden>🔒</span> Unlocked in your full reading
+              </span>
+            ) : (
+              <>
+                We calculated the rest of your chart too — here&apos;s what came
+                back. The full interpretation of each is in your complete reading.
+              </>
+            )}
           </p>
           <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {rest.map((p) => (
               <div
                 key={p.code}
-                className="flex items-center gap-3 rounded-xl border border-foreground-muted/20 bg-background-alt/75 backdrop-blur-md px-4 py-3"
+                onClick={restLocked ? () => {
+                  const el = document.querySelector("#pricing");
+                  if (window.__lenis && el) window.__lenis.scrollTo(el, { offset: -20 });
+                  else el?.scrollIntoView({ behavior: "smooth" });
+                } : undefined}
+                className={`flex items-center gap-3 rounded-xl border border-foreground-muted/20 bg-background-alt/75 backdrop-blur-md px-4 py-3 ${
+                  restLocked ? "cursor-pointer" : ""
+                }`}
               >
                 <span className="text-foreground-muted">
                   <PointIcon code={p.code} size={22} />
                 </span>
-                <span className="text-sm text-foreground">{p.label}</span>
+                <span
+                  className={`text-sm text-foreground transition-[filter,opacity] duration-700 ${
+                    restLocked ? "select-none opacity-70 blur-[5px]" : ""
+                  }`}
+                  aria-hidden={restLocked || undefined}
+                >
+                  {p.label}
+                </span>
               </div>
             ))}
           </div>
@@ -137,7 +174,7 @@ export default function TeaserReveal({ firstName, points }) {
           >
             <div
               className="absolute inset-0 bg-black/60 backdrop-blur-sm"
-              onClick={() => setCtaClosed(true)}
+              onClick={closeCta}
             />
             <motion.div
               className="relative w-full max-w-md rounded-2xl border border-accent-turquoise/40 bg-background-alt p-8 text-center shadow-2xl"
@@ -149,7 +186,7 @@ export default function TeaserReveal({ firstName, points }) {
               <button
                 type="button"
                 aria-label="Close"
-                onClick={() => setCtaClosed(true)}
+                onClick={closeCta}
                 className="absolute right-4 top-3 text-xl text-foreground-muted transition-colors hover:text-foreground"
               >
                 ×
@@ -166,12 +203,18 @@ export default function TeaserReveal({ firstName, points }) {
                 step away.
               </p>
               <div className="mt-6 flex flex-col items-center gap-3">
-                <Button href="#pricing" onClick={() => setCtaClosed(true)}>
+                <Button
+                  href="#pricing"
+                  onClick={() => {
+                    ymGoal("cta_unlock");
+                    closeCta();
+                  }}
+                >
                   Unlock my full reading
                 </Button>
                 <button
                   type="button"
-                  onClick={() => setCtaClosed(true)}
+                  onClick={closeCta}
                   className="text-sm text-foreground-muted underline-offset-4 transition-colors hover:text-foreground hover:underline"
                 >
                   Not now — keep reading

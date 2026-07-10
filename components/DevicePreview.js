@@ -55,7 +55,7 @@ export function DevicePreviewProvider({ children }) {
 
 function DevicePreviewSwitcher({ mode, setMode }) {
   return (
-    <div className="fixed bottom-4 right-4 z-[9999] flex gap-1 rounded-full border border-white/15 bg-black/80 p-1 text-xs text-white shadow-lg backdrop-blur">
+    <div className="fixed bottom-4 left-4 z-[9999] flex gap-1 rounded-full border border-white/15 bg-black/80 p-1 text-xs text-white shadow-lg backdrop-blur">
       <button
         type="button"
         onClick={() => setMode("desktop")}

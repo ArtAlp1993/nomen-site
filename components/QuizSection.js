@@ -6,6 +6,7 @@ import QuizWizard from "./QuizWizard";
 import TeaserReveal from "./TeaserReveal";
 import { useResult } from "./ResultProvider";
 import { calculateTeaser } from "@/lib/teaser";
+import { ymGoal } from "./Analytics";
 
 export default function QuizSection() {
   const { result, setResult } = useResult();
@@ -25,6 +26,7 @@ export default function QuizSection() {
       if (!points.length) throw new Error("empty result");
       // Небольшая пауза «калькуляции»: мгновенный ответ выглядит как заглушка.
       await new Promise((resolve) => setTimeout(resolve, 900));
+      ymGoal("quiz_completed");
       setResult({ firstName: data.firstName, points });
     } catch (err) {
       setError(

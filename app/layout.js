@@ -2,6 +2,8 @@ import { Space_Grotesk, Inter } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 import SiteSpiral from "@/components/SiteSpiral";
+import Analytics from "@/components/Analytics";
+import FloatingDock from "@/components/FloatingDock";
 import { DevicePreviewProvider } from "@/components/DevicePreview";
 
 const spaceGrotesk = Space_Grotesk({
@@ -31,7 +33,9 @@ export default function RootLayout({ children }) {
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <SmoothScroll />
         <SiteSpiral />
+        <Analytics />
         <DevicePreviewProvider>{children}</DevicePreviewProvider>
+        <FloatingDock />
       </body>
     </html>
   );

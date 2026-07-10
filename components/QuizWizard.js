@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Button from "./ui/Button";
 import DateWheel from "./DateWheel";
+import { ymGoal } from "./Analytics";
 
 const TOTAL_STEPS = 4;
 
@@ -31,6 +32,7 @@ export default function QuizWizard({ onSubmit, submitting }) {
       return;
     }
     setError("");
+    ymGoal("quiz_step", { step: step + 1 });
     setStep((s) => Math.min(s + 1, TOTAL_STEPS - 1));
   };
 
