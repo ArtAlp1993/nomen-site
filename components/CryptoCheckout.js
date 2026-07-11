@@ -12,6 +12,7 @@ import {
   cleanField,
 } from "@/lib/notify";
 import { fetchCryptoAmount } from "@/lib/rates";
+import { encodePrefill } from "@/lib/readingLink";
 import { ymGoal } from "./Analytics";
 import QRCode from "./QRCode";
 import CoinIcon, { networkColor } from "./CoinIcon";
@@ -96,6 +97,29 @@ export default function CryptoCheckout({ tier, open, onClose }) {
 
   const memoValue = memoValueFor(selected, order);
 
+  // Ссылка-заготовка для /studio: тап из Telegram открывает студию с уже
+  // заполненной карточкой клиента — Артёму остаётся собрать ссылку разбора.
+  const studioPrefillUrl = () => {
+    const r = result || {};
+    try {
+      const token = encodePrefill({
+        fn: cleanField(r.firstName),
+        ln: cleanField(r.lastName),
+        g: r.gender || "",
+        bd: r.birthDate || "",
+        bt: r.birthTime || "",
+        bp: cleanField(r.birthPlace),
+        br: cleanField(r.brand),
+        em: cleanField(r.email),
+        oc: order?.code || "",
+        tier: tier ? `${tier.name} — $${tier.price}` : "",
+      });
+      return `${window.location.origin}/studio/#o=${token}`;
+    } catch {
+      return null;
+    }
+  };
+
   // Текст заказа для Telegram.
   const buildOrderText = (paid, w, amount) => {
     const r = result || {};
@@ -122,6 +146,7 @@ export default function CryptoCheckout({ tier, open, onClose }) {
       `Сумма: ${amount}`,
       memo ? `${w.memoLabel}: ${memo}` : null,
       `Адрес: ${w.address}`,
+      paid ? `Студия (собрать разбор): ${studioPrefillUrl() || "—"}` : null,
     ]
       .filter(Boolean)
       .join("\n");
