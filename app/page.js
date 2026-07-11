@@ -11,6 +11,7 @@ import TrustSection from "@/components/TrustSection";
 import FAQSection from "@/components/FAQSection";
 import FinalCta from "@/components/FinalCta";
 import Footer from "@/components/Footer";
+import PeekBadge from "@/components/PeekBadge";
 
 export default function Home() {
   return (
@@ -31,6 +32,7 @@ export default function Home() {
         </main>
       </ResultProvider>
       <Footer />
+      <PeekBadge />
     </>
   );
 }
