@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 
 // Светящаяся двойная ДНК-спираль, идущая через весь сайт.
 // НЕ видна на первом экране (Hero): проявляется плавно, когда пользователь
@@ -9,8 +10,13 @@ import { useEffect, useRef } from "react";
 // Уважает prefers-reduced-motion (без авто-дрейфа, только реакция на скролл).
 export default function SiteSpiral() {
   const canvasRef = useRef(null);
+  // На страницах с собственной полноэкранной сценой (/reading — туннель,
+  // /studio — рабочий инструмент) фоновая спираль не нужна: экономим GPU.
+  const pathname = usePathname() || "";
+  const hidden = pathname.startsWith("/reading") || pathname.startsWith("/studio");
 
   useEffect(() => {
+    if (hidden) return undefined;
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
@@ -219,8 +225,9 @@ export default function SiteSpiral() {
       window.removeEventListener("resize", initDust);
       window.removeEventListener("nomen-dust-burst", onBurst);
     };
-  }, []);
+  }, [hidden]);
 
+  if (hidden) return null;
   return (
     <canvas
       ref={canvasRef}
