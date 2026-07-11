@@ -133,7 +133,7 @@ export default function CryptoCheckout({ tier, open, onClose }) {
     const memo = memoValueFor(w, order);
     return [
       paid
-        ? "💰 NOMEN — клиент отметил ОПЛАТУ"
+        ? "💰 NOMEN — клиент совершил ОПЛАТУ"
         : "🛒 NOMEN — новый заказ (ждём оплату)",
       `Заказ ${order?.code || ""}`,
       `Тариф: ${tier?.name} — $${tier?.price}`,
