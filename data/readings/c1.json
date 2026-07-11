@@ -1,0 +1,103 @@
+{
+  "code": "C1",
+  "title": "Chinese Zodiac Animal",
+  "intro": "Your birth year carries one of twelve animals — your innate breed: the temperament people read in you before you've said much. It's a second, fully independent lens on your character, separate from the Western zodiac.",
+  "values": {
+    "Rat": {
+      "heading": "The Resourceful Survivor",
+      "paragraphs": [
+        "You're the survivor with a plan. Rat-year people run on quick wits and resourcefulness: you spot the opening, the exit, and the bargain before anyone else has finished reading the room. Charming and observant, you collect information and allies the way others collect belongings — quietly, constantly, and with an instinct for what will matter later.",
+        "Where others freeze, you improvise — that's your professional signature. You're economical with resources, sharp in negotiation, and brilliant in tight corners; scarcity actually sharpens you. Socially you're warmer than your strategic mind suggests: a witty, loyal companion who remembers everything and uses that memory to take care of your inner circle.",
+        "The shadow is over-calculation: hedging every bet, hoarding options, trusting the angle more than the person. Played too safe, a life becomes small. Your direction is selective boldness — pick the few people and projects that deserve your full stake, and let them see the generous heart behind the clever operator."
+      ]
+    },
+    "Ox": {
+      "heading": "The Unshakable",
+      "paragraphs": [
+        "You're built like a promise that gets kept. Ox-year people run on persistence and reliability: you move deliberately, decide slowly, and then become very hard to stop. Flash doesn't impress you and shortcuts don't tempt you — you trust work, patience, and the kind of strength that doesn't need to announce itself.",
+        "You're the load-bearing wall of any team or family: when everyone else burns out, you're still there, still working, still calm. People hand you their most important things because you never drop them. In relationships you love steadily rather than loudly — protection, consistency, and quiet devotion that outlasts every dramatic alternative.",
+        "The shadow is rigidity: an opinion set in concrete, a grudge held for years, a refusal to change course even when the map has clearly changed. Being right slowly can cost more than being wrong fast. Your direction — keep the backbone, add hinges: update your position when the evidence does."
+      ]
+    },
+    "Tiger": {
+      "heading": "The Fearless Challenger",
+      "paragraphs": [
+        "You read as power before you've said a word. Tiger-year people run on courage and natural authority: bold, passionate, magnetic, and constitutionally unable to watch from the sidelines. You take the risk, confront the problem, and challenge whoever needs challenging — rebellion isn't a phase for you, it's a standing policy against anything unjust or dull.",
+        "In action you're a first responder to life: decisive in crisis, thrilling to work with, impossible to ignore. Your daring gives other people permission to be brave. In love you're intense and generous, protective of your own to the point of ferocity — a partner who wants an equal, not an audience.",
+        "The shadow is the leap before the look: impulsive decisions, scorched bridges, boredom mistaken for a signal to blow things up. Not every quiet stretch is stagnation. Your direction is timed courage — hold the pounce a beat longer, choose battles by value rather than adrenaline, and let patience become your rarest weapon."
+      ]
+    },
+    "Rabbit": {
+      "heading": "The Graceful Diplomat",
+      "paragraphs": [
+        "You move through the world on velvet. Rabbit-year people run on tact, grace, and well-judged caution: you read atmospheres precisely, sidestep conflict before it forms, and surround yourself with comfort and beauty as a matter of instinct. Your gentleness is often mistaken for softness — in fact it's a highly refined risk-management system.",
+        "Diplomacy is your superpower: you get outcomes through timing, taste, and the perfectly weighted word where others fail with force. People relax in your presence and trust you with delicate matters. In relationships you're considerate, loyal, and quietly romantic — you build serene, beautiful spaces where the people you love can put their guard down.",
+        "The shadow is evasion: dodging hard conversations, agreeing outwardly while retreating inwardly, waiting so long for safety that opportunities pass. Comfort can become a beautifully decorated cage. Your direction — practice small, direct confrontations while stakes are low, and discover that your composure survives conflict far better than you fear."
+      ]
+    },
+    "Dragon": {
+      "heading": "The Born Headliner",
+      "paragraphs": [
+        "You arrived with the volume turned up. Dragon-year people run on power, charisma, and ambition at scale: you think big by default, attract attention without trying, and carry a kind of luck that mostly comes from sheer momentum. Small plans feel physically wrong to you — you're built for undertakings other people call unrealistic.",
+        "Your presence does half the work: rooms organize around you, teams borrow your confidence, and bold ideas become plausible simply because you're the one proposing them. You're generous with energy and vision. In love you're grand-gestured and fiercely proud of your partner — you want a life that feels like an event.",
+        "The shadow is altitude sickness: arrogance, impatience with ordinary details, and dismissing advice from people flying lower. Momentum without listeners eventually stalls. Your direction is grounded grandeur — recruit truth-tellers, honor the boring middle of every big project, and let the mission stay bigger than the applause it generates."
+      ]
+    },
+    "Snake": {
+      "heading": "The Quiet Strategist",
+      "paragraphs": [
+        "You understand more than you reveal — always. Snake-year people run on wisdom, intuition, and strategic quiet: you observe before you act, read motives beneath words, and move only when the moment is genuinely right. There's an unhurried elegance to you that makes people lean in; mystery isn't a pose, it's your natural climate.",
+        "Your strength is precision of judgment: you see the real game behind the stated one, sense who can be trusted, and place your few moves devastatingly well. You waste nothing — words, effort, or emotion. In intimacy you're deeply loyal to the rare people you fully accept, offering a bond that's quiet, perceptive, and total.",
+        "The shadow is the sealed door: secrecy that reads as distrust, suspicion that arrives before evidence, and a habit of managing people instead of meeting them. Not everything needs to be a move. Your direction — let a chosen few see your reasoning in real time; transparency, used sparingly, will multiply your influence."
+      ]
+    },
+    "Horse": {
+      "heading": "The Free Runner",
+      "paragraphs": [
+        "You are motion that learned to talk. Horse-year people run on freedom, energy, and sociability: you need open road — literal or figurative — the way others need security, and you draw people effortlessly with warmth and pace. Confinement, micromanagement, and slow rooms drain you fast; momentum is where your best self lives.",
+        "Your strength is contagious vitality: you start fast, lift group morale just by showing up, and handle change that would rattle steadier types. Independence makes you productive, not difficult — give you room and you'll outrun anyone. In love you're spirited and openhearted, most devoted to partners who ride alongside rather than rein you in.",
+        "The shadow is the half-run race: enthusiasm that peaks early, commitments dropped when novelty fades, restlessness mistaken for freedom. Leaving is not the same as being free. Your direction — finish one meaningful thing per season, and choose a few ties strong enough to return to; roots, oddly, will extend your range."
+      ]
+    },
+    "Goat": {
+      "heading": "The Gentle Creator",
+      "paragraphs": [
+        "You feel the texture of everything. Goat-year people run on gentleness, creativity, and care: you're tuned to beauty and to other people's comfort, happiest making things — art, meals, atmospheres — that make life softer. Peace isn't passivity in you; it's a value you actively cultivate and quietly insist on.",
+        "Your strength is the humane touch: you make groups kinder, spaces warmer, and work more beautiful, and your imagination produces ideas the pragmatists around you would never reach. In relationships you're tender and giving, deeply attentive to moods; with the right support behind you, your creativity scales far beyond what anyone expected.",
+        "The shadow is dependence on approval: hesitating until someone validates the decision, bending to avoid displeasure, drifting when no one is holding the frame. Your gentleness needs its own spine. Direction — make one self-authorized decision at a time, and treat your sensitivity as expertise to be paid for, not apologized for."
+      ]
+    },
+    "Monkey": {
+      "heading": "The Inventive Trickster",
+      "paragraphs": [
+        "Your mind treats reality as a puzzle with loose screws. Monkey-year people run on wit, agility, and humor: you learn anything fast, find the unconventional route on instinct, and keep a joke ready for every occasion. Rules, to you, are mostly interesting suggestions — play is how your intelligence prefers to work.",
+        "You're the problem-solver people call when the manual fails: inventive under pressure, quick to prototype, funnier than the situation deserves. That agility makes you invaluable in fast, ambiguous environments. Socially and romantically you're magnetic company — playful, curious, never boring — and your humor doubles as a way of telling people hard truths gently.",
+        "The shadow is cleverness without anchor: gaming situations instead of committing to them, joking past feelings, abandoning projects at eighty percent when the puzzle stops being fun. Tricks age; mastery doesn't. Your direction — pick a craft worthy of your speed and stay past the boredom threshold, where cleverness finally compounds into depth."
+      ]
+    },
+    "Rooster": {
+      "heading": "The Exacting Eye",
+      "paragraphs": [
+        "You notice everything, and you say so. Rooster-year people run on precision, honesty, and shine: you keep high standards, speak plainly, and like both your work and your appearance sharp enough to signal that someone competent is present. Order isn't fussiness in you — it's how you show respect for things done properly.",
+        "Your strength is dependable excellence: you catch errors others gloss over, keep systems and schedules honest, and deliver work that stands inspection. People may bristle at your directness, then quietly rely on it. In relationships you're loyal and straightforward — no games, real effort, and a partner who always knows the actual state of things.",
+        "The shadow is the critique that never rests: perfectionism turned on everyone, vanity about being right, control mistaken for care. Being correct is not the same as being effective. Your direction — ration the feedback, lead with what works before what's wrong, and let a few imperfections live; people will hear you better."
+      ]
+    },
+    "Dog": {
+      "heading": "The Loyal Guardian",
+      "paragraphs": [
+        "Your word is load-bearing. Dog-year people run on loyalty and justice: you keep promises, defend the people you've claimed as yours, and react to unfairness — anywhere, toward anyone — as if it were personal. Trust is your currency, and you pay in full. Once given, your allegiance is one of the most durable things a person can own.",
+        "Your strength is being genuinely safe to rely on — rarer than talent, and people know it. You tell the truth even when it costs you, guard confidences, and stand your post when things get bad. As a partner and friend you're protective, sincere, and steady: the one who actually shows up.",
+        "The shadow is the worried sentry: anxiety scanning for threats that never come, pessimism dressed as realism, cynicism about a world that keeps failing your standards. Vigilance without rest curdles. Your direction — log what actually goes right, borrow your own loyalty and aim it at yourself, and let trusted people share the watch."
+      ]
+    },
+    "Pig": {
+      "heading": "The Open Hand",
+      "paragraphs": [
+        "You lead with the open hand. Pig-year people run on generosity, honesty, and good nature: you assume decency until proven otherwise, share what you have, and genuinely enjoy life — food, comfort, company — without irony. Your warmth isn't naivety about the world; it's a decision about how you intend to live in it.",
+        "Your strength is creating abundance around you: teams work better, tables fill, and people exhale in your company because nothing about you is a trap. You're honest without cruelty and generous without scorekeeping. In love you're wholehearted and physical in your affection — a partner who makes daily life feel like plenty.",
+        "The shadow is the undefended door: trusting people who haven't earned it, comforting yourself with excess, saying yes past your own limits. Generosity without boundaries invites the wrong guests. Your direction — vet before you invest, let a few no's protect the many yeses, and keep your pleasures as joys rather than escapes."
+      ]
+    }
+  }
+}

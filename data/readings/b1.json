@@ -1,0 +1,103 @@
+{
+  "code": "B1",
+  "title": "Sun Sign",
+  "intro": "Your Sun sign is where the Sun stood on the day you were born — the core of your temperament: your will, your drive, and the way you naturally shine. Everything else in this profile builds on top of it.",
+  "values": {
+    "Aries": {
+      "heading": "Fire · Cardinal — The Igniter",
+      "paragraphs": [
+        "You run on ignition. First sign of the zodiac, ruled by Mars, your core setting is start — you decide fast, move first, and treat hesitation as a kind of pain. Where others need certainty before acting, you need action to feel certain. Impulse, initiative, and a taste for the fight are not moods for you; they're your operating system.",
+        "That courage is your professional edge: you break deadlocks, take the shot nobody else will, and make things happen while committees are still forming. In relationships you're direct and fiercely protective — people always know where they stand with you, and once you're in someone's corner, you fight for them without being asked.",
+        "The shadow is the flame that starts everything and finishes little. Impatience can read as aggression, and speed can cost you allies who needed one more conversation. Your growth edge is aim: choose fewer battles, carry one project all the way through, and let the follow-through prove what the first strike promised."
+      ]
+    },
+    "Taurus": {
+      "heading": "Earth · Fixed — The Keeper",
+      "paragraphs": [
+        "You are the zodiac's ground floor: steady, sensual, unhurried, real. Ruled by Venus, your temperament is anchored in what can be touched, tasted, owned, and kept. You move slowly not from doubt but from certainty — once you commit to a person, a place, or a plan, you intend it to last for years, not seasons.",
+        "Your strength is endurance with taste. At work you're the one who actually delivers — patiently, tangibly, without drama — and you build value that compounds. In love you offer something rare: consistency. You show devotion through presence, comfort, good food, a stable home; people relax around you because your loyalty doesn't flicker with your mood.",
+        "The shadow is grip. Holding on is your gift, but it can become refusing to release what has already stopped serving you — habits, grudges, possessions, even people. Growth for you means separating stability from stagnation: keep the foundation, but renovate on purpose, before life forces the renovation on its own terms."
+      ]
+    },
+    "Gemini": {
+      "heading": "Air · Mutable — The Quicksilver Mind",
+      "paragraphs": [
+        "Your mind is the fastest thing in the room. Ruled by Mercury, you live on information, conversation, and the next interesting question — curiosity isn't a hobby for you, it's a metabolism. You process the world by talking it through, connect ideas nobody else thought to link, and can be three different fascinating people before lunch.",
+        "Professionally, you're a translator between worlds — you learn fast, explain complicated things simply, and thrive anywhere language, ideas, or people move quickly. In relationships your currency is conversation: you fall for minds first, need a partner who keeps surprising you, and you keep bonds alive through wit, banter, and genuine interest.",
+        "The shadow is scatter. A mind that opens ten doors at once can walk through none of them, and versatility can shade into surface-skimming — in projects and in people. Your direction: pick two or three curiosities and go deep enough to own them. Depth is the one adventure you haven't fully tried."
+      ]
+    },
+    "Cancer": {
+      "heading": "Water · Cardinal — The Protector",
+      "paragraphs": [
+        "You feel first and think second — and your feelings are usually right. Ruled by the Moon, your temperament runs on emotional depth, memory, and belonging: home isn't a place for you so much as a mission. You read the undercurrent of every room and carry a protective shell that few people ever get all the way inside.",
+        "Your strength is fierce, quiet care. You build sanctuaries — teams, families, households — where people feel safe enough to be themselves, and you defend your own with surprising steel. Emotionally intelligent and long-memoried, you notice what people need before they say it, which makes you the one others come home to.",
+        "The shadow is the shell itself. Old hurts stay archived in you, and when you feel unappreciated you retreat sideways instead of saying so — moodiness where honesty would work faster. Your growth: ask directly for the care you give so freely, and let the past inform you without letting it steer."
+      ]
+    },
+    "Leo": {
+      "heading": "Fire · Fixed — The Sovereign",
+      "paragraphs": [
+        "You carry your own light source. Ruled by the Sun itself, your temperament is built around self-expression, pride, and warmth — you don't enter rooms, you change them. Being seen isn't vanity for you; it's how your energy circulates. When you're creating, performing, or leading, you're not showing off. You're functioning as designed.",
+        "You lead from the front and you lead generously — praising loudly, protecting your people, setting a standard by example. Creative work lights you up, and loyalty is your love language: in relationships you're warm-hearted, dramatic in the best sense, and unashamedly devoted to the people you've chosen as yours.",
+        "The shadow is hunger for applause. When recognition runs low, pride can turn brittle — you may mistake criticism for betrayal or perform instead of connect. Your direction is sovereignty: shine because it's your nature, not for the reaction. The audience that matters most is the one you stop needing."
+      ]
+    },
+    "Virgo": {
+      "heading": "Earth · Mutable — The Refiner",
+      "paragraphs": [
+        "You see the flaw, the fix, and the better version — instantly, everywhere. Ruled by Mercury, your temperament is analytical and service-oriented: you're wired to improve things, and a mess (in a system, a schedule, a sentence) genuinely bothers you. Usefulness is your love of the world made practical.",
+        "Professionally you're the quality standard: precise, prepared, quietly indispensable, the person whose work never needs redoing. You don't perform devotion in relationships — you practice it, in acts: the appointment remembered, the problem solved, the detail handled. People eventually realize your fussing over small things was love the entire time.",
+        "The shadow is the critic that never clocks out — turned on others it reads as nitpicking; turned inward it becomes corrosive self-doubt. Perfection is a direction, not an address. Your growth: ship the work at ninety-five percent, praise before you polish, and give yourself the same patient service you give everyone else."
+      ]
+    },
+    "Libra": {
+      "heading": "Air · Cardinal — The Balancer",
+      "paragraphs": [
+        "You're calibrated for balance the way others are calibrated for survival. Ruled by Venus, your temperament orbits harmony, partnership, and beauty: you instinctively weigh both sides, smooth sharp edges, and design fairness into every situation you touch. Life, for you, is fundamentally a duet — you think best, and become most yourself, in relation to others.",
+        "Your strength is diplomacy with taste. You can hold a room of clashing egos and find the sentence that lets everyone keep face — a rare and bankable skill. In love and friendship you're attentive, charming, and genuinely fair; you elevate the everyday with aesthetics and make people feel considered, not just accompanied.",
+        "The shadow is the scale that never settles: decisions stall while you weigh one more factor, and keeping the peace can mean losing yourself in other people's preferences. Your direction is a spine to match the charm — decide on time, disappoint people occasionally, and let some conflicts happen. Harmony you had to fake was never harmony."
+      ]
+    },
+    "Scorpio": {
+      "heading": "Water · Fixed — The Depth Diver",
+      "paragraphs": [
+        "Nothing about you is casual. Ruled by Pluto (with Mars behind it), your temperament runs on intensity, depth, and transformation: you sense the hidden layer in every person and situation, and you'd rather have one real truth than a hundred pleasant surfaces. You don't just experience life — you metabolize it, and you come back changed.",
+        "Your strength is the ability to walk through fire and use it. Crises that break others forge you; you focus like a laser, keep secrets like a vault, and commit with a totality most people never experience. In intimacy you offer profound loyalty and presence — being truly seen by you is unforgettable.",
+        "The shadow is control: jealousy, testing people instead of asking them, punishing with silence, gripping what should be trusted. Power over others is the counterfeit; power over yourself is the real prize. Your direction — let people prove themselves by being free, and aim that formidable intensity at transformation, not surveillance."
+      ]
+    },
+    "Sagittarius": {
+      "heading": "Fire · Mutable — The Horizon Chaser",
+      "paragraphs": [
+        "You're aimed at the horizon — permanently. Ruled by Jupiter, the planet of expansion, your temperament runs on freedom, meaning, and scale: bigger questions, farther places, wider views. You're the zodiac's philosopher-adventurer, allergic to small rooms and small thinking, convinced (usually correctly) that life rewards the ones who keep moving toward it.",
+        "Your optimism is a strategic asset: you see possibility where others see risk, say the honest thing everyone was avoiding, and lift whole teams with sheer belief. In relationships you're generous, funny, and refreshingly unpossessive — you love best when love feels like a shared expedition rather than a locked door.",
+        "The shadow is overshoot: promising more than you deliver, restlessness that mistakes escape for growth, bluntness that bruises. Not every door needs walking through. Your direction is commitment as adventure — choose one horizon and actually arrive. Meaning deepens when you stay long enough to be changed by what you found."
+      ]
+    },
+    "Capricorn": {
+      "heading": "Earth · Cardinal — The Summit Climber",
+      "paragraphs": [
+        "You were born with a mountain in mind. Ruled by Saturn, your temperament is built from ambition, discipline, and patience — you think in decades, respect what's earned over what's given, and treat responsibility as a form of self-respect. Others chase motivation; you simply keep climbing, in any weather, whether anyone is watching or not.",
+        "Your strength is gravity: people trust you with real stakes because you deliver, absorb pressure without theatrics, and play long games nobody else has the stamina for. In relationships your love is structural — showing up, providing, building a future worth counting on. You commit carefully and then hold, decade after decade.",
+        "The shadow is dryness: work swallowing warmth, achievement standing in for feeling, a summit reached alone. Rest can feel like failure to you — it isn't; it's maintenance of the climber. Your direction: schedule joy with the seriousness you give deadlines, and let people love the person, not just the position."
+      ]
+    },
+    "Aquarius": {
+      "heading": "Air · Fixed — The Futurist",
+      "paragraphs": [
+        "Your mind lives about ten years ahead of the calendar. Ruled by Uranus (with Saturn's old structure underneath), your temperament runs on independent thought, innovation, and principle — you question defaults on contact, side with ideas over hierarchies, and need freedom the way other signs need approval. Original isn't something you try to be. It's your resting state.",
+        "Your strength is seeing the system — and how to rebuild it better. You're the one who spots the future early, rallies people around a cause, and stays loyal to friends and principles with a fixed sign's stubbornness. You give the people you love room to be fully themselves, which is rarer than it sounds.",
+        "The shadow is distance: caring for humanity in the abstract while the person beside you waits for warmth, or defending a position long after the evidence moved. Your direction is embodiment — bring the vision down to one kitchen table, one conversation. Intimacy is not the enemy of freedom; it's where your ideas become real."
+      ]
+    },
+    "Pisces": {
+      "heading": "Water · Mutable — The Empath",
+      "paragraphs": [
+        "You have thin walls where other people have armor. Ruled by Neptune (with Jupiter's old generosity beneath), your temperament is compassion, imagination, and porous intuition: you absorb moods from a room, sense what's unsaid, and live partly in a richer world just behind this one. Feeling deeply isn't a weakness in your design — it is the design.",
+        "Your strength is empathy that functions like x-ray vision, plus the imagination to make something of it — art, healing, atmospheres, ideas. People confess things to you within minutes of meeting you. In love you're tender, devoted, and quietly psychic about your partner's inner weather; you make people feel understood on the first try.",
+        "The shadow is dissolution: escaping into fantasy, avoidance, or rescue missions when reality gets loud, and losing your own outline in other people's needs. Boundaries are not a betrayal of compassion — they're what make it sustainable. Your direction: keep one foot on solid ground, and give your sensitivity a craft to live in."
+      ]
+    }
+  }
+}

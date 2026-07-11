@@ -1,0 +1,103 @@
+{
+  "code": "A1",
+  "title": "Life Path Number",
+  "intro": "The central number of your entire chart: what your life is fundamentally about and the lesson you keep returning to. It is fixed at birth and never changes — every other number in your profile is read against it.",
+  "values": {
+    "1": {
+      "heading": "The Pioneer",
+      "paragraphs": [
+        "You're wired to originate, not to imitate. Waiting for permission physically irritates you; being told how to do something makes you want to do it your own way, just to prove another way exists. In any group you drift toward the front — not for applause, but because following someone else's pace feels like wearing shoes two sizes too small.",
+        "Your raw materials are will, decisiveness, and the nerve to start from zero. You don't need a finished map to move — a direction is enough. That makes you dangerous, in the best sense, in startups, turnarounds, and first-of-their-kind projects: anywhere a path must be cut rather than walked. People organize themselves around you almost without noticing it.",
+        "The cost of \"I'll do it myself\" is arriving at the top alone. Push hard enough for long enough and independent curdles into isolated — you burn through allies proving you don't need them. Aim the force at building something, not at winning the argument about who leads. Going first doesn't have to mean going solitary."
+      ]
+    },
+    "2": {
+      "heading": "The Diplomat",
+      "paragraphs": [
+        "Your instrument isn't force — it's attunement. You register the temperature of a room before anyone speaks, catch what people mean underneath what they say, and quietly connect people who would otherwise never work together. Solo races bore you; you come alive in a duet, where sensitivity stops being a weakness and becomes the entire strategy.",
+        "Negotiation, mediation, partnership — this is home turf. You get results by tuning, not pushing: the right word to the right person at the right moment. Teams run smoother with you inside them, deals close softer, conflicts dissolve before anyone names them. Any field built on trust and timing — diplomacy, design, therapy, management — pays you back double.",
+        "The trap is dissolving. Agreement becomes reflex, and one day you notice you can't name what you want — only what would keep everyone comfortable. Peacekeeping at your own expense isn't harmony; it's slow self-erasure. Practice choosing instead of adjusting: state a preference before you've polled the room. Your sensitivity is a compass, not a surrender."
+      ]
+    },
+    "3": {
+      "heading": "The Creator",
+      "paragraphs": [
+        "Ideas don't stay inside you — they leak out as jokes, sketches, stories, and plans announced mid-sentence. You think out loud and in images, and you lift a room's mood just by walking in. Expression isn't a hobby for you; it's how you metabolize life. Whatever you feel has to become something said, made, or performed.",
+        "Charisma, wordcraft, and a light touch are your working capital. You can make dry material interesting and hard news bearable, which makes you a natural in writing, speaking, teaching, marketing, entertainment — any stage where someone has to hold attention. Inspiration is your actual product: people leave conversations with you wanting to start things they'd shelved.",
+        "The shadow is scatter. Ten sparks, no fire: projects abandoned at eighty percent, brilliance spent on openings that never become finished work. Charm starts substituting for results, and you feel the difference even when nobody says it aloud. Pick one channel and drive it to mastery — depth in a single craft will pay you more than range across ten."
+      ]
+    },
+    "4": {
+      "heading": "The Builder",
+      "paragraphs": [
+        "Chaos doesn't frighten you; it offends you. Where others see a mess, you see the system it should become — steps, deadlines, load-bearing walls. Discipline isn't self-denial in your case; it's your resting state. You're the one still there in month eleven, doing the unglamorous work that quietly makes everything else possible.",
+        "Method, patience, and follow-through are your signature. You finish what you start, and people build careers, companies, and families on the ground you level. Operations, engineering, finance, long-cycle projects — anywhere reliability is the scarcest resource, you become indispensable. Others collect the applause; you collect the structure that's still standing after the applause ends.",
+        "The risk is hardening. Order calcifies into rigidity: every change reads as a threat to the foundation, every improvisation as sloppiness. You start defending the plan against reality instead of updating it. Build flexibility into the design on purpose — a structure that can flex survives the earthquake. The one that can't gets replaced along with its architect."
+      ]
+    },
+    "5": {
+      "heading": "The Seeker",
+      "paragraphs": [
+        "Routine registers in your body as a slow alarm. New cities, new people, new skills — you metabolize change the way others metabolize food, learning fast, adapting faster, pivoting while everyone else is still discussing the pivot. Freedom isn't one of your preferences. It's the non-negotiable, the thing every plan silently gets tested against.",
+        "Versatility is your edge: you can talk to anyone, learn anything quickly, and stay functional in situations that flatten more rigid people. That builds you for frontier work — travel, sales, media, crisis, launches — anywhere the map is outdated by the time it's printed. While others fear the unknown, you're already selling tickets to it.",
+        "Watch where freedom shades into flight. Bailing at the first taste of routine, trading depth for volume, calling every exit growth — that's the trap. Commitments aren't cages; the right one is a spine that lets movement mean something. Choose a few things you refuse to run from, and your freedom stops being escape and becomes range."
+      ]
+    },
+    "6": {
+      "heading": "The Caretaker",
+      "paragraphs": [
+        "Responsibility found you early and never left. You're the one people call first — the friend who shows up, the family member who holds it together, the colleague who notices someone struggling. Harmony matters to you at an almost physical level; a discordant room, a fractured team, an unresolved argument all itch at you until they're fixed.",
+        "Loyalty, warmth, and an instinct for what people need make you the load-bearing wall of any group. Homes, teams, practices, communities — things flourish under your hand. Medicine, teaching, hospitality, design, leadership of the human kind: any role where care is the actual craft turns your nature directly into value. People feel safer just knowing you're there.",
+        "The dark side is care with a grip on it. \"I know what's best for you\" slides into control; carrying everyone's load slides into burnout and a quiet ledger of resentment. Check whose weight is actually yours to carry. Care that respects other people's right to struggle — and your own right to rest — is stronger than care that manages them."
+      ]
+    },
+    "7": {
+      "heading": "The Thinker",
+      "paragraphs": [
+        "Surface answers don't satisfy you — they mildly insult you. You take things apart to find the mechanism underneath: ideas, systems, people, yourself. Solitude isn't loneliness in your world; it's the lab where your best thinking happens. You'd rather sit with a hard truth than relax into a comfortable story, and everyone around you can tell.",
+        "Your strengths come as a rare pair: analytical precision, plus quiet intuition about what's really going on. You notice patterns others walk past and stay calm inside complexity. Research, strategy, engineering, psychology — any craft with real depth. You don't just work in these fields; you disappear into them and surface holding answers nobody else found.",
+        "Left unchecked, depth becomes a bunker. Distrust hardens, the circle shrinks, and one day you're observing life through glass — analyzing instead of participating. Insight hoarded goes stale. Let selected people past the wall and put your findings into the world; understanding was never meant to be a private collection. Your depth is for sharing."
+      ]
+    },
+    "8": {
+      "heading": "The Executive",
+      "paragraphs": [
+        "You think in outcomes and scale by default. Where others see a job, you see the system around it — who controls what, where the leverage sits, what this could become at ten times the size. Money and status don't embarrass you; you read them plainly, as scoreboard and fuel. Ambition, in your case, came factory-installed.",
+        "Command, resource management, and the will to convert vision into results are your core equipment. Pressure sharpens you instead of cracking you, which is exactly why responsibility keeps landing on your desk. Business, finance, law, leadership of anything with real stakes — you're built for rooms where decisions cost money and someone has to own the outcome.",
+        "Trouble starts when the scoreboard becomes the self. When achievement is your only mirror, you can't stop — every win just resets the counter, and control creeps into places it doesn't belong. Power and money are instruments, not identity. Decide what the empire is for, or it will quietly consume everything it was supposed to fund."
+      ]
+    },
+    "9": {
+      "heading": "The Humanitarian",
+      "paragraphs": [
+        "Your field of vision is wider than your own story. Strangers' problems register as real; causes pull you the way promotions pull other people. There's an old-soul quality to how you read situations — you sense when a chapter is over, and you're often the one holding the door while everyone else pretends it isn't closing.",
+        "Compassion with breadth is your gift: you connect dots across people, disciplines, and years. You finish things well — projects, eras, relationships — and turn endings into clean starts, which is rarer than it sounds. Teaching, healing, art, activism, any work that outlives the worker: that's where your instinct to give becomes visible, durable value.",
+        "Martyrdom is the shadow here. Giving until empty, then resenting the takers; clinging to what's finished because letting go feels like betrayal. Service that destroys the server helps no one and quietly demands repayment. Give from a full account, close doors completely instead of holding them ajar, and refuse the victim role — it's beneath your actual size."
+      ]
+    },
+    "11": {
+      "heading": "The Visionary",
+      "paragraphs": [
+        "Master numbers are rare, and this is the first of them — a higher octave of the 2. Everything the Diplomat senses, you receive amplified: you pick up shifts in people and situations before there's anything visible to point to. Ideas arrive whole, ahead of schedule. Living slightly before the present is your baseline condition, not a phase.",
+        "At full strength you're an antenna with a voice — intuition precise enough to trust and inspiration strong enough to move a room. People catch conviction from you. Teaching, counseling, art, any work where insight has to be transmitted rather than explained: there, this trait stops being strange and becomes leadership of an unusual, magnetic kind.",
+        "The tariff is voltage. That much signal produces anxiety, mood swings, and a painful gap between what you envision and what you can carry today. Ungrounded, an 11 burns as pure nerves. Grounding is the discipline: sleep, deadlines, one finished project at a time. Turn revelations into deliverables, and the pressure becomes output instead of damage."
+      ]
+    },
+    "22": {
+      "heading": "The Master Builder",
+      "paragraphs": [
+        "Practical power at its rarest: 22 is the higher octave of the 4, the Builder's method fused with a visionary's scale. You don't just dream big — you instinctively see the staircase inside the dream: phases, resources, load-bearing decisions. What you build is meant to be used by many people and to outlast you personally.",
+        "Your equipment is the combination almost nobody gets in one package — imagination that spans decades and the discipline to pour concrete on schedule. Institutions, companies, movements, infrastructure: this is your natural material. Where a 4 builds a house, a 22 drafts the city. The work feels heavy precisely because it's sized for history, not for applause.",
+        "The danger is the weight itself. Facing a task that large, people either shrink back into being an ordinary, safe 4 — competent, comfortable, haunted — or snap under self-imposed pressure. Neither honors the number. Break the cathedral into bricks: one phase, one year, one wall at a time. Scale is survivable only when it's scheduled."
+      ]
+    },
+    "33": {
+      "heading": "The Master Teacher",
+      "paragraphs": [
+        "The rarest number on the chart — a higher octave of the 6, where the Caretaker's devotion becomes something closer to vocation. You affect people less by what you say than by what you are; your presence steadies rooms. Others confess to you unprompted, heal in your company, and remember you at the turning points of their lives.",
+        "Your strength is influence without leverage: example instead of instruction, care without an invoice. You mend what's broken between people and grow whoever stands near you long enough. Mentorship, healing work, teaching, community building — wherever love is a working method rather than a sentiment, you operate at a level most people never see demonstrated.",
+        "Self-erasure is the shadow. Giving without accounting eventually means there's no one left doing the giving — exhaustion arrives wearing the mask of virtue, trailed by quiet resentment. This path demands maturity: you're allowed to be a person, not just a resource. Keep something for yourself on purpose. A teacher who disappears teaches only disappearance."
+      ]
+    }
+  }
+}

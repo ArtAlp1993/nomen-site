@@ -1,0 +1,207 @@
+{
+  "code": "A10",
+  "title": "Pythagorean Square",
+  "intro": "Nine cells built from the digits of your birth date, each measuring the strength of one core trait — willpower, energy, logic, health, intuition, hands-on skill, luck, duty, and memory. Empty cells aren't defects and crowded cells aren't trophies; together they map exactly where your natural force lives.",
+  "cells": {
+    "1": "Willpower & Character",
+    "2": "Energy & Charisma",
+    "3": "Logic & Analysis",
+    "4": "Health & Body",
+    "5": "Intuition & Foresight",
+    "6": "Craft & Hands-on Work",
+    "7": "Luck & Talent",
+    "8": "Duty & Kindness",
+    "9": "Memory & Mind"
+  },
+  "values": {
+    "1_empty": {
+      "heading": "Quiet Will",
+      "paragraphs": [
+        "You don't push through walls — you find the door. Pressure isn't your instrument: when someone tries to force an outcome, you sidestep, adapt, and get there anyway. People sometimes mistake this for weakness, right up until they notice you've quietly ended up exactly where you intended.",
+        "Stop competing in head-on contests of stubbornness — you'll lose them, and you don't need them. Your edge is flexibility: negotiation, timing, choosing battles. Pair yourself with strong-willed people instead of fighting them, and let persistence do the work that raw force does for others."
+      ]
+    },
+    "1_some": {
+      "heading": "Steady Will",
+      "paragraphs": [
+        "You can hold a position without turning it into a war. When something matters, you say no and it stays no — but you're not addicted to winning, so people don't brace themselves around you. It's a durable, workable kind of character: firm where it counts, easy where it doesn't.",
+        "This balance is an asset — protect it. You can lead without exhausting people and follow without losing yourself, which makes you effective in teams that strong-willed types tear apart. Just watch for the rare moments you cave to avoid friction; those are the decisions you'll want back."
+      ]
+    },
+    "1_many": {
+      "heading": "Iron Will",
+      "paragraphs": [
+        "When you decide, it's decided. You hold a line long after others have folded, and obstacles read to you as delays, not verdicts. The same force can turn rigid — arguments you win on stamina alone, help you refuse on principle, people who stop telling you the truth.",
+        "Point this at long games: businesses, bodies of work, recoveries — anything that rewards someone who simply does not quit. Then deliberately build in flexibility: pick two or three domains where you let others decide. Willpower this strong doesn't need to win everywhere to win overall."
+      ]
+    },
+    "2_empty": {
+      "heading": "Recharge Required",
+      "paragraphs": [
+        "Your energy isn't a bottomless well — it's a battery, and it runs down. You feel it after long meetings, loud rooms, weeks without sun or movement: the drive is there, the fuel isn't. You draw power from outside — certain people, exercise, daylight — rather than generating it endlessly from within.",
+        "Treat recharging as scheduling, not indulgence. Know your three reliable sources — the friend who energizes you, the sport, the morning outside — and book them like appointments. Managed well, you're more consistent than the naturally charged people who never learned to husband anything, because you actually know where your power comes from."
+      ]
+    },
+    "2_some": {
+      "heading": "Steady Current",
+      "paragraphs": [
+        "You run on a reliable current: enough energy to carry a full day and enough warmth that people enjoy having you in the room. You're not the loudest presence at the table, but you don't fade by mid-afternoon either — a workhorse metabolism for both effort and attention.",
+        "Your advantage is sustainability — use it for consistency plays: showing up daily, maintaining relationships, steady output over months. Don't try to out-blaze the high-voltage types in short bursts; outlast them instead. And notice which activities feed you versus drain you, because your supply rewards good bookkeeping."
+      ]
+    },
+    "2_many": {
+      "heading": "Live Wire",
+      "paragraphs": [
+        "You change the temperature of a room just by entering it. People orbit you, borrow your momentum, leave conversations with you feeling more awake. The cost runs the other direction: stillness feels like starvation, quiet people can find you overwhelming, and unspent energy curdles into restlessness or friction.",
+        "Give the voltage somewhere to go — front-of-room roles, sales, teaching, performing, hard training — or it will discharge into drama. You're built for work where presence is the product. Learn to dial yourself down around slower-burning people; charisma lands better as invitation than broadcast."
+      ]
+    },
+    "3_empty": {
+      "heading": "Words Over Formulas",
+      "paragraphs": [
+        "Formulas never felt like home. You think in stories, images, and people — meaning arrives whole, not as a chain of proofs. Spreadsheets and technical manuals cost you double the effort they cost others, and that's not a flaw in your mind; it's a different architecture.",
+        "Build your work around language, aesthetics, and human judgment — the areas where analysts struggle. When a task genuinely requires hard analysis, borrow it: a tool, a colleague, a checklist. Trying to become a systems engineer wastes the years you could spend getting exceptional at what already comes naturally."
+      ]
+    },
+    "3_some": {
+      "heading": "Working Logic",
+      "paragraphs": [
+        "Your reasoning holds up under load. You can follow an argument, spot the flaw in a plan, learn a technical skill when the job demands it — without logic ever becoming your whole personality. Numbers are a tool you pick up and put down, not a lens you're stuck behind.",
+        "This makes you a translator — you can sit between the deeply technical and the purely intuitive and make each side legible to the other. Lean into roles that reward that range. Sharpen the analytical edge with real problems occasionally; it stays useful only while it's used."
+      ]
+    },
+    "3_many": {
+      "heading": "The Analyst",
+      "paragraphs": [
+        "Your mind wants the mechanism. Give you a system — code, contracts, engines, markets — and you'll take it apart until it confesses how it works. Precision is a pleasure, sloppy reasoning is almost physically irritating, and you trust a clean model more than a warm assurance.",
+        "Take on the problems others call impossible to untangle — that's your natural market, and it pays. The trap is treating people like systems: they aren't, and being right isn't the same as being persuasive. Let feelings be data too, and your analysis gets sharper, not softer."
+      ]
+    },
+    "4_empty": {
+      "heading": "Health by Design",
+      "paragraphs": [
+        "Your body keeps honest books. Skip sleep, live on coffee, train in violent bursts — and it invoices you fast, while sturdier types get away with the same abuse for years. You've probably noticed you feel dramatically better on routine and dramatically worse the moment you abandon it.",
+        "This is a feature disguised as a limitation: your body gives you feedback early, before small problems become large ones. Answer with regimen — steady sleep, regular movement, no heroic extremes — and you'll quietly outlast the people who ignored their own warning lights for decades."
+      ]
+    },
+    "4_some": {
+      "heading": "Built Solid",
+      "paragraphs": [
+        "You got a sound chassis. Colds pass through you quickly, an ordinary workload doesn't wear you down, and your body generally does what you ask without protest. It's the kind of health you barely think about — which is precisely how healthy people end up neglecting it.",
+        "Maintain the asset instead of merely spending it. Regular movement and decent sleep keep this baseline well into decades when others start rationing their strength. Physical resilience is also career capital — you can absorb crunch periods and hard travel that flatten more fragile colleagues. Spend it deliberately, not carelessly."
+      ]
+    },
+    "4_many": {
+      "heading": "Built Like a Fortress",
+      "paragraphs": [
+        "Your physical reserve is unusual — you recover fast, endure what exhausts others, and treat illness as a rumor that mostly happens to other people. Friends notice you're the one still standing after the all-nighter, the mountain, the double shift, wondering what everyone else is complaining about.",
+        "The danger of a fortress is believing it's unbreachable — big reserves fail late and loudly, with no early warnings. Put the surplus to work in demanding physical pursuits, and get checked on a schedule anyway. Strength that's monitored lasts; strength that's presumed eventually surprises its owner."
+      ]
+    },
+    "5_empty": {
+      "heading": "Earned Instinct",
+      "paragraphs": [
+        "Situations reveal themselves to you in hindsight more than in advance — you're the one who understands exactly what happened on the drive home. Raw gut feeling isn't your first language, so when you \"just know\" something without evidence, it's usually anxiety talking, not insight.",
+        "Replace instinct with process and you'll out-decide most intuitive people: checklists before big commitments, a day's pause before answering, two advisors whose judgment you trust. Experience compounds for you unusually well — every reviewed mistake becomes a rule, and by midlife your earned instinct looks remarkably like wisdom."
+      ]
+    },
+    "5_some": {
+      "heading": "Working Radar",
+      "paragraphs": [
+        "You get a read on rooms and plans before the facts fully arrive — a quiet \"something's off here\" that turns out justified often enough to respect. It's not spooky; it's fast pattern-matching. You plan well because you can feel how a situation is likely to unfold.",
+        "Treat the radar as a first-alert system, not a verdict: when it pings, investigate before you act. Your best decisions come from intuition plus a quick check of the numbers. Start logging your hunches and outcomes — you'll learn exactly where your foresight is sharp and where it's noise."
+      ]
+    },
+    "5_many": {
+      "heading": "Second Sight",
+      "paragraphs": [
+        "You see around corners. Deals that will sour, people who will disappoint, doors about to open — you sense them well before the evidence shows up, and your track record of premonitions is uncomfortably good. The frustration is convincing others, who reasonably ask for proof you don't have yet.",
+        "Position yourself where foresight is currency: strategy, hiring, investments, reading markets and people early. Then learn to translate hunches into arguments others can act on — a feeling with three supporting observations moves rooms. And guard the channel: exhaustion and wishful thinking are the two things that reliably corrupt it."
+      ]
+    },
+    "6_empty": {
+      "heading": "Head Over Hands",
+      "paragraphs": [
+        "Manual work has never been where you shine or where you're happy — assembling furniture, fixing, drilling, digging all feel like taxes on your time. You'd rather think, talk, plan, or design for an hour than sand a shelf for ten minutes, and honestly, the shelf can tell.",
+        "Stop apologizing for it — your value is created above the workbench, not on it. Pay professionals for physical tasks without guilt; the hour you save is worth more applied to your actual strengths. Just keep respect for makers, because you'll depend on good ones your whole life."
+      ]
+    },
+    "6_some": {
+      "heading": "Capable Hands",
+      "paragraphs": [
+        "Things work when you touch them. You can fix, build, cook, or assemble at a level that quietly impresses — not because you trained for it, but because finishing something physical satisfies you. Half-done projects bother you; you're the one who actually hangs the picture the same day.",
+        "Keep a craft in your life even if your career is abstract — hands-on work is where your mind resets and your confidence recharges. Practically, this reliability compounds: the person who delivers finished, working results earns trust faster than the person with brilliant unfinished ideas. That's leverage."
+      ]
+    },
+    "6_many": {
+      "heading": "Born Maker",
+      "paragraphs": [
+        "Your hands think. Give you materials, tools, and a problem, and something well-made exists a few hours later — you learn crafts faster than most people learn software. Idleness is the enemy: without a project on the bench you get restless, and \"relaxing\" usually means building something anyway.",
+        "Mastery is your natural currency, so charge properly for it — craftsmanship at your level is rarer every year, and people pay for rare. Watch two traps: doing everything yourself because others are slower, and measuring your worth purely in output. Teach your skill; it multiplies instead of exhausting you."
+      ]
+    },
+    "7_empty": {
+      "heading": "Self-Made Luck",
+      "paragraphs": [
+        "Nothing important has ever just fallen into your lap — no lottery breaks, no chance meetings that changed everything, no talent that opened doors on its own. What you have, you built. Watching luckier people glide can sting, especially when they mistake their good fortune for merit.",
+        "Here's the compensation: self-made results are repeatable, and windfalls aren't. Skip games of pure chance — gambling, speculation, waiting to be discovered — and stack the deck instead: skills, reputation, showing up where opportunities congregate. Your talent opens through deliberate work, and what you earn that way, nobody's luck can take back."
+      ]
+    },
+    "7_some": {
+      "heading": "A Lucky Streak",
+      "paragraphs": [
+        "Fortune likes you in moderation. Doors open at convenient moments, small bets pay off more often than probability suggests, and you have a genuine creative spark that shows up when invited. It's not a golden ticket — more like a persistent tailwind you can feel on good weeks.",
+        "A tailwind only matters if you're moving — so take more small risks than feels natural: pitch the idea, enter the contest, talk to the stranger. Your luck works at the margins, tipping close calls your way. Just never build a plan that requires it; use it as a bonus, not a foundation."
+      ]
+    },
+    "7_many": {
+      "heading": "The Gifted One",
+      "paragraphs": [
+        "Things come easily to you — skills, breaks, attention. You've been pulled from the crowd, handed chances others queued years for, and picked things up in weeks that take most people seasons. People around you have noticed; some call it unfair, and frankly they have a point.",
+        "The classic failure of the gifted is coasting — easy starts that never become finished mastery, because effort was always optional. Pick one talent and take it past the point where luck stops helping; that's where you become untouchable. Gifts get you in the room. Work keeps you there."
+      ]
+    },
+    "8_empty": {
+      "heading": "Duty in Training",
+      "paragraphs": [
+        "Obligation doesn't come pre-installed in you — promises, schedules, and other people's expectations have always felt more like suggestions than contracts. You're not unkind; you're simply built to prioritize your own course, and commitments compete with it. Deadlines and anniversaries slip unless something external holds them.",
+        "Treat reliability as a skill you install, not a virtue you lack: calendars, written promises, fewer commitments made and all of them kept. The upside of your wiring is real freedom — you don't drown in guilt or carry everyone's burdens. Choose your few true obligations deliberately, and honor those completely."
+      ]
+    },
+    "8_some": {
+      "heading": "Quietly Reliable",
+      "paragraphs": [
+        "When you say you'll be there, you're there. People sense it and route important things through you — you're the friend called at two in the morning, the colleague trusted with keys and passwords. Your kindness is practical rather than performative: less talk about caring, more actual showing up.",
+        "Reliability is quietly the most bankable trait in any market — long after talent impresses, trust decides. Let yours be visible: take roles where being dependable compounds into authority. The only maintenance required is boundaries, so the people who exploit reliable types don't file you under free labor."
+      ]
+    },
+    "8_many": {
+      "heading": "The One Who Carries",
+      "paragraphs": [
+        "You feel responsible for everything within reach — family, colleagues, strangers with heavy bags. Saying no physically hurts, letting someone down haunts you for days, and you routinely carry loads nobody actually assigned to you. People love you for it, and a certain kind of person exploits it.",
+        "Your capacity for duty is a genuine gift — teams, families, and communities hold together around people like you. But audit the load: drop obligations you inherited rather than chose, and let capable adults carry their own share. A carrier who burns out helps no one; a boundaried one holds up half the world."
+      ]
+    },
+    "9_empty": {
+      "heading": "Memory With a System",
+      "paragraphs": [
+        "Names, dates, and details leak out of your head unless you pin them down — you've walked into rooms and forgotten why, retold stories to the person who told them to you. Your mind isn't weak; it just refuses to be a filing cabinet. It keeps meaning and discards inventory.",
+        "Externalize ruthlessly: notes, reminders, one trusted system for everything you must not lose. Done well, you'll be more organized than the naturally retentive, because your system never gets tired. Then enjoy the hidden advantage — a mind that forgets details also lets go of grudges and stale assumptions faster."
+      ]
+    },
+    "9_some": {
+      "heading": "Quick Recall",
+      "paragraphs": [
+        "Your memory does its job without theatrics — faces return with names attached, instructions stick after one hearing, and you can reach back years for the useful detail when a conversation needs it. Combined with natural quickness, it makes you a fast study in almost any new territory.",
+        "Use that retention deliberately: learn continuously, because knowledge compounds fastest in heads that keep it. You'll outperform in fields that reward accumulated context — law, medicine, history, code, people. Just don't rely on memory alone for the truly critical; even good recall deserves a written backup."
+      ]
+    },
+    "9_many": {
+      "heading": "Steel-Trap Mind",
+      "paragraphs": [
+        "Once something enters your head, it stays — conversations from years ago verbatim, page layouts, numbers, who said what and when. You connect stored pieces fast enough that people assume you're improvising brilliance when you're really just retrieving it. Forgetting, for you, is nearly a decision.",
+        "This is raw material for genuine expertise — feed it deep subjects, not trivia, and you'll become the reference point in any field you choose. Two cautions: a perfect memory for slights makes grudges durable, so practice deliberate release; and don't assume others remember what you do — they don't."
+      ]
+    }
+  }
+}
