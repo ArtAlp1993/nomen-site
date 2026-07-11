@@ -31,7 +31,7 @@ export default function PricingSection() {
       <SectionHeading
         eyebrow="Pricing"
         title="Choose your reading"
-        subtitle="Pay in crypto — we confirm your payment on-chain and email your reading, usually within a few hours. Card payments coming soon."
+        subtitle="Pay in US dollars via Wise, or in crypto — we confirm your payment and email your reading, usually within a few hours."
       />
 
       {/* Два тарифа по $9.90 в ряд, комбо Best Value — во всю ширину под ними */}

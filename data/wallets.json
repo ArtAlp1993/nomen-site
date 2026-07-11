@@ -7,7 +7,7 @@
       {
         "id": "usdt-trc20",
         "network": "TRC-20",
-        "address": "PLACEHOLDER_USDT_TRC20",
+        "address": "TBVG6rnCZWJEh4F6YFPVbY5A4GfTFJKaZn",
         "memo": false,
         "memoLabel": null,
         "uri": null
@@ -15,7 +15,7 @@
       {
         "id": "usdt-ton",
         "network": "TON",
-        "address": "PLACEHOLDER_USDT_TON",
+        "address": "UQCb-J_pgq_Ka7noKIZeMEOrrxWW41oAot0Fa4QmBskfjqv0",
         "memo": true,
         "memoLabel": "Comment",
         "uri": "ton"
@@ -23,7 +23,7 @@
       {
         "id": "usdt-bep20",
         "network": "BEP-20",
-        "address": "PLACEHOLDER_USDT_BEP20",
+        "address": "0xF0cd2656F3079aebA31FA52C9A6E30ecCbe94AF9",
         "memo": false,
         "memoLabel": null,
         "uri": null
@@ -31,7 +31,7 @@
       {
         "id": "usdt-erc20",
         "network": "ERC-20",
-        "address": "PLACEHOLDER_USDT_ERC20",
+        "address": "0xF0cd2656F3079aebA31FA52C9A6E30ecCbe94AF9",
         "memo": false,
         "memoLabel": null,
         "uri": null
@@ -46,7 +46,7 @@
       {
         "id": "btc",
         "network": "Bitcoin",
-        "address": "PLACEHOLDER_BTC",
+        "address": "bc1qptvfuxfh546n67kdhp7lam4dtnrgr96fkugw5g",
         "memo": false,
         "memoLabel": null,
         "uri": "bitcoin"
@@ -61,10 +61,55 @@
       {
         "id": "eth-erc20",
         "network": "ERC-20",
-        "address": "PLACEHOLDER_ETH_ERC20",
+        "address": "0xF0cd2656F3079aebA31FA52C9A6E30ecCbe94AF9",
         "memo": false,
         "memoLabel": null,
         "uri": "ethereum"
+      }
+    ]
+  },
+  {
+    "coin": "BNB",
+    "coingeckoId": "binancecoin",
+    "isStable": false,
+    "networks": [
+      {
+        "id": "bnb-bep20",
+        "network": "BEP-20",
+        "address": "0xF0cd2656F3079aebA31FA52C9A6E30ecCbe94AF9",
+        "memo": false,
+        "memoLabel": null,
+        "uri": null
+      }
+    ]
+  },
+  {
+    "coin": "SOL",
+    "coingeckoId": "solana",
+    "isStable": false,
+    "networks": [
+      {
+        "id": "sol",
+        "network": "Solana",
+        "address": "EquoTFcpXGACJPpkeZA6RBhCTVyXq1Vbe2uMcjbtuLnS",
+        "memo": false,
+        "memoLabel": null,
+        "uri": null
+      }
+    ]
+  },
+  {
+    "coin": "TRX",
+    "coingeckoId": "tron",
+    "isStable": false,
+    "networks": [
+      {
+        "id": "trx",
+        "network": "Tron",
+        "address": "TBVG6rnCZWJEh4F6YFPVbY5A4GfTFJKaZn",
+        "memo": false,
+        "memoLabel": null,
+        "uri": null
       }
     ]
   },
@@ -76,7 +121,7 @@
       {
         "id": "ton",
         "network": "TON",
-        "address": "PLACEHOLDER_TON",
+        "address": "UQCb-J_pgq_Ka7noKIZeMEOrrxWW41oAot0Fa4QmBskfjqv0",
         "memo": true,
         "memoLabel": "Comment",
         "uri": "ton"
@@ -91,7 +136,7 @@
       {
         "id": "xrp",
         "network": "XRP Ledger",
-        "address": "PLACEHOLDER_XRP",
+        "address": "rDaRBtjKmXZWYSQ9zeKFT4bc7W9X6w9Aus",
         "memo": true,
         "memoLabel": "Destination Tag",
         "uri": "xrp"

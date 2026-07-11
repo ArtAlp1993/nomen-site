@@ -18,6 +18,7 @@ import QRCode from "./QRCode";
 import CoinIcon, { networkColor } from "./CoinIcon";
 
 const EASE = [0.22, 1, 0.36, 1];
+const WISE_URL = "https://wise.com/pay/me/artemi463";
 
 // Аккуратный формат количества монеты: без «хвоста» лишних нулей.
 function formatCrypto(n) {
@@ -62,6 +63,7 @@ export default function CryptoCheckout({ tier, open, onClose }) {
   const [cryptoAmount, setCryptoAmount] = useState(null);
   const [rateLoading, setRateLoading] = useState(false);
   const [copied, setCopied] = useState("");
+  const [cryptoOpen, setCryptoOpen] = useState(false); // крипта-аккордеон (Wise — главный)
 
   const leadRef = useRef(false); // лид Артёму — один раз за открытие
   const paidRef = useRef(false); // «оплатил» — один раз за открытие
@@ -193,6 +195,7 @@ export default function CryptoCheckout({ tier, open, onClose }) {
       paidRef.current = false;
       setOrder(null);
       setCopied("");
+      setCryptoOpen(false);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open]);
@@ -286,6 +289,28 @@ export default function CryptoCheckout({ tier, open, onClose }) {
     router.push(`/thank-you/?order=${code}`);
   };
 
+  // Wise (USD) — главный способ. Опознание платежа: та же модель, что у крипты —
+  // уникальная сумма ($9.9X с хвостиком) + код заказа в примечании перевода;
+  // Артём сверяет вручную в Wise-приложении (правила 5.2/5.3).
+  const wiseWallet = {
+    coin: "Wise",
+    label: "Wise (USD transfer)",
+    address: WISE_URL,
+    network: "USD",
+    memo: false,
+    memoLabel: null,
+  };
+  const payWise = () => {
+    if (!paidRef.current) {
+      paidRef.current = true;
+      ymGoal("checkout_paid");
+      notifyTelegram(buildOrderText(true, wiseWallet, `$${stableAmount}`));
+    }
+    const code = order?.code?.replace("#", "") || "";
+    onClose?.();
+    router.push(`/thank-you/?order=${code}`);
+  };
+
   const isPlaceholder = selected.address?.startsWith("PLACEHOLDER");
 
   return (
@@ -320,7 +345,7 @@ export default function CryptoCheckout({ tier, open, onClose }) {
             </button>
 
             <p className="font-heading text-xs uppercase tracking-[0.3em] text-accent-turquoise">
-              Pay with crypto
+              Payment
             </p>
             <h3 className="mt-2 font-heading text-xl font-semibold">
               {tier?.name} — ${tier?.price}
@@ -331,8 +356,45 @@ export default function CryptoCheckout({ tier, open, onClose }) {
               </p>
             )}
 
+            {/* Wise (USD) — главный способ. Активный способ всегда один и
+                сверху: выбрал крипту — Wise уступает ей место и уходит в
+                кнопку-переключатель внизу (просьба Артёма: «поменялись местами»). */}
+            {!cryptoOpen && (
+            <div className="mt-5 rounded-xl border border-accent-turquoise/40 bg-accent-turquoise/5 p-4">
+              <p className="font-heading text-xs uppercase tracking-[0.25em] text-accent-turquoise">
+                Pay in USD · Wise
+              </p>
+              <p className="mt-2 text-sm text-foreground-muted">
+                Send exactly{" "}
+                <span className="font-semibold text-foreground">${stableAmount}</span>{" "}
+                and add your order code{" "}
+                <span className="font-semibold text-foreground">{order?.code}</span>{" "}
+                in the payment reference so we can match it.
+              </p>
+              <a
+                href={WISE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => ymGoal("wise_opened")}
+                className="mt-3 inline-flex w-full items-center justify-center rounded-full bg-gradient-to-r from-accent-violet to-accent-turquoise px-8 py-3 font-heading text-sm font-semibold tracking-wide text-background glow-violet transition-transform duration-200 hover:scale-[1.02]"
+              >
+                Pay with Wise ↗
+              </a>
+              <button
+                type="button"
+                onClick={payWise}
+                className="mt-2 inline-flex w-full items-center justify-center rounded-full border border-accent-turquoise/50 px-8 py-2.5 font-heading text-sm font-semibold tracking-wide text-accent-turquoise transition-colors hover:bg-accent-turquoise/10"
+              >
+                I&apos;ve paid
+              </button>
+            </div>
+            )}
+
+            {/* Крипта — раскрывается на месте Wise */}
+            {cryptoOpen && (
+            <div className="mt-4">
             {/* Шаг 1 — монета (выпадающий список со значками) */}
-            <label className="mt-5 block text-xs uppercase tracking-wide text-foreground-muted">
+            <label className="mt-2 block text-xs uppercase tracking-wide text-foreground-muted">
               Coin
             </label>
             <div className="relative mt-2">
@@ -522,6 +584,24 @@ export default function CryptoCheckout({ tier, open, onClose }) {
               >
                 {copied === "invoice" ? "Invoice copied ✓" : "Share invoice ↗"}
               </button>
+            </div>
+            </div>
+            )}
+
+            {/* Переключатель второго способа — активный всегда сверху */}
+            <button
+              type="button"
+              onClick={() => setCryptoOpen((o) => !o)}
+              className="mt-4 flex w-full items-center justify-between gap-2 rounded-lg border border-foreground-muted/30 bg-background px-3 py-2.5 text-left text-sm text-foreground transition-colors hover:border-accent-turquoise"
+            >
+              <span>
+                <span className="text-foreground-muted">or</span>{" "}
+                {cryptoOpen ? "Pay in USD via Wise" : "Pay with crypto"}
+              </span>
+              <span className="text-foreground-muted">▾</span>
+            </button>
+
+            <div className="mt-5 flex justify-center">
               <button
                 type="button"
                 onClick={onClose}

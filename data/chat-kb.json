@@ -11,7 +11,7 @@
   },
   {
     "keywords": ["pay", "payment", "card", "credit", "crypto", "bitcoin", "usdt", "paypal", "checkout"],
-    "answer": "Right now we accept crypto — card payments are coming soon. After the payment confirms on-chain, we email you a personal link to your reading, usually within a few hours."
+    "answer": "You can pay in US dollars via Wise, or in crypto (USDT, BTC, ETH and more). After your payment is confirmed, we email you a personal link to your reading, usually within a few hours."
   },
   {
     "keywords": ["refund", "money back", "return", "cancel"],

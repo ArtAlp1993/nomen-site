@@ -8,6 +8,9 @@ const BRAND = {
   USDT: "#26A17B",
   BTC: "#F7931A",
   ETH: "#627EEA",
+  BNB: "#F3BA2F",
+  SOL: "#9945FF",
+  TRX: "#EF0027",
   TON: "#0098EA",
   XRP: "#23292F",
 };
@@ -19,6 +22,8 @@ const NETWORK_COLOR = {
   "BEP-20": "#F3BA2F",
   Bitcoin: "#F7931A",
   "ERC-20": "#627EEA",
+  Solana: "#9945FF",
+  Tron: "#EF0027",
   "XRP Ledger": "#33E6E0",
 };
 
@@ -84,6 +89,31 @@ function Glyph({ coin }) {
           <path d="M9 9 L16 15.5 L23 9" />
           <path d="M9 23 L16 16.5 L23 23" />
         </g>
+      );
+    case "BNB":
+      // Ромбовый узор Binance: центральный + 4 по сторонам.
+      return (
+        <g fill="#fff">
+          <path d="M16 8 l3 3 -3 3 -3 -3 z" />
+          <path d="M16 18 l3 3 -3 3 -3 -3 z" />
+          <path d="M11 13 l3 3 -3 3 -3 -3 z" />
+          <path d="M21 13 l3 3 -3 3 -3 -3 z" />
+          <path d="M16 13 l3 3 -3 3 -3 -3 z" />
+        </g>
+      );
+    case "SOL":
+      // Три «потоковые» полосы Solana с чередующимся скосом.
+      return (
+        <g fill="#fff">
+          <path d="M11 10 H23 L21 12.4 H9 Z" />
+          <path d="M9 14.8 H21 L23 17.2 H11 Z" />
+          <path d="M11 19.6 H23 L21 22 H9 Z" />
+        </g>
+      );
+    case "TRX":
+      // Стилизованная T (Tron).
+      return (
+        <path fill="#fff" d="M8 9.5 H24 V12.5 H17.5 V23 H14.5 V12.5 H8 Z" />
       );
     default:
       return null;

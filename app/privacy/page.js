@@ -27,11 +27,11 @@ export default function PrivacyPage() {
       </p>
 
       <p>
-        <strong>Payments.</strong> Payments are made in cryptocurrency directly
-        to our wallets — there is no third-party payment provider involved, and
-        we never see or store any card or bank details. To match your payment to
-        your order, we use the order details you provide (name, email) together
-        with the payment amount and reference shown at checkout.
+        <strong>Payments.</strong> You can pay either in cryptocurrency directly
+        to our wallets, or in US dollars through Wise, a third-party payment
+        service. We never see or store your card details. To match your payment
+        to your order, we use the order details you provide (name, email)
+        together with the payment amount and reference shown at checkout.
       </p>
 
       <p>
