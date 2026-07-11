@@ -1,0 +1,103 @@
+{
+  "_about": "Evidence library for NOMEN readings (task Z-25). Each point carries how-it-is-calculated (method) and, where filled, what-a-value-means (values), each backed by real authors/systems. page:'verify' = page not yet checked against the edition; paraphrase:true = summary of the source, not a verbatim quote (see 05_Материалы/Библиотека/2026-07-12_паспорт-библиотеки.md, §3). Source of truth: 05_Материалы/Библиотека/2026-07-12_карта-пункт-источник.md.",
+  "points": [
+    {
+      "point_code": "A1",
+      "point_name": "Life Path Number",
+      "method": {
+        "oneliner": "Sum the digits of the birth date and reduce to 1–9 (master numbers 11/22/33 are never reduced).",
+        "verdict": "Your Life Path is derived by segment-summing day, month and year, then reducing — master numbers 11/22/33 are kept. It is fixed at birth and is the spine every other number is read against.",
+        "sources": [
+          { "author": "David Phillips", "title": "The Complete Book of Numerology (Pythagorean Square)", "page": "verify", "says": "The life path is the reduced sum of the birth-date digits; master numbers 11/22/33 are not reduced and act as a higher octave of 2/4/6.", "paraphrase": true },
+          { "author": "Vedic numerology (cross-check)", "title": "classical Indian numerology", "page": "verify", "says": "The same digit maps to a ruling planet, used to cross-validate the Pythagorean reading.", "paraphrase": true }
+        ]
+      },
+      "values": {
+        "1": { "verdict": "A path of leadership and initiative — strength in starting first; the lesson is not to isolate into 'I'll do it myself'.", "sources": [ { "author": "David Phillips", "title": "The Complete Book of Numerology", "page": "verify", "says": "1 is the number of the pioneer/leader: will, independence, originating over imitating.", "paraphrase": true }, { "author": "Carol S. Pearson", "title": "Awakening the Heroes Within", "page": "verify", "says": "The Warrior archetype: courage to go first, risk of fighting for its own sake.", "paraphrase": true } ] },
+        "2": { "verdict": "A path of partnership and sensitivity — strength in the duet; the lesson is not to dissolve, to name your own preference.", "sources": [ { "author": "David Phillips", "title": "The Complete Book of Numerology", "page": "verify", "says": "2 is cooperation, diplomacy, attunement; works through others rather than force.", "paraphrase": true }, { "author": "Carol S. Pearson", "title": "Awakening the Heroes Within", "page": "verify", "says": "Caregiver/Lover archetypes: connection and empathy, shadow of self-erasure.", "paraphrase": true } ] },
+        "3": { "verdict": "A path of self-expression — strength in word and creativity; the risk is scatter, so drive one craft to mastery.", "sources": [ { "author": "David Phillips", "title": "The Complete Book of Numerology", "page": "verify", "says": "3 is creativity, communication, joy; danger of dispersing energy across many starts.", "paraphrase": true }, { "author": "Carol S. Pearson", "title": "Awakening the Heroes Within", "page": "verify", "says": "Creator/Jester archetypes: expression as a way to metabolize life.", "paraphrase": true } ] },
+        "4": { "verdict": "A path of work and system — strength in reliability and follow-through; the lesson is flexibility.", "sources": [ { "author": "David Phillips", "title": "The Complete Book of Numerology", "page": "verify", "says": "4 is order, discipline, foundations; risk of rigidity.", "paraphrase": true }, { "author": "Carol S. Pearson", "title": "Awakening the Heroes Within", "page": "verify", "says": "Ruler/Caregiver register: structure that others build on.", "paraphrase": true } ] },
+        "5": { "verdict": "A path of freedom and change — strength in adaptability; the lesson is not to mistake flight for growth.", "sources": [ { "author": "David Phillips", "title": "The Complete Book of Numerology", "page": "verify", "says": "5 is freedom, versatility, experience; needs to avoid running from commitment.", "paraphrase": true }, { "author": "Carol S. Pearson", "title": "Awakening the Heroes Within", "page": "verify", "says": "Seeker archetype: the drive toward the new frontier.", "paraphrase": true } ] },
+        "6": { "verdict": "A path of care and responsibility — strength in holding people and home; the lesson is not to control or dissolve.", "sources": [ { "author": "David Phillips", "title": "The Complete Book of Numerology", "page": "verify", "says": "6 is responsibility, harmony, service to home and community.", "paraphrase": true }, { "author": "Carol S. Pearson", "title": "Awakening the Heroes Within", "page": "verify", "says": "Caregiver archetype: warmth and loyalty, shadow of control/burnout.", "paraphrase": true } ] },
+        "7": { "verdict": "A path of depth and knowledge — strength in analysis plus intuition; the lesson is not to retreat into a bunker.", "sources": [ { "author": "David Phillips", "title": "The Complete Book of Numerology", "page": "verify", "says": "7 is the seeker of truth: analysis, solitude, inner knowing.", "paraphrase": true }, { "author": "Carol S. Pearson", "title": "Awakening the Heroes Within", "page": "verify", "says": "Sage archetype: understanding as the core drive; shadow of detachment.", "paraphrase": true } ] },
+        "8": { "verdict": "A path of power and scale — strength in turning vision into results; the lesson is to wield power ethically.", "sources": [ { "author": "David Phillips", "title": "The Complete Book of Numerology", "page": "verify", "says": "8 is authority, money, management, material mastery.", "paraphrase": true }, { "author": "Carol S. Pearson", "title": "Awakening the Heroes Within", "page": "verify", "says": "Ruler archetype: command and responsibility, shadow of the scoreboard becoming the self.", "paraphrase": true } ] },
+        "9": { "verdict": "A path of service and breadth — strength in completing cycles; the lesson is to let go and refuse the victim role.", "sources": [ { "author": "David Phillips", "title": "The Complete Book of Numerology", "page": "verify", "says": "9 is the humanitarian: compassion, breadth, endings turned into beginnings.", "paraphrase": true }, { "author": "Carol S. Pearson", "title": "Awakening the Heroes Within", "page": "verify", "says": "Sage/Caregiver blend: giving with breadth, shadow of martyrdom.", "paraphrase": true } ] },
+        "11": { "verdict": "Master number, higher octave of 2: a visionary antenna — strength in intuition and inspiration; the discipline is grounding.", "sources": [ { "author": "David Phillips", "title": "The Complete Book of Numerology", "page": "verify", "says": "11 amplifies the 2: heightened intuition, nervous voltage, needs grounding.", "paraphrase": true }, { "author": "Carol S. Pearson", "title": "Awakening the Heroes Within", "page": "verify", "says": "Magician/Visionary register: insight transmitted rather than explained.", "paraphrase": true } ] },
+        "22": { "verdict": "Master number, higher octave of 4: the master builder — turns a large dream into a project for many; break scale into phases.", "sources": [ { "author": "David Phillips", "title": "The Complete Book of Numerology", "page": "verify", "says": "22 fuses the builder's method with visionary scale; risk of collapsing under the weight.", "paraphrase": true }, { "author": "Carol S. Pearson", "title": "Awakening the Heroes Within", "page": "verify", "says": "Ruler/Creator at scale: institutions meant to outlast the person.", "paraphrase": true } ] },
+        "33": { "verdict": "Master number, higher octave of 6: the master teacher — influence by example and care; the lesson is not to erase yourself.", "sources": [ { "author": "David Phillips", "title": "The Complete Book of Numerology", "page": "verify", "says": "33 is the rarest, devotion becoming vocation; demands maturity.", "paraphrase": true }, { "author": "Carol S. Pearson", "title": "Awakening the Heroes Within", "page": "verify", "says": "Caregiver/Sage at highest register: teaching through presence.", "paraphrase": true } ] }
+      }
+    },
+    {
+      "point_code": "A2",
+      "point_name": "Birthday Number",
+      "method": { "oneliner": "Reduce the day of birth to a single digit — your innate talent.", "verdict": "The Birthday Number is the reduced day of the month; it names the natural gift you were handed.", "sources": [ { "author": "David Phillips", "title": "The Complete Book of Numerology", "page": "verify", "says": "The day of birth reduced to 1–9 marks an innate talent layered onto the life path.", "paraphrase": true } ] },
+      "values": {}
+    },
+    {
+      "point_code": "A3",
+      "point_name": "Expression Number",
+      "method": { "oneliner": "Convert every letter of the full birth name to a digit, sum and reduce — your mission.", "verdict": "The Expression Number sums all letters of the full name (letter→digit table); it describes what you are meant to build and become.", "sources": [ { "author": "David Phillips", "title": "The Complete Book of Numerology", "page": "verify", "says": "All letters of the full name convert to numbers and reduce to the expression/destiny number.", "paraphrase": true } ] },
+      "values": {}
+    },
+    {
+      "point_code": "A4",
+      "point_name": "Soul Urge Number",
+      "method": { "oneliner": "Sum only the vowels of the full name and reduce — your hidden desire.", "verdict": "The Soul Urge sums the vowels of the name; it names what the soul most wants underneath the surface.", "sources": [ { "author": "David Phillips", "title": "The Complete Book of Numerology", "page": "verify", "says": "Vowels of the name reduce to the soul urge / heart's desire number.", "paraphrase": true } ] },
+      "values": {}
+    },
+    {
+      "point_code": "A5",
+      "point_name": "Personality Number",
+      "method": { "oneliner": "Sum only the consonants of the full name and reduce — your outer facade.", "verdict": "The Personality Number sums the consonants; it is how people read you before they know you.", "sources": [ { "author": "David Phillips", "title": "The Complete Book of Numerology", "page": "verify", "says": "Consonants of the name reduce to the personality number, the outward impression.", "paraphrase": true } ] },
+      "values": {}
+    },
+    {
+      "point_code": "A7",
+      "point_name": "Maturity Number",
+      "method": { "oneliner": "Add the Life Path and Expression numbers and reduce — who you grow into.", "verdict": "The Maturity Number is Life Path + Expression, reduced; it points to the direction life converges on after ~40.", "sources": [ { "author": "David Phillips", "title": "The Complete Book of Numerology", "page": "verify", "says": "Life path plus expression yields the maturity number, the later-life integration.", "paraphrase": true } ] },
+      "values": {}
+    },
+    {
+      "point_code": "A9",
+      "point_name": "Karmic Lessons & Hidden Passion",
+      "method": { "oneliner": "Find which digits are missing (lessons) and most frequent (hidden passion) in the name.", "verdict": "Digits absent from the name spell the karmic lessons to develop; the most frequent digit is your hidden passion/natural strength.", "sources": [ { "author": "David Phillips", "title": "The Complete Book of Numerology", "page": "verify", "says": "Missing numbers in the name indicate lessons to learn; repeated numbers indicate an intensified strength.", "paraphrase": true } ] },
+      "values": {}
+    },
+    {
+      "point_code": "A10",
+      "point_name": "Pythagorean Square",
+      "method": { "oneliner": "Lay the birth-date digits into a nine-cell square (psychomatrix) to read strengths and gaps.", "verdict": "The birth date is arranged into nine cells; the count in each cell (with Aleksandrov's working numbers) maps strong and weak traits.", "sources": [ { "author": "A. F. Aleksandrov", "title": "Bolshaya kniga numerologii (psychomatrix)", "page": "verify", "says": "The Russian psychomatrix reads character from how many times each digit falls into the nine cells.", "paraphrase": true }, { "author": "David Phillips", "title": "The Complete Book of Numerology", "page": "verify", "says": "The Pythagorean square gives a nine-cell portrait of strengths and weaknesses.", "paraphrase": true } ] },
+      "values": {}
+    },
+    {
+      "point_code": "A11",
+      "point_name": "Karmic Debt Numbers",
+      "method": { "oneliner": "Check intermediate sums for 13, 14, 16 or 19 — the karmic-debt markers.", "verdict": "If 13/14/16/19 appear in the working sums, that debt is active; otherwise there is none. Formulated carefully, never as a threat.", "sources": [ { "author": "David Phillips", "title": "The Complete Book of Numerology", "page": "verify", "says": "13/14/16/19 in the sums denote specific karmic debts with defined themes.", "paraphrase": true } ] },
+      "values": {}
+    },
+    {
+      "point_code": "B1",
+      "point_name": "Sun Sign",
+      "method": { "oneliner": "Place the Sun in the tropical zodiac by birth date — no birth time needed.", "verdict": "The Sun sign is the tropical-zodiac position of the Sun on the birth date; it names the core will and identity. Works without a birth time, which is why it is in the base 13.", "sources": [ { "author": "Liz Greene", "title": "The Astrology of Fate", "page": "verify", "says": "The Sun sign describes the core of will and identity; planets are the language of the unconscious, not fate.", "paraphrase": true }, { "author": "Classical astrology", "title": "tropical zodiac date table", "page": "verify", "says": "Sign boundaries follow fixed tropical date ranges (e.g. Aries 21.03–19.04).", "paraphrase": true } ] },
+      "values": {}
+    },
+    {
+      "point_code": "C1",
+      "point_name": "Chinese Zodiac Animal",
+      "method": { "oneliner": "Map the birth year onto the 12-animal, 60-year cycle.", "verdict": "The year of birth selects one of the twelve animals on the 60-year cycle; it names your base temperament. Source book still to be confirmed (registry, shelf 5).", "sources": [ { "author": "classical Ba Zi / Chinese astrology tradition", "title": "(source book to be confirmed)", "page": "verify", "says": "Each year belongs to one of twelve animals repeating on a 60-year sexagenary cycle.", "paraphrase": true } ] },
+      "values": {}
+    },
+    {
+      "point_code": "C2",
+      "point_name": "Year Element",
+      "method": { "oneliner": "Derive the year's Wu Xing element (Wood/Fire/Earth/Metal/Water).", "verdict": "The birth year also carries one of the five Wu Xing elements, layered over the animal as the 'temperature' of your nature. Source book still to be confirmed (registry, shelf 5).", "sources": [ { "author": "Wu Xing (Five Elements) tradition", "title": "(source book to be confirmed)", "page": "verify", "says": "The sexagenary year carries one of five elements that colours the animal sign.", "paraphrase": true } ] },
+      "values": {}
+    },
+    {
+      "point_code": "D1",
+      "point_name": "Tarot Birth Card",
+      "method": { "oneliner": "Reduce the birth date to a Major Arcana number (1–22) using the Waite ordering.", "verdict": "Summing the birth date to a number 1–22 selects a Major Arcanum as the archetype of your fate; we use the Rider-Waite numbering (note the VIII/XI Strength–Justice order).", "sources": [ { "author": "Arthur Edward Waite", "title": "The Pictorial Key to the Tarot", "page": "verify", "says": "The 22 Major Arcana form the archetypal sequence; Waite fixes the numbering used as standard.", "paraphrase": true } ] },
+      "values": {}
+    }
+  ]
+}

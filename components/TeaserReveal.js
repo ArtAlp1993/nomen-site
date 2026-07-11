@@ -6,7 +6,6 @@ import Card from "./ui/Card";
 import Button from "./ui/Button";
 import PointIcon from "./PointIcon";
 import { ymGoal } from "./Analytics";
-import { usePeekFlag } from "@/lib/peekFlag";
 
 // Поэтапная выдача результата: каждый избранный пункт «вычисляется» на глазах
 // (колёсико + подпись, что именно считаем), затем раскрывается. После
@@ -31,13 +30,12 @@ export default function TeaserReveal({ firstName, points }) {
   const featured = points.filter((p) => p.featured);
   const rest = points.filter((p) => !p.featured);
 
-  const peek = usePeekFlag();
   const [revealed, setRevealed] = useState(reduce ? featured.length : 0);
   const [showRest, setShowRest] = useState(!!reduce);
   const [cta, setCta] = useState(false);
   const [ctaClosed, setCtaClosed] = useState(false);
-  // Проблеск (З-37, флаг ?peek=1): платные пункты появляются ОТКРЫТЫМИ вместе с
-  // блоком остальных → через 2 сек плавно заблюриваются. Гаснут по таймеру.
+  // Проблеск (З-37): платные пункты появляются ОТКРЫТЫМИ вместе с блоком
+  // остальных → через 2 сек плавно заблюриваются. Гаснут по таймеру.
   const [restPeek, setRestPeek] = useState(false);
   // Платные пункты (все, кроме 4 бесплатных) ВСЕГДА заблюрены сразу: видно,
   // ЧТО за пункт (иконка + подпись), но значение — под мягким блюром до оплаты.
@@ -96,15 +94,14 @@ export default function TeaserReveal({ firstName, points }) {
     };
   }, [showRest, cta, ctaClosed, reduce]);
 
-  // Проблеск верхнего блока: как только показались «остальные» пункты и включён
-  // флаг — держим их открытыми 2 секунды, затем возвращаем блюр. Без флага блок
-  // остаётся заблюренным сразу (прод-поведение, пейвол).
+  // Проблеск верхнего блока: как только показались «остальные» пункты — держим
+  // их открытыми 2 секунды (заманка), затем возвращаем блюр (пейвол).
   useEffect(() => {
-    if (!peek || !showRest || rest.length === 0) return;
+    if (!showRest || rest.length === 0) return;
     setRestPeek(true);
     const t = setTimeout(() => setRestPeek(false), 2000);
     return () => clearTimeout(t);
-  }, [peek, showRest, rest.length]);
+  }, [showRest, rest.length]);
 
   const calcNow = revealed < featured.length ? featured[revealed] : null;
 

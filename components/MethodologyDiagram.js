@@ -5,7 +5,6 @@ import dynamic from "next/dynamic";
 import SectionHeading from "./ui/SectionHeading";
 import PointIcon from "./PointIcon";
 import { useResult } from "./ResultProvider";
-import { usePeekFlag } from "@/lib/peekFlag";
 import methodology from "@/data/methodology.json";
 
 // 3D-сцена рендерится только на клиенте (WebGL) — иначе SSR падает.
@@ -40,15 +39,13 @@ export default function MethodologyDiagram() {
   }
   const personalized = Boolean(result?.points?.length);
 
-  // Scroll-peek (З-81, флаг ?peek=1): когда клиент доскроллил до нижнего блока
-  // пунктов, заблюренные значения на 1 секунду приоткрываются и снова гаснут —
-  // «подкрался, подсмотрел, закрылось». Срабатывает при каждом входе блока в
-  // зону видимости. Без флага блок остаётся под блюром (прод-поведение).
-  const peek = usePeekFlag();
+  // Scroll-peek (З-81): когда клиент доскроллил до нижнего блока пунктов,
+  // заблюренные значения на 1 секунду приоткрываются и снова гаснут — «подкрался,
+  // подсмотрел, закрылось». Срабатывает при каждом входе блока в зону видимости.
   const pointsRef = useRef(null);
   const [lowerPeek, setLowerPeek] = useState(false);
   useEffect(() => {
-    if (!peek || !personalized) return;
+    if (!personalized) return;
     const el = pointsRef.current;
     if (!el) return;
     let timer;
@@ -67,7 +64,7 @@ export default function MethodologyDiagram() {
       clearTimeout(timer);
       obs.disconnect();
     };
-  }, [peek, personalized]);
+  }, [personalized]);
 
   // WebGL бывает недоступен (выключено аппаратное ускорение, сбой GPU,
   // старые машины) — тогда вместо живой сцены показываем её кадр
@@ -171,24 +168,15 @@ export default function MethodologyDiagram() {
                         {(() => {
                           const entry = labels[p.code];
                           const text = entry ? entry.label : p.title;
-                          // В режиме проблеска (peek) нижний блок под глазом —
-                          // цельная «запертая карта»: заблюрено ВСЁ, включая
-                          // бесплатную четвёрку (её уже показали наверху), и peek
-                          // приоткрывает всё разом. Вне peek (прод) — четвёрка
-                          // открыта, остальное под блюром.
-                          if (entry?.featured && !peek) {
-                            return (
-                              <span className="text-foreground">{text}</span>
-                            );
-                          }
                           // Демо-страница до квиза: название пункта открыто
                           // (нечего скрывать — значений ещё нет).
                           if (!personalized) {
                             return <span>{text}</span>;
                           }
-                          // Квиз пройден: под блюром — и посчитанные значения, и
-                          // пункты без персонального значения (иначе generic-
-                          // название торчало открытым). В peek — приоткрываются.
+                          // Квиз пройден: нижний блок под глазом — цельная
+                          // «запертая карта». Заблюрено ВСЁ (включая бесплатную
+                          // четвёрку — её уже показали наверху в тизере), при
+                          // доскролле весь блок приоткрывается на секунду и гаснет.
                           return (
                             <span
                               className={`select-none text-foreground transition-all duration-500 ${

@@ -6,6 +6,7 @@ import faq from "@/data/faq.json";
 import kb from "@/data/chat-kb.json";
 import { ymGoal } from "./Analytics";
 import { notifyTelegram } from "@/lib/notify";
+import { libraryAnswer } from "@/lib/libraryAnswer";
 
 // Мини-чат без бэкенда: отвечает по базе знаний (data/chat-kb.json) и FAQ.
 // Тупик (два промаха подряд или просьба позвать человека) → предлагает
@@ -21,9 +22,12 @@ const HUMAN_WORDS = ["human", "agent", "support", "operator", "real person", "he
 const tokenize = (s) =>
   s.toLowerCase().replace(/[^a-zа-яё0-9\s]/gi, " ").split(/\s+/).filter((w) => w && !STOP_WORDS.has(w));
 
-// Поиск ответа: сначала фразовые ключи базы, затем скоринг по словам KB+FAQ.
+// Поиск ответа: сначала доказательная библиотека (как посчитан пункт / спор о
+// трактовке, задача Z-25), затем фразовые ключи базы и скоринг по словам KB+FAQ.
 function findAnswer(text) {
   const low = text.toLowerCase();
+  const lib = libraryAnswer(text);
+  if (lib) return lib;
   for (const entry of kb) {
     if (entry.keywords.some((k) => k.includes(" ") && low.includes(k))) return entry;
   }
