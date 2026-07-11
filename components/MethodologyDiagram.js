@@ -168,12 +168,27 @@ export default function MethodologyDiagram() {
                         <PointIcon code={p.code} size={17} />
                       </span>
                       <span className={wide ? "sm:max-w-[10rem]" : ""}>
-                        {labels[p.code] ? (
-                          labels[p.code].featured ? (
-                            <span className="text-foreground">
-                              {labels[p.code].label}
-                            </span>
-                          ) : (
+                        {(() => {
+                          const entry = labels[p.code];
+                          // Бесплатная четвёрка (featured) — открыта всегда.
+                          if (entry?.featured) {
+                            return (
+                              <span className="text-foreground">
+                                {entry.label}
+                              </span>
+                            );
+                          }
+                          // Демо-страница до квиза: показываем название пункта
+                          // открыто (нечего скрывать — значений ещё нет).
+                          const text = entry ? entry.label : p.title;
+                          if (!personalized) {
+                            return <span>{text}</span>;
+                          }
+                          // Квиз пройден: ВСЁ, кроме четвёрки, под блюром — и
+                          // посчитанные значения, и пункты без персонального
+                          // значения (иначе их generic-название торчало открытым,
+                          // ломая единообразие пейвола). В peek — приоткрываются.
+                          return (
                             <span
                               className={`select-none text-foreground transition-all duration-500 ${
                                 lowerPeek
@@ -182,12 +197,10 @@ export default function MethodologyDiagram() {
                               }`}
                               aria-hidden={!lowerPeek}
                             >
-                              {labels[p.code].label}
+                              {text}
                             </span>
-                          )
-                        ) : (
-                          p.title
-                        )}
+                          );
+                        })()}
                       </span>
                     </li>
                   ))}
