@@ -170,24 +170,25 @@ export default function MethodologyDiagram() {
                       <span className={wide ? "sm:max-w-[10rem]" : ""}>
                         {(() => {
                           const entry = labels[p.code];
-                          // Бесплатная четвёрка (featured) — открыта всегда.
-                          if (entry?.featured) {
+                          const text = entry ? entry.label : p.title;
+                          // В режиме проблеска (peek) нижний блок под глазом —
+                          // цельная «запертая карта»: заблюрено ВСЁ, включая
+                          // бесплатную четвёрку (её уже показали наверху), и peek
+                          // приоткрывает всё разом. Вне peek (прод) — четвёрка
+                          // открыта, остальное под блюром.
+                          if (entry?.featured && !peek) {
                             return (
-                              <span className="text-foreground">
-                                {entry.label}
-                              </span>
+                              <span className="text-foreground">{text}</span>
                             );
                           }
-                          // Демо-страница до квиза: показываем название пункта
-                          // открыто (нечего скрывать — значений ещё нет).
-                          const text = entry ? entry.label : p.title;
+                          // Демо-страница до квиза: название пункта открыто
+                          // (нечего скрывать — значений ещё нет).
                           if (!personalized) {
                             return <span>{text}</span>;
                           }
-                          // Квиз пройден: ВСЁ, кроме четвёрки, под блюром — и
-                          // посчитанные значения, и пункты без персонального
-                          // значения (иначе их generic-название торчало открытым,
-                          // ломая единообразие пейвола). В peek — приоткрываются.
+                          // Квиз пройден: под блюром — и посчитанные значения, и
+                          // пункты без персонального значения (иначе generic-
+                          // название торчало открытым). В peek — приоткрываются.
                           return (
                             <span
                               className={`select-none text-foreground transition-all duration-500 ${
