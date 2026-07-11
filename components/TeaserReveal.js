@@ -34,24 +34,12 @@ export default function TeaserReveal({ firstName, points }) {
   const [showRest, setShowRest] = useState(!!reduce);
   const [cta, setCta] = useState(false);
   const [ctaClosed, setCtaClosed] = useState(false);
-  // После закрытия попапа (любым способом) остальные пункты «запираются»:
-  // значения мягко блюрятся — их толкование живёт в платном разборе.
-  // Если попап уже показывали в этой сессии (reload) — сразу заперты.
-  const [restLocked, setRestLocked] = useState(false);
-  useEffect(() => {
-    try {
-      if (sessionStorage.getItem(CTA_SEEN_KEY)) setRestLocked(true);
-    } catch {
-      /* storage недоступен */
-    }
-  }, []);
-
+  // Платные пункты (все, кроме 4 бесплатных) ВСЕГДА заблюрены сразу: видно,
+  // ЧТО за пункт (иконка + подпись), но значение — под мягким блюром до оплаты.
+  // Единое правило со схемой у шарика (MethodologyDiagram блюрит по !featured),
+  // чтобы блюр был консистентным по всей странице, а не «вперемешку».
   const closeCta = () => {
     setCtaClosed(true);
-    if (!restLocked) {
-      setRestLocked(true);
-      ymGoal("rest_locked");
-    }
   };
 
   // Поэтапное раскрытие: считаем избранные пункты, затем показываем остальные.
@@ -164,38 +152,28 @@ export default function TeaserReveal({ firstName, points }) {
           transition={{ duration: 0.8, ease: EASE }}
         >
           <p className="mt-10 text-center text-sm text-foreground-muted">
-            {restLocked ? (
-              <span className="inline-flex items-center gap-2">
-                <span aria-hidden>🔒</span> Unlocked in your full reading
-              </span>
-            ) : (
-              <>
-                We calculated the rest of your chart too — here&apos;s what came
-                back. The full interpretation of each is in your complete reading.
-              </>
-            )}
+            <span className="inline-flex items-center gap-2">
+              <span aria-hidden>🔒</span> We calculated the rest of your chart
+              too — unlocked in your full reading.
+            </span>
           </p>
           <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {rest.map((p) => (
               <div
                 key={p.code}
-                onClick={restLocked ? () => {
+                onClick={() => {
                   const el = document.querySelector("#pricing");
                   if (window.__lenis && el) window.__lenis.scrollTo(el, { offset: -20 });
                   else el?.scrollIntoView({ behavior: "smooth" });
-                } : undefined}
-                className={`flex items-center gap-3 rounded-xl border border-foreground-muted/20 bg-background-alt/75 backdrop-blur-md px-4 py-3 ${
-                  restLocked ? "cursor-pointer" : ""
-                }`}
+                }}
+                className="flex cursor-pointer items-center gap-3 rounded-xl border border-foreground-muted/20 bg-background-alt/75 backdrop-blur-md px-4 py-3"
               >
                 <span className="text-foreground-muted">
                   <PointIcon code={p.code} size={22} />
                 </span>
                 <span
-                  className={`text-sm text-foreground transition-[filter,opacity] duration-700 ${
-                    restLocked ? "select-none opacity-70 blur-[5px]" : ""
-                  }`}
-                  aria-hidden={restLocked || undefined}
+                  className="select-none text-sm text-foreground opacity-70 blur-[5px]"
+                  aria-hidden
                 >
                   {p.label}
                 </span>
