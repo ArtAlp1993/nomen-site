@@ -49,7 +49,7 @@ export function ReadingHero({ card, reading }) {
       <motion.h1
         {...rise}
         transition={{ ...rise.transition, delay: 0.08 }}
-        className="mt-4 font-heading text-4xl font-semibold sm:text-6xl"
+        className="readable-on-spiral mt-4 font-heading text-4xl font-semibold sm:text-6xl"
         style={{ textShadow: "0 0 26px rgba(51,230,224,0.35)" }}
       >
         {card.fn} {card.ln || ""}
@@ -57,7 +57,7 @@ export function ReadingHero({ card, reading }) {
       <motion.p
         {...rise}
         transition={{ ...rise.transition, delay: 0.16 }}
-        className="mt-3 text-sm text-foreground-muted sm:text-base"
+        className="readable-on-spiral mt-3 text-sm text-foreground-muted sm:text-base"
       >
         {birthLine}
         {card.br ? ` · ${card.br}` : ""}
@@ -67,14 +67,16 @@ export function ReadingHero({ card, reading }) {
         transition={{ ...rise.transition, delay: 0.24 }}
         className="mt-8 flex items-center gap-8"
       >
-        {reading.b1?.glyph && <Glyph accent="#6c4ff6" small>{reading.b1.glyph}</Glyph>}
+        {reading.b1?.glyph && (
+          <Glyph accent="#6c4ff6" small>{reading.b1.glyph + "︎"}</Glyph>
+        )}
         <Glyph accent="#33e6e0" small>{reading.a1?.value}</Glyph>
         {reading.d1?.roman && <Glyph accent="#5aa9ff" small>{reading.d1.roman}</Glyph>}
       </motion.div>
       <motion.p
         {...rise}
         transition={{ ...rise.transition, delay: 0.32 }}
-        className="mt-10 max-w-md text-sm text-foreground-muted"
+        className="readable-on-spiral mt-10 max-w-md text-sm text-foreground-muted"
       >
         Thirteen points, one thread. Scroll — and descend through your own
         blueprint.
@@ -276,7 +278,7 @@ export function VerdictSection({ card, reading, verdictBank, innerRef }) {
       <motion.p
         {...rise}
         transition={{ ...rise.transition, delay: 0.2 }}
-        className="mt-10 text-center text-sm text-foreground-muted"
+        className="readable-on-spiral mt-10 text-center text-sm text-foreground-muted"
       >
         Compatibility readings — coming soon. This link is yours: revisit it,
         reread it, share it with someone who should understand you better.

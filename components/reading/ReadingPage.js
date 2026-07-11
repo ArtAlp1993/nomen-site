@@ -140,8 +140,11 @@ function buildSections(reading) {
     });
   }
 
+  // ︎ — текстовый вариант символа знака (без него ♑ и т.п. рендерятся
+  // цветным эмодзи и выбиваются из неонового стиля).
+  const b1Glyph = reading.b1?.glyph ? reading.b1.glyph + "︎" : null;
   const singles = [
-    ["B1", bankB1, reading.b1?.name, reading.b1?.glyph, `Sun in ${reading.b1?.name}`],
+    ["B1", bankB1, reading.b1?.name, b1Glyph, `Sun in ${reading.b1?.name}`],
     ["C1", bankC1, reading.c1?.name, reading.c1?.glyph, reading.c1?.name],
     ["C2", bankC2, reading.c2?.name, reading.c2?.glyph, `${reading.c2?.name} element`],
     ["D1", bankD1, String(reading.d1?.num), reading.d1?.roman, null],

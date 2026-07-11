@@ -145,7 +145,6 @@ function buildTunnel() {
 const SPARKS = 110;
 
 function Sparks({ stateRef }) {
-  const geomRef = useRef();
   const matRef = useRef();
   const seeds = useMemo(
     () =>
@@ -160,37 +159,37 @@ function Sparks({ stateRef }) {
       }),
     []
   );
-  const positionsRef = useRef(new Float32Array(SPARKS * 3));
+  const pointsRef = useRef(null);
+  const positions = useMemo(() => new Float32Array(SPARKS * 3), []);
 
   useFrame((_, delta) => {
-    if (!geomRef.current || !matRef.current) return;
+    // Вся мутация — через рефы (three-объекты), как в остальной сцене.
+    const attr = pointsRef.current?.geometry?.attributes?.position;
+    if (!matRef.current || !attr) return;
     if (stateRef.current.sparkLife <= 0) {
       matRef.current.opacity = 0;
       return;
     }
     stateRef.current.sparkLife = Math.max(0, stateRef.current.sparkLife - delta);
     const age = 1.1 - stateRef.current.sparkLife; // 0 → 1.1s
-    const positions = positionsRef.current;
     for (let i = 0; i < SPARKS; i++) {
       const d = seeds[i].dir;
       const r = 0.35 + age * seeds[i].speed;
-      positions[i * 3] = d.x * r;
-      positions[i * 3 + 1] = d.y * r;
-      positions[i * 3 + 2] = d.z * r * 0.6;
+      attr.setXYZ(i, d.x * r, d.y * r, d.z * r * 0.6);
     }
-    geomRef.current.attributes.position.needsUpdate = true;
+    attr.needsUpdate = true;
     matRef.current.opacity = Math.max(0, stateRef.current.sparkLife / 1.1) * 0.9;
     matRef.current.color.copy(stateRef.current.sparkColor);
   });
 
   return (
-    <points>
-      <bufferGeometry ref={geomRef}>
+    <points ref={pointsRef}>
+      <bufferGeometry>
         <bufferAttribute attach="attributes-position" args={[positions, 3]} />
       </bufferGeometry>
       <pointsMaterial
         ref={matRef}
-        size={0.06}
+        size={0.028}
         sizeAttenuation
         transparent
         opacity={0}
@@ -248,6 +247,13 @@ function SceneBody({ gender, reduce, stateRef }) {
         entityGroup.current.rotation.z += delta * 0.07;
         entityGroup.current.position.y = Math.sin(t * 0.6) * 0.08;
       }
+      // На широких экранах после hero сущность уезжает вбок — летит РЯДОМ с
+      // текстом, а не прячется за панелями; на телефоне остаётся по центру
+      // (панели полупрозрачные — она просвечивает глубиной).
+      const wide = state.size.width / state.size.height > 1.05;
+      const aside = wide && st.progress > 0.02 ? 2.5 : 0;
+      entityGroup.current.position.x +=
+        (aside - entityGroup.current.position.x) * Math.min(1, delta * 1.8);
     }
     if (tunnelGroup.current) {
       // Скролл «везёт» по трубе: волокна текут навстречу; торможения нет —
@@ -302,7 +308,7 @@ function SceneBody({ gender, reduce, stateRef }) {
           <pointsMaterial
             ref={entityTipMat}
             vertexColors
-            size={0.045}
+            size={0.02}
             sizeAttenuation
             transparent
             opacity={0.95}
