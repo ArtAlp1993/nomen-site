@@ -6,6 +6,7 @@ import Card from "./ui/Card";
 import Button from "./ui/Button";
 import PointIcon from "./PointIcon";
 import { ymGoal } from "./Analytics";
+import { usePeekFlag } from "@/lib/peekFlag";
 
 // Поэтапная выдача результата: каждый избранный пункт «вычисляется» на глазах
 // (колёсико + подпись, что именно считаем), затем раскрывается. После
@@ -30,10 +31,14 @@ export default function TeaserReveal({ firstName, points }) {
   const featured = points.filter((p) => p.featured);
   const rest = points.filter((p) => !p.featured);
 
+  const peek = usePeekFlag();
   const [revealed, setRevealed] = useState(reduce ? featured.length : 0);
   const [showRest, setShowRest] = useState(!!reduce);
   const [cta, setCta] = useState(false);
   const [ctaClosed, setCtaClosed] = useState(false);
+  // Проблеск (З-37, флаг ?peek=1): платные пункты появляются ОТКРЫТЫМИ вместе с
+  // блоком остальных → через 2 сек плавно заблюриваются. Гаснут по таймеру.
+  const [restPeek, setRestPeek] = useState(false);
   // Платные пункты (все, кроме 4 бесплатных) ВСЕГДА заблюрены сразу: видно,
   // ЧТО за пункт (иконка + подпись), но значение — под мягким блюром до оплаты.
   // Единое правило со схемой у шарика (MethodologyDiagram блюрит по !featured),
@@ -90,6 +95,16 @@ export default function TeaserReveal({ firstName, points }) {
       if (window.__lenis) window.__lenis.off("scroll", onActivity);
     };
   }, [showRest, cta, ctaClosed, reduce]);
+
+  // Проблеск верхнего блока: как только показались «остальные» пункты и включён
+  // флаг — держим их открытыми 2 секунды, затем возвращаем блюр. Без флага блок
+  // остаётся заблюренным сразу (прод-поведение, пейвол).
+  useEffect(() => {
+    if (!peek || !showRest || rest.length === 0) return;
+    setRestPeek(true);
+    const t = setTimeout(() => setRestPeek(false), 2000);
+    return () => clearTimeout(t);
+  }, [peek, showRest, rest.length]);
 
   const calcNow = revealed < featured.length ? featured[revealed] : null;
 
@@ -171,9 +186,15 @@ export default function TeaserReveal({ firstName, points }) {
                 <span className="text-foreground-muted">
                   <PointIcon code={p.code} size={22} />
                 </span>
+                {/* Проблеск: пока restPeek — пункт открыт и читаем; затем плавно
+                    (700 мс) уходит под блюр. Переход по filter/opacity. */}
                 <span
-                  className="select-none text-sm text-foreground opacity-70 blur-[5px]"
-                  aria-hidden
+                  className={`select-none text-sm text-foreground transition-all duration-700 ${
+                    restPeek
+                      ? "opacity-100 blur-0"
+                      : "opacity-70 blur-[5px]"
+                  }`}
+                  aria-hidden={!restPeek}
                 >
                   {p.label}
                 </span>

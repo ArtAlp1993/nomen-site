@@ -1,10 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import SectionHeading from "./ui/SectionHeading";
 import PointIcon from "./PointIcon";
 import { useResult } from "./ResultProvider";
+import { usePeekFlag } from "@/lib/peekFlag";
 import methodology from "@/data/methodology.json";
 
 // 3D-сцена рендерится только на клиенте (WebGL) — иначе SSR падает.
@@ -38,6 +39,35 @@ export default function MethodologyDiagram() {
     }
   }
   const personalized = Boolean(result?.points?.length);
+
+  // Scroll-peek (З-81, флаг ?peek=1): когда клиент доскроллил до нижнего блока
+  // пунктов, заблюренные значения на 1 секунду приоткрываются и снова гаснут —
+  // «подкрался, подсмотрел, закрылось». Срабатывает при каждом входе блока в
+  // зону видимости. Без флага блок остаётся под блюром (прод-поведение).
+  const peek = usePeekFlag();
+  const pointsRef = useRef(null);
+  const [lowerPeek, setLowerPeek] = useState(false);
+  useEffect(() => {
+    if (!peek || !personalized) return;
+    const el = pointsRef.current;
+    if (!el) return;
+    let timer;
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setLowerPeek(true);
+          clearTimeout(timer);
+          timer = setTimeout(() => setLowerPeek(false), 1000);
+        }
+      },
+      { threshold: 0.35 }
+    );
+    obs.observe(el);
+    return () => {
+      clearTimeout(timer);
+      obs.disconnect();
+    };
+  }, [peek, personalized]);
 
   // WebGL бывает недоступен (выключено аппаратное ускорение, сбой GPU,
   // старые машины) — тогда вместо живой сцены показываем её кадр
@@ -102,7 +132,7 @@ export default function MethodologyDiagram() {
       {/* Пункты по традициям, симметрично по центру: Numerology во всю ширину
           (9 пунктов в три колонки), ниже — три традиции в ряд. Иконки
           временные, под замену на сигилы (2026-07-10_дизайн-иконок-13-пунктов.md). */}
-      <div className="mx-auto mt-10 grid max-w-4xl gap-4">
+      <div ref={pointsRef} className="mx-auto mt-10 grid max-w-4xl gap-4">
         {(() => {
           const panel =
             "rounded-xl border border-foreground-muted/30 bg-background-alt/75 backdrop-blur-md p-6";
@@ -145,8 +175,12 @@ export default function MethodologyDiagram() {
                             </span>
                           ) : (
                             <span
-                              className="select-none text-foreground opacity-70 blur-[5px]"
-                              aria-hidden
+                              className={`select-none text-foreground transition-all duration-500 ${
+                                lowerPeek
+                                  ? "opacity-100 blur-0"
+                                  : "opacity-70 blur-[5px]"
+                              }`}
+                              aria-hidden={!lowerPeek}
                             >
                               {labels[p.code].label}
                             </span>
