@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { notifyTelegram } from "@/lib/notify";
 
 // Яндекс.Метрика. Счётчик Артёма, включён 12.07.2026.
 export const YM_ID = 110604454;
@@ -18,6 +19,23 @@ export function ymGoal(name, params) {
 }
 
 export default function Analytics() {
+  // Телеграм-уведомление Артёму «на сайт зашли» — один раз за сессию вкладки.
+  // Не шлём: локальную разработку, автоматизированные браузеры (webdriver —
+  // тесты/боты) и служебные страницы (/studio, /lab — это сам Артём).
+  useEffect(() => {
+    try {
+      if (sessionStorage.getItem("nomen_visit_notified")) return;
+      if (["localhost", "127.0.0.1"].includes(location.hostname)) return;
+      if (navigator.webdriver) return;
+      if (/^\/(studio|lab)/.test(location.pathname)) return;
+      sessionStorage.setItem("nomen_visit_notified", "1");
+      const from = document.referrer ? `\nоткуда: ${document.referrer}` : "";
+      notifyTelegram(`👀 Посетитель на сайте\nстраница: ${location.pathname}${from}`);
+    } catch {
+      /* уведомление никогда не ломает сайт */
+    }
+  }, []);
+
   useEffect(() => {
     if (!YM_ID || window.ym) return;
     // Официальный тег Метрики (вставка скриптом, чтобы жить в статике).
