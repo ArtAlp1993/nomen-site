@@ -46,10 +46,11 @@ export function ReadingHero({ card, reading }) {
       >
         Full reading
       </motion.p>
+      {/* ym-hide-content: имя и данные рождения — PII, скрыты из Вебвизора */}
       <motion.h1
         {...rise}
         transition={{ ...rise.transition, delay: 0.08 }}
-        className="readable-on-spiral mt-4 font-heading text-4xl font-semibold sm:text-6xl"
+        className="ym-hide-content readable-on-spiral mt-4 font-heading text-4xl font-semibold sm:text-6xl"
         style={{ textShadow: "0 0 26px rgba(51,230,224,0.35)" }}
       >
         {card.fn} {card.ln || ""}
@@ -57,7 +58,7 @@ export function ReadingHero({ card, reading }) {
       <motion.p
         {...rise}
         transition={{ ...rise.transition, delay: 0.16 }}
-        className="readable-on-spiral mt-3 text-sm text-foreground-muted sm:text-base"
+        className="ym-hide-content readable-on-spiral mt-3 text-sm text-foreground-muted sm:text-base"
       >
         {birthLine}
         {card.br ? ` · ${card.br}` : ""}

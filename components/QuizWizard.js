@@ -93,8 +93,10 @@ export default function QuizWizard({ onSubmit, submitting }) {
     onSubmit({ gender, firstName, lastName, birthDate, birthTime, birthPlace, brand, email });
   };
 
+  // ym-disable-keys: Вебвизор Метрики НЕ записывает ввод в эти поля (PII:
+  // имя, email и т.д. — в записях сессий заменяются звёздочками).
   const inputClass =
-    "rounded-lg border border-foreground-muted/60 bg-background-alt px-4 py-3 text-foreground placeholder:text-foreground-muted/60 transition-colors hover:border-foreground-muted/80 focus:border-accent-turquoise focus:outline-none focus:ring-1 focus:ring-accent-turquoise";
+    "ym-disable-keys rounded-lg border border-foreground-muted/60 bg-background-alt px-4 py-3 text-foreground placeholder:text-foreground-muted/60 transition-colors hover:border-foreground-muted/80 focus:border-accent-turquoise focus:outline-none focus:ring-1 focus:ring-accent-turquoise";
 
   return (
     <div className="relative mx-auto w-full max-w-md">
@@ -182,7 +184,10 @@ export default function QuizWizard({ onSubmit, submitting }) {
             <h3 className="text-center font-heading text-xl font-semibold">
               When were you born?
             </h3>
-            <DateWheel value={birthDate} onChange={setBirthDate} />
+            {/* ym-hide-content: дата рождения — PII, прячем от записей Вебвизора */}
+            <div className="ym-hide-content">
+              <DateWheel value={birthDate} onChange={setBirthDate} />
+            </div>
           </div>
         )}
 
@@ -197,7 +202,9 @@ export default function QuizWizard({ onSubmit, submitting }) {
               unlock the deeper time-based layers as they arrive.
             </p>
             {touchUI ? (
-              <TimeWheel value={birthTime} onChange={setBirthTime} />
+              <div className="ym-hide-content">
+                <TimeWheel value={birthTime} onChange={setBirthTime} />
+              </div>
             ) : (
               <input
                 type="time"

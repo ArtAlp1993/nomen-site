@@ -26,17 +26,19 @@ export const metadata = {
 
 // CSP через <meta> (статический хостинг не даёт заголовки). Главная защита —
 // connect-src: даже при инъекции скрипта данные/токен нельзя слить на чужой
-// хост (только на свой + Telegram + CoinGecko). script/style с 'unsafe-inline'
-// — этого требуют инлайновый бутстрап Next и стили framer/tailwind; blob:/data:
-// нужны для 3D-воркеров и QR-картинки. Включаем только в проде, чтобы не рвать
-// dev-HMR (websocket). Яндекс.Метрику при включении добавить в script/connect.
+// хост (только на свой + Telegram + CoinGecko + Метрика). script/style с
+// 'unsafe-inline' — этого требуют инлайновый бутстрап Next и стили
+// framer/tailwind; blob:/data: нужны для 3D-воркеров и QR-картинки. Включаем
+// только в проде, чтобы не рвать dev-HMR (websocket). Яндекс.Метрика:
+// mc.yandex.ru — тег и приём хитов, mc.yandex.com/mc.webvisor.org — зеркала
+// приёма данных вебвизора (ЕС-трафик ходит на webvisor.org).
 const CSP = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline' 'unsafe-eval' blob:",
+  "script-src 'self' 'unsafe-inline' 'unsafe-eval' blob: https://mc.yandex.ru",
   "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: blob:",
+  "img-src 'self' data: blob: https://mc.yandex.ru https://mc.yandex.com",
   "font-src 'self' data:",
-  "connect-src 'self' https://api.telegram.org https://api.coingecko.com https://api.anthropic.com",
+  "connect-src 'self' https://api.telegram.org https://api.coingecko.com https://api.anthropic.com https://mc.yandex.ru https://mc.yandex.com https://mc.webvisor.org",
   "worker-src 'self' blob:",
   "base-uri 'none'",
   "form-action 'self'",

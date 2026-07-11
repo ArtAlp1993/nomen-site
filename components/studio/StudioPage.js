@@ -123,8 +123,9 @@ function buildEmail(card, link) {
   return { subject, body };
 }
 
+// ym-disable-keys: студия — сплошные PII клиентов, Вебвизор ввод не пишет.
 const inputCls =
-  "w-full rounded-lg border border-foreground-muted/40 bg-background-alt px-3 py-2 text-sm text-foreground placeholder:text-foreground-muted/50 focus:border-accent-turquoise focus:outline-none";
+  "ym-disable-keys w-full rounded-lg border border-foreground-muted/40 bg-background-alt px-3 py-2 text-sm text-foreground placeholder:text-foreground-muted/50 focus:border-accent-turquoise focus:outline-none";
 const btnCls =
   "rounded-lg border border-accent-turquoise/60 px-4 py-2 text-sm text-accent-turquoise transition-colors hover:bg-accent-turquoise/10 disabled:cursor-not-allowed disabled:opacity-40";
 
@@ -265,7 +266,9 @@ export default function StudioPage() {
   const email = link ? buildEmail(card, link) : null;
 
   return (
-    <main className="mx-auto min-h-screen w-full max-w-3xl px-5 py-10 text-foreground">
+    // ym-hide-content: вся студия скрыта из записей Вебвизора (PII клиентов
+    // не только в полях, но и в сгенерированных текстах/ссылках).
+    <main className="ym-hide-content mx-auto min-h-screen w-full max-w-3xl px-5 py-10 text-foreground">
       <header className="mb-6 flex items-end justify-between">
         <div>
           <p className="font-heading text-xs uppercase tracking-[0.3em] text-accent-turquoise">

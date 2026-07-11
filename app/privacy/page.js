@@ -35,6 +35,23 @@ export default function PrivacyPage() {
       </p>
 
       <p>
+        <strong>Analytics.</strong> We use Yandex Metrica to understand how
+        visitors use the site: pages viewed, clicks, scrolling, and anonymised
+        session replays. Metrica sets cookies and processes this data on
+        Yandex servers. We configure it so that anything you type into forms
+        (your name, birth details, email) and your personal reading details
+        are masked and never included in analytics data. You can opt out of
+        Metrica tracking at{" "}
+        <a
+          href="https://yandex.com/support/metrica/general/opt-out.html"
+          className="text-accent-turquoise hover:underline"
+        >
+          yandex.com/support/metrica
+        </a>
+        .
+      </p>
+
+      <p>
         <strong>How long we keep it.</strong> We retain your reading data for
         as long as needed to deliver your purchase and respond to support
         requests. You can request deletion of your data at any time by

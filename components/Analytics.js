@@ -2,10 +2,8 @@
 
 import { useEffect } from "react";
 
-// Яндекс.Метрика. Пока счётчик не заведён — YM_ID = null, компонент ничего
-// не делает и никаких запросов не шлёт. Когда Артём пришлёт номер счётчика,
-// вписать его сюда числом — и метрика с Вебвизором заработает.
-export const YM_ID = null; // ← номер счётчика Метрики (8 цифр)
+// Яндекс.Метрика. Счётчик Артёма, включён 12.07.2026.
+export const YM_ID = 110604454;
 
 // Безопасная отправка цели: молчит, если Метрики нет (ID не задан,
 // скрипт ещё не загрузился или зарезан блокировщиком).
@@ -35,16 +33,25 @@ export default function Analytics() {
       k.async = 1;
       k.src = r;
       a.parentNode.insertBefore(k, a);
-    })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+    })(
+      window,
+      document,
+      "script",
+      `https://mc.yandex.ru/metrika/tag.js?id=${YM_ID}`,
+      "ym"
+    );
 
-    // ВНИМАНИЕ (безопасность/PII): webvisor записывает ввод в поля. Перед
-    // включением Метрики замаскировать PII квиза (имя/дата/email) — навесить
-    // на эти input class "ym-disable-keys" (или отключить webvisor), иначе
-    // персональные данные уйдут в записи сессий на mc.yandex.ru. И раскрыть
-    // сбор в Privacy Policy + добавить mc.yandex.ru в CSP connect-src/script-src.
+    // ВНИМАНИЕ (безопасность/PII): webvisor записывает ввод в поля, поэтому
+    // на PII-инпутах квиза (имя/дата/email) стоит class "ym-disable-keys" —
+    // без него персональные данные уйдут в записи сессий на mc.yandex.ru.
+    // Новый инпут с личными данными → тоже вешать этот класс.
     window.ym(YM_ID, "init", {
+      ssr: true,
       webvisor: true,
       clickmap: true,
+      ecommerce: "dataLayer",
+      referrer: document.referrer,
+      url: location.href,
       accurateTrackBounce: true,
       trackLinks: true,
     });

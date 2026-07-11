@@ -290,7 +290,7 @@ export default function ReadingPage() {
         innerRef={(el) => (sectionRefs.current.VERDICT = el)}
       />
 
-      <footer className="pb-10 text-center text-[11px] text-foreground-muted/50">
+      <footer className="ym-hide-content pb-10 text-center text-[11px] text-foreground-muted/50">
         NOMEN · this reading is personal to {card.fn} — the link opens it anytime
       </footer>
     </div>

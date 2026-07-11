@@ -227,12 +227,13 @@ export default function ChatWidget({ open, onClose }) {
                 }}
                 className="flex gap-2"
               >
+                {/* ym-disable-keys: email — PII, Вебвизор не записывает ввод */}
                 <input
                   type="email"
                   name="email"
                   required
                   placeholder="you@email.com"
-                  className="min-w-0 flex-1 rounded-lg border border-foreground-muted/40 bg-background px-3 py-2 text-sm text-foreground placeholder:text-foreground-muted/50 focus:border-accent-turquoise focus:outline-none"
+                  className="ym-disable-keys min-w-0 flex-1 rounded-lg border border-foreground-muted/40 bg-background px-3 py-2 text-sm text-foreground placeholder:text-foreground-muted/50 focus:border-accent-turquoise focus:outline-none"
                 />
                 <button
                   type="submit"
@@ -271,7 +272,7 @@ export default function ChatWidget({ open, onClose }) {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Type a question…"
-              className="min-w-0 flex-1 rounded-lg border border-foreground-muted/40 bg-background px-3 py-2 text-sm text-foreground placeholder:text-foreground-muted/50 focus:border-accent-turquoise focus:outline-none"
+              className="ym-disable-keys min-w-0 flex-1 rounded-lg border border-foreground-muted/40 bg-background px-3 py-2 text-sm text-foreground placeholder:text-foreground-muted/50 focus:border-accent-turquoise focus:outline-none"
             />
             <button
               type="submit"
