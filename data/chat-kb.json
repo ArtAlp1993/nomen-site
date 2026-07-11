@@ -1,13 +1,13 @@
 [
   {
     "keywords": ["price", "prices", "cost", "how much", "pricing", "expensive", "cheap", "money"],
-    "answer": "We keep it simple: Full Reading — $9.90 is live now; Compatibility ($9.90) and the Reading + Compatibility bundle ($14.90) are coming soon. Once your payment is confirmed on-chain, a personal link to your reading is emailed to you — usually within a few hours.",
+    "answer": "We keep it simple. The Full Reading is $9.90 and live now (launch price, rising to $15 as we grow). Compatibility ($9.90) and the Reading + Compatibility bundle ($14.90) are coming soon. Once your payment is confirmed, a personal link to your reading is emailed to you, usually within a few hours.",
     "cta": { "label": "See pricing", "href": "#pricing" }
   },
   {
     "keywords": ["discount", "deal", "promo", "coupon", "sale", "bundle", "combo", "cheaper", "offer"],
-    "answer": "The built-in deal is the bundle: Reading + Compatibility for $14.90 instead of $19.80 — that's the biggest saving right now. Promo codes may appear later; the bundle is always there.",
-    "cta": { "label": "See the bundle", "href": "#pricing" }
+    "answer": "Right now the Full Reading is $9.90 at launch price. The bigger deal is coming: the Reading + Compatibility bundle at $14.90 instead of $19.80. Promo codes may appear later; the bundle will always be there.",
+    "cta": { "label": "See pricing", "href": "#pricing" }
   },
   {
     "keywords": ["pay", "payment", "card", "credit", "crypto", "bitcoin", "usdt", "paypal", "checkout"],
@@ -15,25 +15,25 @@
   },
   {
     "keywords": ["refund", "money back", "return", "cancel"],
-    "answer": "If something went wrong with your order — a wrong birth date, a duplicate payment, or the reading never arrived — write to us and we'll fix it or refund you. Honest product, honest support."
+    "answer": "If something went wrong with your order, like a wrong birth date, a duplicate payment, or a reading that never arrived, write to us and we'll fix it or refund you. Honest product, honest support."
   },
   {
     "keywords": ["delivery", "email", "receive", "arrive", "when", "how long", "instant", "wait"],
-    "answer": "Usually within a few hours. We confirm your payment on-chain, then email you a personal link to your full reading — no waiting days, and the link stays yours forever."
+    "answer": "Usually within a few hours. We confirm your payment, then email you a personal link to your full reading. No waiting days, and the link stays yours forever."
   },
   {
     "keywords": ["13", "thirteen", "points", "what do i get", "included", "reading", "report", "blueprint"],
-    "answer": "Your blueprint is 13 points across four traditions: 9 from numerology (Life Path, Expression, Soul Urge and more), your Sun sign, Chinese zodiac animal and element, and your tarot birth card — each with a full interpretation in the paid reading.",
+    "answer": "Your blueprint is 13 points across four traditions: 9 from numerology (Life Path, Expression, Soul Urge and more), your Sun sign, Chinese zodiac animal and element, and your tarot birth card. Each one comes with a full interpretation in the paid reading.",
     "cta": { "label": "See the methodology", "href": "#faq" }
   },
   {
     "keywords": ["free", "preview", "quiz", "try", "test"],
-    "answer": "The quiz above is free: enter your name and birth date and we calculate a real slice of your 13-point profile on the spot — no account, no card.",
+    "answer": "The quiz above is free: enter your name and birth date and we calculate a real slice of your 13-point profile on the spot. No account, no card.",
     "cta": { "label": "Try the free preview", "href": "#quiz" }
   },
   {
     "keywords": ["compatibility", "partner", "couple", "relationship", "match", "love"],
-    "answer": "The Compatibility reading ($9.90) looks at how two people fit — connection and conflict style across the key points. For couples the bundle (Reading + Compatibility, $14.90) is the smart pick.",
+    "answer": "The Compatibility reading ($9.90) looks at how two people fit: connection and conflict style across the key points. For couples the bundle (Reading + Compatibility, $14.90) is the smart pick.",
     "cta": { "label": "See pricing", "href": "#pricing" }
   },
   {
@@ -42,6 +42,6 @@
   },
   {
     "keywords": ["real", "scam", "fake", "science", "serious", "method", "methodology"],
-    "answer": "Every point traces back to a documented framework — Pythagorean numerology, tropical astrology, the Chinese calendar, the Major Arcana. We'd rather be honest than impressive: it's a named method, not \"the universe says\"."
+    "answer": "Every point traces back to a documented framework: Pythagorean numerology, tropical astrology, the Chinese calendar, the Major Arcana. We'd rather be honest than impressive: it's a named method, not \"the universe says\"."
   }
 ]

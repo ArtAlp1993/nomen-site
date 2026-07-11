@@ -166,7 +166,7 @@ export default function TeaserReveal({ firstName, points }) {
           <p className="mt-10 text-center text-sm text-foreground-muted">
             <span className="inline-flex items-center gap-2">
               <span aria-hidden>🔒</span> We calculated the rest of your chart
-              too — unlocked in your full reading.
+              too. It&apos;s all unlocked in your full reading.
             </span>
           </p>
           <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
@@ -239,7 +239,7 @@ export default function TeaserReveal({ firstName, points }) {
               </h3>
               <p className="mt-3 text-sm text-foreground-muted">
                 What you see above is a real slice. The complete 13-point
-                interpretation — every number, sign and card explained — is one
+                reading, with every number, sign and card explained, is one
                 step away.
               </p>
               <div className="mt-6 flex flex-col items-center gap-3">
@@ -257,7 +257,7 @@ export default function TeaserReveal({ firstName, points }) {
                   onClick={closeCta}
                   className="text-sm text-foreground-muted underline-offset-4 transition-colors hover:text-foreground hover:underline"
                 >
-                  Not now — keep reading
+                  Not now, keep reading
                 </button>
               </div>
             </motion.div>

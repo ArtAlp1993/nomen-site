@@ -1,42 +1,42 @@
 {
-  "code": "C2",
-  "title": "Chinese Year Element",
-  "intro": "Your birth year also carries one of five elements — the temperature of your nature. It doesn't replace your animal sign; it colors it, the way the same melody changes character in a different key.",
-  "values": {
-    "Wood": {
-      "heading": "木 Wood — Growth and Reach",
-      "paragraphs": [
-        "Wood turns your nature toward growth: you're built to develop, branch, and plan — always reaching for the next stage of yourself. It lends your animal sign flexibility and vision, the ability to bend under pressure without breaking, and a quiet generosity that wants other things (people, projects, teams) to grow alongside you.",
-        "Wood rewards long-range planting: education, ventures, and relationships that compound over years suit you better than quick wins. The risk is branching in too many directions until no single trunk thickens. Prune deliberately — fewer, better-fed projects — and your growth becomes structure instead of sprawl."
-      ]
-    },
-    "Fire": {
-      "heading": "火 Fire — Heat and Drive",
-      "paragraphs": [
-        "Fire turns the heat of your nature all the way up: whatever your animal sign is, this element makes it more passionate, more visible, more decisive. You radiate energy people want to stand near, express feelings at full color, and instinctively move toward the front of any room you care about.",
-        "Fire amplifies leadership and inspiration — use it to start things and to warm people, not just to win. Watch two failure modes: flare (temper that scorches faster than you intended) and burnout (running on intensity until nothing's left). Guard your fuel: rest, pacing, and a few slow rituals keep the flame usable."
-      ]
-    },
-    "Earth": {
-      "heading": "土 Earth — Ground and Center",
-      "paragraphs": [
-        "Earth settles your nature toward the center: it makes your animal sign steadier, more practical, more trustworthy under load. You think in real terms — what works, what lasts, who needs holding — and people instinctively treat you as ground: the one who stays calm and keeps things standing.",
-        "Earth strengthens everything built patiently: homes, savings, reputations, long friendships. Its risk is inertia — comfort hardening into stubbornness, stability into staying put long after the season changed. Move before you must: schedule deliberate change in small doses, and your solidity becomes a foundation rather than a weight."
-      ]
-    },
-    "Metal": {
-      "heading": "金 Metal — Edge and Resolve",
-      "paragraphs": [
-        "Metal gives your nature an edge: it sharpens your animal sign with willpower, discipline, and clean structure. You hold standards, keep your word, and cut through excess — in plans, possessions, and conversations — with a decisiveness others find bracing. Where softer natures drift, you set a line and hold it.",
-        "Metal excels wherever precision and resolve pay: refining, finishing, enforcing quality, making the hard call. Its danger is over-hardening — principles turning brittle, self-discipline turning punitive, coolness reading as indifference to people who need your warmth. Temper the blade: flexibility, granted on purpose, is what keeps steel from snapping."
-      ]
-    },
-    "Water": {
-      "heading": "水 Water — Depth and Flow",
-      "paragraphs": [
-        "Water makes your nature fluid: it deepens your animal sign with intuition, adaptability, and a gift for connection. You read currents other people don't notice, adjust to new situations without losing yourself, and find routes around obstacles rather than through them. Your influence works by permeation, not pressure.",
-        "Water thrives in negotiation, strategy, and any work that rewards sensing what's beneath the surface. Its risk is formlessness: evasiveness instead of honesty, fear disguised as flexibility, always flowing around and never standing firm. Choose a few unmovable points — values, people, commitments — and let everything else stay beautifully fluid."
-      ]
-    }
-  }
+ "code": "C2",
+ "title": "Chinese Year Element",
+ "intro": "Your birth year also carries one of five elements, the temperature of your nature. It doesn't replace your animal sign; it colors it, the way the same melody changes character in a different key.",
+ "values": {
+ "Wood": {
+ "heading": "木 Wood, Growth and Reach",
+ "paragraphs": [
+ "Wood turns your nature toward growth: you're built to develop, branch, and plan, always reaching for the next stage of yourself. It lends your animal sign flexibility and vision, the ability to bend under pressure without breaking, and a quiet generosity that wants other things (people, projects, teams) to grow alongside you.",
+ "Wood rewards long-range planting: education, ventures, and relationships that compound over years suit you better than quick wins. The risk is branching in too many directions until no single trunk thickens. Prune deliberately, fewer, better-fed projects, and your growth becomes structure instead of sprawl."
+ ]
+ },
+ "Fire": {
+ "heading": "火 Fire, Heat and Drive",
+ "paragraphs": [
+ "Fire turns the heat of your nature all the way up: whatever your animal sign is, this element makes it more passionate, more visible, more decisive. You radiate energy people want to stand near, express feelings at full color, and instinctively move toward the front of any room you care about.",
+ "Fire amplifies leadership and inspiration, use it to start things and to warm people, not just to win. Watch two failure modes: flare (temper that scorches faster than you intended) and burnout (running on intensity until nothing's left). Guard your fuel: rest, pacing, and a few slow rituals keep the flame usable."
+ ]
+ },
+ "Earth": {
+ "heading": "土 Earth, Ground and Center",
+ "paragraphs": [
+ "Earth settles your nature toward the center: it makes your animal sign steadier, more practical, more trustworthy under load. You think in real terms, what works, what lasts, who needs holding, and people instinctively treat you as ground: the one who stays calm and keeps things standing.",
+ "Earth strengthens everything built patiently: homes, savings, reputations, long friendships. Its risk is inertia, comfort hardening into stubbornness, stability into staying put long after the season changed. Move before you must: schedule deliberate change in small doses, and your solidity becomes a foundation rather than a weight."
+ ]
+ },
+ "Metal": {
+ "heading": "金 Metal, Edge and Resolve",
+ "paragraphs": [
+ "Metal gives your nature an edge: it sharpens your animal sign with willpower, discipline, and clean structure. You hold standards, keep your word, and cut through excess, in plans, possessions, and conversations, with a decisiveness others find bracing. Where softer natures drift, you set a line and hold it.",
+ "Metal excels wherever precision and resolve pay: refining, finishing, enforcing quality, making the hard call. Its danger is over-hardening, principles turning brittle, self-discipline turning punitive, coolness reading as indifference to people who need your warmth. Temper the blade: flexibility, granted on purpose, is what keeps steel from snapping."
+ ]
+ },
+ "Water": {
+ "heading": "水 Water, Depth and Flow",
+ "paragraphs": [
+ "Water makes your nature fluid: it deepens your animal sign with intuition, adaptability, and a gift for connection. You read currents other people don't notice, adjust to new situations without losing yourself, and find routes around obstacles rather than through them. Your influence works by permeation, not pressure.",
+ "Water thrives in negotiation, strategy, and any work that rewards sensing what's beneath the surface. Its risk is formlessness: evasiveness instead of honesty, fear disguised as flexibility, always flowing around and never standing firm. Choose a few unmovable points, values, people, commitments, and let everything else stay beautifully fluid."
+ ]
+ }
+ }
 }

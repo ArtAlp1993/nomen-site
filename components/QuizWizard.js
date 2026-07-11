@@ -81,7 +81,7 @@ export default function QuizWizard({ onSubmit, submitting }) {
     }
     const both = f + l;
     if (LAT_RE.test(both) && CYR_RE.test(both)) {
-      return "Use one alphabet for your name — Latin or Cyrillic, not both.";
+      return "Use one alphabet for your name: Latin or Cyrillic, not both.";
     }
     return null;
   };
@@ -194,7 +194,7 @@ export default function QuizWizard({ onSubmit, submitting }) {
               What&apos;s your name?
               <HintDot
                 align="center"
-                text="Every letter of your name maps to a number — your name and birth date are the two roots of all 13 points. We use them only to calculate your reading."
+                text="Every letter of your name maps to a number. Your name and birth date are the two roots of all 13 points, and we use them only to calculate your reading."
               />
             </h3>
             <input
@@ -246,7 +246,7 @@ export default function QuizWizard({ onSubmit, submitting }) {
                 onChange={(e) => setBirthPlace(e.target.value)}
                 className={`${inputClass} min-w-0 flex-1`}
               />
-              <HintDot text="Your birth city is optional. It prepares the location-based layers of your reading we're adding — that's all we use it for." />
+              <HintDot text="Your birth city is optional. It prepares the location-based layers we're adding, and that's all we use it for." />
             </div>
             <input
               type="text"
@@ -272,7 +272,7 @@ export default function QuizWizard({ onSubmit, submitting }) {
                   aria-label="Birth time (optional)"
                 />
               )}
-              <HintDot text="Birth time is optional. It unlocks the deeper time-based layers of your profile as they arrive — skip it and your 13-point reading still works fully." />
+              <HintDot text="Birth time is optional. It unlocks the deeper time-based layers of your profile as they arrive. Skip it and your 13-point reading still works fully." />
             </div>
           </div>
         )}

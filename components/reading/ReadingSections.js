@@ -79,7 +79,7 @@ export function ReadingHero({ card, reading }) {
         transition={{ ...rise.transition, delay: 0.32 }}
         className="readable-on-spiral mt-10 max-w-md text-sm text-foreground-muted"
       >
-        Thirteen points, one thread. Scroll — and descend through your own
+        Thirteen points, one thread. Scroll, and descend through your own
         blueprint.
       </motion.p>
       {card.oc && (
@@ -281,7 +281,7 @@ export function VerdictSection({ card, reading, verdictBank, innerRef }) {
         transition={{ ...rise.transition, delay: 0.2 }}
         className="readable-on-spiral mt-10 text-center text-sm text-foreground-muted"
       >
-        Compatibility readings — coming soon. This link is yours: revisit it,
+        Compatibility readings are coming soon. This link is yours: revisit it,
         reread it, share it with someone who should understand you better.
       </motion.p>
     </section>
@@ -298,7 +298,7 @@ export function ReadingError() {
         This link looks incomplete
       </h1>
       <p className="mt-4 max-w-md text-sm text-foreground-muted sm:text-base">
-        The reading couldn&apos;t be opened from this address — it may have been
+        The reading couldn&apos;t be opened from this address. It may have been
         cut when copied or forwarded. Open the exact link from your email, or
         reply to that email and we&apos;ll send a fresh one.
       </p>

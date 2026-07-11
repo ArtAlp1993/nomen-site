@@ -1,103 +1,3560 @@
 {
-  "_about": "Evidence library for NOMEN readings (task Z-25). Each point carries how-it-is-calculated (method) and, where filled, what-a-value-means (values), each backed by real authors/systems. page:'verify' = page not yet checked against the edition; paraphrase:true = summary of the source, not a verbatim quote (see 05_Материалы/Библиотека/2026-07-12_паспорт-библиотеки.md, §3). Source of truth: 05_Материалы/Библиотека/2026-07-12_карта-пункт-источник.md.",
-  "points": [
-    {
-      "point_code": "A1",
-      "point_name": "Life Path Number",
-      "method": {
-        "oneliner": "Sum the digits of the birth date and reduce to 1–9 (master numbers 11/22/33 are never reduced).",
-        "verdict": "Your Life Path is derived by segment-summing day, month and year, then reducing — master numbers 11/22/33 are kept. It is fixed at birth and is the spine every other number is read against.",
-        "sources": [
-          { "author": "David Phillips", "title": "The Complete Book of Numerology (Pythagorean Square)", "page": "verify", "says": "The life path is the reduced sum of the birth-date digits; master numbers 11/22/33 are not reduced and act as a higher octave of 2/4/6.", "paraphrase": true },
-          { "author": "Vedic numerology (cross-check)", "title": "classical Indian numerology", "page": "verify", "says": "The same digit maps to a ruling planet, used to cross-validate the Pythagorean reading.", "paraphrase": true }
-        ]
-      },
-      "values": {
-        "1": { "verdict": "A path of leadership and initiative — strength in starting first; the lesson is not to isolate into 'I'll do it myself'.", "sources": [ { "author": "David Phillips", "title": "The Complete Book of Numerology", "page": "verify", "says": "1 is the number of the pioneer/leader: will, independence, originating over imitating.", "paraphrase": true }, { "author": "Carol S. Pearson", "title": "Awakening the Heroes Within", "page": "verify", "says": "The Warrior archetype: courage to go first, risk of fighting for its own sake.", "paraphrase": true } ] },
-        "2": { "verdict": "A path of partnership and sensitivity — strength in the duet; the lesson is not to dissolve, to name your own preference.", "sources": [ { "author": "David Phillips", "title": "The Complete Book of Numerology", "page": "verify", "says": "2 is cooperation, diplomacy, attunement; works through others rather than force.", "paraphrase": true }, { "author": "Carol S. Pearson", "title": "Awakening the Heroes Within", "page": "verify", "says": "Caregiver/Lover archetypes: connection and empathy, shadow of self-erasure.", "paraphrase": true } ] },
-        "3": { "verdict": "A path of self-expression — strength in word and creativity; the risk is scatter, so drive one craft to mastery.", "sources": [ { "author": "David Phillips", "title": "The Complete Book of Numerology", "page": "verify", "says": "3 is creativity, communication, joy; danger of dispersing energy across many starts.", "paraphrase": true }, { "author": "Carol S. Pearson", "title": "Awakening the Heroes Within", "page": "verify", "says": "Creator/Jester archetypes: expression as a way to metabolize life.", "paraphrase": true } ] },
-        "4": { "verdict": "A path of work and system — strength in reliability and follow-through; the lesson is flexibility.", "sources": [ { "author": "David Phillips", "title": "The Complete Book of Numerology", "page": "verify", "says": "4 is order, discipline, foundations; risk of rigidity.", "paraphrase": true }, { "author": "Carol S. Pearson", "title": "Awakening the Heroes Within", "page": "verify", "says": "Ruler/Caregiver register: structure that others build on.", "paraphrase": true } ] },
-        "5": { "verdict": "A path of freedom and change — strength in adaptability; the lesson is not to mistake flight for growth.", "sources": [ { "author": "David Phillips", "title": "The Complete Book of Numerology", "page": "verify", "says": "5 is freedom, versatility, experience; needs to avoid running from commitment.", "paraphrase": true }, { "author": "Carol S. Pearson", "title": "Awakening the Heroes Within", "page": "verify", "says": "Seeker archetype: the drive toward the new frontier.", "paraphrase": true } ] },
-        "6": { "verdict": "A path of care and responsibility — strength in holding people and home; the lesson is not to control or dissolve.", "sources": [ { "author": "David Phillips", "title": "The Complete Book of Numerology", "page": "verify", "says": "6 is responsibility, harmony, service to home and community.", "paraphrase": true }, { "author": "Carol S. Pearson", "title": "Awakening the Heroes Within", "page": "verify", "says": "Caregiver archetype: warmth and loyalty, shadow of control/burnout.", "paraphrase": true } ] },
-        "7": { "verdict": "A path of depth and knowledge — strength in analysis plus intuition; the lesson is not to retreat into a bunker.", "sources": [ { "author": "David Phillips", "title": "The Complete Book of Numerology", "page": "verify", "says": "7 is the seeker of truth: analysis, solitude, inner knowing.", "paraphrase": true }, { "author": "Carol S. Pearson", "title": "Awakening the Heroes Within", "page": "verify", "says": "Sage archetype: understanding as the core drive; shadow of detachment.", "paraphrase": true } ] },
-        "8": { "verdict": "A path of power and scale — strength in turning vision into results; the lesson is to wield power ethically.", "sources": [ { "author": "David Phillips", "title": "The Complete Book of Numerology", "page": "verify", "says": "8 is authority, money, management, material mastery.", "paraphrase": true }, { "author": "Carol S. Pearson", "title": "Awakening the Heroes Within", "page": "verify", "says": "Ruler archetype: command and responsibility, shadow of the scoreboard becoming the self.", "paraphrase": true } ] },
-        "9": { "verdict": "A path of service and breadth — strength in completing cycles; the lesson is to let go and refuse the victim role.", "sources": [ { "author": "David Phillips", "title": "The Complete Book of Numerology", "page": "verify", "says": "9 is the humanitarian: compassion, breadth, endings turned into beginnings.", "paraphrase": true }, { "author": "Carol S. Pearson", "title": "Awakening the Heroes Within", "page": "verify", "says": "Sage/Caregiver blend: giving with breadth, shadow of martyrdom.", "paraphrase": true } ] },
-        "11": { "verdict": "Master number, higher octave of 2: a visionary antenna — strength in intuition and inspiration; the discipline is grounding.", "sources": [ { "author": "David Phillips", "title": "The Complete Book of Numerology", "page": "verify", "says": "11 amplifies the 2: heightened intuition, nervous voltage, needs grounding.", "paraphrase": true }, { "author": "Carol S. Pearson", "title": "Awakening the Heroes Within", "page": "verify", "says": "Magician/Visionary register: insight transmitted rather than explained.", "paraphrase": true } ] },
-        "22": { "verdict": "Master number, higher octave of 4: the master builder — turns a large dream into a project for many; break scale into phases.", "sources": [ { "author": "David Phillips", "title": "The Complete Book of Numerology", "page": "verify", "says": "22 fuses the builder's method with visionary scale; risk of collapsing under the weight.", "paraphrase": true }, { "author": "Carol S. Pearson", "title": "Awakening the Heroes Within", "page": "verify", "says": "Ruler/Creator at scale: institutions meant to outlast the person.", "paraphrase": true } ] },
-        "33": { "verdict": "Master number, higher octave of 6: the master teacher — influence by example and care; the lesson is not to erase yourself.", "sources": [ { "author": "David Phillips", "title": "The Complete Book of Numerology", "page": "verify", "says": "33 is the rarest, devotion becoming vocation; demands maturity.", "paraphrase": true }, { "author": "Carol S. Pearson", "title": "Awakening the Heroes Within", "page": "verify", "says": "Caregiver/Sage at highest register: teaching through presence.", "paraphrase": true } ] }
-      }
-    },
-    {
-      "point_code": "A2",
-      "point_name": "Birthday Number",
-      "method": { "oneliner": "Reduce the day of birth to a single digit — your innate talent.", "verdict": "The Birthday Number is the reduced day of the month; it names the natural gift you were handed.", "sources": [ { "author": "David Phillips", "title": "The Complete Book of Numerology", "page": "verify", "says": "The day of birth reduced to 1–9 marks an innate talent layered onto the life path.", "paraphrase": true } ] },
-      "values": {}
-    },
-    {
-      "point_code": "A3",
-      "point_name": "Expression Number",
-      "method": { "oneliner": "Convert every letter of the full birth name to a digit, sum and reduce — your mission.", "verdict": "The Expression Number sums all letters of the full name (letter→digit table); it describes what you are meant to build and become.", "sources": [ { "author": "David Phillips", "title": "The Complete Book of Numerology", "page": "verify", "says": "All letters of the full name convert to numbers and reduce to the expression/destiny number.", "paraphrase": true } ] },
-      "values": {}
-    },
-    {
-      "point_code": "A4",
-      "point_name": "Soul Urge Number",
-      "method": { "oneliner": "Sum only the vowels of the full name and reduce — your hidden desire.", "verdict": "The Soul Urge sums the vowels of the name; it names what the soul most wants underneath the surface.", "sources": [ { "author": "David Phillips", "title": "The Complete Book of Numerology", "page": "verify", "says": "Vowels of the name reduce to the soul urge / heart's desire number.", "paraphrase": true } ] },
-      "values": {}
-    },
-    {
-      "point_code": "A5",
-      "point_name": "Personality Number",
-      "method": { "oneliner": "Sum only the consonants of the full name and reduce — your outer facade.", "verdict": "The Personality Number sums the consonants; it is how people read you before they know you.", "sources": [ { "author": "David Phillips", "title": "The Complete Book of Numerology", "page": "verify", "says": "Consonants of the name reduce to the personality number, the outward impression.", "paraphrase": true } ] },
-      "values": {}
-    },
-    {
-      "point_code": "A7",
-      "point_name": "Maturity Number",
-      "method": { "oneliner": "Add the Life Path and Expression numbers and reduce — who you grow into.", "verdict": "The Maturity Number is Life Path + Expression, reduced; it points to the direction life converges on after ~40.", "sources": [ { "author": "David Phillips", "title": "The Complete Book of Numerology", "page": "verify", "says": "Life path plus expression yields the maturity number, the later-life integration.", "paraphrase": true } ] },
-      "values": {}
-    },
-    {
-      "point_code": "A9",
-      "point_name": "Karmic Lessons & Hidden Passion",
-      "method": { "oneliner": "Find which digits are missing (lessons) and most frequent (hidden passion) in the name.", "verdict": "Digits absent from the name spell the karmic lessons to develop; the most frequent digit is your hidden passion/natural strength.", "sources": [ { "author": "David Phillips", "title": "The Complete Book of Numerology", "page": "verify", "says": "Missing numbers in the name indicate lessons to learn; repeated numbers indicate an intensified strength.", "paraphrase": true } ] },
-      "values": {}
-    },
-    {
-      "point_code": "A10",
-      "point_name": "Pythagorean Square",
-      "method": { "oneliner": "Lay the birth-date digits into a nine-cell square (psychomatrix) to read strengths and gaps.", "verdict": "The birth date is arranged into nine cells; the count in each cell (with Aleksandrov's working numbers) maps strong and weak traits.", "sources": [ { "author": "A. F. Aleksandrov", "title": "Bolshaya kniga numerologii (psychomatrix)", "page": "verify", "says": "The Russian psychomatrix reads character from how many times each digit falls into the nine cells.", "paraphrase": true }, { "author": "David Phillips", "title": "The Complete Book of Numerology", "page": "verify", "says": "The Pythagorean square gives a nine-cell portrait of strengths and weaknesses.", "paraphrase": true } ] },
-      "values": {}
-    },
-    {
-      "point_code": "A11",
-      "point_name": "Karmic Debt Numbers",
-      "method": { "oneliner": "Check intermediate sums for 13, 14, 16 or 19 — the karmic-debt markers.", "verdict": "If 13/14/16/19 appear in the working sums, that debt is active; otherwise there is none. Formulated carefully, never as a threat.", "sources": [ { "author": "David Phillips", "title": "The Complete Book of Numerology", "page": "verify", "says": "13/14/16/19 in the sums denote specific karmic debts with defined themes.", "paraphrase": true } ] },
-      "values": {}
-    },
-    {
-      "point_code": "B1",
-      "point_name": "Sun Sign",
-      "method": { "oneliner": "Place the Sun in the tropical zodiac by birth date — no birth time needed.", "verdict": "The Sun sign is the tropical-zodiac position of the Sun on the birth date; it names the core will and identity. Works without a birth time, which is why it is in the base 13.", "sources": [ { "author": "Liz Greene", "title": "The Astrology of Fate", "page": "verify", "says": "The Sun sign describes the core of will and identity; planets are the language of the unconscious, not fate.", "paraphrase": true }, { "author": "Classical astrology", "title": "tropical zodiac date table", "page": "verify", "says": "Sign boundaries follow fixed tropical date ranges (e.g. Aries 21.03–19.04).", "paraphrase": true } ] },
-      "values": {}
-    },
-    {
-      "point_code": "C1",
-      "point_name": "Chinese Zodiac Animal",
-      "method": { "oneliner": "Map the birth year onto the 12-animal, 60-year cycle.", "verdict": "The year of birth selects one of the twelve animals on the 60-year cycle; it names your base temperament. Source book still to be confirmed (registry, shelf 5).", "sources": [ { "author": "classical Ba Zi / Chinese astrology tradition", "title": "(source book to be confirmed)", "page": "verify", "says": "Each year belongs to one of twelve animals repeating on a 60-year sexagenary cycle.", "paraphrase": true } ] },
-      "values": {}
-    },
-    {
-      "point_code": "C2",
-      "point_name": "Year Element",
-      "method": { "oneliner": "Derive the year's Wu Xing element (Wood/Fire/Earth/Metal/Water).", "verdict": "The birth year also carries one of the five Wu Xing elements, layered over the animal as the 'temperature' of your nature. Source book still to be confirmed (registry, shelf 5).", "sources": [ { "author": "Wu Xing (Five Elements) tradition", "title": "(source book to be confirmed)", "page": "verify", "says": "The sexagenary year carries one of five elements that colours the animal sign.", "paraphrase": true } ] },
-      "values": {}
-    },
-    {
-      "point_code": "D1",
-      "point_name": "Tarot Birth Card",
-      "method": { "oneliner": "Reduce the birth date to a Major Arcana number (1–22) using the Waite ordering.", "verdict": "Summing the birth date to a number 1–22 selects a Major Arcanum as the archetype of your fate; we use the Rider-Waite numbering (note the VIII/XI Strength–Justice order).", "sources": [ { "author": "Arthur Edward Waite", "title": "The Pictorial Key to the Tarot", "page": "verify", "says": "The 22 Major Arcana form the archetypal sequence; Waite fixes the numbering used as standard.", "paraphrase": true } ] },
-      "values": {}
-    }
-  ]
+ "_about": "Evidence library for NOMEN readings (task Z-25). Each point carries how-it-is-calculated (method) and, where filled, what-a-value-means (values), each backed by real authors/systems. page:'verify' = page not yet checked against the edition; paraphrase:true = summary of the source, not a verbatim quote (see 05_Материалы/Библиотека/2026-07-12_паспорт-библиотеки.md, §3). Source of truth: 05_Материалы/Библиотека/2026-07-12_карта-пункт-источник.md.",
+ "points": [
+ {
+ "point_code": "A1",
+ "point_name": "Life Path Number",
+ "method": {
+ "oneliner": "Sum the digits of the birth date and reduce to 1–9 (master numbers 11/22/33 are never reduced).",
+ "verdict": "Your Life Path is derived by segment-summing day, month and year, then reducing, master numbers 11/22/33 are kept. It is fixed at birth and is the spine every other number is read against.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology (Pythagorean Square)",
+ "page": "verify",
+ "says": "The life path is the reduced sum of the birth-date digits; master numbers 11/22/33 are not reduced and act as a higher octave of 2/4/6.",
+ "paraphrase": true
+ },
+ {
+ "author": "Vedic numerology (cross-check)",
+ "title": "classical Indian numerology",
+ "page": "verify",
+ "says": "The same digit maps to a ruling planet, used to cross-validate the Pythagorean reading.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "values": {
+ "1": {
+ "verdict": "A path of leadership and initiative, strength in starting first; the lesson is not to isolate into 'I'll do it myself'.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "1 is the number of the pioneer/leader: will, independence, originating over imitating.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "The Warrior archetype: courage to go first, risk of fighting for its own sake.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "2": {
+ "verdict": "A path of partnership and sensitivity, strength in the duet; the lesson is not to dissolve, to name your own preference.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "2 is cooperation, diplomacy, attunement; works through others rather than force.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Caregiver/Lover archetypes: connection and empathy, shadow of self-erasure.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "3": {
+ "verdict": "A path of self-expression, strength in word and creativity; the risk is scatter, so drive one craft to mastery.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "3 is creativity, communication, joy; danger of dispersing energy across many starts.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Creator/Jester archetypes: expression as a way to metabolize life.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "4": {
+ "verdict": "A path of work and system, strength in reliability and follow-through; the lesson is flexibility.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "4 is order, discipline, foundations; risk of rigidity.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Ruler/Caregiver register: structure that others build on.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "5": {
+ "verdict": "A path of freedom and change, strength in adaptability; the lesson is not to mistake flight for growth.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "5 is freedom, versatility, experience; needs to avoid running from commitment.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Seeker archetype: the drive toward the new frontier.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "6": {
+ "verdict": "A path of care and responsibility, strength in holding people and home; the lesson is not to control or dissolve.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "6 is responsibility, harmony, service to home and community.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Caregiver archetype: warmth and loyalty, shadow of control/burnout.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "7": {
+ "verdict": "A path of depth and knowledge, strength in analysis plus intuition; the lesson is not to retreat into a bunker.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "7 is the seeker of truth: analysis, solitude, inner knowing.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Sage archetype: understanding as the core drive; shadow of detachment.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "8": {
+ "verdict": "A path of power and scale, strength in turning vision into results; the lesson is to wield power ethically.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "8 is authority, money, management, material mastery.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Ruler archetype: command and responsibility, shadow of the scoreboard becoming the self.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "9": {
+ "verdict": "A path of service and breadth, strength in completing cycles; the lesson is to let go and refuse the victim role.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "9 is the humanitarian: compassion, breadth, endings turned into beginnings.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Sage/Caregiver blend: giving with breadth, shadow of martyrdom.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "11": {
+ "verdict": "Master number, higher octave of 2: a visionary antenna, strength in intuition and inspiration; the discipline is grounding.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "11 amplifies the 2: heightened intuition, nervous voltage, needs grounding.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Magician/Visionary register: insight transmitted rather than explained.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "22": {
+ "verdict": "Master number, higher octave of 4: the master builder, turns a large dream into a project for many; break scale into phases.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "22 fuses the builder's method with visionary scale; risk of collapsing under the weight.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Ruler/Creator at scale: institutions meant to outlast the person.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "33": {
+ "verdict": "Master number, higher octave of 6: the master teacher, influence by example and care; the lesson is not to erase yourself.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "33 is the rarest, devotion becoming vocation; demands maturity.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Caregiver/Sage at highest register: teaching through presence.",
+ "paraphrase": true
+ }
+ ]
+ }
+ }
+ },
+ {
+ "point_code": "A2",
+ "point_name": "Birthday Number",
+ "method": {
+ "oneliner": "Reduce the day of birth to a single digit, your innate talent.",
+ "verdict": "The Birthday Number is the reduced day of the month; it names the natural gift you were handed.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "The day of birth reduced to 1–9 marks an innate talent layered onto the life path.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "values": {
+ "1": {
+ "verdict": "Your inborn gift is initiative, you start what others stall on, and going first costs you little. Spend it on launches and hard first moves; keep the drive, but let others steer sometimes.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads the number 1 as independence, leadership, and initiative; in the birth-day position this marks an inborn talent for starting things and standing on one's own.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Pearson's Warrior archetype frames this: the courage to set a goal, act, and stand one's ground, its shadow the ruthlessness that runs others over.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "2": {
+ "verdict": "Your natural gift is a fine social ear, you sense tension and timing instantly. Use it to de-escalate, land hard feedback softly, and hold partnerships together, without absorbing everyone's mood.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads the number 2 as cooperation, sensitivity, and diplomacy; in the birth-day position it marks an inborn talent for sensing people and easing friction.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Pearson's Lover archetype frames this: the pull toward connection, intimacy, and harmony, its shadow losing oneself to keep the bond.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "3": {
+ "verdict": "Words come to you at a discount, explaining, persuading, entertaining. Your gift packages meaning so people care; aim the wit at finished things so style is backed by follow-through.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads the number 3 as self-expression, creativity, and communication; in the birth-day position it marks an inborn talent for expression and words.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Pearson's Creator archetype frames this: imagination and self-expression seeking outward form, its shadow scattering or performing instead of finishing.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "4": {
+ "verdict": "Your gift is turning chaos into order, deadlines, details, kept promises. You're who plans survive; spend it on things that must hold for years, but leave engineered room for the unplanned.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads the number 4 as order, work, and practical discipline; in the birth-day position it marks an inborn talent for creating order and reliable structure.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Pearson's Ruler archetype frames this: the drive to build order and a stable, dependable realm, its shadow rigidity that hardens into control.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "5": {
+ "verdict": "Your gift is landing on your feet, you adapt fast and draw people in wherever you're dropped. Premium currency in an unstable world; anchor it to one or two things you refuse to flee.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads the number 5 as freedom, change, and versatility; in the birth-day position it marks an inborn talent for adapting fast and thriving on change.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Pearson's Seeker archetype frames this: the hunger for freedom, autonomy, and exploration, its shadow restlessness that never commits.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "6": {
+ "verdict": "Your gift is sensing what people need and when harmony slips, then quietly fixing it. It converts into loyalty and warm spaces; offer help as an open hand, and keep your own name on the list.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads the number 6 as responsibility, love, and nurturing care; in the birth-day position it marks an inborn talent for caring for others and restoring harmony.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Pearson's Caregiver archetype frames this: compassion and nurturing responsibility for others, its shadow martyrdom and care that controls.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "7": {
+ "verdict": "Your gift runs two modes at once, sharp analysis and quiet intuition. You see flaws, patterns, and false notes others miss; set a thinking deadline so insight finally touches reality.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads the number 7 as analysis, introspection, and depth; in the birth-day position it marks an inborn talent for analysis and deep understanding.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Pearson's Sage archetype frames this: the search for truth and understanding through reflection, its shadow detachment that turns cold.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "8": {
+ "verdict": "Your gift is an instinct for value, where money flows and who holds leverage. It amplifies every other strength; keep one domain the market can't price so the dealmaker's hand can rest.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads the number 8 as power, ambition, and material mastery; in the birth-day position it marks an inborn talent for reading value, money, and leverage.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Pearson's Ruler archetype frames this: sovereignty and mastery over resources and the material realm, its shadow measuring all worth in power.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "9": {
+ "verdict": "Your gift is empathy at range, feeling individuals precisely and whole situations widely. It unites people and wins allies; choose where your empathy truly matters and let the rest wait.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads the number 9 as compassion, humanitarian breadth, and giving; in the birth-day position it marks an inborn talent for wide-ranging empathy.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Pearson's Caregiver widened to the whole world, with the Destroyer's gift of release: compassion and clean completion, its shadow giving until resentful.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "11": {
+ "verdict": "As a master number, your gift is intuition close to foresight, you often know a beat before the evidence. Verify it and lean on it where data runs out; ground it with sleep, routine, one reality-check.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads 11 as a master number, heightened intuition and inspiration, a higher octave of 2; in the birth-day position it marks an inborn talent for intuition close to foresight.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Pearson's Magician archetype frames this: sensing unseen currents and turning insight into transformation, its shadow overwhelm when the signal floods.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "22": {
+ "verdict": "The rarest gift here, reliability at architectural scale. Big goals organize you rather than daunt you; spend it on decade-shaping work, and slice the enormous into shippable stages.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads 22 as the master builder, grand vision made concrete at scale, a higher octave of 4; in the birth-day position it marks an inborn talent for organizing and building at large scale.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Pearson's Magician joined to the Ruler: manifesting a vision into built, load-bearing reality, its shadow the weight of a scale that can crush its maker.",
+ "paraphrase": true
+ }
+ ]
+ }
+ }
+ },
+ {
+ "point_code": "A3",
+ "point_name": "Expression Number",
+ "method": {
+ "oneliner": "Convert every letter of the full birth name to a digit, sum and reduce, your mission.",
+ "verdict": "The Expression Number sums all letters of the full name (letter→digit table); it describes what you are meant to build and become.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "All letters of the full name convert to numbers and reduce to the expression/destiny number.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "values": {
+ "1": {
+ "verdict": "Your mission is to go first, to start what others finish, at zero-to-one. You thrive owning the outcome; the growth edge is endurance: stay past the boring middle and let others build on it.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads the number 1 as independence and leadership; as the Expression number it names a life mission of pioneering, beginning what others complete.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Pearson's Warrior archetype frames this: the courage to set a goal, act, and stand one's ground, its shadow the ruthlessness that runs others over.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "2": {
+ "verdict": "Your mission is to hold people together, reading rooms, mediating, making opposed sides meet. You're the adviser leaders trust; learn to state your own position plainly, even at some cost to harmony.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads the number 2 as cooperation and diplomacy; as the Expression number it names a life mission of connecting people and mediating.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Pearson's Lover archetype frames this: the pull toward connection, intimacy, and harmony, its shadow losing oneself to keep the bond.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "3": {
+ "verdict": "Your mission is to create and communicate, to give the world your voice and make people feel. Shine where expression carries the outcome; choose fewer channels and finish what you start.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads the number 3 as creativity and communication; as the Expression number it names a life mission of creating and communicating.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Pearson's Creator archetype frames this: imagination and self-expression seeking outward form, its shadow scattering or performing instead of finishing.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "4": {
+ "verdict": "Your mission is turning chaos into structure that lasts. Operations, engineering, finance, you make things reliably run; build review into your systems so structure can flex, not just resist.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads the number 4 as order, work, and discipline; as the Expression number it names a life mission of turning chaos into lasting structure.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Pearson's Ruler archetype frames this: the drive to build order and a stable, dependable realm, its shadow rigidity that hardens into control.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "5": {
+ "verdict": "Your mission is change itself, versatility across many worlds. You excel where conditions shift fast; variety is your career, but keep one through-line that travels with you across every pivot.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads the number 5 as freedom, change, and versatility; as the Expression number it names a life mission of mastering change and versatility.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Pearson's Seeker archetype frames this: the hunger for freedom, autonomy, and exploration, its shadow restlessness that never commits.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "6": {
+ "verdict": "Your mission is to protect and guide, to be the one others lean on. Care is load-bearing structure in your hands; let people carry their own weight, and keep yourself on the list you tend.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads the number 6 as responsibility, love, and care; as the Expression number it names a life mission of protecting, guiding, and caring for others.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Pearson's Caregiver archetype frames this: compassion and nurturing responsibility for others, its shadow martyrdom and care that controls.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "7": {
+ "verdict": "Your mission is depth, to understand what others skim and become the one who truly knows. Built for mastery that can't be faked; your findings complete their work only when you teach and publish them.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads the number 7 as analysis, depth, and knowledge; as the Expression number it names a life mission of reaching mastery and truth.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Pearson's Sage archetype frames this: the search for truth and understanding through reflection, its shadow detachment that turns cold.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "8": {
+ "verdict": "Your mission is to lead and wield influence, to take charge of money, teams, and results and multiply them. Decide what the wealth is for; an executive who serves a bigger aim becomes formidable.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads the number 8 as power, ambition, and material mastery; as the Expression number it names a life mission of leading and wielding material influence.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Pearson's Ruler archetype frames this: sovereignty and mastery over resources and the material realm, its shadow measuring all worth in power.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "9": {
+ "verdict": "Your mission points past the personal, to give, to finish, to widen and serve something larger. Gifted at endings others avoid; serve from choice, not guilt, and feed your own table first.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads the number 9 as compassion, breadth, and completion; as the Expression number it names a life mission of serving something larger than the self.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Pearson's Caregiver widened to the whole world, with the Destroyer's gift of release: compassion and clean completion, its shadow giving until resentful.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "11": {
+ "verdict": "The higher octave of 2, the connector becomes the inspirer. Your mission is to turn early perception into light: teach, guide, lift. Ground the antenna with routine, sleep, one trusted listener.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads 11 as a master number of intuition and inspiration, a higher octave of 2; as the Expression number it names a life mission of inspiring and illuminating others.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Pearson's Magician archetype frames this: sensing unseen currents and turning insight into transformation, its shadow overwhelm when the signal floods.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "22": {
+ "verdict": "The higher octave of 4, discipline aimed at monumental scale. Your mission is to make a vast vision physically real, uniting big-picture sight with practical execution. Build in phases; pour one foundation now.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads 22 as the master builder, a higher octave of 4; as the Expression number it names a life mission of making a vast vision physically real.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Pearson's Magician joined to the Ruler: manifesting a vision into built, load-bearing reality, its shadow the weight of a scale that can crush its maker.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "33": {
+ "verdict": "The higher octave of 6, the caretaker raised to a calling. Your mission is to heal and uplift by example, through consistent care. The rarest Expression; guard time for your own repair or you heal no one.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads 33 as the master teacher and healer, a higher octave of 6; as the Expression number it names a life mission of healing and teaching through love.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Pearson's Caregiver raised to healer and teacher: repair offered through steady, transformative love, its shadow self-erasure in everyone else's healing.",
+ "paraphrase": true
+ }
+ ]
+ }
+ }
+ },
+ {
+ "point_code": "A4",
+ "point_name": "Soul Urge Number",
+ "method": {
+ "oneliner": "Sum only the vowels of the full name and reduce, your hidden desire.",
+ "verdict": "The Soul Urge sums the vowels of the name; it names what the soul most wants underneath the surface.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Vowels of the name reduce to the soul urge / heart's desire number.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "values": {
+ "1": {
+ "verdict": "Your heart wants to be fully yourself and answer to no one, autonomy is oxygen. You light up leading your own way; feed the need, but let one person in, independence and intimacy aren't enemies.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads the number 1 as independence and leadership; drawn from the name's vowels, it points to a soul that craves autonomy and being first.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Pearson's Warrior archetype frames this: the courage to set a goal, act, and stand one's ground, its shadow the ruthlessness that runs others over.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "2": {
+ "verdict": "Your heart wants closeness, one person who truly gets you and peace at home. Harmony fuels you; conflict drains you. Say what you want out loud, or peace built on silence stops being closeness.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads the number 2 as sensitivity and partnership; drawn from the name's vowels, it points to a soul that craves closeness, harmony, and peace.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Pearson's Lover archetype frames this: the pull toward connection, intimacy, and harmony, its shadow losing oneself to keep the bond.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "3": {
+ "verdict": "Your heart wants to be seen and heard, to make something, show it, and watch it land. Expression recharges you; make one honest thing for yourself first, then show it, that order matters.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads the number 3 as expression and joy; drawn from the name's vowels, it points to a soul that craves being seen, heard, and creatively expressed.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Pearson's Creator archetype frames this: imagination and self-expression seeking outward form, its shadow scattering or performing instead of finishing.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "4": {
+ "verdict": "Your heart wants a world that doesn't wobble, kept promises, counted money, plans that hold. Order calms your body; keep one zone deliberately flexible so solid ground holds you up, not down.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads the number 4 as order and practical structure; drawn from the name's vowels, it points to a soul that craves security, order, and solid ground.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Pearson's Ruler archetype frames this: the drive to build order and a stable, dependable realm, its shadow rigidity that hardens into control.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "5": {
+ "verdict": "Your heart wants the open door, movement, novelty, everything once. Experience is real nutrition for you; learn to tell freedom from escape, and keep one or two commitments that travel with you.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads the number 5 as freedom, change, and the senses; drawn from the name's vowels, it points to a soul that craves freedom, novelty, and movement.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Pearson's Seeker archetype frames this: the hunger for freedom, autonomy, and exploration, its shadow restlessness that never commits.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "6": {
+ "verdict": "Your heart wants to matter to specific people, a home with life in it, someone to care for. Caring fuels you; protect the hearth, but learn to receive, the people who matter want you, not just your service.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads the number 6 as love, home, and responsibility; drawn from the name's vowels, it points to a soul that craves being needed and having people to care for.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Pearson's Caregiver archetype frames this: compassion and nurturing responsibility for others, its shadow martyrdom and care that controls.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "7": {
+ "verdict": "Your heart wants quiet and truth, a closed door, a real question, time to think. Understanding is your deep pleasure; let two or three people genuinely in, because depth shared is still depth, and warmer.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads the number 7 as introspection and knowledge; drawn from the name's vowels, it points to a soul that craves quiet, truth, and understanding.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Pearson's Sage archetype frames this: the search for truth and understanding through reflection, its shadow detachment that turns cold.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "8": {
+ "verdict": "Your heart keeps score, it wants achievement, influence, and the means to provide. Winning and providing fuel you; define what enough looks like, and let a few people matter for no strategic reason.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads the number 8 as ambition and material mastery; drawn from the name's vowels, it points to a soul that craves achievement, influence, and the means to provide.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Pearson's Ruler archetype frames this: sovereignty and mastery over resources and the material realm, its shadow measuring all worth in power.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "9": {
+ "verdict": "Personal wins feel thin, your heart wants to give and belong to something wider. Generosity feeds you; serve from overflow, not guilt, and count yourself among the people worth caring for.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads the number 9 as compassion and humanitarian breadth; drawn from the name's vowels, it points to a soul that craves giving and belonging to something wider.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Pearson's Caregiver widened to the whole world, with the Destroyer's gift of release: compassion and clean completion, its shadow giving until resentful.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "11": {
+ "verdict": "The higher octave of 2, longing for closeness deepens into a hunger for meaning and significance. Resonance feeds you; ground the signal and find meaning at street level, in small daily acts.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads 11 as a master number of intuition, a higher octave of 2; drawn from the name's vowels, it points to a soul that craves meaning and significance.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Pearson's Magician archetype frames this: sensing unseen currents and turning insight into transformation, its shadow overwhelm when the signal floods.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "22": {
+ "verdict": "The higher octave of 4, the wish for solid ground becomes the wish to build something permanent. Seeing plans take form fuels you; legacies are laid one brick at a time, pour a foundation this year.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads 22 as the master builder, a higher octave of 4; drawn from the name's vowels, it points to a soul that craves leaving a permanent mark.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Pearson's Magician joined to the Ruler: manifesting a vision into built, load-bearing reality, its shadow the weight of a scale that can crush its maker.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "33": {
+ "verdict": "The higher octave of 6, the wish to care becomes a wish to heal, full stop. Genuine repair feeds you; unconditional isn't unlimited, boundaries are its infrastructure, so count yourself among those you heal.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads 33 as the master healer, a higher octave of 6; drawn from the name's vowels, it points to a soul that craves healing and loving without conditions.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Pearson's Caregiver raised to healer and teacher: repair offered through steady, transformative love, its shadow self-erasure in everyone else's healing.",
+ "paraphrase": true
+ }
+ ]
+ }
+ }
+ },
+ {
+ "point_code": "A5",
+ "point_name": "Personality Number",
+ "method": {
+ "oneliner": "Sum only the consonants of the full name and reduce, your outer facade.",
+ "verdict": "The Personality Number sums the consonants; it is how people read you before they know you.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Consonants of the name reduce to the personality number, the outward impression.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "values": {
+ "1": {
+ "verdict": "You read as the one in charge before you speak, strong, self-contained, a step ahead. It opens doors and hands you credibility; signal openness deliberately so strength doesn't cost you help and honesty.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads the number 1 as independence and leadership; drawn from the consonants, it shows an outer self that presents as strong, capable, and in charge.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Pearson's Warrior archetype frames this: the courage to set a goal, act, and stand one's ground, its shadow the ruthlessness that runs others over.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "2": {
+ "verdict": "You come across soft, tactful, easy to trust, people relax and open up. A rare asset in trust-based roles; pair the warmth with clean, stated limits so soft isn't misread as pliable.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads the number 2 as sensitivity and diplomacy; drawn from the consonants, it shows an outer self that presents as warm, tactful, and easy to trust.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Pearson's Lover archetype frames this: the pull toward connection, intimacy, and harmony, its shadow losing oneself to keep the bond.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "3": {
+ "verdict": "You read as vivid, expressive, funny, charm arrives before you do. Your fastest asset in any room you must warm quickly; show depth early so people file you under brilliant, not just fun.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads the number 3 as expression and charm; drawn from the consonants, it shows an outer self that presents as vivid, expressive, and charming.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Pearson's Creator archetype frames this: imagination and self-expression seeking outward form, its shadow scattering or performing instead of finishing.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "4": {
+ "verdict": "You read as dependable and grounded, the sure thing in a world of maybes. Trust compounds around you fast; make your wins visible on purpose so reliability reads as leadership, not just workhorse.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads the number 4 as order and reliability; drawn from the consonants, it shows an outer self that presents as dependable, grounded, and serious.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Pearson's Ruler archetype frames this: the drive to build order and a stable, dependable realm, its shadow rigidity that hardens into control.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "5": {
+ "verdict": "You read as alive, unconfined, a little unpredictable, freshness is your handshake. Perfect for anything new or shifting; a visible track record of finishing turns charm from flight risk to rare combination.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads the number 5 as freedom and change; drawn from the consonants, it shows an outer self that presents as energetic, free, and exciting.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Pearson's Seeker archetype frames this: the hunger for freedom, autonomy, and exploration, its shadow restlessness that never commits.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "6": {
+ "verdict": "Care radiates off you, you're the safe adult in the room, and loyalty follows. A credential in people-facing work; do the boundary work so warmth stays a gift instead of leaking to everyone's problems.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads the number 6 as love, care, and responsibility; drawn from the consonants, it shows an outer self that presents as warm, caring, and safe.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Pearson's Caregiver archetype frames this: compassion and nurturing responsibility for others, its shadow martyrdom and care that controls.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "7": {
+ "verdict": "You read as reserved, intelligent, hard to read, restraint interpreted as depth. Gravitas is granted before results; make warmth your project, a greeting, one question, a smile, to melt the coldness others read.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads the number 7 as introspection and depth; drawn from the consonants, it shows an outer self that presents as reserved, intelligent, and deep.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Pearson's Sage archetype frames this: the search for truth and understanding through reflection, its shadow detachment that turns cold.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "8": {
+ "verdict": "You read as substantial, successful, in control, someone whose time costs money. Negotiations start from respect; lower the armor in trusted settings so filtered truth doesn't reach you for decades.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads the number 8 as power and authority; drawn from the consonants, it shows an outer self that presents as substantial, successful, and authoritative.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Pearson's Ruler archetype frames this: sovereignty and mastery over resources and the material realm, its shadow measuring all worth in power.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "9": {
+ "verdict": "You read as principled, generous, above petty games, a natural ambassador. People assume good faith; get particular, care visibly about one person's small problem so nobility gains fingerprints.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads the number 9 as compassion and breadth; drawn from the consonants, it shows an outer self that presents as principled, generous, and above the fray.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Pearson's Caregiver widened to the whole world, with the Destroyer's gift of release: compassion and clean completion, its shadow giving until resentful.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "11": {
+ "verdict": "You read as finely tuned and perceptive, strangers feel seen and confide fast. Inspiration is your first-impression product; manage energy, not image, so the exterior stays quietly compelling.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads 11 as a master number of intuition, a higher octave of 2; drawn from the consonants, it shows an outer self that presents as perceptive, sensitive, and quietly intense.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Pearson's Magician archetype frames this: sensing unseen currents and turning insight into transformation, its shadow overwhelm when the signal floods.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "22": {
+ "verdict": "You read as someone building something large, formidable, consequential. Serious backing gravitates to you; show the unfinished parts on purpose, turning admirers into the allies big builds need.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads 22 as the master builder, a higher octave of 4; drawn from the consonants, it shows an outer self that presents as formidable and consequential.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Pearson's Magician joined to the Ruler: manifesting a vision into built, load-bearing reality, its shadow the weight of a scale that can crush its maker.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "33": {
+ "verdict": "You read as wise, warm, unhurried, people surrender their worst news and behave better near you. The entire storefront of human-repair work; schedule receiving, since a depleted healer helps no one.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads 33 as the master healer, a higher octave of 6; drawn from the consonants, it shows an outer self that presents as wise, warm, and endlessly compassionate.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Pearson's Caregiver raised to healer and teacher: repair offered through steady, transformative love, its shadow self-erasure in everyone else's healing.",
+ "paraphrase": true
+ }
+ ]
+ }
+ }
+ },
+ {
+ "point_code": "A7",
+ "point_name": "Maturity Number",
+ "method": {
+ "oneliner": "Add the Life Path and Expression numbers and reduce, who you grow into.",
+ "verdict": "The Maturity Number is Life Path + Expression, reduced; it points to the direction life converges on after ~40.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Life path plus expression yields the maturity number, the later-life integration.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "values": {
+ "1": {
+ "verdict": "Your second half matures into independence, life removes those to defer to until you take the wheel. It pays out authority you own; keep two or three whose pushback you invite, or command becomes a bunker.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads the number 1 as independence and leadership; as the Maturity number it describes growing toward self-reliant command in the later decades.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Pearson's Warrior archetype frames this: the courage to set a goal, act, and stand one's ground, its shadow the ruthlessness that runs others over.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "2": {
+ "verdict": "Relationships become your second-half plot, influence flows through trust, not force. You ripen into mediator and elder; keep one commitment purely yours so harmony still includes you.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads the number 2 as cooperation and diplomacy; as the Maturity number it describes growing toward the peacemaker and trusted elder in the later decades.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Pearson's Lover archetype frames this: the pull toward connection, intimacy, and harmony, its shadow losing oneself to keep the bond.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "3": {
+ "verdict": "Self-expression is what your second half is for, shelved creativity returns with interest. Late-blooming work is your realest; pick a medium, give it a standing appointment, and finish things.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads the number 3 as expression and creativity; as the Maturity number it describes growing toward creative self-expression that arrives late.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Pearson's Creator archetype frames this: imagination and self-expression seeking outward form, its shadow scattering or performing instead of finishing.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "4": {
+ "verdict": "Your life converges on order, mastery, assets, a body of work with your name in the concrete. Patience becomes your moat; renovate deliberately so structure stays a foundation to build on, not a cage.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads the number 4 as order, work, and discipline; as the Maturity number it describes growing toward mastery, structure, and durable foundations.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Pearson's Ruler archetype frames this: the drive to build order and a stable, dependable realm, its shadow rigidity that hardens into control.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "5": {
+ "verdict": "Liberation is scheduled for your second half, cages dismantle and appetites return. Restlessness matures into range; choose freedom toward something, naming what each leap builds.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads the number 5 as freedom and change; as the Maturity number it describes growing toward hard-won freedom and range in the later decades.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Pearson's Seeker archetype frames this: the hunger for freedom, autonomy, and exploration, its shadow restlessness that never commits.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "6": {
+ "verdict": "Your road leads to responsibility for others, family, colleagues, community elect you. Rewards are the deep ones; give help that leaves people freer, and keep one corner of life just for your gladness.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads the number 6 as responsibility and care; as the Maturity number it describes growing toward being the pillar others rely on.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Pearson's Caregiver archetype frames this: compassion and nurturing responsibility for others, its shadow martyrdom and care that controls.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "7": {
+ "verdict": "Depth is your second-half destination, the external scoreboard loses its grip and questions take over. You become the sage others consult; build warm counterweights and publish, so wisdom isn't lost to isolation.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads the number 7 as analysis and depth; as the Maturity number it describes growing toward wisdom, depth, and the examined life.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Pearson's Sage archetype frames this: the search for truth and understanding through reflection, its shadow detachment that turns cold.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "8": {
+ "verdict": "Power is your late bloom, budgets, stakes, and command compound after 35. Seasoned judgment is your multiplier; decide early what the money is for, then audit yearly so wealth ages into legacy.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads the number 8 as power, ambition, and material mastery; as the Maturity number it describes growing toward material power and authority.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Pearson's Ruler archetype frames this: sovereignty and mastery over resources and the material realm, its shadow measuring all worth in power.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "9": {
+ "verdict": "Your circle of care keeps widening toward people you'll never meet, the humanitarian's harvest. Completion becomes your skill; match every wide cause with one specific person you show up for by name.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads the number 9 as compassion, breadth, and completion; as the Maturity number it describes growing toward wide humanitarian service and completion.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Pearson's Caregiver widened to the whole world, with the Destroyer's gift of release: compassion and clean completion, its shadow giving until resentful.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "11": {
+ "verdict": "Insight becomes your office, the sensitivity that complicated youth matures into your qualification. Real leadership arrives late; engineer rhythm and containment so high visibility doesn't overload you.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads 11 as a master number of intuition, a higher octave of 2; as the Maturity number it describes growing toward public intuition and spiritual leadership.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Pearson's Magician archetype frames this: sensing unseen currents and turning insight into transformation, its shadow overwhelm when the signal floods.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "22": {
+ "verdict": "Legacy in physical form is your convergence, institutions and works that outlive you. The second half is the actual construction; pace across decades and keep marriage and body off the sacrifice list.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads 22 as the master builder, a higher octave of 4; as the Maturity number it describes growing toward building lasting legacy in physical form.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Pearson's Magician joined to the Ruler: manifesting a vision into built, load-bearing reality, its shadow the weight of a scale that can crush its maker.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "33": {
+ "verdict": "Teaching through love is your summit, the rarest maturity path. Early burdens become competence people feel across a room; receive on schedule, since teachers of love must demonstrate being loved.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads 33 as the master teacher and healer, a higher octave of 6; as the Maturity number it describes growing toward the healing elder who teaches through love.",
+ "paraphrase": true
+ },
+ {
+ "author": "Carol S. Pearson",
+ "title": "Awakening the Heroes Within",
+ "page": "verify",
+ "says": "Pearson's Caregiver raised to healer and teacher: repair offered through steady, transformative love, its shadow self-erasure in everyone else's healing.",
+ "paraphrase": true
+ }
+ ]
+ }
+ }
+ },
+ {
+ "point_code": "A9",
+ "point_name": "Karmic Lessons & Hidden Passion",
+ "method": {
+ "oneliner": "Find which digits are missing (lessons) and most frequent (hidden passion) in the name.",
+ "verdict": "Digits absent from the name spell the karmic lessons to develop; the most frequent digit is your hidden passion/natural strength.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Missing numbers in the name indicate lessons to learn; repeated numbers indicate an intensified strength.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "values": {
+ "lesson_1": {
+ "verdict": "A missing 1 marks independence as your karmic lesson: you tend to defer and wait for permission, and life keeps clearing space in front of you until deciding and leading feels like ownership, not exposure.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "In Phillips's system a number absent from the name is a Karmic Lesson, and a missing 1 points to under-developed independence and self-assertion to build this lifetime.",
+ "paraphrase": true
+ },
+ {
+ "author": "Robert A. Johnson",
+ "title": "Owning Your Own Shadow",
+ "page": "verify",
+ "says": "Johnson frames an undeveloped quality as disowned shadow material to consciously integrate rather than leave projected onto stronger others.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "lesson_2": {
+ "verdict": "No 2 in the name flags patience, diplomacy and listening as the lesson: you would rather act than negotiate, so life sends situations that only yield to timing and to hearing the other person first.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads a missing 2 as a Karmic Lesson in cooperation, sensitivity and patience, relational skills the person is here to develop.",
+ "paraphrase": true
+ },
+ {
+ "author": "Robert A. Johnson",
+ "title": "Owning Your Own Shadow",
+ "page": "verify",
+ "says": "Johnson would treat the unlived capacity for patient attunement as shadow to be owned, since what we neglect in ourselves resurfaces through others.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "lesson_3": {
+ "verdict": "A missing 3 makes self-expression the lesson: you often hold back what you think, so the growth is small, repeated public acts until the held-back voice comes out and is actually heard.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips links an absent 3 to a Karmic Lesson in self-expression, communication and creative confidence.",
+ "paraphrase": true
+ },
+ {
+ "author": "Robert A. Johnson",
+ "title": "Owning Your Own Shadow",
+ "page": "verify",
+ "says": "Johnson's shadow work suggests the silenced creative voice is a disowned part that gains power once expressed rather than suppressed.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "lesson_4": {
+ "verdict": "Without a 4, discipline and follow-through are the lesson: strong starts fade near the finish, and structure, one system, one habit, is what converts talent into results other people can see.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips associates a missing 4 with a Karmic Lesson in order, discipline and practical follow-through.",
+ "paraphrase": true
+ },
+ {
+ "author": "Robert A. Johnson",
+ "title": "Owning Your Own Shadow",
+ "page": "verify",
+ "says": "Johnson frames the neglected capacity for patient structure as shadow to integrate, turning avoidance into deliberate practice.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "lesson_5": {
+ "verdict": "A missing 5 makes adaptability the lesson: change reads as threat and you defend routine, so life supplies turbulence on schedule until the unknown becomes survivable, then genuinely useful.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads an absent 5 as a Karmic Lesson in embracing change, freedom and the constructive use of the senses.",
+ "paraphrase": true
+ },
+ {
+ "author": "Robert A. Johnson",
+ "title": "Owning Your Own Shadow",
+ "page": "verify",
+ "says": "Johnson would see the feared flexibility as disowned energy that becomes freedom once consciously reclaimed.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "lesson_6": {
+ "verdict": "No 6 flags commitment and care as the lesson: long-term promises and daily upkeep can feel like someone else's job, so the growth is showing up on purpose for a small, chosen circle.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips ties a missing 6 to a Karmic Lesson in responsibility, commitment and care for home and others.",
+ "paraphrase": true
+ },
+ {
+ "author": "Robert A. Johnson",
+ "title": "Owning Your Own Shadow",
+ "page": "verify",
+ "says": "Johnson frames avoided responsibility as shadow whose integration converts obligation into freely given, trust-building loyalty.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "lesson_7": {
+ "verdict": "A missing 7 marks depth as the lesson: you stay on the surface with quick answers, and life sends what logic can't solve, nudging you toward solitude, reflection and hard-won inner judgement.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips links an absent 7 to a Karmic Lesson in depth, introspection, study and inner faith.",
+ "paraphrase": true
+ },
+ {
+ "author": "Robert A. Johnson",
+ "title": "Owning Your Own Shadow",
+ "page": "verify",
+ "says": "Johnson treats the unexplored inner life as shadow, where meaning is found by turning inward rather than staying on the surface.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "lesson_8": {
+ "verdict": "Without an 8, handling money and power is the lesson: you undercharge or grip too hard, and the growth is learning to price your worth and hold authority cleanly, without apology.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads a missing 8 as a Karmic Lesson in the healthy handling of money, authority and material power.",
+ "paraphrase": true
+ },
+ {
+ "author": "Robert A. Johnson",
+ "title": "Owning Your Own Shadow",
+ "page": "verify",
+ "says": "Johnson would frame ambivalence about power as shadow to own, since disowned power distorts until it is consciously carried.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "lesson_9": {
+ "verdict": "A missing 9 makes wider compassion the lesson: empathy has a short radius and endings come hard, so the growth is giving with no return path and learning to release and move on.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips associates an absent 9 with a Karmic Lesson in broad compassion, generosity and letting go.",
+ "paraphrase": true
+ },
+ {
+ "author": "Robert A. Johnson",
+ "title": "Owning Your Own Shadow",
+ "page": "verify",
+ "says": "Johnson's shadow lens sees detachment from the wider human story as material to integrate through unconditional giving and graceful endings.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "passion_1": {
+ "verdict": "A dominant 1 is a Hidden Passion for initiative and leadership: you instinctively take the wheel and start things, at your best on open ground where courage outranks consensus.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads the most frequent digit as the Hidden Passion, and a surplus of 1 as strong innate drive to lead and initiate.",
+ "paraphrase": true
+ },
+ {
+ "author": "Robert A. Johnson",
+ "title": "Owning Your Own Shadow",
+ "page": "verify",
+ "says": "Johnson notes an over-strong trait casts its own shadow, here the neglected patience to let others move, worth integrating so strength doesn't bulldoze.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "passion_2": {
+ "verdict": "A frequent 2 is a Hidden Passion for connection: you read people fast and smooth tension instinctively, strongest where partnership and trust are the actual product.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads a surplus of 2 as a Hidden Passion for sensitivity, cooperation and one-to-one connection.",
+ "paraphrase": true
+ },
+ {
+ "author": "Robert A. Johnson",
+ "title": "Owning Your Own Shadow",
+ "page": "verify",
+ "says": "Johnson would flag the shadow of over-attunement, dissolving into others' agendas, as the boundary work that keeps the gift clean.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "passion_3": {
+ "verdict": "A dominant 3 is a Hidden Passion to express: words, images and ideas press to get out, and focusing on one witnessed medium turns scattered chatter into real influence.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads a surplus of 3 as a Hidden Passion for self-expression and creative communication.",
+ "paraphrase": true
+ },
+ {
+ "author": "Robert A. Johnson",
+ "title": "Owning Your Own Shadow",
+ "page": "verify",
+ "says": "Johnson notes unfocused expressive energy has a shadow, noise without depth, resolved by committing the gift to one channel.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "passion_4": {
+ "verdict": "A frequent 4 is a Hidden Passion to build: you crave order and the long game, holding routines that break most people; the watch-out is rigidity, eased by reviewing the plan.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads a surplus of 4 as a Hidden Passion for structure, order and patient, methodical building.",
+ "paraphrase": true
+ },
+ {
+ "author": "Robert A. Johnson",
+ "title": "Owning Your Own Shadow",
+ "page": "verify",
+ "says": "Johnson would name rigidity as the shadow of strong order, integrated by leaving deliberate room for change.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "passion_5": {
+ "verdict": "A dominant 5 is a Hidden Passion for change: you run on motion and learn by doing, becoming formidable once you set one anchor and let everything else move freely.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads a surplus of 5 as a Hidden Passion for freedom, variety and constant change.",
+ "paraphrase": true
+ },
+ {
+ "author": "Robert A. Johnson",
+ "title": "Owning Your Own Shadow",
+ "page": "verify",
+ "says": "Johnson notes restless energy carries a shadow of scattering, steadied by one conscious anchor amid the movement.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "passion_6": {
+ "verdict": "A frequent 6 is a Hidden Passion to care: you sense what a room and its people need, and care with boundaries makes you the trusted centre of any group you choose.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads a surplus of 6 as a Hidden Passion for care, responsibility, home and harmony.",
+ "paraphrase": true
+ },
+ {
+ "author": "Robert A. Johnson",
+ "title": "Owning Your Own Shadow",
+ "page": "verify",
+ "says": "Johnson would frame over-caring, rescuing the unasked, as the shadow to own, keeping care sustainable through boundaries.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "passion_7": {
+ "verdict": "A dominant 7 is a Hidden Passion to understand: your mind runs on why and needs solitude, becoming authority when that depth is surfaced and shared rather than hoarded.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads a surplus of 7 as a Hidden Passion for analysis, depth and the search for understanding.",
+ "paraphrase": true
+ },
+ {
+ "author": "Robert A. Johnson",
+ "title": "Owning Your Own Shadow",
+ "page": "verify",
+ "says": "Johnson notes the shadow of the withdrawn thinker, knowing much, sharing nothing, integrated by turning insight outward.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "passion_8": {
+ "verdict": "A frequent 8 is a Hidden Passion to run things: you think in outcomes, leverage and scale, at your best when ambition is tied to something that outlives the quarter.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads a surplus of 8 as a Hidden Passion for power, achievement and material mastery.",
+ "paraphrase": true
+ },
+ {
+ "author": "Robert A. Johnson",
+ "title": "Owning Your Own Shadow",
+ "page": "verify",
+ "says": "Johnson would flag power-as-the-point as the shadow, kept healthy by anchoring ambition to a purpose beyond itself.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "passion_9": {
+ "verdict": "A dominant 9 is a Hidden Passion to give: you think in wholes and long arcs, sustainable when you refill your own tank before generosity turns to quiet resentment.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips reads a surplus of 9 as a Hidden Passion for humanitarian giving and broad, big-picture vision.",
+ "paraphrase": true
+ },
+ {
+ "author": "Robert A. Johnson",
+ "title": "Owning Your Own Shadow",
+ "page": "verify",
+ "says": "Johnson notes martyrdom as the shadow of over-giving, resolved by self-care that keeps generosity freely chosen.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "no_lessons": {
+ "verdict": "Every digit 1-9 appears, so there are no missing-number Karmic Lessons: full range across all traits and no built-in blind spots, but with no forced lesson, direction becomes a choice you make.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips notes that when no number is missing there are no Karmic Lessons, indicating a broad, well-rounded spread of qualities.",
+ "paraphrase": true
+ },
+ {
+ "author": "Robert A. Johnson",
+ "title": "Owning Your Own Shadow",
+ "page": "verify",
+ "says": "Johnson would caution that range is not automatic wholeness, without a pressing lesson, integration still asks for deliberate conscious direction.",
+ "paraphrase": true
+ }
+ ]
+ }
+ }
+ },
+ {
+ "point_code": "A10",
+ "point_name": "Pythagorean Square",
+ "method": {
+ "oneliner": "Lay the birth-date digits into a nine-cell square (psychomatrix) to read strengths and gaps.",
+ "verdict": "The birth date is arranged into nine cells; the count in each cell (with Aleksandrov's working numbers) maps strong and weak traits.",
+ "sources": [
+ {
+ "author": "A. F. Aleksandrov",
+ "title": "Bolshaya kniga numerologii (psychomatrix)",
+ "page": "verify",
+ "says": "The Russian psychomatrix reads character from how many times each digit falls into the nine cells.",
+ "paraphrase": true
+ },
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "The Pythagorean square gives a nine-cell portrait of strengths and weaknesses.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "values": {
+ "1_empty": {
+ "verdict": "No 1s in the square: a quiet, flexible will rather than raw force. You reach goals by finding the door, not breaking the wall, winning through timing, negotiation and persistence.",
+ "sources": [
+ {
+ "author": "A. F. Aleksandrov",
+ "title": "Bolshaya kniga numerologii (psychomatrix)",
+ "page": "verify",
+ "says": "In Aleksandrov's psychomatrix the count of 1s measures willpower and character; an empty cell indicates a soft, adaptable will that prevails by flexibility rather than pressure.",
+ "paraphrase": true
+ },
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips's birth-chart reading treats a scarce 1 as gentleness of ego, best expressed through cooperation rather than domination.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "1_some": {
+ "verdict": "One or two 1s: steady, workable character, firm where it counts, easy where it doesn't. You can lead without exhausting people and follow without losing yourself.",
+ "sources": [
+ {
+ "author": "A. F. Aleksandrov",
+ "title": "Bolshaya kniga numerologii (psychomatrix)",
+ "page": "verify",
+ "says": "Aleksandrov reads one or two 1s as balanced willpower, a person who can hold a position without turning every difference into a contest.",
+ "paraphrase": true
+ },
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips associates a moderate presence of 1 with healthy, comfortable self-assertion.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "1_many": {
+ "verdict": "Many 1s: iron will. Once you decide, it's decided, and obstacles read as delays, powerful for long games, but worth softening with a few domains where you let others decide.",
+ "sources": [
+ {
+ "author": "A. F. Aleksandrov",
+ "title": "Bolshaya kniga numerologii (psychomatrix)",
+ "page": "verify",
+ "says": "Aleksandrov reads a crowded 1-cell as very strong, potentially rigid willpower and pronounced character.",
+ "paraphrase": true
+ },
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips links an abundance of 1 to strong, sometimes domineering self-will that benefits from deliberate flexibility.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "2_empty": {
+ "verdict": "No 2s: energy is a battery, not a well, you draw power from people, movement and daylight, and stay consistent by scheduling recharge like appointments.",
+ "sources": [
+ {
+ "author": "A. F. Aleksandrov",
+ "title": "Bolshaya kniga numerologii (psychomatrix)",
+ "page": "verify",
+ "says": "In Aleksandrov's psychomatrix the 2-cell measures vital energy and charisma; empty suggests limited internal reserves that need replenishing from outside.",
+ "paraphrase": true
+ },
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips's birth-chart view treats a missing 2 as reduced natural energy and sensitivity that is developed consciously rather than assumed.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "2_some": {
+ "verdict": "One or two 2s: a steady, reliable current, enough energy for a full day and enough warmth that people enjoy your company; your edge is sustainability, not short bursts.",
+ "sources": [
+ {
+ "author": "A. F. Aleksandrov",
+ "title": "Bolshaya kniga numerologii (psychomatrix)",
+ "page": "verify",
+ "says": "Aleksandrov reads a moderate 2-cell as balanced, dependable energy and comfortable charisma.",
+ "paraphrase": true
+ },
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips associates a present but not excessive 2 with even-tempered, approachable energy.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "2_many": {
+ "verdict": "Many 2s: a live wire that changes a room's temperature. High charisma and drive, best given an outlet in front-of-room work before restless energy curdles into friction.",
+ "sources": [
+ {
+ "author": "A. F. Aleksandrov",
+ "title": "Bolshaya kniga numerologii (psychomatrix)",
+ "page": "verify",
+ "says": "Aleksandrov reads a crowded 2-cell as abundant bioenergy and magnetism that needs active discharge.",
+ "paraphrase": true
+ },
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips links a strong 2 presence to heightened sensitivity and radiant energy that draws others in.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "3_empty": {
+ "verdict": "No 3s: you think in stories, images and people, not formulas. Build around language, aesthetics and judgement, and borrow hard analysis rather than forcing it.",
+ "sources": [
+ {
+ "author": "A. F. Aleksandrov",
+ "title": "Bolshaya kniga numerologii (psychomatrix)",
+ "page": "verify",
+ "says": "In Aleksandrov's psychomatrix the 3-cell reflects the mind's pull toward the exact and technical; empty points to a humanities-leaning rather than analytical bent.",
+ "paraphrase": true
+ },
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips's chart reading treats a missing 3 as a mind that favours intuition and imagination over strict logic.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "3_some": {
+ "verdict": "One or two 3s: working logic that holds under load, you can follow an argument and pick up a technical skill without logic becoming your whole personality; a natural translator.",
+ "sources": [
+ {
+ "author": "A. F. Aleksandrov",
+ "title": "Bolshaya kniga numerologii (psychomatrix)",
+ "page": "verify",
+ "says": "Aleksandrov reads a moderate 3-cell as sound, usable analytical ability held in balance with other faculties.",
+ "paraphrase": true
+ },
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips associates a present 3 with capable reasoning that supports rather than dominates the personality.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "3_many": {
+ "verdict": "Many 3s: the analyst, your mind wants the mechanism and precision is a pleasure. Strong on hard problems; the trap is treating people like systems that must be solved.",
+ "sources": [
+ {
+ "author": "A. F. Aleksandrov",
+ "title": "Bolshaya kniga numerologii (psychomatrix)",
+ "page": "verify",
+ "says": "Aleksandrov reads a crowded 3-cell as pronounced analytical, technical and order-seeking ability.",
+ "paraphrase": true
+ },
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips links a strong 3 to sharp mental and analytical power, sometimes at the cost of warmth.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "4_empty": {
+ "verdict": "No 4s: a body that keeps honest books, it invoices abuse fast and thrives on routine. The upside is early feedback; answer it with regimen and you quietly outlast others.",
+ "sources": [
+ {
+ "author": "A. F. Aleksandrov",
+ "title": "Bolshaya kniga numerologii (psychomatrix)",
+ "page": "verify",
+ "says": "In Aleksandrov's psychomatrix the 4-cell reflects physical constitution and health; empty suggests a more delicate baseline that rewards careful maintenance.",
+ "paraphrase": true
+ },
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips's chart view treats a missing 4 as a constitution best supported by steady habits rather than extremes.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "4_some": {
+ "verdict": "One or two 4s: a sound chassis, colds pass quickly and ordinary loads don't wear you down. Maintain the asset with movement and sleep rather than merely spending it.",
+ "sources": [
+ {
+ "author": "A. F. Aleksandrov",
+ "title": "Bolshaya kniga numerologii (psychomatrix)",
+ "page": "verify",
+ "says": "Aleksandrov reads a moderate 4-cell as solid, dependable health and physical resilience.",
+ "paraphrase": true
+ },
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips associates a present 4 with good practical vitality and bodily steadiness.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "4_many": {
+ "verdict": "Many 4s: built like a fortress, you recover fast and endure what exhausts others. The danger is presuming invulnerability, since big reserves fail late; get checked anyway.",
+ "sources": [
+ {
+ "author": "A. F. Aleksandrov",
+ "title": "Bolshaya kniga numerologii (psychomatrix)",
+ "page": "verify",
+ "says": "Aleksandrov reads a crowded 4-cell as unusually strong physical reserves and endurance.",
+ "paraphrase": true
+ },
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips links an abundance of 4 to a robust constitution and stamina worth channelling into demanding pursuits.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "5_empty": {
+ "verdict": "No 5s: instinct is earned, not innate, clarity arrives in hindsight. Replace gut with process, checklists, a day's pause, and reviewed experience compounds into wisdom.",
+ "sources": [
+ {
+ "author": "A. F. Aleksandrov",
+ "title": "Bolshaya kniga numerologii (psychomatrix)",
+ "page": "verify",
+ "says": "In Aleksandrov's psychomatrix the 5-cell measures intuition and foresight; empty suggests intuition that is built through experience rather than given.",
+ "paraphrase": true
+ },
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips's chart reading treats a missing 5 as foresight developed by learning and reflection more than by raw instinct.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "5_some": {
+ "verdict": "One or two 5s: a working radar, a quiet read on rooms and plans before the facts arrive. Treat pings as first alerts to investigate, and log hunches against outcomes.",
+ "sources": [
+ {
+ "author": "A. F. Aleksandrov",
+ "title": "Bolshaya kniga numerologii (psychomatrix)",
+ "page": "verify",
+ "says": "Aleksandrov reads a moderate 5-cell as reliable, usable intuition and good situational sense.",
+ "paraphrase": true
+ },
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips associates a present 5 with sound instincts that pair well with a quick factual check.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "5_many": {
+ "verdict": "Many 5s: second sight, you sense outcomes before the evidence shows. Position where foresight is currency, translate hunches into arguments, and guard the channel from fatigue.",
+ "sources": [
+ {
+ "author": "A. F. Aleksandrov",
+ "title": "Bolshaya kniga numerologii (psychomatrix)",
+ "page": "verify",
+ "says": "Aleksandrov reads a crowded 5-cell as strong, pronounced intuition and anticipatory sense.",
+ "paraphrase": true
+ },
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips links an abundance of 5 to vivid intuition and foresight that benefits from grounding evidence.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "6_empty": {
+ "verdict": "No 6s: head over hands, your value is created above the workbench, not on it. Pay professionals for physical tasks without guilt, and keep respect for the makers you'll rely on.",
+ "sources": [
+ {
+ "author": "A. F. Aleksandrov",
+ "title": "Bolshaya kniga numerologii (psychomatrix)",
+ "page": "verify",
+ "says": "In Aleksandrov's psychomatrix the 6-cell reflects aptitude for physical, hands-on labour; empty points to a mind-first rather than craft-first inclination.",
+ "paraphrase": true
+ },
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips's chart view treats a missing 6 as a preference for mental over manual work.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "6_some": {
+ "verdict": "One or two 6s: capable hands, you fix, build and finish at a level that quietly impresses. Keep a craft in your life; delivering finished results earns trust fast.",
+ "sources": [
+ {
+ "author": "A. F. Aleksandrov",
+ "title": "Bolshaya kniga numerologii (psychomatrix)",
+ "page": "verify",
+ "says": "Aleksandrov reads a moderate 6-cell as competent, satisfying practical and manual ability.",
+ "paraphrase": true
+ },
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips associates a present 6 with reliable hands-on capability and follow-through.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "6_many": {
+ "verdict": "Many 6s: a born maker, your hands think, and something well-made appears in hours. Charge properly for rare craftsmanship; watch doing everything yourself, and teach the skill.",
+ "sources": [
+ {
+ "author": "A. F. Aleksandrov",
+ "title": "Bolshaya kniga numerologii (psychomatrix)",
+ "page": "verify",
+ "says": "Aleksandrov reads a crowded 6-cell as strong innate craftsmanship and drive to make things by hand.",
+ "paraphrase": true
+ },
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips links an abundance of 6 to pronounced practical, hands-on mastery.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "7_empty": {
+ "verdict": "No 7s: self-made luck, nothing has just fallen into your lap, so you build it. Skip pure chance and stack the deck with skill and reputation; earned gains can't be taken back.",
+ "sources": [
+ {
+ "author": "A. F. Aleksandrov",
+ "title": "Bolshaya kniga numerologii (psychomatrix)",
+ "page": "verify",
+ "says": "In Aleksandrov's psychomatrix the 7-cell reflects luck and inborn talent; empty suggests fortune that must be constructed through effort rather than granted.",
+ "paraphrase": true
+ },
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips's chart reading treats a missing 7 as success earned by deliberate work more than by fortunate breaks.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "7_some": {
+ "verdict": "One or two 7s: a persistent tailwind, doors open at convenient moments and small bets pay off. It only helps if you move, so take more small risks; never build a plan on it.",
+ "sources": [
+ {
+ "author": "A. F. Aleksandrov",
+ "title": "Bolshaya kniga numerologii (psychomatrix)",
+ "page": "verify",
+ "says": "Aleksandrov reads a moderate 7-cell as a fair measure of luck and creative talent that tips close calls.",
+ "paraphrase": true
+ },
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips associates a present 7 with a helpful streak of fortune and creative spark.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "7_many": {
+ "verdict": "Many 7s: gifted, skills, breaks and attention come easily. The classic failure is coasting; take one talent past where luck stops helping, and work keeps you in the room.",
+ "sources": [
+ {
+ "author": "A. F. Aleksandrov",
+ "title": "Bolshaya kniga numerologii (psychomatrix)",
+ "page": "verify",
+ "says": "Aleksandrov reads a crowded 7-cell as marked luck and natural talent.",
+ "paraphrase": true
+ },
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips links an abundance of 7 to notable gifts and good fortune that still require applied effort to fulfil.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "8_empty": {
+ "verdict": "No 8s: duty isn't pre-installed, promises and schedules feel like suggestions. Install reliability with calendars and fewer, fully-kept commitments; the upside is real freedom.",
+ "sources": [
+ {
+ "author": "A. F. Aleksandrov",
+ "title": "Bolshaya kniga numerologii (psychomatrix)",
+ "page": "verify",
+ "says": "In Aleksandrov's psychomatrix the 8-cell reflects sense of duty and kindness; empty suggests obligation that is chosen and built rather than automatic.",
+ "paraphrase": true
+ },
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips's chart view treats a missing 8 as responsibility that is developed deliberately rather than felt by default.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "8_some": {
+ "verdict": "One or two 8s: quietly reliable, when you say you'll be there, you are, and people route important things through you. Keep boundaries so reliability isn't filed as free labour.",
+ "sources": [
+ {
+ "author": "A. F. Aleksandrov",
+ "title": "Bolshaya kniga numerologii (psychomatrix)",
+ "page": "verify",
+ "says": "Aleksandrov reads a moderate 8-cell as dependable duty and practical kindness.",
+ "paraphrase": true
+ },
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips associates a present 8 with trustworthy, grounded responsibility.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "8_many": {
+ "verdict": "Many 8s: the one who carries, you feel responsible for everything in reach and struggle to say no. Audit the load and let capable adults carry their share; a boundaried carrier holds up much.",
+ "sources": [
+ {
+ "author": "A. F. Aleksandrov",
+ "title": "Bolshaya kniga numerologii (psychomatrix)",
+ "page": "verify",
+ "says": "Aleksandrov reads a crowded 8-cell as a very strong, sometimes over-extended sense of duty and care.",
+ "paraphrase": true
+ },
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips links an abundance of 8 to a powerful sense of obligation that benefits from healthy limits.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "9_empty": {
+ "verdict": "No 9s: memory needs a system, names and details leak unless pinned down. Externalise ruthlessly and you out-organise the naturally retentive; a hidden perk is releasing grudges fast.",
+ "sources": [
+ {
+ "author": "A. F. Aleksandrov",
+ "title": "Bolshaya kniga numerologii (psychomatrix)",
+ "page": "verify",
+ "says": "In Aleksandrov's psychomatrix the 9-cell reflects memory and mind; empty suggests recall that works best supported by external systems.",
+ "paraphrase": true
+ },
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips's chart reading treats a missing 9 as a memory aided by notes and structure rather than sheer retention.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "9_some": {
+ "verdict": "One or two 9s: quick recall without theatrics, faces return with names, instructions stick after one hearing. Use it to learn continuously, but back up the truly critical in writing.",
+ "sources": [
+ {
+ "author": "A. F. Aleksandrov",
+ "title": "Bolshaya kniga numerologii (psychomatrix)",
+ "page": "verify",
+ "says": "Aleksandrov reads a moderate 9-cell as good, dependable memory and mental quickness.",
+ "paraphrase": true
+ },
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips associates a present 9 with sound recall and a capable, retentive mind.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "9_many": {
+ "verdict": "Many 9s: a steel-trap mind, once something enters, it stays. Feed it deep subjects to become a reference point; cautions are durable grudges and assuming others recall as you do.",
+ "sources": [
+ {
+ "author": "A. F. Aleksandrov",
+ "title": "Bolshaya kniga numerologii (psychomatrix)",
+ "page": "verify",
+ "says": "Aleksandrov reads a crowded 9-cell as an exceptionally strong, retentive memory and mind.",
+ "paraphrase": true
+ },
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "Phillips links an abundance of 9 to powerful memory and mental capacity best applied to deep expertise.",
+ "paraphrase": true
+ }
+ ]
+ }
+ }
+ },
+ {
+ "point_code": "A11",
+ "point_name": "Karmic Debt Numbers",
+ "method": {
+ "oneliner": "Check intermediate sums for 13, 14, 16 or 19, the karmic-debt markers.",
+ "verdict": "If 13/14/16/19 appear in the working sums, that debt is active; otherwise there is none. Formulated carefully, never as a threat.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "13/14/16/19 in the sums denote specific karmic debts with defined themes.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "values": {
+ "13": {
+ "verdict": "Karmic Debt 13/4 reads as the debt of work: shortcuts collapse and results come only at full price. It closes through honest, finished effort, and what it builds tends to last for decades.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "In Phillips's numerology Karmic Debt 13 reduces to a 4 and marks a lesson in disciplined, sustained work, with easy paths tending to fall short until effort is applied honestly.",
+ "paraphrase": true
+ },
+ {
+ "author": "Robert A. Johnson",
+ "title": "Owning Your Own Shadow",
+ "page": "verify",
+ "says": "Johnson's shadow lens frames such a pattern as an inherited posture to integrate consciously, a task to work, not a guilt to carry.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "14": {
+ "verdict": "Karmic Debt 14/5 reads as the debt of freedom: appetite and impulse resist moderation. It closes through chosen limits, rails under the adventure, until adaptability pays out without self-destruction.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "In Phillips's numerology Karmic Debt 14 reduces to a 5 and marks a lesson in the disciplined use of freedom, moderating impulse and honouring commitments.",
+ "paraphrase": true
+ },
+ {
+ "author": "Robert A. Johnson",
+ "title": "Owning Your Own Shadow",
+ "page": "verify",
+ "says": "Johnson would read the pull toward excess as a starting balance to own gently, met with chosen structure rather than shame.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "16": {
+ "verdict": "Karmic Debt 16/7 reads as the debt of ego: identities built on pride tend to give way. It closes through voluntary humility, and on the far side sits the depth and steadiness of 7.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "In Phillips's numerology Karmic Debt 16 reduces to a 7 and marks a lesson in humility, releasing self-importance so a fall becomes renewal into depth.",
+ "paraphrase": true
+ },
+ {
+ "author": "Robert A. Johnson",
+ "title": "Owning Your Own Shadow",
+ "page": "verify",
+ "says": "Johnson's shadow view treats pride as material to integrate before events force it, a metaphor with a job, not a charge to answer.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "19": {
+ "verdict": "Karmic Debt 19/1 reads as the debt of independence: a loop of doing everything alone. It closes by standing fully on your own feet while leading so others grow rather than shrink.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "In Phillips's numerology Karmic Debt 19 reduces to a 1 and marks a lesson in balanced independence, using strength and authority without isolating or diminishing others.",
+ "paraphrase": true
+ },
+ {
+ "author": "Robert A. Johnson",
+ "title": "Owning Your Own Shadow",
+ "page": "verify",
+ "says": "Johnson would frame one-sided power as shadow to own, rebalancing strength with empathy rather than reading it as accusation.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "none": {
+ "verdict": "No karmic debt numbers appear in the chart, a clean slate in this system: no old invoice on a specific theme. Challenges are ordinary and chosen, responding to normal effort, not a locked pattern.",
+ "sources": [
+ {
+ "author": "David Phillips",
+ "title": "The Complete Book of Numerology",
+ "page": "verify",
+ "says": "In Phillips's numerology the absence of 13, 14, 16 or 19 means no Karmic Debt is carried, the most common result, indicating no inherited toll on a particular theme.",
+ "paraphrase": true
+ },
+ {
+ "author": "Robert A. Johnson",
+ "title": "Owning Your Own Shadow",
+ "page": "verify",
+ "says": "Johnson's framing still applies: without an inherited pattern, growth is ordinary shadow work, habits and choices, not a special repayment.",
+ "paraphrase": true
+ }
+ ]
+ }
+ }
+ },
+ {
+ "point_code": "B1",
+ "point_name": "Sun Sign",
+ "method": {
+ "oneliner": "Place the Sun in the tropical zodiac by birth date, no birth time needed.",
+ "verdict": "The Sun sign is the tropical-zodiac position of the Sun on the birth date; it names the core will and identity. Works without a birth time, which is why it is in the base 13.",
+ "sources": [
+ {
+ "author": "Liz Greene",
+ "title": "The Astrology of Fate",
+ "page": "verify",
+ "says": "The Sun sign describes the core of will and identity; planets are the language of the unconscious, not fate.",
+ "paraphrase": true
+ },
+ {
+ "author": "Classical astrology",
+ "title": "tropical zodiac date table",
+ "page": "verify",
+ "says": "Sign boundaries follow fixed tropical date ranges (e.g. Aries 21.03–19.04).",
+ "paraphrase": true
+ }
+ ]
+ },
+ "values": {
+ "Aries": {
+ "verdict": "Pure initiative: identity forged in action rather than reflection. The will to begin, to fight, to move first, selfhood asserted through courage and acting before certainty arrives.",
+ "sources": [
+ {
+ "author": "Liz Greene",
+ "title": "The Astrology of Fate",
+ "page": "verify",
+ "says": "In psychological astrology the Aries drive expresses the emerging ego's need to assert a distinct, autonomous self through decisive action and direct confrontation.",
+ "paraphrase": true
+ },
+ {
+ "author": "Classical astrology",
+ "title": "tropical zodiac",
+ "page": "verify",
+ "says": "Aries is the cardinal fire sign ruled by Mars: cardinal initiates, fire animates, its function is to spark beginnings and drive raw, outward-directed will.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "Taurus": {
+ "verdict": "The will to stabilize and possess: identity grounded in the tangible, the enduring, the owned. Value, patience, and loyalty as the drive to build something that lasts.",
+ "sources": [
+ {
+ "author": "Liz Greene",
+ "title": "The Astrology of Fate",
+ "page": "verify",
+ "says": "Psychological astrology reads Taurus as the psyche's need for security, embodiment, and steady value, attaching identity to what can be held and preserved.",
+ "paraphrase": true
+ },
+ {
+ "author": "Classical astrology",
+ "title": "tropical zodiac",
+ "page": "verify",
+ "says": "Taurus is the fixed earth sign ruled by Venus: earth roots in the material, fixed sustains, its function is to secure, maintain, and give durable form.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "Gemini": {
+ "verdict": "The will to connect and to know: identity built through language, curiosity, and mental agility. The drive to gather, link, and translate, a self assembled from many perspectives.",
+ "sources": [
+ {
+ "author": "Liz Greene",
+ "title": "The Astrology of Fate",
+ "page": "verify",
+ "says": "Psychological astrology sees Gemini as the mind's need to differentiate, name, and relate ideas, identity animated by curiosity and communication rather than fixed conviction.",
+ "paraphrase": true
+ },
+ {
+ "author": "Classical astrology",
+ "title": "tropical zodiac",
+ "page": "verify",
+ "says": "Gemini is the mutable air sign ruled by Mercury: air abstracts and communicates, mutable adapts and multiplies, its function is to exchange information and bridge differences.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "Cancer": {
+ "verdict": "The will to nurture and belong: identity rooted in feeling, memory, and home. The drive to protect, contain, and care, selfhood defined by emotional bonds and the need for safety.",
+ "sources": [
+ {
+ "author": "Liz Greene",
+ "title": "The Astrology of Fate",
+ "page": "verify",
+ "says": "Psychological astrology reads Cancer as the psyche's need for containment, roots, and emotional safety, identity formed through attachment, family, and the inner life of feeling.",
+ "paraphrase": true
+ },
+ {
+ "author": "Classical astrology",
+ "title": "tropical zodiac",
+ "page": "verify",
+ "says": "Cancer is the cardinal water sign ruled by the Moon: water feels and receives, cardinal initiates, its function is to found emotional security and give protective form to belonging.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "Leo": {
+ "verdict": "The will to express and be seen: identity radiated through creativity, pride, and warmth. The drive to shine, lead, and give, selfhood affirmed by wholehearted self-expression.",
+ "sources": [
+ {
+ "author": "Liz Greene",
+ "title": "The Astrology of Fate",
+ "page": "verify",
+ "says": "Psychological astrology sees Leo as the heart's need to express a distinct creative self and be recognized, identity realized through self-expression, generosity, and pride.",
+ "paraphrase": true
+ },
+ {
+ "author": "Classical astrology",
+ "title": "tropical zodiac",
+ "page": "verify",
+ "says": "Leo is the fixed fire sign ruled by the Sun: fire animates and radiates, fixed sustains, its function is to hold and express a stable center of vital, creative selfhood.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "Virgo": {
+ "verdict": "The will to refine and serve: identity found in usefulness, precision, and improvement. The drive to analyze, correct, and perfect, selfhood expressed through competent, practical care.",
+ "sources": [
+ {
+ "author": "Liz Greene",
+ "title": "The Astrology of Fate",
+ "page": "verify",
+ "says": "Psychological astrology reads Virgo as the psyche's need for order, discrimination, and meaningful function, identity built through analysis, service, and the perfecting of craft.",
+ "paraphrase": true
+ },
+ {
+ "author": "Classical astrology",
+ "title": "tropical zodiac",
+ "page": "verify",
+ "says": "Virgo is the mutable earth sign ruled by Mercury: earth grounds in the practical, mutable discriminates and adjusts, its function is to analyze, refine, and put matter to useful order.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "Libra": {
+ "verdict": "The will to balance and relate: identity discovered through partnership, fairness, and beauty. The drive to harmonize and to weigh, selfhood realized in relation to the other.",
+ "sources": [
+ {
+ "author": "Liz Greene",
+ "title": "The Astrology of Fate",
+ "page": "verify",
+ "says": "Psychological astrology sees Libra as the psyche's need to meet itself through the other, identity formed via relationship, balance, and the search for fairness and aesthetic harmony.",
+ "paraphrase": true
+ },
+ {
+ "author": "Classical astrology",
+ "title": "tropical zodiac",
+ "page": "verify",
+ "says": "Libra is the cardinal air sign ruled by Venus: air relates and evaluates, cardinal initiates, its function is to establish equilibrium, justice, and connection between opposites.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "Scorpio": {
+ "verdict": "The will to penetrate and transform: identity forged through intensity, depth, and rebirth. The drive to uncover hidden truth and metabolize crisis, selfhood remade by what it endures.",
+ "sources": [
+ {
+ "author": "Liz Greene",
+ "title": "The Astrology of Fate",
+ "page": "verify",
+ "says": "Psychological astrology reads Scorpio as the psyche's need to confront its depths, power, and shadow, identity transformed through intensity, loss, and regenerative descent.",
+ "paraphrase": true
+ },
+ {
+ "author": "Classical astrology",
+ "title": "tropical zodiac",
+ "page": "verify",
+ "says": "Scorpio is the fixed water sign ruled traditionally by Mars and modernly by Pluto: water feels deeply, fixed concentrates, its function is to sustain penetrating emotional focus and transform through depth.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "Sagittarius": {
+ "verdict": "The will to expand and seek meaning: identity found in freedom, vision, and the horizon. The drive toward truth, growth, and adventure, selfhood enlarged by the search for significance.",
+ "sources": [
+ {
+ "author": "Liz Greene",
+ "title": "The Astrology of Fate",
+ "page": "verify",
+ "says": "Psychological astrology sees Sagittarius as the psyche's need for meaning, faith, and a larger vision, identity expanded through exploration, belief, and the pursuit of truth.",
+ "paraphrase": true
+ },
+ {
+ "author": "Classical astrology",
+ "title": "tropical zodiac",
+ "page": "verify",
+ "says": "Sagittarius is the mutable fire sign ruled by Jupiter: fire aspires, mutable ranges widely, its function is to expand experience, seek meaning, and reach toward the distant and the possible.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "Capricorn": {
+ "verdict": "The will to achieve and endure: identity built through ambition, discipline, and responsibility. The drive to climb, structure, and master time, selfhood earned by sustained effort.",
+ "sources": [
+ {
+ "author": "Liz Greene",
+ "title": "The Astrology of Fate",
+ "page": "verify",
+ "says": "Psychological astrology reads Capricorn as the psyche's need for structure, mastery, and legitimate authority, identity built through discipline, responsibility, and enduring achievement.",
+ "paraphrase": true
+ },
+ {
+ "author": "Classical astrology",
+ "title": "tropical zodiac",
+ "page": "verify",
+ "says": "Capricorn is the cardinal earth sign ruled by Saturn: earth builds in reality, cardinal initiates, its function is to establish lasting structure, authority, and disciplined form.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "Aquarius": {
+ "verdict": "The will to individuate and reform: identity defined by independent thought, principle, and a vision of the future. The drive to question, innovate, and serve the collective on one's own terms.",
+ "sources": [
+ {
+ "author": "Liz Greene",
+ "title": "The Astrology of Fate",
+ "page": "verify",
+ "says": "Psychological astrology sees Aquarius as the psyche's need for autonomy, ideals, and belonging to a larger whole, identity formed through independent thought and principled detachment.",
+ "paraphrase": true
+ },
+ {
+ "author": "Classical astrology",
+ "title": "tropical zodiac",
+ "page": "verify",
+ "says": "Aquarius is the fixed air sign ruled traditionally by Saturn and modernly by Uranus: air abstracts into concepts, fixed holds firm, its function is to sustain principled ideas and organize the collective.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "Pisces": {
+ "verdict": "The will to merge and imagine: identity dissolved into empathy, intuition, and the unseen. The drive toward compassion, transcendence, and union, selfhood softened by porous feeling.",
+ "sources": [
+ {
+ "author": "Liz Greene",
+ "title": "The Astrology of Fate",
+ "page": "verify",
+ "says": "Psychological astrology reads Pisces as the psyche's need to dissolve boundaries and reconnect with the whole, identity shaped by empathy, imagination, and a longing for transcendence.",
+ "paraphrase": true
+ },
+ {
+ "author": "Classical astrology",
+ "title": "tropical zodiac",
+ "page": "verify",
+ "says": "Pisces is the mutable water sign ruled traditionally by Jupiter and modernly by Neptune: water merges and feels, mutable yields and adapts, its function is to dissolve separation and unite through compassion.",
+ "paraphrase": true
+ }
+ ]
+ }
+ }
+ },
+ {
+ "point_code": "C1",
+ "point_name": "Chinese Zodiac Animal",
+ "method": {
+ "oneliner": "Map the birth year onto the 12-animal, 60-year cycle.",
+ "verdict": "The year of birth selects one of the twelve animals on the 60-year cycle; it names your base temperament.",
+ "sources": [
+ {
+ "author": "Joey Yap",
+ "title": "BaZi, The Destiny Code",
+ "page": "verify",
+ "says": "Each year belongs to one of twelve animals repeating on a 60-year sexagenary cycle.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "values": {
+ "Rat": {
+ "verdict": "A quick-witted, resourceful survivor who spots openings and exits first, quietly gathering allies and information to protect a loyal inner circle.",
+ "sources": [
+ {
+ "author": "Joey Yap",
+ "title": "BaZi, The Destiny Code",
+ "page": "verify",
+ "says": "Rat-year natives are adaptable, shrewd and economical, thriving on wit and improvisation, especially under scarcity and pressure.",
+ "paraphrase": true
+ },
+ {
+ "author": "Chinese zodiac tradition",
+ "title": "traditional Chinese zodiac lore",
+ "page": "verify",
+ "says": "People instinctively read the Rat as charming, alert and quietly calculating, a clever operator with a warm, protective heart.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "Ox": {
+ "verdict": "Persistent and utterly reliable, moves slowly, decides carefully, then becomes unstoppable; the load-bearing wall others lean on.",
+ "sources": [
+ {
+ "author": "Joey Yap",
+ "title": "BaZi, The Destiny Code",
+ "page": "verify",
+ "says": "Ox-year natives are patient, diligent and steadfast, trusting hard work over flash and holding firm once committed.",
+ "paraphrase": true
+ },
+ {
+ "author": "Chinese zodiac tradition",
+ "title": "traditional Chinese zodiac lore",
+ "page": "verify",
+ "says": "The Ox reads on sight as solid, dependable and calm, the one who never drops what you hand them.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "Tiger": {
+ "verdict": "Bold, magnetic and courageous, a natural challenger who confronts problems head-on and gives others permission to be brave.",
+ "sources": [
+ {
+ "author": "Joey Yap",
+ "title": "BaZi, The Destiny Code",
+ "page": "verify",
+ "says": "Tiger-year natives are daring, passionate and authoritative, drawn to risk and rebellion against anything unjust or dull.",
+ "paraphrase": true
+ },
+ {
+ "author": "Chinese zodiac tradition",
+ "title": "traditional Chinese zodiac lore",
+ "page": "verify",
+ "says": "The Tiger reads as raw power and authority before a word is spoken, impossible to ignore.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "Rabbit": {
+ "verdict": "Tactful, graceful and diplomatic, reads atmospheres precisely and wins outcomes through timing and taste rather than force.",
+ "sources": [
+ {
+ "author": "Joey Yap",
+ "title": "BaZi, The Destiny Code",
+ "page": "verify",
+ "says": "Rabbit-year natives are gentle, refined and cautious, prizing harmony, beauty and well-judged avoidance of conflict.",
+ "paraphrase": true
+ },
+ {
+ "author": "Chinese zodiac tradition",
+ "title": "traditional Chinese zodiac lore",
+ "page": "verify",
+ "says": "The Rabbit reads as calm, gracious and safe, people relax and lower their guard in their presence.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "Dragon": {
+ "verdict": "Charismatic and ambitious at scale, thinks big by default, draws attention effortlessly, and makes bold ideas feel plausible.",
+ "sources": [
+ {
+ "author": "Joey Yap",
+ "title": "BaZi, The Destiny Code",
+ "page": "verify",
+ "says": "Dragon-year natives are powerful, confident and visionary, built for large undertakings and momentum others call unrealistic.",
+ "paraphrase": true
+ },
+ {
+ "author": "Chinese zodiac tradition",
+ "title": "traditional Chinese zodiac lore",
+ "page": "verify",
+ "says": "The Dragon reads as commanding presence and luck, rooms organize themselves around them.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "Snake": {
+ "verdict": "Wise, intuitive and strategically quiet, observes before acting, reads motives beneath words, and places few moves with devastating precision.",
+ "sources": [
+ {
+ "author": "Joey Yap",
+ "title": "BaZi, The Destiny Code",
+ "page": "verify",
+ "says": "Snake-year natives are perceptive, elegant and reserved, moving only when the moment is genuinely right.",
+ "paraphrase": true
+ },
+ {
+ "author": "Chinese zodiac tradition",
+ "title": "traditional Chinese zodiac lore",
+ "page": "verify",
+ "says": "The Snake reads as mysterious and composed, someone who understands far more than they reveal.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "Horse": {
+ "verdict": "Free-spirited, energetic and sociable, needs open road, lifts group morale on arrival, and handles change that rattles steadier types.",
+ "sources": [
+ {
+ "author": "Joey Yap",
+ "title": "BaZi, The Destiny Code",
+ "page": "verify",
+ "says": "Horse-year natives are independent, vivacious and restless, most productive when given room to run.",
+ "paraphrase": true
+ },
+ {
+ "author": "Chinese zodiac tradition",
+ "title": "traditional Chinese zodiac lore",
+ "page": "verify",
+ "says": "The Horse reads as warm, fast-moving vitality, buoyant company that draws people in.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "Goat": {
+ "verdict": "Gentle, creative and caring, tuned to beauty and others' comfort, softening every space and producing ideas pragmatists never reach.",
+ "sources": [
+ {
+ "author": "Joey Yap",
+ "title": "BaZi, The Destiny Code",
+ "page": "verify",
+ "says": "Goat-year natives are tender, imaginative and peace-loving, happiest making art, meals and warm atmospheres.",
+ "paraphrase": true
+ },
+ {
+ "author": "Chinese zodiac tradition",
+ "title": "traditional Chinese zodiac lore",
+ "page": "verify",
+ "says": "The Goat reads as kind and sensitive, the presence that makes a whole group gentler.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "Monkey": {
+ "verdict": "Witty, agile and inventive, learns anything fast, finds the unconventional route on instinct, and solves problems when the manual fails.",
+ "sources": [
+ {
+ "author": "Joey Yap",
+ "title": "BaZi, The Destiny Code",
+ "page": "verify",
+ "says": "Monkey-year natives are clever, playful and quick, treating rules as interesting suggestions and play as thinking.",
+ "paraphrase": true
+ },
+ {
+ "author": "Chinese zodiac tradition",
+ "title": "traditional Chinese zodiac lore",
+ "page": "verify",
+ "says": "The Monkey reads as sharp, funny and magnetic, never boring company.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "Rooster": {
+ "verdict": "Precise, honest and exacting, keeps high standards, speaks plainly, catches errors others gloss over, and delivers work that stands inspection.",
+ "sources": [
+ {
+ "author": "Joey Yap",
+ "title": "BaZi, The Destiny Code",
+ "page": "verify",
+ "says": "Rooster-year natives are meticulous, candid and orderly, valuing competence, honesty and a sharp appearance.",
+ "paraphrase": true
+ },
+ {
+ "author": "Chinese zodiac tradition",
+ "title": "traditional Chinese zodiac lore",
+ "page": "verify",
+ "says": "The Rooster reads as confident and direct, visibly competent, with no games.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "Dog": {
+ "verdict": "Loyal and just, keeps promises, defends their people, and reacts to unfairness anywhere as if it were personal; genuinely safe to rely on.",
+ "sources": [
+ {
+ "author": "Joey Yap",
+ "title": "BaZi, The Destiny Code",
+ "page": "verify",
+ "says": "Dog-year natives are faithful, principled and protective, paying trust in full and standing their post when things go bad.",
+ "paraphrase": true
+ },
+ {
+ "author": "Chinese zodiac tradition",
+ "title": "traditional Chinese zodiac lore",
+ "page": "verify",
+ "says": "The Dog reads as sincere and steadfast, the one who actually shows up.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "Pig": {
+ "verdict": "Generous, honest and good-natured, assumes decency, shares freely, and creates abundance and ease around them without scorekeeping.",
+ "sources": [
+ {
+ "author": "Joey Yap",
+ "title": "BaZi, The Destiny Code",
+ "page": "verify",
+ "says": "Pig-year natives are warm, sincere and pleasure-loving, enjoying life and giving without calculation.",
+ "paraphrase": true
+ },
+ {
+ "author": "Chinese zodiac tradition",
+ "title": "traditional Chinese zodiac lore",
+ "page": "verify",
+ "says": "The Pig reads as open and trustworthy, nothing about them feels like a trap.",
+ "paraphrase": true
+ }
+ ]
+ }
+ }
+ },
+ {
+ "point_code": "C2",
+ "point_name": "Year Element",
+ "method": {
+ "oneliner": "Derive the year's Wu Xing element (Wood/Fire/Earth/Metal/Water).",
+ "verdict": "The birth year also carries one of the five Wu Xing elements, layered over the animal as the 'temperature' of your nature.",
+ "sources": [
+ {
+ "author": "Wu Xing (Five Elements) theory",
+ "title": "classical Five-Element canon",
+ "page": "verify",
+ "says": "The sexagenary year carries one of five elements that colours the animal sign.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "values": {
+ "Wood": {
+ "verdict": "Wood turns the nature toward growth, flexibility and vision, built to develop, plan long-range, and help other things grow alongside.",
+ "sources": [
+ {
+ "author": "Wu Xing (Five Elements) theory",
+ "title": "classical Five-Element canon",
+ "page": "verify",
+ "says": "Wood is the element of expansion and upward reach, lending the animal sign flexibility, vision and generative long-range planning.",
+ "paraphrase": true
+ },
+ {
+ "author": "Giovanni Maciocia",
+ "title": "The Foundations of Chinese Medicine",
+ "page": "verify",
+ "says": "In Chinese medicine Wood governs the liver and gallbladder, the emotion of anger, and the drive of spring and new growth.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "Fire": {
+ "verdict": "Fire turns up the heat, more passionate, visible and decisive, radiating energy that draws people and moving toward the front of the room.",
+ "sources": [
+ {
+ "author": "Wu Xing (Five Elements) theory",
+ "title": "classical Five-Element canon",
+ "page": "verify",
+ "says": "Fire is the element of heat and radiance, amplifying passion, expressiveness and leadership in the animal sign.",
+ "paraphrase": true
+ },
+ {
+ "author": "Giovanni Maciocia",
+ "title": "The Foundations of Chinese Medicine",
+ "page": "verify",
+ "says": "In Chinese medicine Fire governs the heart and small intestine, the emotion of joy, and the peak of summer.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "Earth": {
+ "verdict": "Earth settles the nature toward the center, steadier, practical and trustworthy under load; the ground that keeps things standing.",
+ "sources": [
+ {
+ "author": "Wu Xing (Five Elements) theory",
+ "title": "classical Five-Element canon",
+ "page": "verify",
+ "says": "Earth is the element of stability and nourishment, grounding the animal sign in reliability and practical sense.",
+ "paraphrase": true
+ },
+ {
+ "author": "Giovanni Maciocia",
+ "title": "The Foundations of Chinese Medicine",
+ "page": "verify",
+ "says": "In Chinese medicine Earth governs the spleen and stomach, the emotion of worry, and the transition of late summer.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "Metal": {
+ "verdict": "Metal gives the nature an edge, willpower, discipline and clean structure, holding standards and cutting through excess with bracing resolve.",
+ "sources": [
+ {
+ "author": "Wu Xing (Five Elements) theory",
+ "title": "classical Five-Element canon",
+ "page": "verify",
+ "says": "Metal is the element of edge and refinement, sharpening the animal sign with discipline, order and decisiveness.",
+ "paraphrase": true
+ },
+ {
+ "author": "Giovanni Maciocia",
+ "title": "The Foundations of Chinese Medicine",
+ "page": "verify",
+ "says": "In Chinese medicine Metal governs the lungs and large intestine, the emotion of grief, and the contraction of autumn.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "Water": {
+ "verdict": "Water makes the nature fluid, intuitive, adaptable and connective, reading currents others miss and influencing by permeation, not pressure.",
+ "sources": [
+ {
+ "author": "Wu Xing (Five Elements) theory",
+ "title": "classical Five-Element canon",
+ "page": "verify",
+ "says": "Water is the element of depth and flow, deepening the animal sign with intuition, adaptability and connection.",
+ "paraphrase": true
+ },
+ {
+ "author": "Giovanni Maciocia",
+ "title": "The Foundations of Chinese Medicine",
+ "page": "verify",
+ "says": "In Chinese medicine Water governs the kidneys and bladder, the emotion of fear, and the stillness of winter.",
+ "paraphrase": true
+ }
+ ]
+ }
+ }
+ },
+ {
+ "point_code": "D1",
+ "point_name": "Tarot Birth Card",
+ "method": {
+ "oneliner": "Reduce the birth date to a Major Arcana number (1–22) using the Waite ordering.",
+ "verdict": "Summing the birth date to a number 1–22 selects a Major Arcanum as the archetype of your fate; we use the Rider-Waite numbering (note the VIII/XI Strength–Justice order).",
+ "sources": [
+ {
+ "author": "Arthur Edward Waite",
+ "title": "The Pictorial Key to the Tarot",
+ "page": "Pt. II §2 (Trumps Major)",
+ "says": "The 22 Major Arcana form the archetypal sequence; Waite fixes the numbering used as standard.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "values": {
+ "0": {
+ "verdict": "The leap of faith, the eternal beginner who crosses each threshold trusting the path to appear; matures by following one leap all the way to landing.",
+ "sources": [
+ {
+ "author": "Arthur Edward Waite",
+ "title": "The Pictorial Key to the Tarot",
+ "page": "Pt. III §3, Key 0",
+ "says": "Waite reads the Fool as the spirit in search of experience, the soul at the threshold, folly, yet an innocent, fresh beginning.",
+ "paraphrase": true
+ },
+ {
+ "author": "Rachel Pollack",
+ "title": "Seventy-Eight Degrees of Wisdom",
+ "page": "verify",
+ "says": "Pollack reads the Fool as the archetype of open, fearless beginning, trusting life's journey and stepping into the unknown.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "1": {
+ "verdict": "Will made real, the one cast to convert intention into concrete result, closing the gap between idea and action in every arena.",
+ "sources": [
+ {
+ "author": "Arthur Edward Waite",
+ "title": "The Pictorial Key to the Tarot",
+ "page": "Pt. III §3, Key 1",
+ "says": "Waite reads the Magician as will, skill and the conscious channeling of power, the union of divine motive with human action.",
+ "paraphrase": true
+ },
+ {
+ "author": "Rachel Pollack",
+ "title": "Seventy-Eight Degrees of Wisdom",
+ "page": "verify",
+ "says": "Pollack reads the Magician as the archetype of focused will and mastery, drawing on all resources to make things happen.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "2": {
+ "verdict": "Inner knowing, senses the real version beneath the official one and trusts perception over what she's told.",
+ "sources": [
+ {
+ "author": "Arthur Edward Waite",
+ "title": "The Pictorial Key to the Tarot",
+ "page": "Pt. III §3, Key 2",
+ "says": "Waite reads the High Priestess as the guardian of hidden knowledge, intuition and secret mysteries not yet spoken aloud.",
+ "paraphrase": true
+ },
+ {
+ "author": "Rachel Pollack",
+ "title": "Seventy-Eight Degrees of Wisdom",
+ "page": "verify",
+ "says": "Pollack reads her as the archetype of intuition and inner wisdom, knowledge received in stillness rather than action.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "3": {
+ "verdict": "Making things flourish, whatever enters her care grows; the source of life who nurtures projects, people and abundance.",
+ "sources": [
+ {
+ "author": "Arthur Edward Waite",
+ "title": "The Pictorial Key to the Tarot",
+ "page": "Pt. III §3, Key 3",
+ "says": "Waite reads the Empress as fruitfulness, abundance and the fertile, life-giving power of nature.",
+ "paraphrase": true
+ },
+ {
+ "author": "Rachel Pollack",
+ "title": "Seventy-Eight Degrees of Wisdom",
+ "page": "verify",
+ "says": "Pollack reads the Empress as the archetype of nurturing creation, a passionate love of life that makes everything around her grow.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "4": {
+ "verdict": "Structure and authority, brings order to chaos and builds systems others can stand on; rule and responsibility find them.",
+ "sources": [
+ {
+ "author": "Arthur Edward Waite",
+ "title": "The Pictorial Key to the Tarot",
+ "page": "Pt. III §3, Key 4",
+ "says": "Waite reads the Emperor as authority, stability, law and the power of realized will and worldly order.",
+ "paraphrase": true
+ },
+ {
+ "author": "Rachel Pollack",
+ "title": "Seventy-Eight Degrees of Wisdom",
+ "page": "verify",
+ "says": "Pollack reads the Emperor as the archetype of structure and lawful power, the will that organizes society and endures.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "5": {
+ "verdict": "Tradition and teaching, learns deeply, tests it, and passes it on; the keeper of standards and trusted mentor.",
+ "sources": [
+ {
+ "author": "Arthur Edward Waite",
+ "title": "The Pictorial Key to the Tarot",
+ "page": "Pt. III §3, Key 5",
+ "says": "Waite reads the Hierophant as orthodoxy, spiritual teaching and the outward channel of received tradition.",
+ "paraphrase": true
+ },
+ {
+ "author": "Rachel Pollack",
+ "title": "Seventy-Eight Degrees of Wisdom",
+ "page": "verify",
+ "says": "Pollack reads the Hierophant as the archetype of tradition and instruction, the bridge between established wisdom and the seeker.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "6": {
+ "verdict": "The meaningful choice, a life defined by connection and by whole-hearted decisions of the heart and values.",
+ "sources": [
+ {
+ "author": "Arthur Edward Waite",
+ "title": "The Pictorial Key to the Tarot",
+ "page": "Pt. III §3, Key 6",
+ "says": "Waite reads the Lovers as love, union and choice, the attraction that binds, overseen by a higher power.",
+ "paraphrase": true
+ },
+ {
+ "author": "Rachel Pollack",
+ "title": "Seventy-Eight Degrees of Wisdom",
+ "page": "verify",
+ "says": "Pollack reads the Lovers as the archetype of relationship and conscious choice, union built on values and true alignment.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "7": {
+ "verdict": "Willpower in motion, holds opposing forces on one course and drives through obstacles by sheer committed momentum.",
+ "sources": [
+ {
+ "author": "Arthur Edward Waite",
+ "title": "The Pictorial Key to the Tarot",
+ "page": "Pt. III §3, Key 7",
+ "says": "Waite reads the Chariot as triumph and conquest, the will that holds opposing forces under control through discipline.",
+ "paraphrase": true
+ },
+ {
+ "author": "Rachel Pollack",
+ "title": "Seventy-Eight Degrees of Wisdom",
+ "page": "verify",
+ "says": "Pollack reads the Chariot as the archetype of victorious will, ego strength that masters conflict and presses forward.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "8": {
+ "verdict": "Quiet power, masters wild situations by patience and gentleness rather than force; the calm one in the storm.",
+ "sources": [
+ {
+ "author": "Arthur Edward Waite",
+ "title": "The Pictorial Key to the Tarot",
+ "page": "Pt. III §3, Key 8",
+ "says": "Waite reads Strength as fortitude and the spiritual mastery of passion, power exercised through gentleness, not force.",
+ "paraphrase": true
+ },
+ {
+ "author": "Rachel Pollack",
+ "title": "Seventy-Eight Degrees of Wisdom",
+ "page": "verify",
+ "says": "Pollack reads Strength as the archetype of courage through love, inner power that gentles instinct rather than suppressing it.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "9": {
+ "verdict": "Inner wisdom, withdraws, understands, and returns carrying the lamp; finds answers alone first, then shares them.",
+ "sources": [
+ {
+ "author": "Arthur Edward Waite",
+ "title": "The Pictorial Key to the Tarot",
+ "page": "Pt. III §3, Key 9",
+ "says": "Waite reads the Hermit as prudence and attainment, the seeker who carries the lamp of inner light in solitude.",
+ "paraphrase": true
+ },
+ {
+ "author": "Rachel Pollack",
+ "title": "Seventy-Eight Degrees of Wisdom",
+ "page": "verify",
+ "says": "Pollack reads the Hermit as the archetype of solitary wisdom, withdrawal to find truth, then guidance offered to others.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "10": {
+ "verdict": "Cycles and timing, rides change rather than resisting it, sensing when a season ends and repositioning before others notice.",
+ "sources": [
+ {
+ "author": "Arthur Edward Waite",
+ "title": "The Pictorial Key to the Tarot",
+ "page": "Pt. III §3, Key 10",
+ "says": "Waite reads the Wheel of Fortune as fortune and change, the turning cycles of fate and the rise and fall of circumstance.",
+ "paraphrase": true
+ },
+ {
+ "author": "Rachel Pollack",
+ "title": "Seventy-Eight Degrees of Wisdom",
+ "page": "verify",
+ "says": "Pollack reads the Wheel as the archetype of destiny and change, life's turning cycles and the vision that sees them whole.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "11": {
+ "verdict": "Balance and truth, sees both sides fully and holds the scales; fairness is the axis the whole story turns on.",
+ "sources": [
+ {
+ "author": "Arthur Edward Waite",
+ "title": "The Pictorial Key to the Tarot",
+ "page": "Pt. III §3, Key 11",
+ "says": "Waite reads Justice as equity, rightness and truth, the moral law that weighs and balances all things.",
+ "paraphrase": true
+ },
+ {
+ "author": "Rachel Pollack",
+ "title": "Seventy-Eight Degrees of Wisdom",
+ "page": "verify",
+ "says": "Pollack reads Justice as the archetype of truth and responsibility, clear-sighted balance and accepting the consequences of one's acts.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "12": {
+ "verdict": "The shift in perspective, breakthroughs come from suspension and surrender, seeing what no upright view can.",
+ "sources": [
+ {
+ "author": "Arthur Edward Waite",
+ "title": "The Pictorial Key to the Tarot",
+ "page": "Pt. III §3, Key 12",
+ "says": "Waite reads the Hanged Man as suspension and sacrifice, wisdom gained through surrender rather than action.",
+ "paraphrase": true
+ },
+ {
+ "author": "Rachel Pollack",
+ "title": "Seventy-Eight Degrees of Wisdom",
+ "page": "verify",
+ "says": "Pollack reads the Hanged Man as the archetype of reversal and surrender, letting go to gain a transformed way of seeing.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "13": {
+ "verdict": "Transformation, proceeds through clean endings, shedding finished identities like skins to clear space for what's next.",
+ "sources": [
+ {
+ "author": "Arthur Edward Waite",
+ "title": "The Pictorial Key to the Tarot",
+ "page": "Pt. III §3, Key 13",
+ "says": "Waite reads Death as transformation, the end of one state and passage into another, change rather than literal ending.",
+ "paraphrase": true
+ },
+ {
+ "author": "Rachel Pollack",
+ "title": "Seventy-Eight Degrees of Wisdom",
+ "page": "verify",
+ "says": "Pollack reads Death as the archetype of transformation, necessary endings that clear the ground for renewal.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "14": {
+ "verdict": "Synthesis, combines extremes into an alloy stronger than either; the integrator who finds the right mixture.",
+ "sources": [
+ {
+ "author": "Arthur Edward Waite",
+ "title": "The Pictorial Key to the Tarot",
+ "page": "Pt. III §3, Key 14",
+ "says": "Waite reads Temperance as moderation, the harmonious combining of forces and the flow of vital energy in balance.",
+ "paraphrase": true
+ },
+ {
+ "author": "Rachel Pollack",
+ "title": "Seventy-Eight Degrees of Wisdom",
+ "page": "verify",
+ "says": "Pollack reads Temperance as the archetype of integration, blending opposites into a tempered, workable whole.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "15": {
+ "verdict": "Confronting what binds you, handles raw appetite, money and power from the inside; the chains stay only by habit and can be lifted.",
+ "sources": [
+ {
+ "author": "Arthur Edward Waite",
+ "title": "The Pictorial Key to the Tarot",
+ "page": "Pt. III §3, Key 15",
+ "says": "Waite reads the Devil as bondage and materiality, the illusion of chains the figures could remove but do not.",
+ "paraphrase": true
+ },
+ {
+ "author": "Rachel Pollack",
+ "title": "Seventy-Eight Degrees of Wisdom",
+ "page": "verify",
+ "says": "Pollack reads the Devil as the archetype of attachment and shadow, the bondage of compulsion, and the freedom in facing it.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "16": {
+ "verdict": "Sudden change, false structures fall fast and dramatically, and each collapse makes room for the real thing; crisis-competent.",
+ "sources": [
+ {
+ "author": "Arthur Edward Waite",
+ "title": "The Pictorial Key to the Tarot",
+ "page": "Pt. III §3, Key 16",
+ "says": "Waite reads the Tower as sudden ruin, the fall of false structures and the lightning that overthrows the built-up ego.",
+ "paraphrase": true
+ },
+ {
+ "author": "Rachel Pollack",
+ "title": "Seventy-Eight Degrees of Wisdom",
+ "page": "verify",
+ "says": "Pollack reads the Tower as the archetype of sudden liberating upheaval, the shattering of false foundations to free what was trapped.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "17": {
+ "verdict": "Hope after hardship, keeps faith through drought and is proven right; the earned optimism that carries a team's morale.",
+ "sources": [
+ {
+ "author": "Arthur Edward Waite",
+ "title": "The Pictorial Key to the Tarot",
+ "page": "Pt. III §3, Key 17",
+ "says": "Waite reads the Star as hope, faith and renewal, the bright promise that follows the Tower's darkness.",
+ "paraphrase": true
+ },
+ {
+ "author": "Rachel Pollack",
+ "title": "Seventy-Eight Degrees of Wisdom",
+ "page": "verify",
+ "says": "Pollack reads the Star as the archetype of hope and renewal, serene faith and openness after the storm has passed.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "18": {
+ "verdict": "The unconscious, a night-walker who senses what hasn't surfaced yet, navigating by intuition, dream and undercurrent.",
+ "sources": [
+ {
+ "author": "Arthur Edward Waite",
+ "title": "The Pictorial Key to the Tarot",
+ "page": "Pt. III §3, Key 18",
+ "says": "Waite reads the Moon as imagination and the unconscious, illusion, and the hidden path lit by uncertain light.",
+ "paraphrase": true
+ },
+ {
+ "author": "Rachel Pollack",
+ "title": "Seventy-Eight Degrees of Wisdom",
+ "page": "verify",
+ "says": "Pollack reads the Moon as the archetype of the deep unconscious, intuition, dream and the journey through fear toward truth.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "19": {
+ "verdict": "Clarity and joy, the source of warmth and light where things get simpler and truer; thrives in full visibility.",
+ "sources": [
+ {
+ "author": "Arthur Edward Waite",
+ "title": "The Pictorial Key to the Tarot",
+ "page": "Pt. III §3, Key 19",
+ "says": "Waite reads the Sun as joy, vitality and attainment, the clear happiness of things brought into the light.",
+ "paraphrase": true
+ },
+ {
+ "author": "Rachel Pollack",
+ "title": "Seventy-Eight Degrees of Wisdom",
+ "page": "verify",
+ "says": "Pollack reads the Sun as the archetype of radiant clarity and joy, vitality, openness and success lived in the open.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "20": {
+ "verdict": "The reckoning, summoned to face the full record, keep what's true, and rise renewed; rebirth is the recurring event.",
+ "sources": [
+ {
+ "author": "Arthur Edward Waite",
+ "title": "The Pictorial Key to the Tarot",
+ "page": "Pt. III §3, Key 20",
+ "says": "Waite reads Judgement as rebirth and awakening, the call to rise renewed to a higher state of being.",
+ "paraphrase": true
+ },
+ {
+ "author": "Rachel Pollack",
+ "title": "Seventy-Eight Degrees of Wisdom",
+ "page": "verify",
+ "says": "Pollack reads Judgement as the archetype of rebirth and reckoning, honest self-assessment answered by a new life.",
+ "paraphrase": true
+ }
+ ]
+ },
+ "21": {
+ "verdict": "Completion, finishes what she starts fully, integrating pieces into wholes, before a larger circle opens.",
+ "sources": [
+ {
+ "author": "Arthur Edward Waite",
+ "title": "The Pictorial Key to the Tarot",
+ "page": "Pt. III §3, Key 21",
+ "says": "Waite reads the World as completion and fulfillment, attainment and the perfected end of the great journey.",
+ "paraphrase": true
+ },
+ {
+ "author": "Rachel Pollack",
+ "title": "Seventy-Eight Degrees of Wisdom",
+ "page": "verify",
+ "says": "Pollack reads the World as the archetype of fulfillment and wholeness, the fully integrated self at the journey's completion.",
+ "paraphrase": true
+ }
+ ]
+ }
+ }
+ }
+ ]
 }

@@ -1,10 +1,10 @@
 import LegalPage from "@/components/ui/LegalPage";
 
-export const metadata = { title: "Privacy Policy — NOMEN" };
+export const metadata = { title: "Privacy Policy · NOMEN" };
 
 export default function PrivacyPage() {
   return (
-    <LegalPage title="Privacy Policy" updated="Draft — to be reviewed before launch">
+    <LegalPage title="Privacy Policy" updated="Draft, to be reviewed before launch">
       <p>
         This is an early draft of our Privacy Policy, written in plain
         language while NOMEN is in development. It should be reviewed by a
@@ -21,7 +21,7 @@ export default function PrivacyPage() {
       <p>
         <strong>Why we collect it.</strong> Your name and birth date are used
         only to calculate your personality reading. Your email is used to
-        send you your free preview, your paid reading, and — if you agree —
+        send you your free preview, your paid reading, and, if you agree,
         occasional follow-up emails about NOMEN. We do not sell or rent your
         personal information to third parties.
       </p>

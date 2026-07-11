@@ -6,17 +6,17 @@ const steps = [
   {
     step: "01",
     title: "Tell us who you are",
-    body: "Your name and birth date — that's all the blueprint needs to start.",
+    body: "Your name and birth date. That's all the blueprint needs to start.",
   },
   {
     step: "02",
     title: "See a free preview",
-    body: "We calculate a handful of your 13 points live and show you exactly what we found.",
+    body: "We calculate a handful of your 13 points live, and show you exactly what we found.",
   },
   {
     step: "03",
     title: "Unlock your full reading",
-    body: "Once we confirm your payment on-chain, we email you a personal link to your full 13-point reading — usually within a few hours.",
+    body: "Once your payment clears, we email you a personal link to your full 13-point reading, usually within a few hours.",
   },
 ];
 
@@ -26,7 +26,7 @@ export default function HowItWorks() {
       <SectionHeading
         eyebrow="How it works"
         title="Three steps to your blueprint"
-        subtitle="No app, no account — just your name, your birth date, and a few minutes."
+        subtitle="No app, no account. Just your name, your birth date, and a few minutes."
       />
 
       <div className="mt-16 grid gap-6 sm:grid-cols-3">

@@ -106,16 +106,16 @@ function parseOrderText(text) {
 
 // Готовое письмо клиенту (EN).
 function buildEmail(card, link) {
-  const subject = `Your NOMEN full reading is ready${card.oc ? ` — ${card.oc}` : ""}`;
+  const subject = `Your NOMEN full reading is ready${card.oc ? ` · ${card.oc}` : ""}`;
   const body = [
     `Hi ${card.fn},`,
     "",
-    "Your payment is confirmed — and your full reading is ready.",
+    "Your payment is confirmed, and your full reading is ready.",
     "",
     "Open your personal page here:",
     link,
     "",
-    "This link is yours to keep: revisit it anytime, on any device. It is personal — share it only with people you trust to read you this closely.",
+    "This link is yours to keep: revisit it anytime, on any device. It is personal, so share it only with people you trust to read you this closely.",
     "",
     "— NOMEN",
     "nomen.website",
@@ -235,7 +235,7 @@ export default function StudioPage() {
         model: "claude-opus-4-8",
         max_tokens: 1024,
         system:
-          "You write the final verdict of a paid 13-point personality reading for the NOMEN product. Voice: confident profiler, second person, concrete and gripping — no horoscope filler, no words like 'universe', 'cosmic', 'vibration'. Weave the given points into ONE coherent portrait: show how they reinforce and contradict each other, name the central tension and the direction. Exactly 3 paragraphs, 55-80 words each, separated by blank lines. Plain text only.",
+          "You write the final verdict of a paid 13-point personality reading for the NOMEN product. Voice: confident profiler, second person, concrete and gripping, with no horoscope filler and no words like 'universe', 'cosmic', 'vibration'. Weave the given points into ONE coherent portrait: show how they reinforce and contradict each other, name the central tension and the direction. Exactly 3 paragraphs, 55-80 words each, separated by blank lines. Plain text only. Write like a person: vary sentence length, and do not use em dashes or en dashes (use periods, commas, or colons instead).",
         messages: [
           {
             role: "user",

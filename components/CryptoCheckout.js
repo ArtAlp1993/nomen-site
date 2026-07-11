@@ -257,7 +257,7 @@ export default function CryptoCheckout({ tier, open, onClose }) {
       `Address: ${selected.address}`,
       memo ? `${selected.memoLabel} (required): ${memo}` : null,
       ``,
-      `Send the exact amount — a personal link to the reading is emailed after the payment is confirmed.`,
+      `Send the exact amount. Once the payment is confirmed, a personal link to the reading is emailed to you.`,
     ]
       .filter((l) => l !== null)
       .join("\n");
@@ -557,15 +557,15 @@ export default function CryptoCheckout({ tier, open, onClose }) {
 
             {isPlaceholder && (
               <div className="mt-3 rounded-lg border border-amber-400/40 bg-amber-400/10 px-3 py-2.5 text-xs text-amber-300">
-                Payments aren&apos;t live yet — this is a demo address, so don&apos;t
+                Payments aren&apos;t live yet. This is a demo address, so don&apos;t
                 send funds. Checkout will activate once real wallets are set.
               </div>
             )}
 
             <p className="mt-4 text-xs text-foreground-muted">
-              Send the exact amount to the address above. After we confirm your
-              payment on-chain, we email you a personal link to your full
-              reading — usually within a few hours.
+              Send the exact amount to the address above. Once your payment is
+              confirmed, we email you a personal link to your full reading,
+              usually within a few hours.
             </p>
 
             <div className="mt-5 flex flex-col items-center gap-3">

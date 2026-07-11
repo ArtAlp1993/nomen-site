@@ -34,7 +34,7 @@ export default function QuizSection() {
       notifyLead({ ...data, source: "quiz" }); // лид в базу (fire-and-forget)
     } catch (err) {
       setError(
-        "We couldn't read that name — use letters of one alphabet and try again."
+        "We couldn't read that name. Use letters of one alphabet and try again."
       );
     } finally {
       setSubmitting(false);
@@ -46,7 +46,7 @@ export default function QuizSection() {
       <SectionHeading
         eyebrow="Your free preview"
         title="Let's read your blueprint"
-        subtitle="Your name and birth date — we'll calculate a real slice of your 13-point profile right now."
+        subtitle="Give us your name and birth date, and we'll calculate a real slice of your 13-point profile right now."
       />
 
       <div className="mt-16">

@@ -50,12 +50,12 @@ function findAnswer(text) {
 
 const GREETING = {
   role: "bot",
-  text: "Hi! I'm the NOMEN assistant. Ask me about prices, the 13 points, delivery — or tap a question below.",
+  text: "Hi! I'm the NOMEN assistant. Ask me about prices, the 13 points, or delivery, or tap a question below.",
 };
 const FALLBACK =
-  "Hmm, that one's beyond me — I'm a small assistant. The free quiz above answers most things better, and the FAQ covers the rest.";
+  "Hmm, that one's beyond me. I'm a small assistant, and the free quiz above answers most things better, with the FAQ covering the rest.";
 const DEAD_END =
-  "Looks like I'm not nailing it. Leave your email — our team will get back to you personally.";
+  "Looks like I'm not nailing it. Leave your email and our team will get back to you personally.";
 
 export default function ChatWidget({ open, onClose }) {
   const reduce = useReducedMotion();
@@ -170,7 +170,7 @@ export default function ChatWidget({ open, onClose }) {
     notifyTelegram(
       `🔥 NOMEN — гость #${visitorTag.current} оставил контакт!\nEmail: ${email}\n\nПереписка:\n${transcriptOf(messages)}`
     );
-    pushBot("Done — our team will reach out to you soon. Meanwhile, the free quiz above is worth a try.");
+    pushBot("Done. Our team will reach out to you soon. Meanwhile, the free quiz above is worth a try.");
   };
 
   const chips = faq.slice(0, 4).map((f) => f.question);

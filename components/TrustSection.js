@@ -8,7 +8,7 @@ export default function TrustSection() {
       <SectionHeading
         eyebrow="Where we stand today"
         title="We'd rather be honest than impressive"
-        subtitle="NOMEN is new. We're not going to invent reviews to prove a point — the methodology speaks for itself, and here's exactly where we are."
+        subtitle="NOMEN is new. We're not going to invent reviews to prove a point. The methodology speaks for itself, and here's exactly where we are."
       />
 
       <Reveal delay={0.1}>

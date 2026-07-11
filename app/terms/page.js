@@ -1,10 +1,10 @@
 import LegalPage from "@/components/ui/LegalPage";
 
-export const metadata = { title: "Terms of Service — NOMEN" };
+export const metadata = { title: "Terms of Service · NOMEN" };
 
 export default function TermsPage() {
   return (
-    <LegalPage title="Terms of Service" updated="Draft — to be reviewed before launch">
+    <LegalPage title="Terms of Service" updated="Draft, to be reviewed before launch">
       <p>
         This is an early draft of our Terms of Service, written while NOMEN
         is in development. It should be reviewed by a qualified professional
@@ -23,8 +23,8 @@ export default function TermsPage() {
       <p>
         <strong>Accuracy.</strong> We aim to calculate every point using a
         documented, named methodology, and we&apos;re transparent about our
-        sources. That said, personality readings are interpretive by nature —
-        we make no guarantee that any reading is fully accurate for you.
+        sources. That said, personality readings are interpretive by nature.
+        We make no guarantee that any reading is fully accurate for you.
       </p>
 
       <p>

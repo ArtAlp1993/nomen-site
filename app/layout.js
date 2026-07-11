@@ -19,9 +19,9 @@ const inter = Inter({
 });
 
 export const metadata = {
-  title: "NOMEN — Your Personality, Decoded",
+  title: "NOMEN: Your Personality, Decoded",
   description:
-    "A 13-point personality blueprint drawn from numerology, astrology, the Chinese zodiac and tarot — get your free preview in minutes.",
+    "A 13-point personality blueprint from numerology, astrology, the Chinese zodiac and tarot, read from your name and birth date. Free preview in under a minute.",
 };
 
 // CSP через <meta> (статический хостинг не даёт заголовки). Главная защита —

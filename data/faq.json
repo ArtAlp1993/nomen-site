@@ -1,19 +1,19 @@
 [
   {
     "question": "How does NOMEN actually work?",
-    "answer": "You give us your name and birth date. We run it through 13 points drawn from numerology, astrology, Chinese astrology and tarot — each grounded in a documented school of thought, not generic horoscope text. You get a free preview instantly; after we confirm your payment on-chain, we email you a personal link to your full reading — usually within a few hours."
+    "answer": "You give us your name and birth date. We read them through 13 points drawn from numerology, astrology, Chinese astrology and tarot, each grounded in a documented school of thought rather than generic horoscope text. You get a free preview on the spot. Once your payment clears, we email you a personal link to your full reading, usually within a few hours."
   },
   {
     "question": "Is this based on real methodology, or is it just generated?",
-    "answer": "Every point traces back to a named source — Pythagorean numerology, tropical astrology, the Chinese zodiac, tarot's major arcana, and psychological frameworks from Jung, Berne, Liz Greene and Gottman. We show our sources; we don't hide behind \"the universe says so.\""
+    "answer": "Every point traces back to a named source: Pythagorean numerology, tropical astrology, the Chinese zodiac, tarot's major arcana, and psychological frameworks from Jung, Berne, Liz Greene and Gottman. We show our sources instead of hiding behind \"the universe says so.\""
   },
   {
     "question": "What are the 13 points, exactly?",
-    "answer": "Nine numerology points (life path, birthday, expression, soul urge, personality, maturity, karmic lessons, Pythagorean square and karmic debt), your sun sign, your Chinese zodiac animal and year element, and your tarot birth card — all calculated from your name and birth date. Deeper layers that need your exact birth time and place (full natal chart, Bazi, Human Design) are in development and will arrive as add-ons."
+    "answer": "Nine numerology points (life path, birthday, expression, soul urge, personality, maturity, karmic lessons, Pythagorean square and karmic debt), your sun sign, your Chinese zodiac animal and year element, and your tarot birth card. All 13 are calculated from your name and birth date. Deeper layers that need your exact birth time and place (full natal chart, Bazi, Human Design) are in development and will arrive as add-ons."
   },
   {
     "question": "How long until I get my full reading?",
-    "answer": "After we confirm your payment on-chain, we email a personal link to your full 13-point reading to the address you used at checkout — usually within a few hours. The link is yours to keep and revisit anytime."
+    "answer": "Once your payment clears, we email a personal link to your full 13-point reading to the address you used at checkout, usually within a few hours. The link is yours to keep and revisit anytime."
   },
   {
     "question": "What happens to my name and birth date?",
@@ -21,10 +21,10 @@
   },
   {
     "question": "What payment methods do you accept?",
-    "answer": "Crypto today — pay in the coin you hold, fast and private. Card payments via Stripe are coming next. All transactions are processed by the payment provider; we never see your card details."
+    "answer": "Two ways right now: a USD transfer via Wise, or crypto in a coin you already hold. Card payments through Stripe are coming next. Whichever you choose, we confirm the payment ourselves and then email your reading."
   },
   {
     "question": "Can I get a refund?",
-    "answer": "If something goes wrong on our end — wrong data used, a delivery that never arrived — email us and we'll make it right. Reach out any time before requesting a refund so we can help first."
+    "answer": "If something goes wrong on our end, like the wrong data being used or a reading that never arrived, email us and we'll make it right. Reach out before requesting a refund so we can fix it first."
   }
 ]

@@ -3,39 +3,45 @@
     "id": "full",
     "name": "Full Reading",
     "price": "9.90",
-    "description": "Your complete personality map — a personal page-experience built from your name and the day you were born.",
+    "anchorPrice": "15",
+    "priceNote": "Launch price. Rising to $15 as demand grows.",
+    "badge": "Start here",
+    "cta": "Get my reading",
+    "highlight": true,
+    "description": "Your full blueprint: all 13 points, read from your name and the day you were born, written up as a personal page that stays yours.",
     "features": [
-      "Full 13-point personal reading",
-      "Personal page on the site\nwith the detailed breakdown",
-      "Personal link emailed after your\npayment is confirmed on-chain",
-      "Wall-poster PDF — coming soon"
+      "All 13 points, fully interpreted\n(not generic horoscope filler)",
+      "Every point traced to a named\nmethod you can check",
+      "Your own page on the site,\nkept at a private link",
+      "In your inbox, usually within\na few hours of payment",
+      "Wall-poster PDF (coming soon)"
     ],
-    "highlight": false
+    "guarantee": "Wrong data, or it never arrived? We make it right, or refund. Just email us."
   },
   {
     "id": "compatibility",
     "name": "Compatibility",
     "price": "9.90",
     "comingSoon": true,
-    "description": "How two people fit together — a pure compatibility reading, no personal blueprint included.",
+    "highlight": false,
+    "description": "How two people actually fit: a compatibility reading for the pair, without a personal blueprint.",
     "features": [
       "Compatibility across the key points",
-      "Connection & conflict style for the pair",
-      "Personal link emailed after your\npayment is confirmed on-chain"
-    ],
-    "highlight": false
+      "How you connect, and where you clash",
+      "Personal link emailed once your\npayment clears"
+    ]
   },
   {
     "id": "bundle",
     "name": "Reading + Compatibility",
     "price": "14.90",
     "comingSoon": true,
-    "description": "One full reading plus compatibility — your complete personal blueprint and how you connect with someone else.",
+    "highlight": false,
+    "description": "Your full blueprint plus a compatibility reading: who you are, and how you connect with someone else.",
     "features": [
       "1 full reading + compatibility",
-      "Personal pages for both readings",
-      "Personal link emailed after your\npayment is confirmed on-chain"
-    ],
-    "highlight": true
+      "A personal page for each",
+      "Personal link emailed once your\npayment clears"
+    ]
   }
 ]

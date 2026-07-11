@@ -31,7 +31,7 @@ export default function PricingSection() {
       <SectionHeading
         eyebrow="Pricing"
         title="Choose your reading"
-        subtitle="Pay in US dollars via Wise, or in crypto — we confirm your payment and email your reading, usually within a few hours."
+        subtitle="Pay in US dollars via Wise, or in crypto. We confirm your payment and email your reading, usually within a few hours."
       />
 
       {/* Два тарифа по $9.90 в ряд, комбо Best Value — во всю ширину под ними */}
@@ -44,15 +44,27 @@ export default function PricingSection() {
                 tier.highlight ? "border-accent-turquoise/60" : ""
               }`}
             >
-              {tier.highlight && (
+              {tier.badge && (
                 <span className="mb-3 inline-block w-fit rounded-full bg-accent-turquoise/15 px-3 py-1 text-xs font-semibold text-accent-turquoise">
-                  Best Value
+                  {tier.badge}
                 </span>
               )}
               <h3 className="font-heading text-lg font-semibold">{tier.name}</h3>
               <p className="mt-2 font-heading text-3xl font-semibold">
+                {/* Якорь цены: честная стартовая цена рядом с будущей
+                    (Артём 12.07: поднимем до $15 по мере спроса). */}
+                {tier.anchorPrice && (
+                  <span className="mr-2 align-middle text-xl font-normal text-foreground-muted/50 line-through">
+                    ${tier.anchorPrice}
+                  </span>
+                )}
                 ${tier.price}
               </p>
+              {tier.priceNote && !tier.comingSoon && (
+                <p className="mt-1 text-xs font-medium text-accent-turquoise">
+                  {tier.priceNote}
+                </p>
+              )}
               <p className="mt-3 text-sm text-foreground-muted">
                 {tier.description}
               </p>
@@ -74,9 +86,17 @@ export default function PricingSection() {
                   disabled={!!tier.comingSoon}
                   className={tier.highlight && !tier.comingSoon ? "" : "w-full"}
                 >
-                  {tier.comingSoon ? "Coming soon" : "Get started"}
+                  {tier.comingSoon ? "Coming soon" : tier.cta || "Get started"}
                 </Button>
               </span>
+
+              {/* Снятие риска прямо в точке решения: гарантия из FAQ вынесена
+                  на карточку живого оффера (skill: offers — risk reversal). */}
+              {tier.guarantee && !tier.comingSoon && (
+                <p className="mt-4 max-w-xs text-xs leading-relaxed text-foreground-muted/80">
+                  {tier.guarantee}
+                </p>
+              )}
             </Card>
           </Reveal>
         ))}

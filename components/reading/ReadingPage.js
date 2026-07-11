@@ -91,7 +91,7 @@ function buildSections(reading) {
       about: bankA9.intro || m.about,
       valueLabel:
         reading.a9.lessons.length === 0
-          ? "The full set — no missing digits"
+          ? "The full set, no missing digits"
           : `Lessons ${reading.a9.lessons.join(", ")} · Passion ${reading.a9.passions.join(", ")}`,
       entries,
     });
@@ -291,7 +291,7 @@ export default function ReadingPage() {
       />
 
       <footer className="ym-hide-content pb-10 text-center text-[11px] text-foreground-muted/50">
-        NOMEN · this reading is personal to {card.fn} — the link opens it anytime
+        NOMEN · this reading is personal to {card.fn} · the link opens it anytime
       </footer>
     </div>
   );

@@ -96,7 +96,7 @@ export default function MethodologyDiagram() {
       <SectionHeading
         eyebrow="The methodology"
         title={personalized ? "Your Blueprint, mapped" : "Your Blueprint of Potential"}
-        subtitle="Thirteen points across four traditions — every one read from your name and the day you were born."
+        subtitle="Thirteen points across four traditions, every one read from your name and the day you were born."
       />
 
       {/* Сцена без «рамки»: широкое поле уходит под заголовок и растворяется
@@ -105,7 +105,7 @@ export default function MethodologyDiagram() {
         <div
           className="relative h-[360px] w-full max-w-4xl sm:h-[660px]"
           role="img"
-          aria-label="A living blueprint: a luminous iris of light fibres, tinted by four traditions — numerology, astrology, Chinese astrology and tarot."
+          aria-label="A living blueprint: a luminous iris of light fibres, tinted by four traditions: numerology, astrology, Chinese astrology and tarot."
           style={{
             maskImage:
               "radial-gradient(ellipse 62% 56% at 50% 50%, black 50%, transparent 76%)",

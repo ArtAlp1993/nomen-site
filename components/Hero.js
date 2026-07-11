@@ -24,9 +24,10 @@ export default function Hero() {
 
       <Reveal delay={0.2} className="relative">
         <p className="mt-6 max-w-xl text-sm text-foreground-muted sm:text-lg">
-          A 13-point personality blueprint built from your name and birth date
-          — numerology, astrology, Chinese zodiac and tarot. Free preview in
-          under a minute.
+          A 13-point map of how you&apos;re wired, read from your name and the
+          day you were born. Numerology, astrology, Chinese zodiac, and tarot:
+          each point from a named method, not a horoscope generator. See a real
+          slice free, in under a minute.
         </p>
       </Reveal>
 

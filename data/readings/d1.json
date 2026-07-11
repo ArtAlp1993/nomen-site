@@ -1,183 +1,183 @@
 {
-  "code": "D1",
-  "title": "Tarot Birth Card",
-  "intro": "Your birth date reduces to one of the 22 Major Arcana — a single card that holds the deep archetype of your life, the storyline you keep living out across jobs, relationships, and decades. This is the most visual point in your reading: not a number, but a role.",
-  "values": {
-    "0": {
-      "heading": "The Fool",
-      "paragraphs": [
-        "You live the story of the leap of faith. While others gather guarantees, you step toward the edge and trust the path to appear — and for you, it usually does. The Fool is the eternal beginner: every chapter of your life opens with a threshold, a departure, a fresh start. Crossing those thresholds isn't recklessness in your chart. It's the plot.",
-        "In practice this gives you real courage where it counts: starting the project before it's fully planned, moving on when the old place stops fitting, saying yes to people and offers that others overthink into the ground. You break inertia in any team. In relationships you bring openness without cynicism — rare after a certain age. Your best decisions happen at the beginning of things.",
-        "The shadow is the restart loop: leaving whenever things get heavy, mistaking avoidance for freedom, collecting beginnings that never get a middle. The Fool matures the moment one leap is followed all the way to landing. Pick the venture, the person, the place that deserves your full arc — and stay past the point where you'd normally jump. That's where this card pays out."
-      ]
-    },
-    "1": {
-      "heading": "The Magician",
-      "paragraphs": [
-        "Your storyline is will made real. The Magician stands at a table holding every tool he needs — and your life keeps re-staging that scene: here are your resources, your skills, your words. Now make something happen. You're not cast as the dreamer or the bystander; you're cast as the one who converts intention into action, again and again, in every arena you enter.",
-        "Practically, this is the rarest professional gift: you close the gap between idea and result. In work you're the one who ships — who takes the vague brief and returns something concrete. You persuade naturally, because you speak in outcomes. In relationships you don't just discuss problems; you fix, plan, and move. Your instinct under any decision is a bias toward action, and it serves you.",
-        "The shadow is misdirected skill: manipulation, spreading yourself across clever tricks, proving you can do it instead of asking whether it's worth doing. A Magician with no worthy project becomes a hustler. Your direction is selection — choose one craft, one problem big enough to deserve your full toolkit, and put the sleight-of-hand away. Power used on real things is what this card was dealt for."
-      ]
-    },
-    "2": {
-      "heading": "The High Priestess",
-      "paragraphs": [
-        "Your storyline is inner knowing. The High Priestess sits between the pillars, guarding what can't be said out loud — and your life keeps handing you the same scene: a situation with an official version and a real version, and you're the one who senses the real one. You trust what you perceive before what you're told, and events keep proving that order right.",
-        "In real life this is a precision instrument. At work you feel a project going wrong before any metric shows it, and you read people's motives in the first five minutes. Others confide in you because you hold what you're given. In relationships you register shifts before they're spoken. Your best decisions come when you wait for the quiet inner yes instead of the loud external push.",
-        "The shadow is the sealed archive: perceiving everything and saying nothing, waiting so long for certainty that the moment passes, letting passivity wear the costume of wisdom. What you sense is only valuable if it reaches the surface. Your direction is disclosure — speak the read, act on the signal, put your knowing into the room while it can still change what happens there."
-      ]
-    },
-    "3": {
-      "heading": "The Empress",
-      "paragraphs": [
-        "Your storyline is making things flourish. The Empress rules a garden, not a fortress — and that's the role your life keeps assigning you: things placed in your care get bigger. Projects, people, rooms, businesses, families — whatever enters your orbit starts to grow. You're not cast as the conqueror of your story; you're cast as its source of life, and the plot rewards you for feeding things.",
-        "Practically, you create conditions where people and work thrive: teams relax and produce around you, ideas that stalled elsewhere ripen in your hands, and you have an instinctive eye for what something needs to develop. In relationships your warmth is tangible — people feel materially better cared for with you. Your strongest decisions follow one question: what will this help grow?",
-        "The shadow is overgiving: nurturing everyone until you're depleted, smothering what needed room, resenting the garden for not tending you back. The Empress fails only when she's not on her own list. Your direction is to treat yourself as one of your gardens — guard your own soil, let others struggle enough to grow strong, and give from surplus instead of substance."
-      ]
-    },
-    "4": {
-      "heading": "The Emperor",
-      "paragraphs": [
-        "Your storyline is structure and authority. The Emperor's role is to take territory that's in chaos and give it order others can stand on — and your life keeps casting you as exactly that. Wherever systems are missing, you end up building them; wherever no one's in charge, people turn to you. Rule and responsibility find you even when you don't campaign for them.",
-        "In practice you carry natural authority — the kind people accept without being forced. You think in systems, hold the long horizon, and follow through when others fade. At work you're the operator, the one whose structures outlast the enthusiasm phase. In relationships you offer something underrated: reliability and protection that don't waver. Your decisions run on rules and evidence, not moods, which is why people build on them.",
-        "The shadow is the fortress: rigidity, control tightening into domination, mistaking obedience for respect. An Emperor who can't flex gets overthrown — by markets, by children, by his own body. Your direction is to build structures that bend: delegate real power, invite challenge from people you trust, and remember the order exists to serve the people inside it, never the reverse."
-      ]
-    },
-    "5": {
-      "heading": "The Hierophant",
-      "paragraphs": [
-        "Your storyline is tradition and teaching. The Hierophant is the bridge between accumulated knowledge and the person standing in front of him — and that's your recurring role: you learn deeply, you test it, and then you pass it on. In every group you join, you gravitate toward being the keeper of standards, the one who knows how it's properly done and why.",
-        "Practically, this makes you a natural mentor and a trusted voice. You build on proven foundations rather than gambling on fashion, which gives your work unusual durability. People bring you their confusion because you turn it into frameworks. In relationships you offer loyalty and shared values — you take vows seriously, in every sense. Your best decisions apply tested principles instead of chasing whatever's trending.",
-        "The shadow is dogma: defending the rule after it stopped serving anyone, deferring to authority instead of your own judgment, teaching a life you're not living. Tradition is your instrument, not your master. Your direction is curation — question one inherited rule at a time, keep what survives contact with reality, and update the canon you carry. A living teacher beats a preserved one."
-      ]
-    },
-    "6": {
-      "heading": "The Lovers",
-      "paragraphs": [
-        "Your storyline is the meaningful choice. Where other charts turn on ambition or endurance, yours turns on decisions of the heart: who you commit to, what you align with, which road you take when both are real options. The Lovers card doesn't just mean romance — it means your life's chapters are defined by connection, and by the choices that create or end it.",
-        "Practically, you're gifted at the thing most people fumble: discerning what actually matters to you and building union around it. You form partnerships — romantic, creative, business — that carry more weight than solo effort ever could. You sense compatibility fast and unify people who'd otherwise stay separate. Your strongest decisions are values-first: when you choose from alignment instead of convenience, you almost never regret it.",
-        "The shadow is the split: standing between options so long that both doors close, keeping a backup life running behind your commitments, outsourcing the choice and then resenting it. Half-choices are how this card punishes you. Your direction is to choose wholly — pick, close the other doors yourself, and pour in undivided weight. A full-hearted choice is the engine of your entire chart."
-      ]
-    },
-    "7": {
-      "heading": "The Chariot",
-      "paragraphs": [
-        "Your storyline is willpower in motion. The Chariot's driver holds two opposing forces and makes them pull in one direction — and that's your recurring scene: competing demands, conflicting instincts, difficult terrain, and you at the reins pushing through by sheer drive. Your life rewards momentum. When you commit to a direction and lean in, obstacles that stop other people become surface you drive over.",
-        "In practice you have the rarest form of stamina: focus under pressure. Deadlines sharpen you, competition wakes you up, and you push projects over the line after everyone else has made peace with almost. At work you're the closer of hard yards. In relationships you fight for your people — visibly, concretely. Your decisions are fast and committed, and that speed itself wins you ground.",
-        "The shadow is the runaway vehicle: rolling over people who were trying to help, using motion to avoid feeling, gripping control of the reins at any cost. Drive without a worthy destination just burns fuel spectacularly. Your direction is navigation — choose targets that deserve your horsepower, and learn to stop as skillfully as you accelerate. The great drivers are defined by their braking."
-      ]
-    },
-    "8": {
-      "heading": "Strength",
-      "paragraphs": [
-        "Your storyline is quiet power. The card shows a figure calming a lion with bare hands — no weapon, no shouting — and that's your role: you master situations by patience that others try to force. Your life keeps placing wild things in front of you — difficult people, crises, your own intense nature — and the plot is always the same: gentle it, don't kill it.",
-        "Practically, you're the calm one in the storm, and everyone knows it. Composure is your professional signature: you de-escalate conflicts, outlast problems that break louder people, and handle the personalities no one else can work with. In relationships your steadiness reads as safety — people show you their real selves. Your decisions are measured and quietly brave, made without drama and held without wavering.",
-        "The shadow is suppression: swallowing so much, so gracefully, that your own lion goes unfed until it bites — as burnout, as sudden fury, as illness. Endurance without limits isn't strength; it's slow self-erasure. Your direction is to let strength include refusal: say no early, voice the anger while it's still information, and spend some of that legendary patience on your own needs."
-      ]
-    },
-    "9": {
-      "heading": "The Hermit",
-      "paragraphs": [
-        "Your storyline is inner wisdom. The Hermit climbs the mountain alone and returns carrying a lamp — and that's your recurring arc: withdraw, understand, come back with the answer. You find your answers alone first, and only then can you share them. Solitude in your chart isn't loneliness or escape; it's your work-site, the place where everything valuable you carry was made.",
-        "Practically, your depth is a competitive advantage. You develop mastery because you can focus alone for stretches that would drive others mad, and your judgment is independent — unmoved by crowds and trends. People seek you out for counsel precisely because you're not performing for anyone. Your relationships are few and real. Your best decisions are made in quiet, away from the noise of other people's urgency.",
-        "The shadow is exile: solitude hardening into isolation, standards for company rising until no one qualifies, the lamp kept private until it dies with you. The Hermit's light exists to be found by travelers. Your direction is scheduled descent — come down from the mountain regularly, on purpose, and hand over what you found. Wisdom unshared quietly turns into loneliness with a better vocabulary."
-      ]
-    },
-    "10": {
-      "heading": "Wheel of Fortune",
-      "paragraphs": [
-        "Your storyline is cycles and timing. Most lives move in a line; yours moves in turns — visible rises, sudden resets, lucky pivots that arrive exactly when a chapter has exhausted itself. The Wheel casts you as the one who rides change rather than resisting it, and your biography will keep proving the point: what looks like disruption from inside is rotation from above.",
-        "Practically, you have a gambler's radar without the gambler's ruin: you sense when a season is ending and reposition before others notice the weather. You catch turns — markets, moods, opportunities — that people standing still never see. Downturns don't break you, because you know they rotate. In relationships you forgive seasons instead of ending stories at winter. Your best decisions are timed, not forced.",
-        "The shadow is fatalism: waiting for the Wheel to deliver, calling passivity destiny, blaming the turn instead of your grip. Luck in your chart is real but it multiplies preparation, not replaces it. Your direction is to keep a hand on the wheel — daily habits, steady positioning, skills maintained through the down cycle — so that when the turn comes, and it will, you're the one it lifts."
-      ]
-    },
-    "11": {
-      "heading": "Justice",
-      "paragraphs": [
-        "Your storyline is balance and truth. Justice holds the scales, and your life keeps appointing you to that seat: the disputes come to you, the imbalances happen near you, and unfairness anywhere in your vicinity demands correction — you physically can't ignore it. Fairness isn't a value you chose; it's the axis your story turns on, and events keep testing how straight you can hold it.",
-        "Practically, your judgment is your reputation. You see both sides fully — a genuinely rare ability — and people accept your verdicts because your integrity is visible from a distance. At work you become the arbiter, the standard-keeper, the one trusted with the hard calls. In relationships you offer honesty and even-handedness. Your decisions are evidence-based, which makes them slower than most and better than most.",
-        "The shadow is the ledger: score-keeping in love, harsh sentences without appeal, and paralysis while you wait to be perfectly fair. Some decisions can't be balanced, only made. Your direction is to temper the verdict with mercy — including for yourself, your own harshest defendant — and to act on the ruling once it's clear. Scales are an instrument, not a residence."
-      ]
-    },
-    "12": {
-      "heading": "The Hanged Man",
-      "paragraphs": [
-        "Your storyline is the shift in perspective. The Hanged Man hangs upside down voluntarily — and sees what no one standing upright can see. That's your recurring arc: your breakthroughs don't come from pushing harder, they come from suspension — the pause, the surrender, the deliberately inverted view. Life keeps hanging you in limbo at exactly the moments it wants to change your mind.",
-        "Practically, you're the one who solves the unsolvable by reframing it — walking around the problem until it becomes a different problem with an obvious answer. You tolerate uncertainty that makes others panic, which is a genuine professional edge in any complex work. In relationships you can truly take another person's view, not just claim to. Your decisions improve dramatically when you give them a pause first.",
-        "The shadow is permanent suspension: martyrdom worn as identity, sacrifices nobody asked for, stagnation renamed surrender. Hanging is a technique, not an address. Your direction is to give every pause a purpose and a deadline — hang until the new view arrives, then cut yourself down and act on what you saw. The insight only counts once your feet are back on the ground."
-      ]
-    },
-    "13": {
-      "heading": "Death",
-      "paragraphs": [
-        "Your storyline is transformation. Forget the horror-film reading — in your chart, Death means your life proceeds through clean endings: identities, careers, whole versions of you are shed like skins when they're finished. Where others get one slow arc, you get chapters with real closings. Endings clear space for what's next — that's not something that happens to you; it's how you're built to move.",
-        "Practically, you have the courage most people lack: to end what's over. You close the project, leave the city, retire the old self — while others drag corpses for years. This makes you brilliant at turnarounds and reinventions; you renew instead of decaying. In relationships you offer depth over pretense, and you can survive real change together. Your decisive cuts, timed right, are acts of mercy.",
-        "The shadow runs both directions: forcing endings prematurely because transformation feels like home, or — the deeper fear — clinging to something dead because this one loss seems unsurvivable. Your direction is clean endings, not cruel ones: honor the grief, take what the old chapter taught, and cross. Everything significant you'll ever get arrives through a door that something else vacated."
-      ]
-    },
-    "14": {
-      "heading": "Temperance",
-      "paragraphs": [
-        "Your storyline is synthesis. Temperance stands with one foot on land, one in water, blending two cups — and that's your role: you combine extremes into something that works. Opposing people, clashing demands, contradictory truths keep landing in your life, and your job in the story is always the same: find the mixture. Not the compromise that satisfies no one — the alloy that's stronger than either metal.",
-        "Practically, you're the integrator every team quietly depends on: the one who translates between camps, calibrates the plan to reality, and keeps the temperature workable. Moderation in you isn't weakness — it's precision, knowing exactly how much of each thing the moment needs. In relationships you de-escalate and steady. Your decisions are proportionate: right-sized responses while others swing between too much and too little.",
-        "The shadow is lukewarmness: balancing so habitually that you never commit heat, sanding your own edges down to blandness, mixing when the moment demanded a pure pour. Some situations are 100/0, not 60/40. Your direction is to keep the skill but claim the exception — know when to stop blending and burn for one thing entirely. An alchemist who fears fire transforms nothing."
-      ]
-    },
-    "15": {
-      "heading": "The Devil",
-      "paragraphs": [
-        "Your storyline is confronting what binds you. The Devil's secret is printed on the card: the chains on the two figures are loose enough to lift off — they stay by habit. Your life keeps staging that scene: intense desires, compelling attachments, gilded cages, and the recurring question of who owns whom. You were dealt the strong material — appetite, money, power, passion — on purpose.",
-        "Practically, you handle the world's raw forces better than most: you understand temptation from inside, so you negotiate, sell, and operate in high-stakes rooms without flinching or pretending. Your intensity is magnetic and your honesty about wanting things is refreshing in a world of polite deniers. In relationships you bring real passion. In work, you're built for the arenas where the stakes are naked.",
-        "The shadow is the chain itself: the compulsion you keep renewing, the deal you claim to hate but re-sign, the pattern that owns you on schedule. Freedom here starts with accuracy. Your direction: name the chain out loud — the substance, the person, the habit, the golden handcuffs — and test the card's promise: every chain in this arcana is loose enough to slip. Lift it."
-      ]
-    },
-    "16": {
-      "heading": "The Tower",
-      "paragraphs": [
-        "Your storyline is sudden change. In your chart, structures that are false don't get to decay slowly — they fall, fast, with lightning attached. Careers, certainties, relationships built on the wrong foundation: your life demolishes them in dramatic single strokes. It reads as catastrophe each time, and each time the same truth surfaces — what falls apart was making room for the real thing.",
-        "Practically, you are crisis-competent in a way that can't be taught: when everything breaks, you get calm, clear, and useful while others freeze. You rebuild fast and better, because you've done it before. Your radical honesty — saying the destabilizing true thing — prevents bigger collapses around you. People who've survived an earthquake with you trust you permanently. Falsity has nowhere to hide in your presence.",
-        "The shadow is waiting for lightning to do your maintenance: staying in the doomed job or dynamic until it explodes, or worse, courting explosions for the clarity they bring. Your direction is deliberate demolition — audit your own towers honestly and take down the shaky ones in planned, controlled bursts. Renovate by choice, and the lightning finds much less to strike."
-      ]
-    },
-    "17": {
-      "heading": "The Star",
-      "paragraphs": [
-        "Your storyline is hope after hardship. The Star follows the Tower in the deck for a reason: your archetype is the one who keeps faith when it's hard to — and whose faith keeps being proven right. Your life runs on a repeating pattern: drought, then water. However dark the previous chapter, you're the character who looks up, finds the one light, and walks toward it.",
-        "Practically, your optimism is earned, not naive — and that makes it contagious in the best way. You're the morale-carrier of every team, the one who holds the long vision when everyone else is buried in the setback. You heal people just by being unhurried and undefeated around them. In decisions, you navigate by North Star: when you're aligned with your genuine vision, your stamina is effectively unlimited.",
-        "The shadow is drifting: floating on hope without a plan, postponing life to a beautiful someday, being everyone's inspiration and nobody's finished project. A star is for navigation, not for staring at. Your direction is coordinates — attach dates, numbers, and next actions to the vision. Hope with a schedule becomes the future; hope without one stays scenery."
-      ]
-    },
-    "18": {
-      "heading": "The Moon",
-      "paragraphs": [
-        "Your storyline is the unconscious. You sense what hasn't surfaced yet — the mood under the meeting, the motive under the compliment, the change coming before any evidence exists. The Moon casts you as the night-walker: you travel by low light through territory others need full daylight to enter. Dreams, hunches, and undercurrents aren't decoration in your life; they're primary sources of information.",
-        "Practically, this is rare equipment: an emotional radar that reads rooms and people with unsettling accuracy, and an imagination that produces what purely logical minds can't. You thrive in creative and human-centered work, where the data is unspoken. In relationships you feel the unsaid — partners are known by you at a depth few experience. Your first instinct about a person is usually the correct one.",
-        "The shadow is fog: anxiety wearing intuition's clothes, projections mistaken for perceptions, imagined dangers outnumbering real ones three to one. The Moon's light distorts even as it reveals. Your direction is verification — test the night's visions against daylight facts before acting on them, and hold a steady routine as your anchor. Checked instinct is a superpower; unchecked, it's just weather."
-      ]
-    },
-    "19": {
-      "heading": "The Sun",
-      "paragraphs": [
-        "Your storyline is clarity and joy. The Sun is the deck's least complicated card, and that's precisely its power: you're cast as the source of warmth and light — where you show up, things get simpler, truer, easier to see. Visibility is your natural habitat. While other archetypes work in shadow and subtext, your plot happens in full daylight: open success, evident vitality, warmth that spreads.",
-        "Practically, your energy is a resource other people can feel and borrow. You're built for front-of-room roles — leading, presenting, hosting, representing — because attention lands on you comfortably and you give it back as encouragement. Your straightforwardness cuts through politics; you say the clear thing and the fog lifts. In relationships you're generous and transparent. Your decisions are clean and confident, and your success genuinely lifts others.",
-        "The shadow is dependence on applause: dimming when no one's watching, mistaking visibility for worth, and a simplicity that can flatten into not looking at hard things. Eclipses will come; they're not the end of you. Your direction: learn to shine unwitnessed — build the private discipline behind the public warmth — and practice standing in another person's spotlight without needing to redirect it."
-      ]
-    },
-    "20": {
-      "heading": "Judgement",
-      "paragraphs": [
-        "Your storyline is the reckoning. Judgement is the trumpet that wakes what was buried — and your life moves through exactly those moments: clear before-and-after points where you're summoned to face the full record, keep what's true, and get up as someone new. Other charts drift; yours gets called. Rebirth isn't a metaphor in your story — it's the recurring event around which everything organizes.",
-        "Practically, you own the rarest skill in adult life: honest self-assessment without collapse. You can look at what you've actually done — the wins and the damage — and convert it into a second act. This makes you formidable at reinventions, restructurings, and turnarounds of every kind. In relationships you offer real forgiveness, the kind that closes accounts instead of reopening them. Your decisions serve the long verdict, not the short applause.",
-        "The shadow runs two ways: self-judgment on an endless loop — the case that never closes — or deafness to the call, staying buried in a finished life because rising costs too much. Your direction is to answer the summons when it comes: the move, the confession, the change of vocation. In your chart, the rise is guaranteed to follow the answer — but only the answer."
-      ]
-    },
-    "21": {
-      "heading": "The World",
-      "paragraphs": [
-        "Your storyline is completion. The World is the last card of the Major Arcana — the dance at the center of the finished circle — and that's your archetype: you finish what you start, fully. Your life moves in completed circles: learn, master, deliver, arrive — then a larger circle opens. Where other charts are about the struggle, yours is about the arrival, earned end to end.",
-        "Practically, you're the closer — the person who takes things the final ten percent that defeats almost everyone else. You integrate: skills, people, and pieces come together into wholes in your hands, and others sense a completeness about you that makes them trust you with what matters. In relationships you offer full presence and long arcs, not fragments. Your decisions aim at the finished picture, not the quick fix.",
-        "The shadow is the almost-finished life: perfectionism that postpones the final step, or lingering in a completed chapter because mastery there is comfortable and the next circle starts you over as a beginner. Your direction: call things done — take the recognition without deflecting it, close the loop formally, and step into the bigger arena. Your next circle only opens after you accept that this one is complete."
-      ]
-    }
-  }
+ "code": "D1",
+ "title": "Tarot Birth Card",
+ "intro": "Your birth date reduces to one of the 22 Major Arcana, a single card that holds the deep archetype of your life, the storyline you keep living out across jobs, relationships, and decades. This is the most visual point in your reading: not a number, but a role.",
+ "values": {
+ "0": {
+ "heading": "The Fool",
+ "paragraphs": [
+ "You live the story of the leap of faith. While others gather guarantees, you step toward the edge and trust the path to appear, and for you, it usually does. The Fool is the eternal beginner: every chapter of your life opens with a threshold, a departure, a fresh start. Crossing those thresholds isn't recklessness in your chart. It's the plot.",
+ "In practice this gives you real courage where it counts: starting the project before it's fully planned, moving on when the old place stops fitting, saying yes to people and offers that others overthink into the ground. You break inertia in any team. In relationships you bring openness without cynicism, rare after a certain age. Your best decisions happen at the beginning of things.",
+ "The shadow is the restart loop: leaving whenever things get heavy, mistaking avoidance for freedom, collecting beginnings that never get a middle. The Fool matures the moment one leap is followed all the way to landing. Pick the venture, the person, the place that deserves your full arc, and stay past the point where you'd normally jump. That's where this card pays out."
+ ]
+ },
+ "1": {
+ "heading": "The Magician",
+ "paragraphs": [
+ "Your storyline is will made real. The Magician stands at a table holding every tool he needs, and your life keeps re-staging that scene: here are your resources, your skills, your words. Now make something happen. You're not cast as the dreamer or the bystander; you're cast as the one who converts intention into action, again and again, in every arena you enter.",
+ "Practically, this is the rarest professional gift: you close the gap between idea and result. In work you're the one who ships, who takes the vague brief and returns something concrete. You persuade naturally, because you speak in outcomes. In relationships you don't just discuss problems; you fix, plan, and move. Your instinct under any decision is a bias toward action, and it serves you.",
+ "The shadow is misdirected skill: manipulation, spreading yourself across clever tricks, proving you can do it instead of asking whether it's worth doing. A Magician with no worthy project becomes a hustler. Your direction is selection, choose one craft, one problem big enough to deserve your full toolkit, and put the sleight-of-hand away. Power used on real things is what this card was dealt for."
+ ]
+ },
+ "2": {
+ "heading": "The High Priestess",
+ "paragraphs": [
+ "Your storyline is inner knowing. The High Priestess sits between the pillars, guarding what can't be said out loud, and your life keeps handing you the same scene: a situation with an official version and a real version, and you're the one who senses the real one. You trust what you perceive before what you're told, and events keep proving that order right.",
+ "In real life this is a precision instrument. At work you feel a project going wrong before any metric shows it, and you read people's motives in the first five minutes. Others confide in you because you hold what you're given. In relationships you register shifts before they're spoken. Your best decisions come when you wait for the quiet inner yes instead of the loud external push.",
+ "The shadow is the sealed archive: perceiving everything and saying nothing, waiting so long for certainty that the moment passes, letting passivity wear the costume of wisdom. What you sense is only valuable if it reaches the surface. Your direction is disclosure, speak the read, act on the signal, put your knowing into the room while it can still change what happens there."
+ ]
+ },
+ "3": {
+ "heading": "The Empress",
+ "paragraphs": [
+ "Your storyline is making things flourish. The Empress rules a garden, not a fortress, and that's the role your life keeps assigning you: things placed in your care get bigger. Projects, people, rooms, businesses, families, whatever enters your orbit starts to grow. You're not cast as the conqueror of your story; you're cast as its source of life, and the plot rewards you for feeding things.",
+ "Practically, you create conditions where people and work thrive: teams relax and produce around you, ideas that stalled elsewhere ripen in your hands, and you have an instinctive eye for what something needs to develop. In relationships your warmth is tangible, people feel materially better cared for with you. Your strongest decisions follow one question: what will this help grow?",
+ "The shadow is overgiving: nurturing everyone until you're depleted, smothering what needed room, resenting the garden for not tending you back. The Empress fails only when she's not on her own list. Your direction is to treat yourself as one of your gardens, guard your own soil, let others struggle enough to grow strong, and give from surplus instead of substance."
+ ]
+ },
+ "4": {
+ "heading": "The Emperor",
+ "paragraphs": [
+ "Your storyline is structure and authority. The Emperor's role is to take territory that's in chaos and give it order others can stand on, and your life keeps casting you as exactly that. Wherever systems are missing, you end up building them; wherever no one's in charge, people turn to you. Rule and responsibility find you even when you don't campaign for them.",
+ "In practice you carry natural authority, the kind people accept without being forced. You think in systems, hold the long horizon, and follow through when others fade. At work you're the operator, the one whose structures outlast the enthusiasm phase. In relationships you offer something underrated: reliability and protection that don't waver. Your decisions run on rules and evidence, not moods, which is why people build on them.",
+ "The shadow is the fortress: rigidity, control tightening into domination, mistaking obedience for respect. An Emperor who can't flex gets overthrown, by markets, by children, by his own body. Your direction is to build structures that bend: delegate real power, invite challenge from people you trust, and remember the order exists to serve the people inside it, never the reverse."
+ ]
+ },
+ "5": {
+ "heading": "The Hierophant",
+ "paragraphs": [
+ "Your storyline is tradition and teaching. The Hierophant is the bridge between accumulated knowledge and the person standing in front of him, and that's your recurring role: you learn deeply, you test it, and then you pass it on. In every group you join, you gravitate toward being the keeper of standards, the one who knows how it's properly done and why.",
+ "Practically, this makes you a natural mentor and a trusted voice. You build on proven foundations rather than gambling on fashion, which gives your work unusual durability. People bring you their confusion because you turn it into frameworks. In relationships you offer loyalty and shared values, you take vows seriously, in every sense. Your best decisions apply tested principles instead of chasing whatever's trending.",
+ "The shadow is dogma: defending the rule after it stopped serving anyone, deferring to authority instead of your own judgment, teaching a life you're not living. Tradition is your instrument, not your master. Your direction is curation, question one inherited rule at a time, keep what survives contact with reality, and update the canon you carry. A living teacher beats a preserved one."
+ ]
+ },
+ "6": {
+ "heading": "The Lovers",
+ "paragraphs": [
+ "Your storyline is the meaningful choice. Where other charts turn on ambition or endurance, yours turns on decisions of the heart: who you commit to, what you align with, which road you take when both are real options. The Lovers card doesn't just mean romance, it means your life's chapters are defined by connection, and by the choices that create or end it.",
+ "Practically, you're gifted at the thing most people fumble: discerning what actually matters to you and building union around it. You form partnerships, romantic, creative, business, that carry more weight than solo effort ever could. You sense compatibility fast and unify people who'd otherwise stay separate. Your strongest decisions are values-first: when you choose from alignment instead of convenience, you almost never regret it.",
+ "The shadow is the split: standing between options so long that both doors close, keeping a backup life running behind your commitments, outsourcing the choice and then resenting it. Half-choices are how this card punishes you. Your direction is to choose wholly, pick, close the other doors yourself, and pour in undivided weight. A full-hearted choice is the engine of your entire chart."
+ ]
+ },
+ "7": {
+ "heading": "The Chariot",
+ "paragraphs": [
+ "Your storyline is willpower in motion. The Chariot's driver holds two opposing forces and makes them pull in one direction, and that's your recurring scene: competing demands, conflicting instincts, difficult terrain, and you at the reins pushing through by sheer drive. Your life rewards momentum. When you commit to a direction and lean in, obstacles that stop other people become surface you drive over.",
+ "In practice you have the rarest form of stamina: focus under pressure. Deadlines sharpen you, competition wakes you up, and you push projects over the line after everyone else has made peace with almost. At work you're the closer of hard yards. In relationships you fight for your people, visibly, concretely. Your decisions are fast and committed, and that speed itself wins you ground.",
+ "The shadow is the runaway vehicle: rolling over people who were trying to help, using motion to avoid feeling, gripping control of the reins at any cost. Drive without a worthy destination just burns fuel spectacularly. Your direction is navigation, choose targets that deserve your horsepower, and learn to stop as skillfully as you accelerate. The great drivers are defined by their braking."
+ ]
+ },
+ "8": {
+ "heading": "Strength",
+ "paragraphs": [
+ "Your storyline is quiet power. The card shows a figure calming a lion with bare hands, no weapon, no shouting, and that's your role: you master situations by patience that others try to force. Your life keeps placing wild things in front of you, difficult people, crises, your own intense nature, and the plot is always the same: gentle it, don't kill it.",
+ "Practically, you're the calm one in the storm, and everyone knows it. Composure is your professional signature: you de-escalate conflicts, outlast problems that break louder people, and handle the personalities no one else can work with. In relationships your steadiness reads as safety, people show you their real selves. Your decisions are measured and quietly brave, made without drama and held without wavering.",
+ "The shadow is suppression: swallowing so much, so gracefully, that your own lion goes unfed until it bites, as burnout, as sudden fury, as illness. Endurance without limits isn't strength; it's slow self-erasure. Your direction is to let strength include refusal: say no early, voice the anger while it's still information, and spend some of that legendary patience on your own needs."
+ ]
+ },
+ "9": {
+ "heading": "The Hermit",
+ "paragraphs": [
+ "Your storyline is inner wisdom. The Hermit climbs the mountain alone and returns carrying a lamp, and that's your recurring arc: withdraw, understand, come back with the answer. You find your answers alone first, and only then can you share them. Solitude in your chart isn't loneliness or escape; it's your work-site, the place where everything valuable you carry was made.",
+ "Practically, your depth is a competitive advantage. You develop mastery because you can focus alone for stretches that would drive others mad, and your judgment is independent, unmoved by crowds and trends. People seek you out for counsel precisely because you're not performing for anyone. Your relationships are few and real. Your best decisions are made in quiet, away from the noise of other people's urgency.",
+ "The shadow is exile: solitude hardening into isolation, standards for company rising until no one qualifies, the lamp kept private until it dies with you. The Hermit's light exists to be found by travelers. Your direction is scheduled descent, come down from the mountain regularly, on purpose, and hand over what you found. Wisdom unshared quietly turns into loneliness with a better vocabulary."
+ ]
+ },
+ "10": {
+ "heading": "Wheel of Fortune",
+ "paragraphs": [
+ "Your storyline is cycles and timing. Most lives move in a line; yours moves in turns, visible rises, sudden resets, lucky pivots that arrive exactly when a chapter has exhausted itself. The Wheel casts you as the one who rides change rather than resisting it, and your biography will keep proving the point: what looks like disruption from inside is rotation from above.",
+ "Practically, you have a gambler's radar without the gambler's ruin: you sense when a season is ending and reposition before others notice the weather. You catch turns, markets, moods, opportunities, that people standing still never see. Downturns don't break you, because you know they rotate. In relationships you forgive seasons instead of ending stories at winter. Your best decisions are timed, not forced.",
+ "The shadow is fatalism: waiting for the Wheel to deliver, calling passivity destiny, blaming the turn instead of your grip. Luck in your chart is real but it multiplies preparation, not replaces it. Your direction is to keep a hand on the wheel, daily habits, steady positioning, skills maintained through the down cycle, so that when the turn comes, and it will, you're the one it lifts."
+ ]
+ },
+ "11": {
+ "heading": "Justice",
+ "paragraphs": [
+ "Your storyline is balance and truth. Justice holds the scales, and your life keeps appointing you to that seat: the disputes come to you, the imbalances happen near you, and unfairness anywhere in your vicinity demands correction, you physically can't ignore it. Fairness isn't a value you chose; it's the axis your story turns on, and events keep testing how straight you can hold it.",
+ "Practically, your judgment is your reputation. You see both sides fully, a genuinely rare ability, and people accept your verdicts because your integrity is visible from a distance. At work you become the arbiter, the standard-keeper, the one trusted with the hard calls. In relationships you offer honesty and even-handedness. Your decisions are evidence-based, which makes them slower than most and better than most.",
+ "The shadow is the ledger: score-keeping in love, harsh sentences without appeal, and paralysis while you wait to be perfectly fair. Some decisions can't be balanced, only made. Your direction is to temper the verdict with mercy, including for yourself, your own harshest defendant, and to act on the ruling once it's clear. Scales are an instrument, not a residence."
+ ]
+ },
+ "12": {
+ "heading": "The Hanged Man",
+ "paragraphs": [
+ "Your storyline is the shift in perspective. The Hanged Man hangs upside down voluntarily, and sees what no one standing upright can see. That's your recurring arc: your breakthroughs don't come from pushing harder, they come from suspension, the pause, the surrender, the deliberately inverted view. Life keeps hanging you in limbo at exactly the moments it wants to change your mind.",
+ "Practically, you're the one who solves the unsolvable by reframing it, walking around the problem until it becomes a different problem with an obvious answer. You tolerate uncertainty that makes others panic, which is a genuine professional edge in any complex work. In relationships you can truly take another person's view, not just claim to. Your decisions improve dramatically when you give them a pause first.",
+ "The shadow is permanent suspension: martyrdom worn as identity, sacrifices nobody asked for, stagnation renamed surrender. Hanging is a technique, not an address. Your direction is to give every pause a purpose and a deadline, hang until the new view arrives, then cut yourself down and act on what you saw. The insight only counts once your feet are back on the ground."
+ ]
+ },
+ "13": {
+ "heading": "Death",
+ "paragraphs": [
+ "Your storyline is transformation. Forget the horror-film reading, in your chart, Death means your life proceeds through clean endings: identities, careers, whole versions of you are shed like skins when they're finished. Where others get one slow arc, you get chapters with real closings. Endings clear space for what's next, that's not something that happens to you; it's how you're built to move.",
+ "Practically, you have the courage most people lack: to end what's over. You close the project, leave the city, retire the old self, while others drag corpses for years. This makes you brilliant at turnarounds and reinventions; you renew instead of decaying. In relationships you offer depth over pretense, and you can survive real change together. Your decisive cuts, timed right, are acts of mercy.",
+ "The shadow runs both directions: forcing endings prematurely because transformation feels like home, or, the deeper fear, clinging to something dead because this one loss seems unsurvivable. Your direction is clean endings, not cruel ones: honor the grief, take what the old chapter taught, and cross. Everything significant you'll ever get arrives through a door that something else vacated."
+ ]
+ },
+ "14": {
+ "heading": "Temperance",
+ "paragraphs": [
+ "Your storyline is synthesis. Temperance stands with one foot on land, one in water, blending two cups, and that's your role: you combine extremes into something that works. Opposing people, clashing demands, contradictory truths keep landing in your life, and your job in the story is always the same: find the mixture. Not the compromise that satisfies no one, the alloy that's stronger than either metal.",
+ "Practically, you're the integrator every team quietly depends on: the one who translates between camps, calibrates the plan to reality, and keeps the temperature workable. Moderation in you isn't weakness, it's precision, knowing exactly how much of each thing the moment needs. In relationships you de-escalate and steady. Your decisions are proportionate: right-sized responses while others swing between too much and too little.",
+ "The shadow is lukewarmness: balancing so habitually that you never commit heat, sanding your own edges down to blandness, mixing when the moment demanded a pure pour. Some situations are 100/0, not 60/40. Your direction is to keep the skill but claim the exception, know when to stop blending and burn for one thing entirely. An alchemist who fears fire transforms nothing."
+ ]
+ },
+ "15": {
+ "heading": "The Devil",
+ "paragraphs": [
+ "Your storyline is confronting what binds you. The Devil's secret is printed on the card: the chains on the two figures are loose enough to lift off, they stay by habit. Your life keeps staging that scene: intense desires, compelling attachments, gilded cages, and the recurring question of who owns whom. You were dealt the strong material, appetite, money, power, passion, on purpose.",
+ "Practically, you handle the world's raw forces better than most: you understand temptation from inside, so you negotiate, sell, and operate in high-stakes rooms without flinching or pretending. Your intensity is magnetic and your honesty about wanting things is refreshing in a world of polite deniers. In relationships you bring real passion. In work, you're built for the arenas where the stakes are naked.",
+ "The shadow is the chain itself: the compulsion you keep renewing, the deal you claim to hate but re-sign, the pattern that owns you on schedule. Freedom here starts with accuracy. Your direction: name the chain out loud, the substance, the person, the habit, the golden handcuffs, and test the card's promise: every chain in this arcana is loose enough to slip. Lift it."
+ ]
+ },
+ "16": {
+ "heading": "The Tower",
+ "paragraphs": [
+ "Your storyline is sudden change. In your chart, structures that are false don't get to decay slowly, they fall, fast, with lightning attached. Careers, certainties, relationships built on the wrong foundation: your life demolishes them in dramatic single strokes. It reads as catastrophe each time, and each time the same truth surfaces, what falls apart was making room for the real thing.",
+ "Practically, you are crisis-competent in a way that can't be taught: when everything breaks, you get calm, clear, and useful while others freeze. You rebuild fast and better, because you've done it before. Your radical honesty, saying the destabilizing true thing, prevents bigger collapses around you. People who've survived an earthquake with you trust you permanently. Falsity has nowhere to hide in your presence.",
+ "The shadow is waiting for lightning to do your maintenance: staying in the doomed job or dynamic until it explodes, or worse, courting explosions for the clarity they bring. Your direction is deliberate demolition, audit your own towers honestly and take down the shaky ones in planned, controlled bursts. Renovate by choice, and the lightning finds much less to strike."
+ ]
+ },
+ "17": {
+ "heading": "The Star",
+ "paragraphs": [
+ "Your storyline is hope after hardship. The Star follows the Tower in the deck for a reason: your archetype is the one who keeps faith when it's hard to, and whose faith keeps being proven right. Your life runs on a repeating pattern: drought, then water. However dark the previous chapter, you're the character who looks up, finds the one light, and walks toward it.",
+ "Practically, your optimism is earned, not naive, and that makes it contagious in the best way. You're the morale-carrier of every team, the one who holds the long vision when everyone else is buried in the setback. You heal people just by being unhurried and undefeated around them. In decisions, you navigate by North Star: when you're aligned with your genuine vision, your stamina is effectively unlimited.",
+ "The shadow is drifting: floating on hope without a plan, postponing life to a beautiful someday, being everyone's inspiration and nobody's finished project. A star is for navigation, not for staring at. Your direction is coordinates, attach dates, numbers, and next actions to the vision. Hope with a schedule becomes the future; hope without one stays scenery."
+ ]
+ },
+ "18": {
+ "heading": "The Moon",
+ "paragraphs": [
+ "Your storyline is the unconscious. You sense what hasn't surfaced yet, the mood under the meeting, the motive under the compliment, the change coming before any evidence exists. The Moon casts you as the night-walker: you travel by low light through territory others need full daylight to enter. Dreams, hunches, and undercurrents aren't decoration in your life; they're primary sources of information.",
+ "Practically, this is rare equipment: an emotional radar that reads rooms and people with unsettling accuracy, and an imagination that produces what purely logical minds can't. You thrive in creative and human-centered work, where the data is unspoken. In relationships you feel the unsaid, partners are known by you at a depth few experience. Your first instinct about a person is usually the correct one.",
+ "The shadow is fog: anxiety wearing intuition's clothes, projections mistaken for perceptions, imagined dangers outnumbering real ones three to one. The Moon's light distorts even as it reveals. Your direction is verification, test the night's visions against daylight facts before acting on them, and hold a steady routine as your anchor. Checked instinct is a superpower; unchecked, it's just weather."
+ ]
+ },
+ "19": {
+ "heading": "The Sun",
+ "paragraphs": [
+ "Your storyline is clarity and joy. The Sun is the deck's least complicated card, and that's precisely its power: you're cast as the source of warmth and light, where you show up, things get simpler, truer, easier to see. Visibility is your natural habitat. While other archetypes work in shadow and subtext, your plot happens in full daylight: open success, evident vitality, warmth that spreads.",
+ "Practically, your vitality is a resource other people can feel and borrow. You're built for front-of-room roles, leading, presenting, hosting, representing, because attention lands on you comfortably and you give it back as encouragement. Your straightforwardness cuts through politics; you say the clear thing and the fog lifts. In relationships you're generous and transparent. Your decisions are clean and confident, and your success genuinely lifts others.",
+ "The shadow is dependence on applause: dimming when no one's watching, mistaking visibility for worth, and a simplicity that can flatten into not looking at hard things. Eclipses will come; they're not the end of you. Your direction: learn to shine unwitnessed, build the private discipline behind the public warmth, and practice standing in another person's spotlight without needing to redirect it."
+ ]
+ },
+ "20": {
+ "heading": "Judgement",
+ "paragraphs": [
+ "Your storyline is the reckoning. Judgement is the trumpet that wakes what was buried, and your life moves through exactly those moments: clear before-and-after points where you're summoned to face the full record, keep what's true, and get up as someone new. Other charts drift; yours gets called. Rebirth isn't a metaphor in your story, it's the recurring event around which everything organizes.",
+ "Practically, you own the rarest skill in adult life: honest self-assessment without collapse. You can look at what you've actually done, the wins and the damage, and convert it into a second act. This makes you formidable at reinventions, restructurings, and turnarounds of every kind. In relationships you offer real forgiveness, the kind that closes accounts instead of reopening them. Your decisions serve the long verdict, not the short applause.",
+ "The shadow runs two ways: self-judgment on an endless loop, the case that never closes, or deafness to the call, staying buried in a finished life because rising costs too much. Your direction is to answer the summons when it comes: the move, the confession, the change of vocation. In your chart, the rise is guaranteed to follow the answer, but only the answer."
+ ]
+ },
+ "21": {
+ "heading": "The World",
+ "paragraphs": [
+ "Your storyline is completion. The World is the last card of the Major Arcana, the dance at the center of the finished circle, and that's your archetype: you finish what you start, fully. Your life moves in completed circles: learn, master, deliver, arrive, then a larger circle opens. Where other charts are about the struggle, yours is about the arrival, earned end to end.",
+ "Practically, you're the closer, the person who takes things the final ten percent that defeats almost everyone else. You integrate: skills, people, and pieces come together into wholes in your hands, and others sense a completeness about you that makes them trust you with what matters. In relationships you offer full presence and long arcs, not fragments. Your decisions aim at the finished picture, not the quick fix.",
+ "The shadow is the almost-finished life: perfectionism that postpones the final step, or lingering in a completed chapter because mastery there is comfortable and the next circle starts you over as a beginner. Your direction: call things done, take the recognition without deflecting it, close the loop formally, and step into the bigger arena. Your next circle only opens after you accept that this one is complete."
+ ]
+ }
+ }
 }

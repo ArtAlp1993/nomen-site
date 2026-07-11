@@ -4,7 +4,7 @@ import ReadingPage from "@/components/reading/ReadingPage";
 // ссылке (#r=…, lib/readingLink.js) — сервер/хостинг их не видит. Страница
 // одна на всех клиентов, поэтому обязательно noindex.
 export const metadata = {
-  title: "Your Full Reading — NOMEN",
+  title: "Your Full Reading · NOMEN",
   robots: { index: false, follow: false },
 };
 

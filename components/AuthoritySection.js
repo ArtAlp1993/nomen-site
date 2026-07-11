@@ -6,7 +6,7 @@ const topRow = [
   {
     name: "Carl Jung",
     field: "Analytical psychology",
-    body: "Archetypes and the shadow self — the parts of you that shape behavior from below awareness.",
+    body: "Archetypes and the shadow self: the parts of you that shape behavior from below awareness.",
   },
   {
     name: "Eric Berne",
@@ -59,7 +59,7 @@ export default function AuthoritySection() {
       <SectionHeading
         eyebrow="Built on real schools of thought"
         title="A named method behind every point"
-        subtitle="Not “the universe says” — each of the 13 points traces back to a documented framework."
+        subtitle="No vague 'the universe says.' Every one of the 13 points traces back to a documented framework."
       />
 
       {/* Оба ряда: на десктопе содержимое карточек по центру,
