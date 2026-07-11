@@ -8,6 +8,35 @@ import { ymGoal } from "./Analytics";
 
 const TOTAL_STEPS = 5;
 
+// Значок «?» у чувствительных полей (З-34/З-66): мягко объясняет, зачем
+// данные и что клиент получит. Клик — маленькое окошко; уходит фокус — гаснет.
+function HintDot({ text, align = "right" }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <span className="relative inline-flex shrink-0">
+      <button
+        type="button"
+        aria-label="Why we ask this"
+        aria-expanded={open}
+        onClick={() => setOpen((o) => !o)}
+        onBlur={() => setOpen(false)}
+        className="flex h-5 w-5 items-center justify-center rounded-full border border-foreground-muted/40 text-[11px] leading-none text-foreground-muted/60 transition-colors hover:border-foreground-muted hover:text-foreground"
+      >
+        ?
+      </button>
+      {open && (
+        <span
+          className={`absolute top-7 z-20 w-60 rounded-lg border border-foreground-muted/30 bg-background-alt p-3 text-left text-xs font-normal leading-relaxed text-foreground-muted shadow-xl ${
+            align === "center" ? "left-1/2 -translate-x-1/2" : "right-0"
+          }`}
+        >
+          {text}
+        </span>
+      )}
+    </span>
+  );
+}
+
 // Движок считает имя по буквам одного алфавита (латиница ИЛИ кириллица) и
 // отвергает смешанные. Валидируем это на входе, иначе мусорное имя («12»,
 // «😀», «Ivan Иванов») тихо давало тизер без именных пунктов.
@@ -161,7 +190,13 @@ export default function QuizWizard({ onSubmit, submitting }) {
 
         {step === 1 && (
           <div className="flex flex-col gap-4">
-            <h3 className="text-center font-heading text-xl font-semibold">What&apos;s your name?</h3>
+            <h3 className="flex items-center justify-center gap-2 text-center font-heading text-xl font-semibold">
+              What&apos;s your name?
+              <HintDot
+                align="center"
+                text="Every letter of your name maps to a number — your name and birth date are the two roots of all 13 points. We use them only to calculate your reading."
+              />
+            </h3>
             <input
               type="text"
               placeholder="First name"
@@ -201,26 +236,18 @@ export default function QuizWizard({ onSubmit, submitting }) {
               Skip this and your 13-point reading still works fully. Add it to
               unlock the deeper time-based layers as they arrive.
             </p>
-            {touchUI ? (
-              <div className="ym-hide-content">
-                <TimeWheel value={birthTime} onChange={setBirthTime} />
-              </div>
-            ) : (
+            {/* Время рождения — ПОСЛЕДНИМ полем шага (З-20): город и прочее
+                сначала, время в конце. */}
+            <div className="flex items-center gap-2">
               <input
-                type="time"
-                value={birthTime}
-                onChange={(e) => setBirthTime(e.target.value)}
-                className={inputClass}
-                aria-label="Birth time (optional)"
+                type="text"
+                placeholder="City of birth (optional)"
+                value={birthPlace}
+                onChange={(e) => setBirthPlace(e.target.value)}
+                className={`${inputClass} min-w-0 flex-1`}
               />
-            )}
-            <input
-              type="text"
-              placeholder="City of birth (optional)"
-              value={birthPlace}
-              onChange={(e) => setBirthPlace(e.target.value)}
-              className={inputClass}
-            />
+              <HintDot text="Your birth city is optional. It prepares the location-based layers of your reading we're adding — that's all we use it for." />
+            </div>
             <input
               type="text"
               placeholder="Brand / nickname (optional)"
@@ -228,6 +255,25 @@ export default function QuizWizard({ onSubmit, submitting }) {
               onChange={(e) => setBrand(e.target.value)}
               className={inputClass}
             />
+            <div className="flex items-center gap-2">
+              <span className="shrink-0 text-sm text-foreground-muted">
+                Birth time
+              </span>
+              {touchUI ? (
+                <div className="ym-hide-content min-w-0 flex-1">
+                  <TimeWheel value={birthTime} onChange={setBirthTime} />
+                </div>
+              ) : (
+                <input
+                  type="time"
+                  value={birthTime}
+                  onChange={(e) => setBirthTime(e.target.value)}
+                  className={`${inputClass} min-w-0 flex-1`}
+                  aria-label="Birth time (optional)"
+                />
+              )}
+              <HintDot text="Birth time is optional. It unlocks the deeper time-based layers of your profile as they arrive — skip it and your 13-point reading still works fully." />
+            </div>
           </div>
         )}
 

@@ -6,6 +6,7 @@ import QuizWizard from "./QuizWizard";
 import TeaserReveal from "./TeaserReveal";
 import { useResult } from "./ResultProvider";
 import { calculateTeaser } from "@/lib/teaser";
+import { notifyLead } from "@/lib/lead";
 import { ymGoal } from "./Analytics";
 
 export default function QuizSection() {
@@ -30,6 +31,7 @@ export default function QuizSection() {
       // Сохраняем все поля квиза (email и пр.) — они нужны крипто-чекауту,
       // чтобы отправить заказ Артёму. Тизер читает firstName/points как раньше.
       setResult({ ...data, points });
+      notifyLead({ ...data, source: "quiz" }); // лид в базу (fire-and-forget)
     } catch (err) {
       setError(
         "We couldn't read that name — use letters of one alphabet and try again."

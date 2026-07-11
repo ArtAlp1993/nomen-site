@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import Card from "./ui/Card";
 import Button from "./ui/Button";
 import PointIcon from "./PointIcon";
@@ -183,14 +183,15 @@ export default function TeaserReveal({ firstName, points }) {
         </motion.div>
       )}
 
-      {/* Всплывающее предложение полного разбора */}
-      <AnimatePresence>
-        {cta && !ctaClosed && (
+      {/* Всплывающее предложение полного разбора. БЕЗ AnimatePresence/exit:
+          зависший exit оставлял невидимый fixed-слой (opacity 0, pointer-events
+          auto), который блокировал ВСЕ клики по странице после закрытия.
+          Закрытие = мгновенное удаление из DOM, вход анимируется как раньше. */}
+      {cta && !ctaClosed && (
           <motion.div
             className="fixed inset-0 z-50 flex items-center justify-center px-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
             transition={{ duration: 0.35 }}
           >
             <div
@@ -243,8 +244,7 @@ export default function TeaserReveal({ firstName, points }) {
               </div>
             </motion.div>
           </motion.div>
-        )}
-      </AnimatePresence>
+      )}
     </div>
   );
 }

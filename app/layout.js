@@ -38,7 +38,7 @@ const CSP = [
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob: https://mc.yandex.ru https://mc.yandex.com",
   "font-src 'self' data:",
-  "connect-src 'self' https://api.telegram.org https://api.coingecko.com https://api.anthropic.com https://mc.yandex.ru https://mc.yandex.com https://mc.webvisor.org",
+  "connect-src 'self' https://api.telegram.org https://api.coingecko.com https://api.anthropic.com https://mc.yandex.ru https://mc.yandex.com https://mc.webvisor.org https://primary-production-6abb7.up.railway.app",
   "worker-src 'self' blob:",
   "base-uri 'none'",
   "form-action 'self'",
