@@ -27,6 +27,9 @@ export default function Analytics() {
       if (sessionStorage.getItem("nomen_visit_notified")) return;
       if (["localhost", "127.0.0.1"].includes(location.hostname)) return;
       if (navigator.webdriver) return;
+      // Вечный флаг «служебный браузер» (тест-профили Клода и браузер Артёма):
+      // localStorage.setItem("nomen_no_ping", "1") — заходы не пингуют Telegram.
+      if (localStorage.getItem("nomen_no_ping")) return;
       if (/^\/(studio|lab)/.test(location.pathname)) return;
       sessionStorage.setItem("nomen_visit_notified", "1");
       const from = document.referrer ? `\nоткуда: ${document.referrer}` : "";
