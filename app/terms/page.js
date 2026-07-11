@@ -28,10 +28,11 @@ export default function TermsPage() {
       </p>
 
       <p>
-        <strong>Delivery.</strong> Paid readings are delivered by email after
-        your payment is confirmed. Because payments are settled and verified
-        manually, delivery typically takes a few hours rather than minutes. If
-        you haven&apos;t received your reading, contact us and we&apos;ll follow up.
+        <strong>Delivery.</strong> Paid readings are delivered as a personal
+        link sent to your email after your payment is confirmed on-chain.
+        Because payments are verified manually, delivery typically takes a few
+        hours rather than minutes. The link opens your reading anytime; keep it
+        private. If you haven&apos;t received it, contact us and we&apos;ll follow up.
       </p>
 
       <p>

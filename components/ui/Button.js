@@ -4,7 +4,7 @@ import { useRef, useState } from "react";
 import Link from "next/link";
 
 const base =
-  "inline-flex items-center justify-center rounded-full px-8 py-3 font-heading text-sm font-semibold tracking-wide transition-transform duration-200 ease-out will-change-transform";
+  "inline-flex items-center justify-center rounded-full px-8 py-3 font-heading text-sm font-semibold tracking-wide transition-transform duration-200 ease-out will-change-transform disabled:cursor-not-allowed disabled:opacity-45";
 
 const variants = {
   primary:

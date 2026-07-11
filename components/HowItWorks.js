@@ -16,7 +16,7 @@ const steps = [
   {
     step: "03",
     title: "Unlock your full reading",
-    body: "Get the complete 13-point report, generated and emailed to you the moment you pay.",
+    body: "Once we confirm your payment on-chain, we email you a personal link to your full 13-point reading — usually within a few hours.",
   },
 ];
 

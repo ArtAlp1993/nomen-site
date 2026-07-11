@@ -15,9 +15,10 @@ export default function ThankYouPage() {
       </h1>
       <p className="mt-4 text-foreground-muted">
         We&apos;ve received your order. Once your crypto payment is confirmed
-        on-chain, your full reading is generated and emailed to you — usually
-        within a few hours. If you don&apos;t see it, check your spam folder —
-        or reach out and we&apos;ll help.
+        on-chain, we&apos;ll email you a personal link to your full reading —
+        usually within a few hours. The link is yours to keep and revisit. If
+        you don&apos;t see it, check your spam folder — or reach out and
+        we&apos;ll help.
       </p>
       <OrderRef />
       <Link href="/" className="mt-8">

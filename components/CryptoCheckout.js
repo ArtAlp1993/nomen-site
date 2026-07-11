@@ -254,7 +254,7 @@ export default function CryptoCheckout({ tier, open, onClose }) {
       `Address: ${selected.address}`,
       memo ? `${selected.memoLabel} (required): ${memo}` : null,
       ``,
-      `Send the exact amount — the reading is emailed after the payment is confirmed.`,
+      `Send the exact amount — a personal link to the reading is emailed after the payment is confirmed.`,
     ]
       .filter((l) => l !== null)
       .join("\n");
@@ -502,8 +502,8 @@ export default function CryptoCheckout({ tier, open, onClose }) {
 
             <p className="mt-4 text-xs text-foreground-muted">
               Send the exact amount to the address above. After we confirm your
-              payment on-chain, your full reading is emailed to you — usually
-              within a few hours.
+              payment on-chain, we email you a personal link to your full
+              reading — usually within a few hours.
             </p>
 
             <div className="mt-5 flex flex-col items-center gap-3">

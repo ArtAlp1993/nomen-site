@@ -64,14 +64,17 @@ export default function PricingSection() {
                   </li>
                 ))}
               </ul>
-              <span className={`mt-6 ${tier.highlight ? "btn-wiggle" : "w-full"}`}>
+              {/* Тариф без готового продукта (совместимость) продавать нельзя —
+                  кнопка заблокирована до запуска, по паттерну demo-кошельков. */}
+              <span className={`mt-6 ${tier.highlight && !tier.comingSoon ? "btn-wiggle" : "w-full"}`}>
                 <Button
-                  onClick={() => startCheckout(tier)}
-                  variant={tier.highlight ? "primary" : "secondary"}
-                  pulse={tier.highlight}
-                  className={tier.highlight ? "" : "w-full"}
+                  onClick={() => !tier.comingSoon && startCheckout(tier)}
+                  variant={tier.highlight && !tier.comingSoon ? "primary" : "secondary"}
+                  pulse={tier.highlight && !tier.comingSoon}
+                  disabled={!!tier.comingSoon}
+                  className={tier.highlight && !tier.comingSoon ? "" : "w-full"}
                 >
-                  Get started
+                  {tier.comingSoon ? "Coming soon" : "Get started"}
                 </Button>
               </span>
             </Card>

@@ -3,12 +3,12 @@
     "id": "full",
     "name": "Full Reading",
     "price": "9.90",
-    "description": "Your complete personality map — a personal page on the site plus a print-ready wall poster.",
+    "description": "Your complete personality map — a personal page-experience built from your name and the day you were born.",
     "features": [
       "Full 13-point personal reading",
       "Personal page on the site\nwith the detailed breakdown",
-      "Wall-poster PDF — print it, frame it",
-      "Delivered to your email after payment is confirmed"
+      "Personal link emailed after your\npayment is confirmed on-chain",
+      "Wall-poster PDF — coming soon"
     ],
     "highlight": false
   },
@@ -16,11 +16,12 @@
     "id": "compatibility",
     "name": "Compatibility",
     "price": "9.90",
+    "comingSoon": true,
     "description": "How two people fit together — a pure compatibility reading, no personal blueprint included.",
     "features": [
       "Compatibility across the key points",
       "Connection & conflict style for the pair",
-      "Delivered to your email after payment is confirmed"
+      "Personal link emailed after your\npayment is confirmed on-chain"
     ],
     "highlight": false
   },
@@ -28,11 +29,12 @@
     "id": "bundle",
     "name": "Reading + Compatibility",
     "price": "14.90",
+    "comingSoon": true,
     "description": "One full reading plus compatibility — your complete personal blueprint and how you connect with someone else.",
     "features": [
       "1 full reading + compatibility",
-      "Personal pages + poster PDFs included",
-      "Delivered to your email after payment is confirmed"
+      "Personal pages for both readings",
+      "Personal link emailed after your\npayment is confirmed on-chain"
     ],
     "highlight": true
   }

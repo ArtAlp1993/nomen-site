@@ -1,7 +1,7 @@
 [
   {
     "question": "How does NOMEN actually work?",
-    "answer": "You give us your name and birth date. We run it through 13 points drawn from numerology, astrology, Chinese astrology and tarot — each grounded in a documented school of thought, not generic horoscope text. You get a free preview instantly, and your full report right after checkout."
+    "answer": "You give us your name and birth date. We run it through 13 points drawn from numerology, astrology, Chinese astrology and tarot — each grounded in a documented school of thought, not generic horoscope text. You get a free preview instantly; after we confirm your payment on-chain, we email you a personal link to your full reading — usually within a few hours."
   },
   {
     "question": "Is this based on real methodology, or is it just generated?",
@@ -13,7 +13,7 @@
   },
   {
     "question": "How long until I get my full reading?",
-    "answer": "Right away. The moment your payment clears, your full 13-point reading is generated and sent to the email you used at checkout — no waiting."
+    "answer": "After we confirm your payment on-chain, we email a personal link to your full 13-point reading to the address you used at checkout — usually within a few hours. The link is yours to keep and revisit anytime."
   },
   {
     "question": "What happens to my name and birth date?",

@@ -1,7 +1,7 @@
 [
   {
     "keywords": ["price", "prices", "cost", "how much", "pricing", "expensive", "cheap", "money"],
-    "answer": "We keep it simple: Full Reading — $9.90, Compatibility — $9.90, and the best-value bundle Reading + Compatibility — $14.90. Every tier is generated the moment you pay and lands in your inbox.",
+    "answer": "We keep it simple: Full Reading — $9.90 is live now; Compatibility ($9.90) and the Reading + Compatibility bundle ($14.90) are coming soon. Once your payment is confirmed on-chain, a personal link to your reading is emailed to you — usually within a few hours.",
     "cta": { "label": "See pricing", "href": "#pricing" }
   },
   {
@@ -11,7 +11,7 @@
   },
   {
     "keywords": ["pay", "payment", "card", "credit", "crypto", "bitcoin", "usdt", "paypal", "checkout"],
-    "answer": "Right now we accept crypto — card payments are coming soon. Your reading is generated and emailed the moment the payment confirms."
+    "answer": "Right now we accept crypto — card payments are coming soon. After the payment confirms on-chain, we email you a personal link to your reading, usually within a few hours."
   },
   {
     "keywords": ["refund", "money back", "return", "cancel"],
@@ -19,7 +19,7 @@
   },
   {
     "keywords": ["delivery", "email", "receive", "arrive", "when", "how long", "instant", "wait"],
-    "answer": "Instantly. The reading is calculated the moment you pay and sent to your email right away — no queues, no waiting days."
+    "answer": "Usually within a few hours. We confirm your payment on-chain, then email you a personal link to your full reading — no waiting days, and the link stays yours forever."
   },
   {
     "keywords": ["13", "thirteen", "points", "what do i get", "included", "reading", "report", "blueprint"],
