@@ -21,7 +21,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import catalog from "@/data/points-catalog.json";
 import { calculateReading } from "@/lib/teaser";
 import { buildSections, resolveVerdict } from "@/lib/buildReading";
-import { audioUrl, SPEEDS } from "@/lib/audio";
+import { audioUrl, audioKey, SPEEDS } from "@/lib/audio";
 import { composeCharacter } from "@/lib/characterSkills";
 import { ReadingError } from "@/components/reading/ReadingSections";
 import { decodeReadingToken, extractReadingCode, fetchReadingByCode } from "@/lib/readingLink";
@@ -148,17 +148,6 @@ function SectionText({ section, full }) {
   );
 }
 
-// Текст пункта вслух (для кнопки «Слушать»): заголовок + метка + видимый текст.
-function speakTextFor(point, section, variant, full) {
-  if (section) {
-    const body = (full ? section.entries : section.entries.slice(0, 1))
-      .map((e) => e.paragraphs.join(" "))
-      .join(" ");
-    return `${point.title}. ${section.valueLabel || ""}. ${body}`;
-  }
-  return `${point.title}. ${variant.label}. ${variant.blurb || ""}`;
-}
-
 // Фазы внутри сегмента одного пункта (t = 0..1 по скроллу):
 // 0 → TOUCH_AT: полёт иконки (текст-блока нет, сцена не затемнена);
 // TOUCH_AT: касание — вспышка, персонаж меняет кадр, иконка впитывается;
@@ -184,6 +173,8 @@ export default function PersonaScene() {
   const [haveFrame, setHaveFrame] = useState({}); // какие s1…s13 существуют
   const [haveIcon, setHaveIcon] = useState({});   // какие PNG-иконки существуют
   const [haveBg, setHaveBg] = useState(false);    // фон Ф1
+  const [haveAudio, setHaveAudio] = useState({}); // какие озвучки Gacrux записаны (кнопка «Слушать» только там)
+  const [haveMusic, setHaveMusic] = useState(false); // есть ли реальный фон-трек public/audio/ambient.*
 
   const [intro, setIntro] = useState(true);       // экран ввода имя+дата (перед сценой)
   const [loadError, setLoadError] = useState(false); // ссылка есть, но не открылась → ошибка
@@ -263,52 +254,52 @@ export default function PersonaScene() {
   const musicRef = useRef(null);    // Web Audio: генеративный ambient (заглушка)
   const speakingRef = useRef(false);
   const audioElRef = useRef(null);  // реальная озвучка Gacrux (public/audio/reading)
+  const musicElRef = useRef(null);  // реальный фон-трек (public/audio/ambient.*)
   const speedRef = useRef(1);       // зеркало speed для обработчиков вне ре-рендера
-  const lastTextRef = useRef("");   // текст для отката на браузерный голос при 404
 
   const displayName = titleCase((name || "Traveler").trim());
 
   const stopFlag = () => { speakingRef.current = false; setSpeaking(false); };
   function stopAll() {
     try { const el = audioElRef.current; if (el) { el.pause(); el.removeAttribute("src"); } } catch { /* noop */ }
-    try { window.speechSynthesis?.cancel(); } catch { /* noop */ }
     stopFlag();
   }
-  // ── Прослушать. Приоритет: реальный голос Gacrux (public/audio/reading по
-  // audio-manifest); если файла ещё нет (404) или его нет в манифесте — откат на
-  // браузерный голос (SpeechSynthesis). Скорость — общая (speedRef). ──
-  function fallbackTTS(text) {
-    try {
-      const synth = window.speechSynthesis;
-      if (!synth || !text) { stopFlag(); return; }
-      synth.cancel();
-      const u = new SpeechSynthesisUtterance(text);
-      u.rate = Math.min(2, Math.max(0.5, 0.96 * speedRef.current)); u.pitch = 0.95;
-      u.onend = stopFlag;
-      speakingRef.current = true; setSpeaking(true); synth.speak(u);
-    } catch { stopFlag(); }
-  }
-  function listen({ pointCode = null, variantKey = null, text = "" } = {}) {
+  // ── Прослушать. ТОЛЬКО реальный голос Gacrux (public/audio/reading по audio-
+  // manifest). Браузерного голоса НЕТ (решение Артёма 13.07 — он ужасный, лучше
+  // читать глазами): где файла ещё нет, кнопки «Слушать» не показываем (haveAudio). ──
+  function listen({ pointCode = null, variantKey = null } = {}) {
     if (speakingRef.current) { stopAll(); return; }   // повторный клик = стоп
-    lastTextRef.current = text;
     const url = pointCode != null ? audioUrl(pointCode, variantKey) : null;
     const el = audioElRef.current;
-    if (url && el) {
-      try {
-        el.src = url;
-        el.playbackRate = speedRef.current;
-        speakingRef.current = true; setSpeaking(true);
-        el.play().catch(() => fallbackTTS(text)); // файла ещё нет → браузерный голос
-        return;
-      } catch { /* fallthrough */ }
-    }
-    fallbackTTS(text);
+    if (!url || !el) return;
+    try {
+      el.src = url;
+      el.playbackRate = speedRef.current;
+      speakingRef.current = true; setSpeaking(true);
+      el.play().catch(() => stopAll());
+    } catch { stopAll(); }
   }
 
   // ── Фоновая музыка: мягкий генеративный ambient (Web Audio) с выключением.
   // ЗАГЛУШКА до реального трека (слот public/audio/ambient.*). ──
   function toggleMusic() {
-    if (musicRef.current) { musicRef.current.stop(); musicRef.current = null; setMusicOn(false); return; }
+    // Уже играет → стоп (и реальный трек, и генеративный).
+    if (musicOn) {
+      if (musicRef.current) { musicRef.current.stop(); musicRef.current = null; }
+      try { musicElRef.current?.pause(); } catch { /* noop */ }
+      setMusicOn(false);
+      return;
+    }
+    // Есть реальный фон-трек (public/audio/ambient.*) → играем аккуратную музыку.
+    if (haveMusic && musicElRef.current) {
+      try {
+        musicElRef.current.src = haveMusic;
+        musicElRef.current.volume = 0.5;
+        musicElRef.current.play().catch(() => {});
+        setMusicOn(true);
+        return;
+      } catch { /* нет трека → мягкий генеративный ниже */ }
+    }
     try {
       const AC = window.AudioContext || window.webkitAudioContext;
       const ctx = new AC();
@@ -340,6 +331,37 @@ export default function PersonaScene() {
     el.scrollTo({ top: el.scrollHeight, behavior: "smooth" });
   }
   function restart() { window.scrollTo({ top: 0, behavior: "smooth" }); }
+
+  // Какие реальные озвучки Gacrux уже записаны — кнопку «Слушать» показываем ТОЛЬКО там.
+  useEffect(() => {
+    let alive = true;
+    const probe = (key, url) => {
+      if (!url) return;
+      const a = new Audio();
+      a.preload = "metadata";
+      a.onloadedmetadata = () => { if (alive) setHaveAudio((h) => ({ ...h, [key]: true })); };
+      a.src = url;
+    };
+    for (const p of POINTS) probe(audioKey(p.code, keymap[p.code]), audioUrl(p.code, keymap[p.code]));
+    if (reading?.a1?.value != null) {
+      const vk = String(reading.a1.value);
+      probe(audioKey("verdict", vk), audioUrl("verdict", vk));
+    }
+    return () => { alive = false; };
+  }, [keymap, reading]);
+
+  // Реальный фоновый трек (public/audio/ambient.mp3|m4a|ogg) — если есть, музыка играет его.
+  useEffect(() => {
+    let alive = true;
+    for (const ext of ["mp3", "m4a", "ogg"]) {
+      const url = `/audio/ambient.${ext}`;
+      const a = new Audio();
+      a.preload = "metadata";
+      a.onloadedmetadata = () => { if (alive) setHaveMusic((cur) => cur || url); };
+      a.src = url;
+    }
+    return () => { alive = false; };
+  }, []);
 
   // Прелоад ассетов: отмечаем, что уже сгенерено и лежит на диске.
   useEffect(() => {
@@ -442,8 +464,8 @@ export default function PersonaScene() {
   }, [intro, recapOpen]);
   useEffect(() => () => {
     if (musicRef.current) musicRef.current.stop();
-    try { window.speechSynthesis?.cancel(); } catch { /* noop */ }
     try { audioElRef.current?.pause(); } catch { /* noop */ }
+    try { musicElRef.current?.pause(); } catch { /* noop */ }
   }, []);
 
   // Скорость озвучки применяется вживую (и к реальному аудио, и к следующему TTS).
@@ -552,8 +574,10 @@ export default function PersonaScene() {
               К вердикту ↓
             </button>
           </div>
-          {/* Реальная озвучка Gacrux; при 404 (файла ещё нет) — откат на браузерный голос. */}
+          {/* Реальная озвучка Gacrux (только записанные файлы, без браузерного голоса). */}
           <audio ref={audioElRef} onEnded={stopFlag} preload="none" style={{ display: "none" }} />
+          {/* Реальный фон-трек (если положен public/audio/ambient.*). */}
+          <audio ref={musicElRef} loop preload="none" style={{ display: "none" }} />
         </>
       )}
 
@@ -706,17 +730,19 @@ export default function PersonaScene() {
                 Полный разбор пункта — по клику в инвентаре ниже
               </div>
             )}
-            {/* Кнопка «слушать» (заглушка: браузерный голос; реальный — Gacrux) */}
-            <button
-              onClick={() => listen({ pointCode: cur.code, variantKey: keymap[cur.code], text: speakTextFor(cur, curSection, variantOf(cur), full) })}
-              style={{
-                marginTop: 14, padding: "8px 18px", borderRadius: 999, cursor: "pointer",
-                display: "inline-flex", alignItems: "center", gap: 8, pointerEvents: "auto",
-                background: "rgba(51,230,224,.1)", border: "1px solid #33e6e0", color: "#33e6e0", fontSize: 13, fontWeight: 600,
-              }}
-            >
-              {speaking ? "⏸ Остановить" : "▶ Слушать"}
-            </button>
+            {/* Кнопка «Слушать» — ТОЛЬКО где записан реальный голос Gacrux (без браузерного). */}
+            {haveAudio[audioKey(cur.code, keymap[cur.code])] && (
+              <button
+                onClick={() => listen({ pointCode: cur.code, variantKey: keymap[cur.code] })}
+                style={{
+                  marginTop: 14, padding: "8px 18px", borderRadius: 999, cursor: "pointer",
+                  display: "inline-flex", alignItems: "center", gap: 8, pointerEvents: "auto",
+                  background: "rgba(51,230,224,.1)", border: "1px solid #33e6e0", color: "#33e6e0", fontSize: 13, fontWeight: 600,
+                }}
+              >
+                {speaking ? "⏸ Остановить" : "▶ Слушать"}
+              </button>
+            )}
             {panelIdx !== null && (
               <button
                 onClick={() => {
@@ -824,16 +850,14 @@ export default function PersonaScene() {
             )}
           </div>
           <div style={{ display: "flex", gap: 10, justifyContent: "center", flexWrap: "wrap" }}>
-            <button
-              onClick={() => listen({
-                pointCode: "verdict",
-                variantKey: verdict.isAi ? null : (reading?.a1?.value != null ? String(reading.a1.value) : null),
-                text: verdict.paragraphs.length ? `Вердикт. ${verdict.heading || ""}. ${verdict.paragraphs.join(" ")}` : `Вердикт для ${displayName}. Все тринадцать граней собраны.`,
-              })}
-              style={{ padding: "11px 22px", borderRadius: 999, cursor: "pointer", background: "rgba(51,230,224,.12)", border: "1px solid #33e6e0", color: "#33e6e0", fontSize: 14, fontWeight: 600 }}
-            >
-              {speaking ? "⏸ Остановить" : "▶ Слушать вердикт"}
-            </button>
+            {!verdict.isAi && reading?.a1?.value != null && haveAudio[audioKey("verdict", String(reading.a1.value))] && (
+              <button
+                onClick={() => listen({ pointCode: "verdict", variantKey: String(reading.a1.value) })}
+                style={{ padding: "11px 22px", borderRadius: 999, cursor: "pointer", background: "rgba(51,230,224,.12)", border: "1px solid #33e6e0", color: "#33e6e0", fontSize: 14, fontWeight: 600 }}
+              >
+                {speaking ? "⏸ Остановить" : "▶ Слушать вердикт"}
+              </button>
+            )}
             {byCode.size > 0 && (
               <button
                 onClick={() => setRecapOpen(true)}
@@ -868,11 +892,13 @@ export default function PersonaScene() {
                 <div key={p.code} style={{ margin: "0 0 28px" }}>
                   <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 4 }}>
                     <span style={{ fontSize: 11.5, letterSpacing: "0.14em", color: accent(i) }}>{p.code} · {s.title}</span>
-                    <button
-                      onClick={() => listen({ pointCode: p.code, variantKey: keymap[p.code], text: speakTextFor(p, s, variantOf(p), true) })}
-                      title="Слушать пункт"
-                      style={{ ...ctrlBtn, height: 26, minWidth: 26, fontSize: 12, borderColor: "#2a2350" }}
-                    >▶</button>
+                    {haveAudio[audioKey(p.code, keymap[p.code])] && (
+                      <button
+                        onClick={() => listen({ pointCode: p.code, variantKey: keymap[p.code] })}
+                        title="Слушать пункт"
+                        style={{ ...ctrlBtn, height: 26, minWidth: 26, fontSize: 12, borderColor: "#2a2350" }}
+                      >▶</button>
+                    )}
                   </div>
                   {s.valueLabel && <div style={{ fontSize: 15, fontWeight: 600, color: "#c9b8ff", marginBottom: 8 }}>{s.valueLabel}</div>}
                   <SectionText section={s} full />
