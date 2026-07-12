@@ -251,6 +251,7 @@ export default function PersonaScene() {
   const [musicOn, setMusicOn] = useState(false);
   const [speaking, setSpeaking] = useState(false);
   const [speed, setSpeed] = useState(1);           // скорость озвучки (0.75×–1.5×, З-47)
+  const [recapOpen, setRecapOpen] = useState(false); // финал: полный разбор («доработка»)
   const [endReveal, setEndReveal] = useState(0);  // 0..1 — проявление блока вердикта
 
   const iconRefs = useRef([]);
@@ -436,9 +437,9 @@ export default function PersonaScene() {
 
   // Блокируем скролл страницы под интро-экраном + гасим музыку/речь при уходе.
   useEffect(() => {
-    document.body.style.overflow = intro ? "hidden" : "";
+    document.body.style.overflow = intro || recapOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
-  }, [intro]);
+  }, [intro, recapOpen]);
   useEffect(() => () => {
     if (musicRef.current) musicRef.current.stop();
     try { window.speechSynthesis?.cancel(); } catch { /* noop */ }
@@ -833,6 +834,14 @@ export default function PersonaScene() {
             >
               {speaking ? "⏸ Остановить" : "▶ Слушать вердикт"}
             </button>
+            {byCode.size > 0 && (
+              <button
+                onClick={() => setRecapOpen(true)}
+                style={{ padding: "11px 22px", borderRadius: 999, cursor: "pointer", background: "rgba(138,107,255,.14)", border: "1px solid #8a6bff", color: "#c9b8ff", fontSize: 14, fontWeight: 600 }}
+              >
+                Читать полный разбор →
+              </button>
+            )}
             <button
               onClick={restart}
               style={{ padding: "11px 22px", borderRadius: 999, cursor: "pointer", background: "transparent", border: "1px solid #3a3160", color: "#bfc6ea", fontSize: 14 }}
@@ -842,6 +851,43 @@ export default function PersonaScene() {
           </div>
         </div>
       </div>
+
+      {/* ── ФИНАЛ · «доработка»: полный разбор — все 13 пунктов целиком + вердикт.
+           Текст тот же (единый источник buildReading), прокручиваемый оверлей. ── */}
+      {recapOpen && (
+        <div style={{ position: "fixed", inset: 0, zIndex: 50, background: "rgba(5,4,15,0.97)", overflowY: "auto", WebkitOverflowScrolling: "touch" }}>
+          <div style={{ maxWidth: 640, margin: "0 auto", padding: "0 18px 64px" }}>
+            <div style={{ position: "sticky", top: 0, background: "rgba(5,4,15,0.97)", display: "flex", justifyContent: "space-between", alignItems: "center", padding: "18px 0 14px", zIndex: 1 }}>
+              <div style={{ fontSize: 12.5, letterSpacing: "0.24em", color: "#33e6e0" }}>ПОЛНЫЙ РАЗБОР · {displayName}</div>
+              <button onClick={() => { stopAll(); setRecapOpen(false); }} style={{ ...ctrlBtn, width: "auto", padding: "0 14px", fontSize: 13 }}>Закрыть ✕</button>
+            </div>
+            {POINTS.map((p, i) => {
+              const s = byCode.get(p.code);
+              if (!s) return null;
+              return (
+                <div key={p.code} style={{ margin: "0 0 28px" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 4 }}>
+                    <span style={{ fontSize: 11.5, letterSpacing: "0.14em", color: accent(i) }}>{p.code} · {s.title}</span>
+                    <button
+                      onClick={() => listen({ pointCode: p.code, variantKey: keymap[p.code], text: speakTextFor(p, s, variantOf(p), true) })}
+                      title="Слушать пункт"
+                      style={{ ...ctrlBtn, height: 26, minWidth: 26, fontSize: 12, borderColor: "#2a2350" }}
+                    >▶</button>
+                  </div>
+                  {s.valueLabel && <div style={{ fontSize: 15, fontWeight: 600, color: "#c9b8ff", marginBottom: 8 }}>{s.valueLabel}</div>}
+                  <SectionText section={s} full />
+                </div>
+              );
+            })}
+            <div style={{ borderTop: "1px solid #2a2350", margin: "6px 0 22px" }} />
+            <div style={{ fontSize: 12.5, letterSpacing: "0.24em", color: "#33e6e0", marginBottom: 8 }}>ВЕРДИКТ · {displayName}, in one thread</div>
+            {verdict.heading && !verdict.isAi && <div style={{ fontSize: 15, fontWeight: 600, color: "#c9b8ff", marginBottom: 8 }}>{verdict.heading}</div>}
+            {verdict.paragraphs.map((p, k) => (
+              <p key={k} style={{ margin: "0 0 10px", fontSize: 14.5, color: "#c9c3e6", lineHeight: 1.6 }}>{p}</p>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* ── Скролл-контейнер: 1 экран на пункт + финал ── */}
       <div style={{ height: `${(N + 2) * 100}vh`, position: "relative", zIndex: 5, pointerEvents: "none" }} />
