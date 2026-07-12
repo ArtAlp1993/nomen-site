@@ -1,0 +1,21 @@
+name: Verify (algorithm parity)
+
+# Сквозная сходимость расчёта до деплоя: браузерный движок == Python-эталон
+# (verify:reading по фикстурам scripts/fixtures), персонаж == /reading
+# (verify:parity — единый источник текста), кодек ссылки и рост персонажа.
+# Скрипты без внешних зависимостей → npm ci не нужен.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm run verify

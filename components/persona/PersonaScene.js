@@ -20,6 +20,8 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import catalog from "@/data/points-catalog.json";
 import { calculateReading } from "@/lib/teaser";
+import { buildSections, resolveVerdict } from "@/lib/buildReading";
+import { ReadingError } from "@/components/reading/ReadingSections";
 import { decodeReadingToken, extractReadingCode, fetchReadingByCode } from "@/lib/readingLink";
 
 // Имена — с заглавной каждого слова (свод правил 4.7).
@@ -110,6 +112,51 @@ function VariantGlyph({ point, variant, size, hasImg }) {
   );
 }
 
+// Полный текст пункта — ТЕ ЖЕ entries/paragraphs, что рендерит /reading
+// (единый источник lib/buildReading.buildSections). full=false → тизер (первый
+// абзац первой части, во время полёта/скролла); full=true → весь текст пункта,
+// как в разборе (клик по инвентарю / доработка). A9 и A10 несут несколько entries
+// (уроки/страсть, 9 ячеек квадрата) — рендерятся стопкой, как в /reading.
+function SectionText({ section, full }) {
+  if (!section) return null;
+  const entries = full ? section.entries : section.entries.slice(0, 1);
+  return (
+    <div style={{ textAlign: "left" }}>
+      {entries.map((e, i) => (
+        <div key={i} style={{ marginBottom: full ? 14 : 0 }}>
+          {full && e.heading && (
+            <div style={{ fontSize: 13.5, fontWeight: 600, color: "#c9b8ff", margin: "0 0 5px" }}>
+              {e.glyph ? `${e.glyph} · ${e.heading}` : e.heading}
+            </div>
+          )}
+          {(full ? e.paragraphs : e.paragraphs.slice(0, 1)).map((p, k) => (
+            <p
+              key={k}
+              style={{
+                margin: "0 0 8px", color: "#c9c3e6", fontSize: 14, lineHeight: 1.6,
+                ...(full ? {} : { display: "-webkit-box", WebkitLineClamp: 5, WebkitBoxOrient: "vertical", overflow: "hidden" }),
+              }}
+            >
+              {p}
+            </p>
+          ))}
+        </div>
+      ))}
+    </div>
+  );
+}
+
+// Текст пункта вслух (для кнопки «Слушать»): заголовок + метка + видимый текст.
+function speakTextFor(point, section, variant, full) {
+  if (section) {
+    const body = (full ? section.entries : section.entries.slice(0, 1))
+      .map((e) => e.paragraphs.join(" "))
+      .join(" ");
+    return `${point.title}. ${section.valueLabel || ""}. ${body}`;
+  }
+  return `${point.title}. ${variant.label}. ${variant.blurb || ""}`;
+}
+
 // Фазы внутри сегмента одного пункта (t = 0..1 по скроллу):
 // 0 → TOUCH_AT: полёт иконки (текст-блока нет, сцена не затемнена);
 // TOUCH_AT: касание — вспышка, персонаж меняет кадр, иконка впитывается;
@@ -137,9 +184,11 @@ export default function PersonaScene() {
   const [haveBg, setHaveBg] = useState(false);    // фон Ф1
 
   const [intro, setIntro] = useState(true);       // экран ввода имя+дата (перед сценой)
+  const [loadError, setLoadError] = useState(false); // ссылка есть, но не открылась → ошибка
   const [name, setName] = useState("");
   const [birth, setBirth] = useState("");
   const [reading, setReading] = useState(null);   // результат calculateReading (или null=демо)
+  const [card, setCard] = useState(null);         // карточка из ссылки (для вердикта card.vd)
 
   // Ключ варианта на пункт: из настоящего расчёта, иначе демо.
   const keymap = useMemo(() => {
@@ -150,25 +199,41 @@ export default function PersonaScene() {
   }, [reading]);
   const variantOf = (p) => p.variants.find((v) => v.key === keymap[p.code]) || p.variants[0];
 
+  // ЕДИНЫЙ ИСТОЧНИК ТЕКСТА: те же секции и вердикт, что на /reading (lib/buildReading).
+  // Текст пункта берём по КОДУ (не по индексу — секция выпадает, если значение null).
+  const sections = useMemo(() => (reading ? buildSections(reading) : []), [reading]);
+  const byCode = useMemo(() => new Map(sections.map((s) => [s.code, s])), [sections]);
+  const verdict = useMemo(() => resolveVerdict({ card, reading }), [card, reading]);
+
   // Загрузка клиента ИЗ ССЫЛКИ (как /reading): короткая /r/<code> или #c=…
   // тянется с сервера; длинная #r=… самодостаточна. Есть данные → пропускаем интро.
   useEffect(() => {
     let alive = true;
     (async () => {
+      const code = extractReadingCode(window.location);
+      const linked = !!code || /[#?&]r=/.test(window.location.hash + window.location.search);
+      // Нет ссылки → это /lab/scene (dev): оставляем интро с ручным вводом и демо.
+      // Есть ссылка → это клиентский /r/<code>: разбор ОБЯЗАН собраться, иначе ошибка
+      // (никакого DEMO у оплатившего клиента).
+      if (!linked) return;
       try {
-        const code = extractReadingCode(window.location);
-        const hasLink = code || /[#?&]r=/.test(window.location.hash + window.location.search);
-        if (!hasLink) return; // нет ссылки → ручной ввод в интро
-        const card = code
+        const c = code
           ? await fetchReadingByCode(code)
           : await decodeReadingToken(window.location.hash || window.location.search);
-        if (!alive || !card) return;
-        setName(`${card.fn} ${card.ln || ""}`.trim());
-        setBirth(card.bd || "");
-        try { setReading(calculateReading({ name: `${card.fn} ${card.ln || ""}`.trim(), date: card.bd })); }
-        catch { /* дата не распозналась → демо-ключи */ }
+        if (!alive) return;
+        if (!c) { setLoadError(true); setIntro(false); return; }
+        const fullName = `${c.fn} ${c.ln || ""}`.trim();
+        let R = null;
+        try { R = calculateReading({ name: fullName, date: c.bd }); } catch { R = null; }
+        if (!R) { setLoadError(true); setIntro(false); return; } // клиентский разбор не собрался
+        setCard(c);
+        setName(fullName);
+        setBirth(c.bd || "");
+        setReading(R);
         setIntro(false);
-      } catch { /* битая ссылка → показываем интро */ }
+      } catch {
+        if (alive) { setLoadError(true); setIntro(false); } // битая ссылка на клиентском роуте
+      }
     })();
     return () => { alive = false; };
   }, []);
@@ -349,8 +414,13 @@ export default function PersonaScene() {
   const growSteps = frame - shownFrame;
   const growFilter = `brightness(${1 + growSteps * 0.055}) saturate(${1 + growSteps * 0.04})`;
 
+  const full = panelIdx !== null; // клик по инвентарю → полный текст пункта (как /reading)
   const textIdx = panelIdx !== null ? panelIdx : active >= 0 ? active : null;
   const cur = textIdx !== null ? POINTS[textIdx] : null;
+  const curSection = cur ? byCode.get(cur.code) : null;
+
+  // Клиентская ссылка есть, но не открылась → та же панель ошибки, что на /reading.
+  if (loadError) return <ReadingError />;
 
   return (
     <div style={{ background: BG, minHeight: "100vh", fontFamily: "system-ui" }}>
@@ -543,6 +613,7 @@ export default function PersonaScene() {
               background: "rgba(10,8,24,.78)", border: "1px solid #241d3e",
               backdropFilter: "blur(8px)", color: "#eaf0ff", textAlign: "center",
               pointerEvents: "auto",
+              ...(full ? { maxHeight: "74vh", overflowY: "auto" } : {}),
             }}
           >
             <div style={{ color: accent(textIdx), display: "flex", justifyContent: "center", height: 44, alignItems: "center" }}>
@@ -552,18 +623,31 @@ export default function PersonaScene() {
               {cur.code} · POINT {textIdx + 1} OF {N}
             </div>
             <h2 style={{ margin: "4px 0 4px", fontSize: 21 }}>{cur.title}</h2>
-            <div style={{ margin: "0 0 8px", fontSize: 14, color: "#c9b8ff", fontWeight: 600 }}>{variantOf(cur).label}</div>
-            <p
-              style={{
-                margin: 0, color: "#9aa0c0", fontSize: 14, lineHeight: 1.55,
-                display: "-webkit-box", WebkitLineClamp: 6, WebkitBoxOrient: "vertical", overflow: "hidden",
-              }}
-            >
-              {variantOf(cur).blurb || ""}
-            </p>
+            <div style={{ margin: "0 0 10px", fontSize: 14, color: "#c9b8ff", fontWeight: 600 }}>
+              {curSection?.valueLabel || variantOf(cur).label}
+            </div>
+            {/* Текст пункта — точь-в-точь как на /reading (единый источник buildReading).
+                Полный текст по клику из инвентаря (full), иначе тизер-абзац при скролле. */}
+            {curSection ? (
+              <SectionText section={curSection} full={full} />
+            ) : (
+              <p
+                style={{
+                  margin: 0, color: "#9aa0c0", fontSize: 14, lineHeight: 1.55,
+                  display: "-webkit-box", WebkitLineClamp: 6, WebkitBoxOrient: "vertical", overflow: "hidden",
+                }}
+              >
+                {variantOf(cur).blurb || ""}
+              </p>
+            )}
+            {!full && curSection && (
+              <div style={{ marginTop: 8, fontSize: 12, color: "#6c7095" }}>
+                Полный разбор пункта — по клику в инвентаре ниже
+              </div>
+            )}
             {/* Кнопка «слушать» (заглушка: браузерный голос; реальный — Gacrux) */}
             <button
-              onClick={() => listen(`${cur.title}. ${variantOf(cur).label}. ${variantOf(cur).blurb || ""}`)}
+              onClick={() => listen(speakTextFor(cur, curSection, variantOf(cur), full))}
               style={{
                 marginTop: 14, padding: "8px 18px", borderRadius: 999, cursor: "pointer",
                 display: "inline-flex", alignItems: "center", gap: 8, pointerEvents: "auto",
@@ -660,16 +744,27 @@ export default function PersonaScene() {
           }}
         >
           <div style={{ fontSize: 12, letterSpacing: "0.28em", color: "#33e6e0", marginBottom: 8 }}>ВЕРДИКТ</div>
-          <h2 style={{ margin: "0 0 4px", fontSize: 23, color: "#eaf0ff" }}>{displayName}</h2>
-          {birth && <div style={{ fontSize: 12.5, color: "#8f95b3", marginBottom: 14 }}>рождён(а) {birth}</div>}
-          <p style={{ margin: "0 0 18px", fontSize: 14.5, color: "#c9c3e6", lineHeight: 1.6 }}>
-            Все 13 граней собраны. Твой образ сложился: путь, дар, знак, стихия и аркан
-            сплелись в один рисунок. Здесь будет цельный итоговый вердикт — что это значит
-            вместе. <span style={{ color: "#6c7095" }}>(текст-заглушка → подключим сводный вердикт)</span>
-          </p>
+          <h2 style={{ margin: "0 0 4px", fontSize: 23, color: "#eaf0ff" }}>{displayName}, in one thread</h2>
+          {birth && <div style={{ fontSize: 12.5, color: "#8f95b3", marginBottom: 6 }}>рождён(а) {birth}</div>}
+          {verdict.heading && !verdict.isAi && (
+            <div style={{ fontSize: 13.5, color: "#c9b8ff", fontWeight: 600, marginBottom: 12 }}>{verdict.heading}</div>
+          )}
+          {/* Сводный вердикт — единый источник (resolveVerdict): ИИ-текст из ссылки
+              (card.vd) → монолит по 3 пунктам → запасной по числу пути. */}
+          <div style={{ maxHeight: "42vh", overflowY: "auto", textAlign: "left", margin: "6px 0 18px" }}>
+            {verdict.paragraphs.length ? (
+              verdict.paragraphs.map((p, k) => (
+                <p key={k} style={{ margin: "0 0 10px", fontSize: 14.5, color: "#c9c3e6", lineHeight: 1.6 }}>{p}</p>
+              ))
+            ) : (
+              <p style={{ margin: 0, fontSize: 14.5, color: "#c9c3e6", lineHeight: 1.6, textAlign: "center" }}>
+                Все 13 граней собраны — путь, дар, знак, стихия и аркан сплелись в один рисунок.
+              </p>
+            )}
+          </div>
           <div style={{ display: "flex", gap: 10, justifyContent: "center", flexWrap: "wrap" }}>
             <button
-              onClick={() => listen(`Вердикт для ${displayName}. Все тринадцать граней собраны. Твой образ сложился.`)}
+              onClick={() => listen(verdict.paragraphs.length ? `Вердикт. ${verdict.heading || ""}. ${verdict.paragraphs.join(" ")}` : `Вердикт для ${displayName}. Все тринадцать граней собраны.`)}
               style={{ padding: "11px 22px", borderRadius: 999, cursor: "pointer", background: "rgba(51,230,224,.12)", border: "1px solid #33e6e0", color: "#33e6e0", fontSize: 14, fontWeight: 600 }}
             >
               {speaking ? "⏸ Остановить" : "▶ Слушать вердикт"}

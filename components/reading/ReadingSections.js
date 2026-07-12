@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { resolveVerdict, verdictBank } from "@/lib/buildReading";
 
 // Секции страницы /reading: hero, пункт, психоматрица, вердикт, ошибка.
 // Текст лежит на полупрозрачных панелях поверх туннеля — читается, но сцена
@@ -230,23 +231,12 @@ export function PsychomatrixSection({ section, innerRef }) {
   );
 }
 
-// Финальный вердикт. Приоритет: (1) персональный ИИ-текст из ссылки (card.vd);
-// (2) монолит по 3 пунктам A1×B1×A3 из verdict3.json (ключ «7-leo-3») — цельный
-// текст, банк наполняется офлайн (З-94); (3) запасной по числу пути (verdict.json).
-// Пока банк-3 пуст (кроме пилота), почти всегда работает п.3 — как раньше.
-export function VerdictSection({ card, reading, verdictBank, verdict3Bank, innerRef }) {
-  const sign = reading.b1?.name ? String(reading.b1.name).toLowerCase() : null;
-  const key3 =
-    reading.a1?.value != null && sign && reading.a3?.value != null
-      ? `${reading.a1.value}-${sign}-${reading.a3.value}`
-      : null;
-  const monolith = (key3 && verdict3Bank?.values?.[key3]) || null;
-  const fallback = monolith || verdictBank.values[String(reading.a1?.value)] || null;
-  const paragraphs = card.vd
-    ? String(card.vd).split(/\n\s*\n/).map((s) => s.trim()).filter(Boolean)
-    : fallback
-      ? fallback.paragraphs
-      : [];
+// Финальный вердикт. Резолюция вынесена в lib/buildReading.resolveVerdict
+// (единый источник с продуктом-персонажем). Приоритет: (1) ИИ-текст из ссылки
+// (card.vd); (2) монолит по 3 пунктам A1×B1×A3 (verdict3.json, З-94); (3) запасной
+// по числу пути (verdict.json). Пока банк-3 пуст (кроме пилота), почти всегда п.3.
+export function VerdictSection({ card, reading, innerRef }) {
+  const { heading, paragraphs, isAi } = resolveVerdict({ card, reading });
   return (
     <section
       ref={innerRef}
@@ -261,8 +251,8 @@ export function VerdictSection({ card, reading, verdictBank, verdict3Bank, inner
         <h2 className="mt-2 font-heading text-3xl font-semibold sm:text-5xl">
           {card.fn}, in one thread
         </h2>
-        {!card.vd && fallback && (
-          <p className="mt-3 text-sm text-foreground-muted">{fallback.heading}</p>
+        {!isAi && heading && (
+          <p className="mt-3 text-sm text-foreground-muted">{heading}</p>
         )}
       </motion.div>
       <motion.div
