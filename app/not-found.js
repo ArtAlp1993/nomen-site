@@ -1,13 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import ReadingPage from "@/components/reading/ReadingPage";
+import PersonaScene from "@/components/persona/PersonaScene";
 
 // Статический экспорт (output:export) кладёт этот компонент в out/404.html.
 // GitHub Pages отдаёт 404.html для любого несуществующего пути — в т.ч. для
-// короткой ссылки разбора /r/<code>. Ловим её здесь и рендерим сам разбор
-// (адрес в строке остаётся коротким и красивым — /r/anna-lee-k7q2m).
-// ReadingPage сам возьмёт код из pathname и подтянет карточку с сервера.
+// клиентской короткой ссылки /r/<code>. Ловим её здесь и открываем ПЕРСОНАЖА
+// (решение Артёма 13.07: клиент по ссылке из письма открывает персонажа, не
+// текст-разбор). Адрес в строке остаётся коротким — /r/anna-lee-k7q2m.
+// PersonaScene сам возьмёт код из pathname (extractReadingCode) и подтянет
+// карточку с сервера. Текст-разбор остаётся доступен на /reading и длинных #r=.
 export default function NotFound() {
   const [isReading, setIsReading] = useState(null); // null=до гидратации
 
@@ -16,7 +18,7 @@ export default function NotFound() {
   }, []);
 
   if (isReading === null) return null;
-  if (isReading) return <ReadingPage />;
+  if (isReading) return <PersonaScene />;
 
   return (
     <main

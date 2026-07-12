@@ -4,6 +4,8 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import {
   decodePrefill,
   encodeReadingLink,
+  encodeReadingToken,
+  extractReadingCode,
   saveReadingLink,
 } from "@/lib/readingLink";
 import { calculateReading } from "@/lib/teaser";
@@ -186,7 +188,8 @@ export default function StudioPage() {
     setLink("");
   };
 
-  const makeLink = async () => {
+  // Карточка клиента для персональной ссылки (одна на разбор И персонажа).
+  const buildPayload = () => {
     const payload = {
       t: "full",
       fn: card.fn.trim(),
@@ -199,6 +202,30 @@ export default function StudioPage() {
     if (card.g) payload.g = card.g;
     if (card.oc) payload.oc = card.oc.trim();
     if (verdict.trim()) payload.vd = verdict.trim();
+    return payload;
+  };
+
+  // Открыть ПРОДУКТ-персонажа с данными этого клиента ПО ТОЙ ЖЕ ссылке, что разбор:
+  // короткая /r/<code> (сцена дотянет карточку по коду) либо длинная #r=… (само-
+  // достаточна). Прототип продукта — /lab/scene. link уже собран кнопкой рядом.
+  const openPersona = async () => {
+    const base = `${window.location.origin}/lab/scene/`;
+    let target = "";
+    try {
+      const u = new URL(link || "");
+      const code = extractReadingCode({ pathname: u.pathname, hash: u.hash, search: u.search });
+      if (code) target = `${base}#c=${code}`;
+      else if (u.hash) target = `${base}${u.hash}`; // длинная #r=…
+    } catch { /* link ещё пуст */ }
+    if (!target) {
+      const token = await encodeReadingToken(buildPayload());
+      target = `${base}#r=${token}`;
+    }
+    window.open(target, "_blank");
+  };
+
+  const makeLink = async () => {
+    const payload = buildPayload();
     // Короткая ссылка: разбор сохраняется в базе (n8n), клиенту уходит
     // nomen.website/r/имя-номерзаказа. Сервер недоступен → запасная длинная
     // #r= (самодостаточна, тоже рабочая) — студия не должна вставать колом.
@@ -421,9 +448,9 @@ export default function StudioPage() {
               </button>
               {link && (
                 <>
-                  <a href={link} target="_blank" rel="noreferrer" className={btnCls}>
+                  <button type="button" onClick={openPersona} className={btnCls}>
                     Открыть предпросмотр
-                  </a>
+                  </button>
                   <button type="button" onClick={() => copy("link", link)} className={btnCls}>
                     {copied === "link" ? "✓ Скопировано" : "Copy link"}
                   </button>

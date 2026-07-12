@@ -1,0 +1,1711 @@
+{
+  "_meta": {
+    "generated_by": "scripts/gen-points-catalog.mjs",
+    "note": "Символы вариантов сейчас — юникод-заглушки. Картинки banana кладутся в public/persona/icons/{code}/{key}.png и подхватываются полем image.",
+    "levels": "icon=на вариант (прилетает символ клиента); bodyFrame=на пункт (13 кадров S).",
+    "points_total": 13,
+    "variants_total": 173
+  },
+  "points": [
+    {
+      "code": "A1",
+      "title": "Life Path Number",
+      "pointIcon": "A1",
+      "bodyFrame": "s1",
+      "bodyChange": "compass-rose",
+      "variantType": "number",
+      "variantCount": 12,
+      "variants": [
+        {
+          "key": "1",
+          "label": "The Pioneer",
+          "blurb": "You're wired to originate, not to imitate. Waiting for permission physically irritates you; being told how to do something makes you want to do it your own way, just to prove another way exists. In any group you drift toward the front, not for applause, but because following someone else's pace feels like wearing shoes two sizes too small.",
+          "symbol": "1",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "2",
+          "label": "The Diplomat",
+          "blurb": "Your instrument isn't force, it's attunement. You register the temperature of a room before anyone speaks, catch what people mean underneath what they say, and quietly connect people who would otherwise never work together. Solo races bore you; you come alive in a duet, where sensitivity stops being a weakness and becomes the entire strategy.",
+          "symbol": "2",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "3",
+          "label": "The Creator",
+          "blurb": "Ideas don't stay inside you, they leak out as jokes, sketches, stories, and plans announced mid-sentence. You think out loud and in images, and you lift a room's mood just by walking in. Expression isn't a hobby for you; it's how you metabolize life. Whatever you feel has to become something said, made, or performed.",
+          "symbol": "3",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "4",
+          "label": "The Builder",
+          "blurb": "Chaos doesn't frighten you; it offends you. Where others see a mess, you see the system it should become, steps, deadlines, load-bearing walls. Discipline isn't self-denial in your case; it's your resting state. You're the one still there in month eleven, doing the unglamorous work that quietly makes everything else possible.",
+          "symbol": "4",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "5",
+          "label": "The Seeker",
+          "blurb": "Routine registers in your body as a slow alarm. New cities, new people, new skills, you metabolize change the way others metabolize food, learning fast, adapting faster, pivoting while everyone else is still discussing the pivot. Freedom isn't one of your preferences. It's the non-negotiable, the thing every plan silently gets tested against.",
+          "symbol": "5",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "6",
+          "label": "The Caretaker",
+          "blurb": "Responsibility found you early and never left. You're the one people call first, the friend who shows up, the family member who holds it together, the colleague who notices someone struggling. Harmony matters to you at an almost physical level; a discordant room, a fractured team, an unresolved argument all itch at you until they're fixed.",
+          "symbol": "6",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "7",
+          "label": "The Thinker",
+          "blurb": "Surface answers don't satisfy you, they mildly insult you. You take things apart to find the mechanism underneath: ideas, systems, people, yourself. Solitude isn't loneliness in your world; it's the lab where your best thinking happens. You'd rather sit with a hard truth than relax into a comfortable story, and everyone around you can tell.",
+          "symbol": "7",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "8",
+          "label": "The Executive",
+          "blurb": "You think in outcomes and scale by default. Where others see a job, you see the system around it, who controls what, where the leverage sits, what this could become at ten times the size. Money and status don't embarrass you; you read them plainly, as scoreboard and fuel. Ambition, in your case, came factory-installed.",
+          "symbol": "8",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "9",
+          "label": "The Humanitarian",
+          "blurb": "Your field of vision is wider than your own story. Strangers' problems register as real; causes pull you the way promotions pull other people. There's an old-soul quality to how you read situations, you sense when a chapter is over, and you're often the one holding the door while everyone else pretends it isn't closing.",
+          "symbol": "9",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "11",
+          "label": "The Visionary",
+          "blurb": "Master numbers are rare, and this is the first of them, a higher octave of the 2. Everything the Diplomat senses, you receive amplified: you pick up shifts in people and situations before there's anything visible to point to. Ideas arrive whole, ahead of schedule. Living slightly before the present is your baseline condition, not a phase.",
+          "symbol": "11",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "22",
+          "label": "The Master Builder",
+          "blurb": "Practical power at its rarest: 22 is the higher octave of the 4, the Builder's method fused with a visionary's scale. You don't just dream big, you instinctively see the staircase inside the dream: phases, resources, load-bearing decisions. What you build is meant to be used by many people and to outlast you personally.",
+          "symbol": "22",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "33",
+          "label": "The Master Teacher",
+          "blurb": "The rarest number on the chart, a higher octave of the 6, where the Caretaker's devotion becomes something closer to vocation. You affect people less by what you say than by what you are; your presence steadies rooms. Others confess to you unprompted, heal in your company, and remember you at the turning points of their lives.",
+          "symbol": "33",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        }
+      ]
+    },
+    {
+      "code": "A2",
+      "title": "Birthday Number",
+      "pointIcon": "A2",
+      "bodyFrame": "s2",
+      "bodyChange": "gift",
+      "variantType": "number",
+      "variantCount": 11,
+      "variants": [
+        {
+          "key": "1",
+          "label": "The Leader",
+          "blurb": "Initiative is your factory setting. When a plan stalls, something in you steps forward before you've consciously decided to, you speak first, move first, take the blank page personally. This isn't learned confidence; it's a pre-installed reflex. Starting things costs you less effort than it costs almost everyone around you, and people can feel that immediately.",
+          "symbol": "1",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "2",
+          "label": "The Diplomat",
+          "blurb": "Your built-in instrument is a fine-tuned social ear. You register tension the moment you enter a room, hear the sentence behind the sentence, and know instinctively when to speak and when silence will do the work. Nobody trained you in this, it's the perception you were issued at the door, running constantly in the background.",
+          "symbol": "2",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "3",
+          "label": "The Creator",
+          "blurb": "Words obey you. Explaining, persuading, entertaining, naming the thing everyone felt but couldn't phrase, this comes to you at a discount, without the strain it costs others. Ideas arrive with their packaging already on. In any group you're the one who makes the dry parts listenable and the tense parts survivable with one well-placed line.",
+          "symbol": "3",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "4",
+          "label": "The Builder",
+          "blurb": "Order is your default output. Hand you a chaos of tasks and you'll return a sequence; give you a promise and it stays kept. Deadlines, details, logistics, the load that makes others sag sits on you like it was measured for your shoulders. Reliability this consistent isn't effort. It's simply how you were assembled.",
+          "symbol": "4",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "5",
+          "label": "The Adventurer",
+          "blurb": "Your gift is landing on your feet. Drop you into a new city, job, or crowd, and within an hour you've found the rhythm, made two allies, and started enjoying it. Change that unsettles other people activates you. Add the easy magnetism you carry, and strangers hand you shortcuts they'd make everyone else earn slowly.",
+          "symbol": "5",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "6",
+          "label": "The Guardian",
+          "blurb": "You came equipped with two intertwined instincts: noticing what people need and noticing when things fall out of harmony. A friend's off-day, a room's bad layout, a team's unspoken tension, you register these automatically, and your hands start fixing before you've thought about it. Around you, spaces get warmer and people quietly relax.",
+          "symbol": "6",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "7",
+          "label": "The Analyst",
+          "blurb": "Your standard-issue equipment is a mind with two modes running at once, the analyst that dissects and the intuition that simply knows. You spot the flaw in the plan, the pattern in the noise, the false note in the confident presentation. Understanding things at depth isn't work for you; it's the setting you rest in.",
+          "symbol": "7",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "8",
+          "label": "The Magnate",
+          "blurb": "You carry an innate sense for value, where the money actually flows, which effort pays and which just performs, who holds real leverage in the room. Deals, prices, and stakes read to you like large print. Others study spreadsheets to see it; you feel it on contact, the way a musician hears a wrong chord.",
+          "symbol": "8",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "9",
+          "label": "The Humanitarian",
+          "blurb": "Empathy at range is your gift: you feel individual people precisely and see whole situations widely, both at once. Strangers open up to you in queues; rooms full of clashing agendas make sense to you as one picture. Where others perceive their own lane, you perceive the whole road and everyone on it, almost without trying.",
+          "symbol": "9",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "11",
+          "label": "The Seer",
+          "blurb": "Only people born on the 11th carry this mark, a master number, the Diplomat's sensitivity sharpened into something close to foresight. You know things a beat before the evidence arrives: which deal will sour, which stranger matters, which door not to open. It doesn't announce itself loudly. It's simply, unnervingly, right more often than chance allows.",
+          "symbol": "11",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "22",
+          "label": "The Master Builder",
+          "blurb": "A gift only the 22nd confers, the rarest in this position, the Builder's reliability raised to architectural scale. Big undertakings don't intimidate you the way they intimidate others; they organize you. Show you an outsized goal and your mind starts producing phases and structures on its own, as if it had been waiting for a task worthy of its gearing.",
+          "symbol": "22",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        }
+      ]
+    },
+    {
+      "code": "A3",
+      "title": "Expression Number",
+      "pointIcon": "A3",
+      "bodyFrame": "s3",
+      "bodyChange": "star",
+      "variantType": "number",
+      "variantCount": 12,
+      "variants": [
+        {
+          "key": "1",
+          "label": "Born to Go First",
+          "blurb": "Your mission is to go first, to start what others will finish. Not managing what already exists, but opening what doesn't: the venture nobody has attempted, the call nobody wants to make, the direction nobody has named. Where most people wait for permission, you are built to act, and your full name adds up to initiative as a life's work.",
+          "symbol": "1",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "2",
+          "label": "The Bridge-Builder",
+          "blurb": "You came to hold people together. Your mission works through connection, not force: you read a room before you speak, feel tension before it erupts, and know instinctively what each side actually needs. The talent written into your name is the rare ability to make two stubborn positions discover they were never really opposed.",
+          "symbol": "2",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "3",
+          "label": "The Voice",
+          "blurb": "Creation and communication are the work you were named for. Words, images, ideas, they move through you with an ease other people spend years training to fake. Your mission is to give the world your voice: to take what's inside and make it visible, and to make people feel something real when you do.",
+          "symbol": "3",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "4",
+          "label": "The System-Builder",
+          "blurb": "Turning chaos into structure is the work you came for. Where others see a mess, you see the missing process; where others improvise, you build something that still works in ten years. Discipline isn't a chore for you, it's your natural mode, and every letter of your name adds up to order made real in the world.",
+          "symbol": "4",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "5",
+          "label": "The Agent of Change",
+          "blurb": "You were named for change itself, to move, adapt, and master the transitions that knock other people flat. Your mission isn't one narrow craft; it's versatility: many talents, many worlds, and the freedom to cross between them. What looks like restlessness from the outside is actually your assignment working itself out.",
+          "symbol": "5",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "6",
+          "label": "The Anchor",
+          "blurb": "Responsibility found you early, and that's no accident, your mission is to protect and guide, to be the one others lean on. You came to build places where people are safe: a family, a team, a practice, a home. Care, in your hands, isn't soft sentiment; it's load-bearing structure.",
+          "symbol": "6",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "7",
+          "label": "The Truth-Seeker",
+          "blurb": "Depth is your mission, to understand what others skim, and to become the one who truly knows. You go further into questions than most people find comfortable, and surface answers physically irritate you. The name you carry points to expertise, research, wisdom: truth pursued as a life's work, not a weekend hobby.",
+          "symbol": "7",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "8",
+          "label": "The Executive",
+          "blurb": "You think in scale, resources, results, and the systems that produce them. Your mission is to lead and to wield influence: to take direction of real things, money, teams, organizations, and multiply them. Authority isn't something you chase for decoration; it's the tool your actual assignment requires you to hold.",
+          "symbol": "8",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "9",
+          "label": "The Humanitarian",
+          "blurb": "Your mission points past the personal. You came to give, to finish, to widen, to serve something larger than your own story and to pull others toward it. People sense the breadth in you: the instinct to include, to forgive, and to see the whole picture where everyone else is defending a corner.",
+          "symbol": "9",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "11",
+          "label": "The Illuminator",
+          "blurb": "Eleven is the higher octave of 2: the connector becomes the inspirer. You pick up on things before they're visible to anyone else, moods, meanings, where a situation is quietly headed, and your mission is to turn that perception into light for others: to teach, to guide, and to lift.",
+          "symbol": "11",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "22",
+          "label": "The Master Builder",
+          "blurb": "Twenty-two is the higher octave of 4: the builder's discipline pointed at monumental scale. Your mission is to take a vast vision and make it physically real, an institution, a company, an infrastructure, a body of work that outlives its maker. Rare, heavy to carry, and the most concrete power on the chart.",
+          "symbol": "22",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "33",
+          "label": "The Master Teacher",
+          "blurb": "Thirty-three is the higher octave of 6: the caretaker raised to a calling. Your mission is to heal and uplift, not by lecturing, but by example, through care so consistent it changes what people believe they deserve. This is the rarest Expression Number on the chart, and it never travels light.",
+          "symbol": "33",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        }
+      ]
+    },
+    {
+      "code": "A4",
+      "title": "Soul Urge Number",
+      "pointIcon": "A4",
+      "bodyFrame": "s4",
+      "bodyChange": "heart",
+      "variantType": "number",
+      "variantCount": 12,
+      "variants": [
+        {
+          "key": "1",
+          "label": "The Hunger for Independence",
+          "blurb": "Strip away the roles and what remains is this: you want to be fully yourself, answer to no one, and come first at something that matters. Others may see a team player; underneath, every decision gets quietly scored on one scale, was it mine? Autonomy isn't a preference for you. It's oxygen.",
+          "symbol": "1",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "2",
+          "label": "The Longing for Closeness",
+          "blurb": "Whatever you show the world, what your heart actually wants is closeness, one person who truly gets you, peace at home, warmth without performance. Conflict doesn't just bother you; it drains you physically. You can win an argument outright and still lose the whole day to how the winning felt.",
+          "symbol": "2",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "3",
+          "label": "The Need to Be Seen",
+          "blurb": "Underneath everything, your heart wants to be seen and heard, to make something, show it, and watch it land. Joy is not a luxury item in your inner economy; it's the fuel line. A day with no play, no color, and no audience of at least one leaves you strangely flat.",
+          "symbol": "3",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "4",
+          "label": "The Craving for Solid Ground",
+          "blurb": "What your heart truly wants is a world that doesn't wobble: promises kept, money counted, plans that hold. Others might call it caution; for you it runs deeper, chaos genuinely costs you, and a stable base isn't boring, it's the feeling of safety itself. You relax only when things are handled.",
+          "symbol": "4",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "5",
+          "label": "The Thirst for Freedom",
+          "blurb": "What the heart wants here is the open door, movement, novelty, the taste of everything at least once. Routine doesn't merely bore you; it registers in your system as slow suffocation. Others may see a settled life; inside, you are always checking where the exits and the next adventures are.",
+          "symbol": "5",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "6",
+          "label": "The Need to Be Needed",
+          "blurb": "At the core, your heart wants to matter to specific people: a home with life in it, someone to take care of, a table with your people around it. Grand abstractions leave you cold, you want love with names and faces, and being needed feels, to you, like being alive.",
+          "symbol": "6",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "7",
+          "label": "The Pull Toward Depth",
+          "blurb": "Whatever your days look like, your heart wants quiet and truth: a closed door, a real question, time to actually think. Small talk starves you; noise scrapes at you. What others call withdrawal is, for you, a return, the inner world isn't an escape from your life, it is your life.",
+          "symbol": "7",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "8",
+          "label": "The Drive to Achieve",
+          "blurb": "Your heart keeps score, whether you admit it or not. What it wants is achievement, influence, and the means to provide, respect you can measure, results you can point to. Comfort without accomplishment leaves you restless; deep down, you would rather carry real pressure than feel irrelevant for a single season.",
+          "symbol": "8",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "9",
+          "label": "The Call to Give",
+          "blurb": "Personal wins feel strangely thin to you, the promotion lands, the applause fades, and something whispers: is that all? What your heart really wants is to give, to contribute, to belong to something wider than one biography. You were built to matter beyond your own front door, and you can feel it.",
+          "symbol": "9",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "11",
+          "label": "The Search for Meaning",
+          "blurb": "Eleven is the higher octave of 2: the longing for closeness deepens into a longing for meaning itself. Ordinary comfort never quite fills you, your heart wants significance, insight, the sense that life is saying something to you specifically. You feel currents other people miss, and you cannot switch that off.",
+          "symbol": "11",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "22",
+          "label": "The Need to Leave a Mark",
+          "blurb": "Twenty-two is the higher octave of 4: the wish for solid ground grows into the wish to build something permanent. Your heart wants to leave a mark at scale, not applause, but evidence: an institution, a body of work, a structure still standing and still useful long after you are gone.",
+          "symbol": "22",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "33",
+          "label": "The Heart That Heals",
+          "blurb": "Thirty-three is the higher octave of 6: the wish to care for your own becomes a wish to heal, full stop. Your heart wants to love without conditions, to see people whole, including the parts they hide, and stay anyway. This is the rarest Soul Urge, and the heaviest to carry well.",
+          "symbol": "33",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        }
+      ]
+    },
+    {
+      "code": "A5",
+      "title": "Personality Number",
+      "pointIcon": "A5",
+      "bodyFrame": "s5",
+      "bodyChange": "outline",
+      "variantType": "number",
+      "variantCount": 12,
+      "variants": [
+        {
+          "key": "1",
+          "label": "The One in Charge",
+          "blurb": "People read you as the one in charge before you've said a word. Strong, self-contained, slightly ahead of the room, that's the signal your presence sends. Strangers assume you have a plan, colleagues wait for you to speak first, and in group photos you somehow end up front and center. This is your storefront, whether or not the interior always matches.",
+          "symbol": "1",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "2",
+          "label": "The Easy One to Trust",
+          "blurb": "Soft edges are the first thing people register about you. You come across as friendly, tactful, and easy to be around; strangers tell you things they haven't told their friends. Nobody braces for conflict when you walk in. Whatever storms happen inside you, the exterior reads as calm water, and people instinctively relax in your presence, often without knowing why.",
+          "symbol": "2",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "3",
+          "label": "Impossible to Miss",
+          "blurb": "Charm arrives before you do. People read you as vivid, expressive, funny, the one who makes the dinner table better. Your face shows more than you think, your stories land, and strangers remember meeting you long after the event. Even on your quiet days, others assume you're the entertainment, because that's what the packaging promises them.",
+          "symbol": "3",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "4",
+          "label": "The Safe Bet",
+          "blurb": "Dependable is written all over you. People read you as serious, grounded, someone who shows up on time and does what they said, the person you'd hand your keys, your books, your project. There's nothing flashy in the signal, and that's exactly why it works: you look like a sure thing in a world full of maybes.",
+          "symbol": "4",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "5",
+          "label": "The Live Wire",
+          "blurb": "Energy is the first thing people notice about you, you read as alive, unconfined, a little unpredictable in the best way. Strangers want to know where you're going and what happens next. There's a suggestion of motion around you even when you're standing still, and it draws people who feel stuck inside their own routines toward you.",
+          "symbol": "5",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "6",
+          "label": "Warmth on Sight",
+          "blurb": "Care radiates off you before introductions are finished. People read you as warm, responsible, the safe adult in the room, children and animals gravitate toward you, strangers ask you for directions, colleagues assume you'll remember the birthdays. Your face says it's safe to rest here, and people accept that invitation constantly, sometimes within minutes of meeting you.",
+          "symbol": "6",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "7",
+          "label": "The Interesting Mystery",
+          "blurb": "Reserved, intelligent, hard to read, that's your opening signal. People sense there's more happening behind your eyes than you're saying, and they're right. You don't fill silence, you don't perform, and that restraint gets interpreted as depth. Some find it magnetic; others find it slightly unnerving. Either way, nobody who meets you ever mistakes you for shallow.",
+          "symbol": "7",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "8",
+          "label": "Executive Presence",
+          "blurb": "Authority is your default costume. People read you as substantial, successful, in control, someone whose time costs money. Waiters, officials, and strangers instinctively upgrade their manners around you; new acquaintances assume you run something, own something, or soon will. It's not what you say that does it. It's the weight the room assigns you before you've spoken.",
+          "symbol": "8",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "9",
+          "label": "Above the Fray",
+          "blurb": "Dignity is the first read. People see you as principled, generous, somehow above petty games, the one who won't gossip, won't grab the last slice, won't kick down. There's a breadth to your manner that makes strangers assume good faith on contact, and even people who disagree with you tend to respect you before they can explain why.",
+          "symbol": "9",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "11",
+          "label": "The One Who Sees You",
+          "blurb": "People sense something uncommon in you before they can name it. You read as finely tuned, perceptive, sensitive, quietly intense, and strangers often feel strangely seen in your presence. Where an ordinary soft exterior invites small talk, yours invites confession: within minutes, people are telling you things that matter and watching your face for the verdict.",
+          "symbol": "11",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "22",
+          "label": "Formidable by Default",
+          "blurb": "Substance at scale, that's the impression you leave. People read you as someone constructing something large: not merely reliable, but consequential. New acquaintances instinctively ask what you're building; older ones reach for words like formidable. You register less like a person with plans and more like a project already underway, and people adjust their behavior around that accordingly.",
+          "symbol": "22",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "33",
+          "label": "Where Trouble Comes to Rest",
+          "blurb": "Compassion this visible is rare, and people spot it instantly. You read as wise, warm, unhurried, the kind of presence strangers trust with their worst news. Where an ordinary warm exterior invites conversation, yours invites surrender: guards drop, tears arrive, secrets surface, and people apologize afterward for unloading, then come back next month and do it again.",
+          "symbol": "33",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        }
+      ]
+    },
+    {
+      "code": "A7",
+      "title": "Maturity Number",
+      "pointIcon": "A7",
+      "bodyFrame": "s6",
+      "bodyChange": "tree",
+      "variantType": "number",
+      "variantCount": 12,
+      "variants": [
+        {
+          "key": "1",
+          "label": "Maturing Into Command",
+          "blurb": "Independence is your destination, whatever the first half looked like. From your mid-thirties on, life keeps removing the people you could defer to, mentors move on, structures dissolve, safety nets thin, until the only workable move left is taking the wheel yourself. Decisions that once frightened you start to feel like oxygen. That's this number doing its work.",
+          "symbol": "1",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "2",
+          "label": "Ripening Into the Peacemaker",
+          "blurb": "Relationships become the main plot of your second half. Whatever you chased earlier, achievement, independence, proof, the years past thirty-five reorganize around connection: partnership deepens or gets rebuilt properly, collaboration replaces competition, and your influence starts flowing through trust rather than force. Around forty, many with this number discover the win they wanted was never a solo one.",
+          "symbol": "2",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "3",
+          "label": "The Voice Arrives Late",
+          "blurb": "Self-expression is what your second half is for. Years of doing the sensible thing, the stable job, the practical choices, the notebook of deferred ideas, build pressure, and around your late thirties it starts demanding release. Writing, speaking, performing, building beautiful things: the creative appetite you shelved comes back with interest, and this time it won't be shelved quietly.",
+          "symbol": "3",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "4",
+          "label": "Building the Foundation",
+          "blurb": "Order is where your life converges. However improvised the early decades were, moves, pivots, reinventions, the second half pulls you toward structure: a system, a craft mastered properly, land or a business or a body of work with your name set in the concrete. Past thirty-five, chaos stops feeling like freedom and starts feeling like noise you're done paying for.",
+          "symbol": "4",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "5",
+          "label": "Freedom Is the Second Act",
+          "blurb": "Liberation is scheduled for your second half. Whatever cages the first half required, obligations, mortgages, other people's expectations, the years after thirty-five begin dismantling them, sometimes by your hand, sometimes by force. Careers pivot, geographies change, appetites return. People with this number often describe forty as the year life got interesting again, and they usually mean it literally.",
+          "symbol": "5",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "6",
+          "label": "Growing Into the Pillar",
+          "blurb": "Responsibility for others is where your road leads, by design, not accident. From the mid-thirties onward, life keeps electing you: the family looks to you, younger colleagues collect around you, communities hand you their keys. The maturing 6 becomes the address where people bring what matters most to them. It can feel heavy. It is also precisely the point.",
+          "symbol": "6",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "7",
+          "label": "The Turn Inward",
+          "blurb": "Depth is your second-half destination. Somewhere past thirty-five, the external scoreboard, titles, acquisitions, applause, quietly loses its grip, and questions take its place: what's true, what matters, what all of this was actually for. Some meet the shift as a crisis; the wiser ones recognize it as a promotion. For you, the examined life isn't optional. It's the assignment.",
+          "symbol": "7",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "8",
+          "label": "Scale Arrives With Age",
+          "blurb": "Power is your late bloom. Whatever the first half held, modest means, deferred ambitions, other people's ceilings, the second half moves you steadily toward management, money, and material command. After thirty-five the trajectory steepens: bigger budgets, bigger stakes, rooms where your signature moves real things. This number rarely peaks early. It compounds, and the compounding is the plan.",
+          "symbol": "8",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "9",
+          "label": "Widening Into the World",
+          "blurb": "Service on a wide screen is where you're headed. The circle of what you care about keeps expanding with age, self, then family, then field, then people you will never meet. After thirty-five, purely personal wins start tasting thin, and the pull toward contribution becomes impossible to ignore. Many 9s change careers at midlife toward work that means something. That's the design.",
+          "symbol": "9",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "11",
+          "label": "Intuition Goes Public",
+          "blurb": "Insight becomes your office. The sensitivity that complicated your younger years, feeling too much, knowing things without knowing how, matures into your central qualification. After thirty-five, people increasingly come to you for the reading beneath the facts: what's really happening, what it means, what's coming. The maturing 11 stops apologizing for intuition and starts signing its name to it.",
+          "symbol": "11",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "22",
+          "label": "The Builder's Decades",
+          "blurb": "Legacy in physical form is your convergence point. This number matures into building at scale, institutions, companies, infrastructures, bodies of work that will outlive their maker. The first half of life gathers your materials: skills, scars, credibility, allies. Somewhere past thirty-five the actual construction begins, and it's usually bigger than anything you would have dared blueprint at twenty-five.",
+          "symbol": "22",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "33",
+          "label": "The Healing Elder",
+          "blurb": "Teaching through love is the summit this number climbs toward, the rarest maturity path on the chart. Your second half organizes around lifting others: healing, mentoring, raising people in every sense of the word. The earlier decades often carried outsized burdens and early caretaking; they weren't punishment, they were curriculum. Past thirty-five, that same weight becomes competence people can feel across a room.",
+          "symbol": "33",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        }
+      ]
+    },
+    {
+      "code": "A9",
+      "title": "Karmic Lessons & Hidden Passion",
+      "pointIcon": "A9",
+      "bodyFrame": "s7",
+      "bodyChange": "book",
+      "variantType": "lessons",
+      "variantCount": 19,
+      "variants": [
+        {
+          "key": "lesson_1",
+          "label": "Lesson 1, Standing on Your Own",
+          "blurb": "The number 1 is missing from your name, and it shows: you tend to wait for permission, defer big decisions, and feel more comfortable seconding someone else's plan than announcing your own. Life notices. It keeps engineering situations where nobody steps up first, leaving the empty space directly in front of you.",
+          "symbol": "L1",
+          "symbolKind": "label",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "lesson_2",
+          "label": "Lesson 2, Hearing Other People",
+          "blurb": "Without 2 in your name, patience and diplomacy don't come pre-installed. You would rather act than negotiate, decide than wait, and the slow work of reading another person's mood can feel like wasted time. So life keeps handing you situations that can't be forced, partnerships, timing, people who need to be heard first.",
+          "symbol": "L2",
+          "symbolKind": "label",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "lesson_3",
+          "label": "Lesson 3, Speaking Up",
+          "blurb": "With 3 absent, self-expression is the muscle you never built by default. You may know exactly what you think and still swallow it, in meetings, in writing, in moments that ask for a little shine. The recurring pattern: your ideas get spoken by someone else, thirty seconds later, to applause.",
+          "symbol": "L3",
+          "symbolKind": "label",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "lesson_4",
+          "label": "Lesson 4, Discipline and Follow-Through",
+          "blurb": "Missing 4 shows up as a trail of strong starts and quiet finishes. Systems, routines, and paperwork feel like cages; you improvise instead of planning and pay for it in redone work. Life responds predictably, projects that collapse at ninety percent, and success that stays exactly one boring process away.",
+          "symbol": "L4",
+          "symbolKind": "label",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "lesson_5",
+          "label": "Lesson 5, Letting Go of the Script",
+          "blurb": "Without 5, change reads as threat. You build a routine and defend it, hesitate at open doors, and choose the familiar option even when it is visibly smaller. So life supplies turbulence on schedule, sudden moves, cancelled plans, reshuffled teams, until adaptation stops being an emergency response.",
+          "symbol": "L5",
+          "symbolKind": "label",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "lesson_6",
+          "label": "Lesson 6, Commitment and Care",
+          "blurb": "A name without 6 travels light, and dodges weight. Long-term promises, other people's needs, the daily upkeep of home and family can all feel like someone else's job. The recurring scene: relationships and duties that keep asking whether you are actually staying, and needing a real answer this time.",
+          "symbol": "L6",
+          "symbolKind": "label",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "lesson_7",
+          "label": "Lesson 7, Going Deeper",
+          "blurb": "Missing 7 keeps you on the surface: quick answers, borrowed opinions, discomfort with silence and with questions that have no immediate use. Life counters with situations logic can't solve, losses, mysteries, moments that demand trust, nudging you toward the inner room you keep walking past.",
+          "symbol": "L7",
+          "symbolKind": "label",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "lesson_8",
+          "label": "Lesson 8, Handling Money and Power",
+          "blurb": "With 8 missing, money and authority sit awkwardly in your hands. You undercharge, avoid negotiating, flinch from being the boss, or swing to the other extreme and grip too hard. Cash and control keep slipping through, and every job seems to end at the same conversation about worth.",
+          "symbol": "L8",
+          "symbolKind": "label",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "lesson_9",
+          "label": "Lesson 9, Compassion at Scale",
+          "blurb": "Without 9, your empathy has a short radius: you are generous with your own people and detached from everyone else's story. Endings are hard too, you hold on past the expiry date. Life widens you the long way: strangers who need help, causes that knock, chapters that must close.",
+          "symbol": "L9",
+          "symbolKind": "label",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "passion_1",
+          "label": "Hidden Passion 1, Born to Lead",
+          "blurb": "The digit 1 dominates your name, and it behaves like a motor: you start things. In any room you drift toward the wheel, first to speak, first to decide, restless whenever someone slower is holding the map. Following instructions you didn't write is, frankly, your least natural act.",
+          "symbol": "P1",
+          "symbolKind": "label",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "passion_2",
+          "label": "Hidden Passion 2, Born to Connect",
+          "blurb": "The digit 2 floods your name: you read people the way others read headlines. You feel the tension in a room before a word is spoken, and you instinctively move to smooth it. Alliances, partnerships, one-on-one depth, that is your terrain; brute force has never once worked for you.",
+          "symbol": "P2",
+          "symbolKind": "label",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "passion_3",
+          "label": "Hidden Passion 3, Born to Express",
+          "blurb": "With 3 as your most frequent digit, expression isn't a choice, it's pressure. Words, images, jokes, and ideas queue up and want out; you think out loud and shine when eyes turn toward you. A silent week does more damage to you than a public failure ever could.",
+          "symbol": "P3",
+          "symbolKind": "label",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "passion_4",
+          "label": "Hidden Passion 4, Born to Build",
+          "blurb": "The digit 4 stacks up in your name, and so do you, brick by brick. You crave order the way others crave excitement: lists, systems, foundations, things done properly or not at all. Chaos doesn't scare you; unfinished, half-measured work is the thing that genuinely does.",
+          "symbol": "P4",
+          "symbolKind": "label",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "passion_5",
+          "label": "Hidden Passion 5, Born for Change",
+          "blurb": "A name heavy with 5 runs on motion. New places, new people, new problems, your energy spikes exactly where routines die. You learn by touching, not by reading about it, and a locked-in five-year plan feels less like security and more like a slow confession of defeat.",
+          "symbol": "P5",
+          "symbolKind": "label",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "passion_6",
+          "label": "Hidden Passion 6, Born to Care",
+          "blurb": "The digit 6 saturates your name: you're the one who notices who hasn't eaten, who is struggling, what the room needs. Home, beauty, and loyalty aren't small comforts to you, they are your operating system. People exhale around you, and responsibility finds you without ever being asked.",
+          "symbol": "P6",
+          "symbolKind": "label",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "passion_7",
+          "label": "Hidden Passion 7, Born to Understand",
+          "blurb": "With 7 as your dominant digit, your mind runs on why. Surfaces bore you; you take ideas, people, and systems apart just to see the mechanism. You need solitude the way others need company, and you can spot a lazy explanation from the far side of the building.",
+          "symbol": "P7",
+          "symbolKind": "label",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "passion_8",
+          "label": "Hidden Passion 8, Born to Run Things",
+          "blurb": "The digit 8 rules your name: you think in outcomes, leverage, and scale. Where others see a job, you see a system that could be run better, and you want the controls. Money and authority don't intimidate you; they read like a scoreboard for competence.",
+          "symbol": "P8",
+          "symbolKind": "label",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "passion_9",
+          "label": "Hidden Passion 9, Born to Give",
+          "blurb": "A name dominated by 9 thinks in wholes: causes, communities, the long arc. Personal wins feel thin to you unless they serve something wider, and strangers' problems land on your desk as if addressed by name. You are built for the big picture, and for graceful endings.",
+          "symbol": "P9",
+          "symbolKind": "label",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "no_lessons",
+          "label": "The Full Set, No Karmic Lessons",
+          "blurb": "Every digit from 1 to 9 appears in your name, a genuinely uncommon result. It means no built-in blind spots: independence, sensitivity, expression, discipline, freedom, care, depth, power, and compassion are all on your keyboard. Life doesn't need to keep re-teaching you a missing note.",
+          "symbol": "✓",
+          "symbolKind": "glyph",
+          "color": null,
+          "image": null
+        }
+      ]
+    },
+    {
+      "code": "A10",
+      "title": "Pythagorean Square",
+      "pointIcon": "A10",
+      "bodyFrame": "s8",
+      "bodyChange": "grid",
+      "variantType": "grid",
+      "variantCount": 27,
+      "variants": [
+        {
+          "key": "1_empty",
+          "label": "Quiet Will",
+          "blurb": "You don't push through walls, you find the door. Pressure isn't your instrument: when someone tries to force an outcome, you sidestep, adapt, and get there anyway. People sometimes mistake this for weakness, right up until they notice you've quietly ended up exactly where you intended.",
+          "symbol": "1○",
+          "symbolKind": "label",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "1_some",
+          "label": "Steady Will",
+          "blurb": "You can hold a position without turning it into a war. When something matters, you say no and it stays no, but you're not addicted to winning, so people don't brace themselves around you. It's a durable, workable kind of character: firm where it counts, easy where it doesn't.",
+          "symbol": "1●",
+          "symbolKind": "label",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "1_many",
+          "label": "Iron Will",
+          "blurb": "When you decide, it's decided. You hold a line long after others have folded, and obstacles read to you as delays, not verdicts. The same force can turn rigid, arguments you win on stamina alone, help you refuse on principle, people who stop telling you the truth.",
+          "symbol": "1●●●",
+          "symbolKind": "label",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "2_empty",
+          "label": "Recharge Required",
+          "blurb": "Your energy isn't a bottomless well, it's a battery, and it runs down. You feel it after long meetings, loud rooms, weeks without sun or movement: the drive is there, the fuel isn't. You draw power from outside, certain people, exercise, daylight, rather than generating it endlessly from within.",
+          "symbol": "2○",
+          "symbolKind": "label",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "2_some",
+          "label": "Steady Current",
+          "blurb": "You run on a reliable current: enough energy to carry a full day and enough warmth that people enjoy having you in the room. You're not the loudest presence at the table, but you don't fade by mid-afternoon either, a workhorse metabolism for both effort and attention.",
+          "symbol": "2●",
+          "symbolKind": "label",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "2_many",
+          "label": "Live Wire",
+          "blurb": "You change the temperature of a room just by entering it. People orbit you, borrow your momentum, leave conversations with you feeling more awake. The cost runs the other direction: stillness feels like starvation, quiet people can find you overwhelming, and unspent energy curdles into restlessness or friction.",
+          "symbol": "2●●●",
+          "symbolKind": "label",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "3_empty",
+          "label": "Words Over Formulas",
+          "blurb": "Formulas never felt like home. You think in stories, images, and people, meaning arrives whole, not as a chain of proofs. Spreadsheets and technical manuals cost you double the effort they cost others, and that's not a flaw in your mind; it's a different architecture.",
+          "symbol": "3○",
+          "symbolKind": "label",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "3_some",
+          "label": "Working Logic",
+          "blurb": "Your reasoning holds up under load. You can follow an argument, spot the flaw in a plan, learn a technical skill when the job demands it, without logic ever becoming your whole personality. Numbers are a tool you pick up and put down, not a lens you're stuck behind.",
+          "symbol": "3●",
+          "symbolKind": "label",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "3_many",
+          "label": "The Analyst",
+          "blurb": "Your mind wants the mechanism. Give you a system, code, contracts, engines, markets, and you'll take it apart until it confesses how it works. Precision is a pleasure, sloppy reasoning is almost physically irritating, and you trust a clean model more than a warm assurance.",
+          "symbol": "3●●●",
+          "symbolKind": "label",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "4_empty",
+          "label": "Health by Design",
+          "blurb": "Your body keeps honest books. Skip sleep, live on coffee, train in violent bursts, and it invoices you fast, while sturdier types get away with the same abuse for years. You've probably noticed you feel dramatically better on routine and dramatically worse the moment you abandon it.",
+          "symbol": "4○",
+          "symbolKind": "label",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "4_some",
+          "label": "Built Solid",
+          "blurb": "You've got a sound chassis. Colds pass through you quickly, an ordinary workload doesn't wear you down, and your body generally does what you ask without protest. It's the kind of health you barely think about, which is precisely how healthy people end up neglecting it.",
+          "symbol": "4●",
+          "symbolKind": "label",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "4_many",
+          "label": "Built Like a Fortress",
+          "blurb": "Your physical reserve is unusual, you recover fast, endure what exhausts others, and treat illness as a rumor that mostly happens to other people. Friends notice you're the one still standing after the all-nighter, the mountain, the double shift, wondering what everyone else is complaining about.",
+          "symbol": "4●●●",
+          "symbolKind": "label",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "5_empty",
+          "label": "Earned Instinct",
+          "blurb": "Situations reveal themselves to you in hindsight more than in advance, you're the one who understands exactly what happened on the drive home. Raw gut feeling isn't your first language, so when you \"just know\" something without evidence, it's usually anxiety talking, not insight.",
+          "symbol": "5○",
+          "symbolKind": "label",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "5_some",
+          "label": "Working Radar",
+          "blurb": "You get a read on rooms and plans before the facts fully arrive, a quiet \"something's off here\" that turns out justified often enough to respect. It's not spooky; it's fast pattern-matching. You plan well because you can feel how a situation is likely to unfold.",
+          "symbol": "5●",
+          "symbolKind": "label",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "5_many",
+          "label": "Second Sight",
+          "blurb": "You see around corners. Deals that will sour, people who will disappoint, doors about to open, you sense them well before the evidence shows up, and your track record of premonitions is uncomfortably good. The frustration is convincing others, who reasonably ask for proof you don't have yet.",
+          "symbol": "5●●●",
+          "symbolKind": "label",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "6_empty",
+          "label": "Head Over Hands",
+          "blurb": "Manual work has never been where you shine or where you're happy, assembling furniture, fixing, drilling, digging all feel like taxes on your time. You'd rather think, talk, plan, or design for an hour than sand a shelf for ten minutes, and honestly, the shelf can tell.",
+          "symbol": "6○",
+          "symbolKind": "label",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "6_some",
+          "label": "Capable Hands",
+          "blurb": "Things work when you touch them. You can fix, build, cook, or assemble at a level that quietly impresses, not because you trained for it, but because finishing something physical satisfies you. Half-done projects bother you; you're the one who actually hangs the picture the same day.",
+          "symbol": "6●",
+          "symbolKind": "label",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "6_many",
+          "label": "Born Maker",
+          "blurb": "Your hands think. Give you materials, tools, and a problem, and something well-made exists a few hours later, you learn crafts faster than most people learn software. Idleness is the enemy: without a project on the bench you get restless, and \"relaxing\" usually means building something anyway.",
+          "symbol": "6●●●",
+          "symbolKind": "label",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "7_empty",
+          "label": "Self-Made Luck",
+          "blurb": "Nothing important has ever just fallen into your lap, no lottery breaks, no chance meetings that changed everything, no talent that opened doors on its own. What you have, you built. Watching luckier people glide can sting, especially when they mistake their good fortune for merit.",
+          "symbol": "7○",
+          "symbolKind": "label",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "7_some",
+          "label": "A Lucky Streak",
+          "blurb": "Fortune likes you in moderation. Doors open at convenient moments, small bets pay off more often than probability suggests, and you have a genuine creative spark that shows up when invited. It's not a golden ticket, more like a persistent tailwind you can feel on good weeks.",
+          "symbol": "7●",
+          "symbolKind": "label",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "7_many",
+          "label": "The Gifted One",
+          "blurb": "Things come easily to you, skills, breaks, attention. You've been pulled from the crowd, handed chances others queued years for, and picked things up in weeks that take most people seasons. People around you have noticed; some call it unfair, and frankly they have a point.",
+          "symbol": "7●●●",
+          "symbolKind": "label",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "8_empty",
+          "label": "Duty in Training",
+          "blurb": "Obligation doesn't come pre-installed in you, promises, schedules, and other people's expectations have always felt more like suggestions than contracts. You're not unkind; you're simply built to prioritize your own course, and commitments compete with it. Deadlines and anniversaries slip unless something external holds them.",
+          "symbol": "8○",
+          "symbolKind": "label",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "8_some",
+          "label": "Quietly Reliable",
+          "blurb": "When you say you'll be there, you're there. People sense it and route important things through you, you're the friend called at two in the morning, the colleague trusted with keys and passwords. Your kindness is practical rather than performative: less talk about caring, more actual showing up.",
+          "symbol": "8●",
+          "symbolKind": "label",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "8_many",
+          "label": "The One Who Carries",
+          "blurb": "You feel responsible for everything within reach, family, colleagues, strangers with heavy bags. Saying no physically hurts, letting someone down haunts you for days, and you routinely carry loads nobody actually assigned to you. People love you for it, and a certain kind of person exploits it.",
+          "symbol": "8●●●",
+          "symbolKind": "label",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "9_empty",
+          "label": "Memory With a System",
+          "blurb": "Names, dates, and details leak out of your head unless you pin them down, you've walked into rooms and forgotten why, retold stories to the person who told them to you. Your mind isn't weak; it just refuses to be a filing cabinet. It keeps meaning and discards inventory.",
+          "symbol": "9○",
+          "symbolKind": "label",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "9_some",
+          "label": "Quick Recall",
+          "blurb": "Your memory does its job without theatrics, faces return with names attached, instructions stick after one hearing, and you can reach back years for the useful detail when a conversation needs it. Combined with natural quickness, it makes you a fast study in almost any new territory.",
+          "symbol": "9●",
+          "symbolKind": "label",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "9_many",
+          "label": "Steel-Trap Mind",
+          "blurb": "Once something enters your head, it stays, conversations from years ago verbatim, page layouts, numbers, who said what and when. You connect stored pieces fast enough that people assume you're improvising brilliance when you're really just retrieving it. Forgetting, for you, is nearly a decision.",
+          "symbol": "9●●●",
+          "symbolKind": "label",
+          "color": null,
+          "image": null
+        }
+      ]
+    },
+    {
+      "code": "A11",
+      "title": "Karmic Debt",
+      "pointIcon": "A11",
+      "bodyFrame": "s9",
+      "bodyChange": "chain",
+      "variantType": "debt",
+      "variantCount": 5,
+      "variants": [
+        {
+          "key": "13",
+          "label": "13/4, The Debt of Work",
+          "blurb": "Karmic Debt 13 is the debt of work, and it feels like friction other people don't seem to get. Shortcuts collapse, easy projects triple in size, and results arrive only at full price. The recurring scene: watching someone coast past you while your version of the same task demands everything you have.",
+          "symbol": "13",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "14",
+          "label": "14/5, The Debt of Freedom",
+          "blurb": "Karmic Debt 14 is the debt of freedom, and it shows up as appetite that won't stay in its lane. Food, spending, screens, novelty, escape, whatever the outlet, moderation is the hard setting. The repeating pattern: sudden losses of control or circumstance that arrive exactly when life gets too loose.",
+          "symbol": "14",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "16",
+          "label": "16/7, The Debt of Ego",
+          "blurb": "Karmic Debt 16 is the debt of ego, and it tends to feel like periodic demolition: a role, image, or relationship you built your identity on gives way, usually right after you leaned on it hardest. The pattern isn't random bad luck, it's the same tower falling until you stop rebuilding it from vanity.",
+          "symbol": "16",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "19",
+          "label": "19/1, The Debt of Independence",
+          "blurb": "Karmic Debt 19 is the debt of independence, and it feels like a loop of doing everything yourself. Help arrives late or with strings attached; asking for it seems impossible; leadership keeps landing on you and then isolating you. The recurring test: power in your hands, and what you do with the people under it.",
+          "symbol": "19",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "none",
+          "label": "No Karmic Debt, A Clean Slate",
+          "blurb": "None of the karmic debt numbers, 13, 14, 16, or 19, appear in the intermediate sums of your chart. In this system that's a clean slate: no old invoice attached to your path, no recurring toll booth on a specific theme like work, freedom, ego, or power. It's also the most common result, and still worth naming.",
+          "symbol": "∅",
+          "symbolKind": "number",
+          "color": null,
+          "image": null
+        }
+      ]
+    },
+    {
+      "code": "B1",
+      "title": "Sun Sign",
+      "pointIcon": "B1",
+      "bodyFrame": "s10",
+      "bodyChange": "sun",
+      "variantType": "zodiac",
+      "variantCount": 12,
+      "variants": [
+        {
+          "key": "Aries",
+          "label": "Fire · Cardinal, The Igniter",
+          "blurb": "You run on ignition. First sign of the zodiac, ruled by Mars, your core setting is start, you decide fast, move first, and treat hesitation as a kind of pain. Where others need certainty before acting, you need action to feel certain. Impulse, initiative, and a taste for the fight are not moods for you; they're your operating system.",
+          "symbol": "♈",
+          "symbolKind": "glyph",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "Taurus",
+          "label": "Earth · Fixed, The Keeper",
+          "blurb": "You are the zodiac's ground floor: steady, sensual, unhurried, real. Ruled by Venus, your temperament is anchored in what can be touched, tasted, owned, and kept. You move slowly not from doubt but from certainty, once you commit to a person, a place, or a plan, you intend it to last for years, not seasons.",
+          "symbol": "♉",
+          "symbolKind": "glyph",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "Gemini",
+          "label": "Air · Mutable, The Quicksilver Mind",
+          "blurb": "Your mind is the fastest thing in the room. Ruled by Mercury, you live on information, conversation, and the next interesting question, curiosity isn't a hobby for you, it's a metabolism. You process the world by talking it through, connect ideas nobody else thought to link, and can be three different fascinating people before lunch.",
+          "symbol": "♊",
+          "symbolKind": "glyph",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "Cancer",
+          "label": "Water · Cardinal, The Protector",
+          "blurb": "You feel first and think second, and your feelings are usually right. Ruled by the Moon, your temperament runs on emotional depth, memory, and belonging: home isn't a place for you so much as a mission. You read the undercurrent of every room and carry a protective shell that few people ever get all the way inside.",
+          "symbol": "♋",
+          "symbolKind": "glyph",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "Leo",
+          "label": "Fire · Fixed, The Sovereign",
+          "blurb": "You carry your own light source. Ruled by the Sun itself, your temperament is built around self-expression, pride, and warmth, you don't enter rooms, you change them. Being seen isn't vanity for you; it's how your fire stays lit. When you're creating, performing, or leading, you're not showing off. You're functioning as designed.",
+          "symbol": "♌",
+          "symbolKind": "glyph",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "Virgo",
+          "label": "Earth · Mutable, The Refiner",
+          "blurb": "You see the flaw, the fix, and the better version, instantly, everywhere. Ruled by Mercury, your temperament is analytical and service-oriented: you're wired to improve things, and a mess (in a system, a schedule, a sentence) genuinely bothers you. Usefulness is your love of the world made practical.",
+          "symbol": "♍",
+          "symbolKind": "glyph",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "Libra",
+          "label": "Air · Cardinal, The Balancer",
+          "blurb": "You're calibrated for balance the way others are calibrated for survival. Ruled by Venus, your temperament orbits harmony, partnership, and beauty: you instinctively weigh both sides, smooth sharp edges, and design fairness into every situation you touch. Life, for you, is fundamentally a duet, you think best, and become most yourself, in relation to others.",
+          "symbol": "♎",
+          "symbolKind": "glyph",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "Scorpio",
+          "label": "Water · Fixed, The Depth Diver",
+          "blurb": "Nothing about you is casual. Ruled by Pluto (with Mars behind it), your temperament runs on intensity, depth, and transformation: you sense the hidden layer in every person and situation, and you'd rather have one real truth than a hundred pleasant surfaces. You don't just experience life, you metabolize it, and you come back changed.",
+          "symbol": "♏",
+          "symbolKind": "glyph",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "Sagittarius",
+          "label": "Fire · Mutable, The Horizon Chaser",
+          "blurb": "You're aimed at the horizon, permanently. Ruled by Jupiter, the planet of expansion, your temperament runs on freedom, meaning, and scale: bigger questions, farther places, wider views. You're the zodiac's philosopher-adventurer, allergic to small rooms and small thinking, convinced (usually correctly) that life rewards the ones who keep moving toward it.",
+          "symbol": "♐",
+          "symbolKind": "glyph",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "Capricorn",
+          "label": "Earth · Cardinal, The Summit Climber",
+          "blurb": "You were born with a mountain in mind. Ruled by Saturn, your temperament is built from ambition, discipline, and patience, you think in decades, respect what's earned over what's given, and treat responsibility as a form of self-respect. Others chase motivation; you simply keep climbing, in any weather, whether anyone is watching or not.",
+          "symbol": "♑",
+          "symbolKind": "glyph",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "Aquarius",
+          "label": "Air · Fixed, The Futurist",
+          "blurb": "Your mind lives about ten years ahead of the calendar. Ruled by Uranus (with Saturn's old structure underneath), your temperament runs on independent thought, innovation, and principle, you question defaults on contact, side with ideas over hierarchies, and need freedom the way other signs need approval. Original isn't something you try to be. It's your resting state.",
+          "symbol": "♒",
+          "symbolKind": "glyph",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "Pisces",
+          "label": "Water · Mutable, The Empath",
+          "blurb": "You have thin walls where other people have armor. Ruled by Neptune (with Jupiter's old generosity beneath), your temperament is compassion, imagination, and porous intuition: you absorb moods from a room, sense what's unsaid, and live partly in a richer world just behind this one. Feeling deeply isn't a weakness in your design, it is the design.",
+          "symbol": "♓",
+          "symbolKind": "glyph",
+          "color": null,
+          "image": null
+        }
+      ]
+    },
+    {
+      "code": "C1",
+      "title": "Chinese Zodiac Animal",
+      "pointIcon": "C1",
+      "bodyFrame": "s11",
+      "bodyChange": "paw",
+      "variantType": "animal",
+      "variantCount": 12,
+      "variants": [
+        {
+          "key": "Rat",
+          "label": "The Resourceful Survivor",
+          "blurb": "You're the survivor with a plan. Rat-year people run on quick wits and resourcefulness: you spot the opening, the exit, and the bargain before anyone else has finished reading the room. Charming and observant, you collect information and allies the way others collect belongings, quietly, constantly, and with an instinct for what will matter later.",
+          "symbol": "🐀",
+          "symbolKind": "emoji",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "Ox",
+          "label": "The Unshakable",
+          "blurb": "You're built like a promise that gets kept. Ox-year people run on persistence and reliability: you move deliberately, decide slowly, and then become very hard to stop. Flash doesn't impress you and shortcuts don't tempt you, you trust work, patience, and the kind of strength that doesn't need to announce itself.",
+          "symbol": "🐂",
+          "symbolKind": "emoji",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "Tiger",
+          "label": "The Fearless Challenger",
+          "blurb": "You read as power before you've said a word. Tiger-year people run on courage and natural authority: bold, passionate, magnetic, and constitutionally unable to watch from the sidelines. You take the risk, confront the problem, and challenge whoever needs challenging, rebellion isn't a phase for you, it's a standing policy against anything unjust or dull.",
+          "symbol": "🐅",
+          "symbolKind": "emoji",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "Rabbit",
+          "label": "The Graceful Diplomat",
+          "blurb": "You move through the world on velvet. Rabbit-year people run on tact, grace, and well-judged caution: you read atmospheres precisely, sidestep conflict before it forms, and surround yourself with comfort and beauty as a matter of instinct. Your gentleness is often mistaken for softness, in fact it's a highly refined risk-management system.",
+          "symbol": "🐇",
+          "symbolKind": "emoji",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "Dragon",
+          "label": "The Born Headliner",
+          "blurb": "You arrived with the volume turned up. Dragon-year people run on power, charisma, and ambition at scale: you think big by default, attract attention without trying, and carry a kind of luck that mostly comes from sheer momentum. Small plans feel physically wrong to you, you're built for undertakings other people call unrealistic.",
+          "symbol": "🐉",
+          "symbolKind": "emoji",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "Snake",
+          "label": "The Quiet Strategist",
+          "blurb": "You understand more than you reveal, always. Snake-year people run on wisdom, intuition, and strategic quiet: you observe before you act, read motives beneath words, and move only when the moment is genuinely right. There's an unhurried elegance to you that makes people lean in; mystery isn't a pose, it's your natural climate.",
+          "symbol": "🐍",
+          "symbolKind": "emoji",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "Horse",
+          "label": "The Free Runner",
+          "blurb": "You are motion that learned to talk. Horse-year people run on freedom, energy, and sociability: you need open road, literal or figurative, the way others need security, and you draw people effortlessly with warmth and pace. Confinement, micromanagement, and slow rooms drain you fast; momentum is where your best self lives.",
+          "symbol": "🐎",
+          "symbolKind": "emoji",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "Goat",
+          "label": "The Gentle Creator",
+          "blurb": "You feel the texture of everything. Goat-year people run on gentleness, creativity, and care: you're tuned to beauty and to other people's comfort, happiest making things, art, meals, atmospheres, that make life softer. Peace isn't passivity in you; it's a value you actively cultivate and quietly insist on.",
+          "symbol": "🐐",
+          "symbolKind": "emoji",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "Monkey",
+          "label": "The Inventive Trickster",
+          "blurb": "Your mind treats reality as a puzzle with loose screws. Monkey-year people run on wit, agility, and humor: you learn anything fast, find the unconventional route on instinct, and keep a joke ready for every occasion. Rules, to you, are mostly interesting suggestions, play is how your intelligence prefers to work.",
+          "symbol": "🐒",
+          "symbolKind": "emoji",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "Rooster",
+          "label": "The Exacting Eye",
+          "blurb": "You notice everything, and you say so. Rooster-year people run on precision, honesty, and shine: you keep high standards, speak plainly, and like both your work and your appearance sharp enough to signal that someone competent is present. Order isn't fussiness in you, it's how you show respect for things done properly.",
+          "symbol": "🐓",
+          "symbolKind": "emoji",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "Dog",
+          "label": "The Loyal Guardian",
+          "blurb": "Your word is load-bearing. Dog-year people run on loyalty and justice: you keep promises, defend the people you've claimed as yours, and react to unfairness, anywhere, toward anyone, as if it were personal. Trust is your currency, and you pay in full. Once given, your allegiance is one of the most durable things a person can own.",
+          "symbol": "🐕",
+          "symbolKind": "emoji",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "Pig",
+          "label": "The Open Hand",
+          "blurb": "You lead with the open hand. Pig-year people run on generosity, honesty, and good nature: you assume decency until proven otherwise, share what you have, and genuinely enjoy life, food, comfort, company, without irony. Your warmth isn't naivety about the world; it's a decision about how you intend to live in it.",
+          "symbol": "🐖",
+          "symbolKind": "emoji",
+          "color": null,
+          "image": null
+        }
+      ]
+    },
+    {
+      "code": "C2",
+      "title": "Chinese Year Element",
+      "pointIcon": "C2",
+      "bodyFrame": "s12",
+      "bodyChange": "element",
+      "variantType": "element",
+      "variantCount": 5,
+      "variants": [
+        {
+          "key": "Wood",
+          "label": "木 Wood, Growth and Reach",
+          "blurb": "Wood turns your nature toward growth: you're built to develop, branch, and plan, always reaching for the next stage of yourself. It lends your animal sign flexibility and vision, the ability to bend under pressure without breaking, and a quiet generosity that wants other things (people, projects, teams) to grow alongside you.",
+          "symbol": "木",
+          "symbolKind": "glyph",
+          "color": "#4fd08a",
+          "image": null
+        },
+        {
+          "key": "Fire",
+          "label": "火 Fire, Heat and Drive",
+          "blurb": "Fire turns the heat of your nature all the way up: whatever your animal sign is, this element makes it more passionate, more visible, more decisive. You radiate energy people want to stand near, express feelings at full color, and instinctively move toward the front of any room you care about.",
+          "symbol": "火",
+          "symbolKind": "glyph",
+          "color": "#ff6b5a",
+          "image": null
+        },
+        {
+          "key": "Earth",
+          "label": "土 Earth, Ground and Center",
+          "blurb": "Earth settles your nature toward the center: it makes your animal sign steadier, more practical, more trustworthy under load. You think in real terms, what works, what lasts, who needs holding, and people instinctively treat you as ground: the one who stays calm and keeps things standing.",
+          "symbol": "土",
+          "symbolKind": "glyph",
+          "color": "#e0b060",
+          "image": null
+        },
+        {
+          "key": "Metal",
+          "label": "金 Metal, Edge and Resolve",
+          "blurb": "Metal gives your nature an edge: it sharpens your animal sign with willpower, discipline, and clean structure. You hold standards, keep your word, and cut through excess, in plans, possessions, and conversations, with a decisiveness others find bracing. Where softer natures drift, you set a line and hold it.",
+          "symbol": "金",
+          "symbolKind": "glyph",
+          "color": "#d8dbe6",
+          "image": null
+        },
+        {
+          "key": "Water",
+          "label": "水 Water, Depth and Flow",
+          "blurb": "Water makes your nature fluid: it deepens your animal sign with intuition, adaptability, and a gift for connection. You read currents other people don't notice, adjust to new situations without losing yourself, and find routes around obstacles rather than through them. Your influence works by permeation, not pressure.",
+          "symbol": "水",
+          "symbolKind": "glyph",
+          "color": "#4aa9ff",
+          "image": null
+        }
+      ]
+    },
+    {
+      "code": "D1",
+      "title": "Tarot Birth Card",
+      "pointIcon": "D1",
+      "bodyFrame": "s13",
+      "bodyChange": "crown-open",
+      "variantType": "tarot",
+      "variantCount": 22,
+      "variants": [
+        {
+          "key": "0",
+          "label": "The Fool",
+          "blurb": "You live the story of the leap of faith. While others gather guarantees, you step toward the edge and trust the path to appear, and for you, it usually does. The Fool is the eternal beginner: every chapter of your life opens with a threshold, a departure, a fresh start. Crossing those thresholds isn't recklessness in your chart. It's the plot.",
+          "symbol": "0",
+          "symbolKind": "roman",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "1",
+          "label": "The Magician",
+          "blurb": "Your storyline is will made real. The Magician stands at a table holding every tool he needs, and your life keeps re-staging that scene: here are your resources, your skills, your words. Now make something happen. You're not cast as the dreamer or the bystander; you're cast as the one who converts intention into action, again and again, in every arena you enter.",
+          "symbol": "I",
+          "symbolKind": "roman",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "2",
+          "label": "The High Priestess",
+          "blurb": "Your storyline is inner knowing. The High Priestess sits between the pillars, guarding what can't be said out loud, and your life keeps handing you the same scene: a situation with an official version and a real version, and you're the one who senses the real one. You trust what you perceive before what you're told, and events keep proving that order right.",
+          "symbol": "II",
+          "symbolKind": "roman",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "3",
+          "label": "The Empress",
+          "blurb": "Your storyline is making things flourish. The Empress rules a garden, not a fortress, and that's the role your life keeps assigning you: things placed in your care get bigger. Projects, people, rooms, businesses, families, whatever enters your orbit starts to grow. You're not cast as the conqueror of your story; you're cast as its source of life, and the plot rewards you for feeding things.",
+          "symbol": "III",
+          "symbolKind": "roman",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "4",
+          "label": "The Emperor",
+          "blurb": "Your storyline is structure and authority. The Emperor's role is to take territory that's in chaos and give it order others can stand on, and your life keeps casting you as exactly that. Wherever systems are missing, you end up building them; wherever no one's in charge, people turn to you. Rule and responsibility find you even when you don't campaign for them.",
+          "symbol": "IV",
+          "symbolKind": "roman",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "5",
+          "label": "The Hierophant",
+          "blurb": "Your storyline is tradition and teaching. The Hierophant is the bridge between accumulated knowledge and the person standing in front of him, and that's your recurring role: you learn deeply, you test it, and then you pass it on. In every group you join, you gravitate toward being the keeper of standards, the one who knows how it's properly done and why.",
+          "symbol": "V",
+          "symbolKind": "roman",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "6",
+          "label": "The Lovers",
+          "blurb": "Your storyline is the meaningful choice. Where other charts turn on ambition or endurance, yours turns on decisions of the heart: who you commit to, what you align with, which road you take when both are real options. The Lovers card doesn't just mean romance, it means your life's chapters are defined by connection, and by the choices that create or end it.",
+          "symbol": "VI",
+          "symbolKind": "roman",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "7",
+          "label": "The Chariot",
+          "blurb": "Your storyline is willpower in motion. The Chariot's driver holds two opposing forces and makes them pull in one direction, and that's your recurring scene: competing demands, conflicting instincts, difficult terrain, and you at the reins pushing through by sheer drive. Your life rewards momentum. When you commit to a direction and lean in, obstacles that stop other people become surface you drive over.",
+          "symbol": "VII",
+          "symbolKind": "roman",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "8",
+          "label": "Strength",
+          "blurb": "Your storyline is quiet power. The card shows a figure calming a lion with bare hands, no weapon, no shouting, and that's your role: you master situations by patience that others try to force. Your life keeps placing wild things in front of you, difficult people, crises, your own intense nature, and the plot is always the same: gentle it, don't kill it.",
+          "symbol": "VIII",
+          "symbolKind": "roman",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "9",
+          "label": "The Hermit",
+          "blurb": "Your storyline is inner wisdom. The Hermit climbs the mountain alone and returns carrying a lamp, and that's your recurring arc: withdraw, understand, come back with the answer. You find your answers alone first, and only then can you share them. Solitude in your chart isn't loneliness or escape; it's your work-site, the place where everything valuable you carry was made.",
+          "symbol": "IX",
+          "symbolKind": "roman",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "10",
+          "label": "Wheel of Fortune",
+          "blurb": "Your storyline is cycles and timing. Most lives move in a line; yours moves in turns, visible rises, sudden resets, lucky pivots that arrive exactly when a chapter has exhausted itself. The Wheel casts you as the one who rides change rather than resisting it, and your biography will keep proving the point: what looks like disruption from inside is rotation from above.",
+          "symbol": "X",
+          "symbolKind": "roman",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "11",
+          "label": "Justice",
+          "blurb": "Your storyline is balance and truth. Justice holds the scales, and your life keeps appointing you to that seat: the disputes come to you, the imbalances happen near you, and unfairness anywhere in your vicinity demands correction, you physically can't ignore it. Fairness isn't a value you chose; it's the axis your story turns on, and events keep testing how straight you can hold it.",
+          "symbol": "XI",
+          "symbolKind": "roman",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "12",
+          "label": "The Hanged Man",
+          "blurb": "Your storyline is the shift in perspective. The Hanged Man hangs upside down voluntarily, and sees what no one standing upright can see. That's your recurring arc: your breakthroughs don't come from pushing harder, they come from suspension, the pause, the surrender, the deliberately inverted view. Life keeps hanging you in limbo at exactly the moments it wants to change your mind.",
+          "symbol": "XII",
+          "symbolKind": "roman",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "13",
+          "label": "Death",
+          "blurb": "Your storyline is transformation. Forget the horror-film reading, in your chart, Death means your life proceeds through clean endings: identities, careers, whole versions of you are shed like skins when they're finished. Where others get one slow arc, you get chapters with real closings. Endings clear space for what's next, that's not something that happens to you; it's how you're built to move.",
+          "symbol": "XIII",
+          "symbolKind": "roman",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "14",
+          "label": "Temperance",
+          "blurb": "Your storyline is synthesis. Temperance stands with one foot on land, one in water, blending two cups, and that's your role: you combine extremes into something that works. Opposing people, clashing demands, contradictory truths keep landing in your life, and your job in the story is always the same: find the mixture. Not the compromise that satisfies no one, the alloy that's stronger than either metal.",
+          "symbol": "XIV",
+          "symbolKind": "roman",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "15",
+          "label": "The Devil",
+          "blurb": "Your storyline is confronting what binds you. The Devil's secret is printed on the card: the chains on the two figures are loose enough to lift off, they stay by habit. Your life keeps staging that scene: intense desires, compelling attachments, gilded cages, and the recurring question of who owns whom. You were dealt the strong material, appetite, money, power, passion, on purpose.",
+          "symbol": "XV",
+          "symbolKind": "roman",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "16",
+          "label": "The Tower",
+          "blurb": "Your storyline is sudden change. In your chart, structures that are false don't get to decay slowly, they fall, fast, with lightning attached. Careers, certainties, relationships built on the wrong foundation: your life demolishes them in dramatic single strokes. It reads as catastrophe each time, and each time the same truth surfaces, what falls apart was making room for the real thing.",
+          "symbol": "XVI",
+          "symbolKind": "roman",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "17",
+          "label": "The Star",
+          "blurb": "Your storyline is hope after hardship. The Star follows the Tower in the deck for a reason: your archetype is the one who keeps faith when it's hard to, and whose faith keeps being proven right. Your life runs on a repeating pattern: drought, then water. However dark the previous chapter, you're the character who looks up, finds the one light, and walks toward it.",
+          "symbol": "XVII",
+          "symbolKind": "roman",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "18",
+          "label": "The Moon",
+          "blurb": "Your storyline is the unconscious. You sense what hasn't surfaced yet, the mood under the meeting, the motive under the compliment, the change coming before any evidence exists. The Moon casts you as the night-walker: you travel by low light through territory others need full daylight to enter. Dreams, hunches, and undercurrents aren't decoration in your life; they're primary sources of information.",
+          "symbol": "XVIII",
+          "symbolKind": "roman",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "19",
+          "label": "The Sun",
+          "blurb": "Your storyline is clarity and joy. The Sun is the deck's least complicated card, and that's precisely its power: you're cast as the source of warmth and light, where you show up, things get simpler, truer, easier to see. Visibility is your natural habitat. While other archetypes work in shadow and subtext, your plot happens in full daylight: open success, evident vitality, warmth that spreads.",
+          "symbol": "XIX",
+          "symbolKind": "roman",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "20",
+          "label": "Judgement",
+          "blurb": "Your storyline is the reckoning. Judgement is the trumpet that wakes what was buried, and your life moves through exactly those moments: clear before-and-after points where you're summoned to face the full record, keep what's true, and get up as someone new. Other charts drift; yours gets called. Rebirth isn't a metaphor in your story, it's the recurring event around which everything organizes.",
+          "symbol": "XX",
+          "symbolKind": "roman",
+          "color": null,
+          "image": null
+        },
+        {
+          "key": "21",
+          "label": "The World",
+          "blurb": "Your storyline is completion. The World is the last card of the Major Arcana, the dance at the center of the finished circle, and that's your archetype: you finish what you start, fully. Your life moves in completed circles: learn, master, deliver, arrive, then a larger circle opens. Where other charts are about the struggle, yours is about the arrival, earned end to end.",
+          "symbol": "XXI",
+          "symbolKind": "roman",
+          "color": null,
+          "image": null
+        }
+      ]
+    }
+  ]
+}

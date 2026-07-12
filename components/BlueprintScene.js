@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { EffectComposer, Bloom } from "@react-three/postprocessing";
 import * as THREE from "three";
+import { DEFAULT_CONFIG } from "@/lib/ballFormula";
 
 // «Живой блюпринт» уровня референса future-state: световая радужка из тысяч
 // тонких волокон, расходящихся из тёмного центра. Синие тела нитей, белые
@@ -18,30 +19,9 @@ import * as THREE from "three";
 const BG = "#05040f";
 const WHITE_TIP = new THREE.Color("#eaf6ff");
 
-export const DEFAULT_CONFIG = {
-  // Форма
-  fibers: 1450, // число волокон
-  pupil: 0.66, // радиус зрачка (диск; кромка и старт волокон привязаны)
-  spread: 2.35, // базовый разлёт наружу
-  spreadVar: 0.9, // разброс разлёта (рваность кромки)
-  twist: 0.5, // спиральная закрутка
-  depth: 0.9, // объём по Z
-  // Лепка — растянуть/сплющить как глину
-  scaleX: 1, // длина (по горизонтали)
-  scaleY: 1, // ширина (по вертикали)
-  scaleZ: 1, // глубина (к зрителю)
-  zoom: 1, // общий размер в кадре
-  // Движение
-  rotSpeed: 0.05, // скорость вращения
-  breathe: 0.02, // амплитуда «дыхания»
-  tilt: 1, // множитель покачиваний по x/y
-  // Свет
-  opacity: 0.72, // яркость нитей
-  tipSize: 0.055, // размер светящихся кончиков
-  bloom: 1.15, // интенсивность свечения
-  // Палитра тел волокон: глубокий синий/фиолет + редкий бирюзовый акцент
-  colors: ["#2b3bff", "#4a3df0", "#6c4ff6", "#2b6bff", "#33e6e0"],
-};
+// DEFAULT_CONFIG теперь живёт в lib/ballFormula.js (единый источник, свод 4.3).
+// Ре-экспортим его отсюда — старые импорты `@/components/BlueprintScene` целы.
+export { DEFAULT_CONFIG };
 
 // Веса цветов: последний в палитре — редкий акцент, как искры в референсе.
 const COLOR_WEIGHTS = [0.3, 0.25, 0.2, 0.17, 0.08];

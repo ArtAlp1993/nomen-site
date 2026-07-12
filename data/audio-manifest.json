@@ -1,0 +1,801 @@
+{
+ "comment": "Автогенерация: node scripts/gen-audio-manifest.mjs. Ключ = пункт/вариант, hash = sha256(текста) — имя аудио-файла обязано включать этот hash.",
+ "entries": {
+  "a1/intro": {
+   "hash": "658f1e98acec",
+   "chars": 211
+  },
+  "a1/1": {
+   "hash": "a3527dcbe138",
+   "chars": 1029
+  },
+  "a1/2": {
+   "hash": "a388f8edf7c1",
+   "chars": 1070
+  },
+  "a1/3": {
+   "hash": "5cd6bc9630da",
+   "chars": 1050
+  },
+  "a1/4": {
+   "hash": "2411f5831f56",
+   "chars": 1092
+  },
+  "a1/5": {
+   "hash": "89d35c207b4b",
+   "chars": 1028
+  },
+  "a1/6": {
+   "hash": "2e8ed6064ddb",
+   "chars": 1059
+  },
+  "a1/7": {
+   "hash": "4d3bf2abf1c7",
+   "chars": 1061
+  },
+  "a1/8": {
+   "hash": "94fac619f76d",
+   "chars": 1028
+  },
+  "a1/9": {
+   "hash": "3e83d1255aef",
+   "chars": 1050
+  },
+  "a1/11": {
+   "hash": "0ebd19dc1036",
+   "chars": 1054
+  },
+  "a1/22": {
+   "hash": "88604abb2d69",
+   "chars": 1035
+  },
+  "a1/33": {
+   "hash": "03b52e91ec69",
+   "chars": 1065
+  },
+  "a10/intro": {
+   "hash": "c306c4310dec",
+   "chars": 304
+  },
+  "a10/1_empty": {
+   "hash": "3a433f820f07",
+   "chars": 587
+  },
+  "a10/1_some": {
+   "hash": "4ed997f0a100",
+   "chars": 575
+  },
+  "a10/1_many": {
+   "hash": "1f0d40f8d41a",
+   "chars": 560
+  },
+  "a10/2_empty": {
+   "hash": "fd408190030e",
+   "chars": 656
+  },
+  "a10/2_some": {
+   "hash": "57cd60eecdcc",
+   "chars": 605
+  },
+  "a10/2_many": {
+   "hash": "d0d8eec46900",
+   "chars": 617
+  },
+  "a10/3_empty": {
+   "hash": "d3daa15a082e",
+   "chars": 601
+  },
+  "a10/3_some": {
+   "hash": "df399d1b3b0e",
+   "chars": 555
+  },
+  "a10/3_many": {
+   "hash": "af8c7475f773",
+   "chars": 560
+  },
+  "a10/4_empty": {
+   "hash": "a79bad781c55",
+   "chars": 583
+  },
+  "a10/4_some": {
+   "hash": "5ed5d4976570",
+   "chars": 614
+  },
+  "a10/4_many": {
+   "hash": "c622f8af3d35",
+   "chars": 619
+  },
+  "a10/5_empty": {
+   "hash": "27e651214ea3",
+   "chars": 627
+  },
+  "a10/5_some": {
+   "hash": "5121c22bf60c",
+   "chars": 564
+  },
+  "a10/5_many": {
+   "hash": "d535e4864361",
+   "chars": 641
+  },
+  "a10/6_empty": {
+   "hash": "664d7689cde9",
+   "chars": 565
+  },
+  "a10/6_some": {
+   "hash": "00816b283be1",
+   "chars": 604
+  },
+  "a10/6_many": {
+   "hash": "8d96f2ce5b1e",
+   "chars": 612
+  },
+  "a10/7_empty": {
+   "hash": "5c37b5e4fb70",
+   "chars": 645
+  },
+  "a10/7_some": {
+   "hash": "9af93dd2a748",
+   "chars": 575
+  },
+  "a10/7_many": {
+   "hash": "de3536b3aa7f",
+   "chars": 574
+  },
+  "a10/8_empty": {
+   "hash": "7b2227f9c0b4",
+   "chars": 655
+  },
+  "a10/8_some": {
+   "hash": "e9ca258da9a2",
+   "chars": 619
+  },
+  "a10/8_many": {
+   "hash": "8dbbe6151159",
+   "chars": 624
+  },
+  "a10/9_empty": {
+   "hash": "4e6e73f233ba",
+   "chars": 606
+  },
+  "a10/9_some": {
+   "hash": "4a649a95f4db",
+   "chars": 608
+  },
+  "a10/9_many": {
+   "hash": "eec84108cd03",
+   "chars": 611
+  },
+  "a11/intro": {
+   "hash": "e3c0c63bb1c1",
+   "chars": 257
+  },
+  "a11/13": {
+   "hash": "fba035b2e710",
+   "chars": 940
+  },
+  "a11/14": {
+   "hash": "7051e8ed1548",
+   "chars": 933
+  },
+  "a11/16": {
+   "hash": "ad7603502669",
+   "chars": 941
+  },
+  "a11/19": {
+   "hash": "8e89d13d6b24",
+   "chars": 958
+  },
+  "a11/none": {
+   "hash": "c2956a0c691f",
+   "chars": 675
+  },
+  "a2/intro": {
+   "hash": "6b17d41a7f2d",
+   "chars": 193
+  },
+  "a2/1": {
+   "hash": "c1c1f82bbaf1",
+   "chars": 1059
+  },
+  "a2/2": {
+   "hash": "96392d7b6f02",
+   "chars": 1069
+  },
+  "a2/3": {
+   "hash": "f4aa98b71a6d",
+   "chars": 1062
+  },
+  "a2/4": {
+   "hash": "bc81fa5b0561",
+   "chars": 1049
+  },
+  "a2/5": {
+   "hash": "fb9c8cdab58d",
+   "chars": 998
+  },
+  "a2/6": {
+   "hash": "6926f21b1b3f",
+   "chars": 1049
+  },
+  "a2/7": {
+   "hash": "b7eac91e3451",
+   "chars": 1010
+  },
+  "a2/8": {
+   "hash": "68a1b7367f20",
+   "chars": 1023
+  },
+  "a2/9": {
+   "hash": "9061b37eebdc",
+   "chars": 1036
+  },
+  "a2/11": {
+   "hash": "6b473b169f6c",
+   "chars": 1071
+  },
+  "a2/22": {
+   "hash": "368b78b43b91",
+   "chars": 1061
+  },
+  "a3/intro": {
+   "hash": "445d0427fe20",
+   "chars": 171
+  },
+  "a3/1": {
+   "hash": "0e7815dbd659",
+   "chars": 1100
+  },
+  "a3/2": {
+   "hash": "88afef988eac",
+   "chars": 1058
+  },
+  "a3/3": {
+   "hash": "e15a6a397ea7",
+   "chars": 971
+  },
+  "a3/4": {
+   "hash": "636768304038",
+   "chars": 1012
+  },
+  "a3/5": {
+   "hash": "e663638d7c0a",
+   "chars": 973
+  },
+  "a3/6": {
+   "hash": "d9edeee9760d",
+   "chars": 956
+  },
+  "a3/7": {
+   "hash": "a0603a896c31",
+   "chars": 971
+  },
+  "a3/8": {
+   "hash": "4397fd1144e8",
+   "chars": 979
+  },
+  "a3/9": {
+   "hash": "b7447ed4d356",
+   "chars": 939
+  },
+  "a3/11": {
+   "hash": "1b95b47bf275",
+   "chars": 927
+  },
+  "a3/22": {
+   "hash": "790c061201b6",
+   "chars": 932
+  },
+  "a3/33": {
+   "hash": "efdcb9bd6ac3",
+   "chars": 949
+  },
+  "a4/intro": {
+   "hash": "e76bb04271af",
+   "chars": 215
+  },
+  "a4/1": {
+   "hash": "2875b659ea10",
+   "chars": 913
+  },
+  "a4/2": {
+   "hash": "0fc8a4256757",
+   "chars": 937
+  },
+  "a4/3": {
+   "hash": "685d86ad43cb",
+   "chars": 903
+  },
+  "a4/4": {
+   "hash": "a7101a9e6045",
+   "chars": 952
+  },
+  "a4/5": {
+   "hash": "7c83a4572d9c",
+   "chars": 972
+  },
+  "a4/6": {
+   "hash": "d39862199fbb",
+   "chars": 907
+  },
+  "a4/7": {
+   "hash": "f36dd2575128",
+   "chars": 928
+  },
+  "a4/8": {
+   "hash": "24622346468d",
+   "chars": 910
+  },
+  "a4/9": {
+   "hash": "78fe82d558c8",
+   "chars": 903
+  },
+  "a4/11": {
+   "hash": "a9ae4364883e",
+   "chars": 951
+  },
+  "a4/22": {
+   "hash": "da97ef8753ac",
+   "chars": 923
+  },
+  "a4/33": {
+   "hash": "872dcb980cc4",
+   "chars": 929
+  },
+  "a5/intro": {
+   "hash": "6f4607c241ea",
+   "chars": 246
+  },
+  "a5/1": {
+   "hash": "17054ca2fdcb",
+   "chars": 1090
+  },
+  "a5/2": {
+   "hash": "7adb6651220f",
+   "chars": 1066
+  },
+  "a5/3": {
+   "hash": "bc56e9f0e949",
+   "chars": 1096
+  },
+  "a5/4": {
+   "hash": "9bb4f60c6c14",
+   "chars": 1059
+  },
+  "a5/5": {
+   "hash": "79faf8994da7",
+   "chars": 1065
+  },
+  "a5/6": {
+   "hash": "95bbf677714d",
+   "chars": 1114
+  },
+  "a5/7": {
+   "hash": "9ca19e5474bd",
+   "chars": 1131
+  },
+  "a5/8": {
+   "hash": "561ad8490745",
+   "chars": 1152
+  },
+  "a5/9": {
+   "hash": "63a1745bc068",
+   "chars": 1084
+  },
+  "a5/11": {
+   "hash": "d6ebd24670dd",
+   "chars": 1141
+  },
+  "a5/22": {
+   "hash": "03f35213c947",
+   "chars": 1171
+  },
+  "a5/33": {
+   "hash": "3dc5f7496bcf",
+   "chars": 1144
+  },
+  "a7/intro": {
+   "hash": "c20e6e5f2947",
+   "chars": 239
+  },
+  "a7/1": {
+   "hash": "3c04e2f6aefc",
+   "chars": 1116
+  },
+  "a7/2": {
+   "hash": "8eb168c34a03",
+   "chars": 1176
+  },
+  "a7/3": {
+   "hash": "d767d3cfb289",
+   "chars": 1148
+  },
+  "a7/4": {
+   "hash": "d89875b2337b",
+   "chars": 1126
+  },
+  "a7/5": {
+   "hash": "e6435d092d0f",
+   "chars": 1198
+  },
+  "a7/6": {
+   "hash": "744cf106f1e0",
+   "chars": 1150
+  },
+  "a7/7": {
+   "hash": "bde596e5c778",
+   "chars": 1175
+  },
+  "a7/8": {
+   "hash": "669cedfc2a56",
+   "chars": 1170
+  },
+  "a7/9": {
+   "hash": "8081294f29bb",
+   "chars": 1184
+  },
+  "a7/11": {
+   "hash": "78dbfa9f82de",
+   "chars": 1233
+  },
+  "a7/22": {
+   "hash": "c57de4cf8f39",
+   "chars": 1200
+  },
+  "a7/33": {
+   "hash": "9bf9b353e03c",
+   "chars": 1184
+  },
+  "a9/intro": {
+   "hash": "c9ee0906bb70",
+   "chars": 265
+  },
+  "a9/lesson_1": {
+   "hash": "463e08b56cce",
+   "chars": 643
+  },
+  "a9/lesson_2": {
+   "hash": "5f02ef1be168",
+   "chars": 605
+  },
+  "a9/lesson_3": {
+   "hash": "e61eb6f86d6e",
+   "chars": 591
+  },
+  "a9/lesson_4": {
+   "hash": "0eb390fab22e",
+   "chars": 645
+  },
+  "a9/lesson_5": {
+   "hash": "746205fb0282",
+   "chars": 630
+  },
+  "a9/lesson_6": {
+   "hash": "ec31ddddfcf9",
+   "chars": 616
+  },
+  "a9/lesson_7": {
+   "hash": "78a63abeadbc",
+   "chars": 607
+  },
+  "a9/lesson_8": {
+   "hash": "99584eab4e3c",
+   "chars": 595
+  },
+  "a9/lesson_9": {
+   "hash": "20f3a8019562",
+   "chars": 593
+  },
+  "a9/passion_1": {
+   "hash": "de6c68dc9d64",
+   "chars": 614
+  },
+  "a9/passion_2": {
+   "hash": "6f327af3dfbb",
+   "chars": 644
+  },
+  "a9/passion_3": {
+   "hash": "b8364850166d",
+   "chars": 575
+  },
+  "a9/passion_4": {
+   "hash": "e99f4626663b",
+   "chars": 587
+  },
+  "a9/passion_5": {
+   "hash": "ec8b93e38209",
+   "chars": 600
+  },
+  "a9/passion_6": {
+   "hash": "45c051d21df5",
+   "chars": 612
+  },
+  "a9/passion_7": {
+   "hash": "a18271db124c",
+   "chars": 607
+  },
+  "a9/passion_8": {
+   "hash": "0d9d81c42c13",
+   "chars": 583
+  },
+  "a9/passion_9": {
+   "hash": "c025f6444421",
+   "chars": 599
+  },
+  "a9/no_lessons": {
+   "hash": "c92ed94f3d0d",
+   "chars": 612
+  },
+  "b1/intro": {
+   "hash": "e177f1a57230",
+   "chars": 201
+  },
+  "b1/Aries": {
+   "hash": "a010a78ea700",
+   "chars": 1013
+  },
+  "b1/Taurus": {
+   "hash": "b6a7bfe6c9b0",
+   "chars": 1007
+  },
+  "b1/Gemini": {
+   "hash": "09c8d612429a",
+   "chars": 1014
+  },
+  "b1/Cancer": {
+   "hash": "69fca0cbaed0",
+   "chars": 963
+  },
+  "b1/Leo": {
+   "hash": "e4cbc026c416",
+   "chars": 973
+  },
+  "b1/Virgo": {
+   "hash": "976d213450ee",
+   "chars": 1004
+  },
+  "b1/Libra": {
+   "hash": "684967027cd9",
+   "chars": 1050
+  },
+  "b1/Scorpio": {
+   "hash": "78f185a47d78",
+   "chars": 1004
+  },
+  "b1/Sagittarius": {
+   "hash": "895196e452a6",
+   "chars": 1033
+  },
+  "b1/Capricorn": {
+   "hash": "95dfade3d68e",
+   "chars": 1015
+  },
+  "b1/Aquarius": {
+   "hash": "dda11a2b2c9b",
+   "chars": 1027
+  },
+  "b1/Pisces": {
+   "hash": "3593d09d6b78",
+   "chars": 1042
+  },
+  "c1/intro": {
+   "hash": "54b8378d71b8",
+   "chars": 216
+  },
+  "c1/Rat": {
+   "hash": "d26376c7943d",
+   "chars": 1044
+  },
+  "c1/Ox": {
+   "hash": "c36fa92a27c3",
+   "chars": 962
+  },
+  "c1/Tiger": {
+   "hash": "6f87a5cebc7f",
+   "chars": 1001
+  },
+  "c1/Rabbit": {
+   "hash": "576e87ac5317",
+   "chars": 1066
+  },
+  "c1/Dragon": {
+   "hash": "9335f3e410f4",
+   "chars": 1009
+  },
+  "c1/Snake": {
+   "hash": "9185beea5df3",
+   "chars": 993
+  },
+  "c1/Horse": {
+   "hash": "5a1edc55ce6e",
+   "chars": 1004
+  },
+  "c1/Goat": {
+   "hash": "fe33ab6baaf1",
+   "chars": 998
+  },
+  "c1/Monkey": {
+   "hash": "bb1c1bf9ea08",
+   "chars": 1048
+  },
+  "c1/Rooster": {
+   "hash": "48200fca743e",
+   "chars": 1010
+  },
+  "c1/Dog": {
+   "hash": "e6db6549ae88",
+   "chars": 971
+  },
+  "c1/Pig": {
+   "hash": "0fa8d9bdc464",
+   "chars": 979
+  },
+  "c2/intro": {
+   "hash": "919b55afbe68",
+   "chars": 195
+  },
+  "c2/Wood": {
+   "hash": "d37716cd8494",
+   "chars": 661
+  },
+  "c2/Fire": {
+   "hash": "e93497722f67",
+   "chars": 633
+  },
+  "c2/Earth": {
+   "hash": "61fceaad0132",
+   "chars": 651
+  },
+  "c2/Metal": {
+   "hash": "204e66d8b099",
+   "chars": 689
+  },
+  "c2/Water": {
+   "hash": "f9da924cdf74",
+   "chars": 689
+  },
+  "d1/intro": {
+   "hash": "a7293644c3ac",
+   "chars": 260
+  },
+  "d1/0": {
+   "hash": "9c67b9a2d7ff",
+   "chars": 1113
+  },
+  "d1/1": {
+   "hash": "343883834f2d",
+   "chars": 1170
+  },
+  "d1/2": {
+   "hash": "a348a7fc7afa",
+   "chars": 1140
+  },
+  "d1/3": {
+   "hash": "ecf2aa5b510e",
+   "chars": 1156
+  },
+  "d1/4": {
+   "hash": "75d2f100683d",
+   "chars": 1191
+  },
+  "d1/5": {
+   "hash": "54e5ebedba2a",
+   "chars": 1181
+  },
+  "d1/6": {
+   "hash": "77d744a2f56c",
+   "chars": 1197
+  },
+  "d1/7": {
+   "hash": "b3d6d3a82cc8",
+   "chars": 1200
+  },
+  "d1/8": {
+   "hash": "e15b33b30f8e",
+   "chars": 1165
+  },
+  "d1/9": {
+   "hash": "6fae72a4948e",
+   "chars": 1196
+  },
+  "d1/10": {
+   "hash": "bb5a3d19e149",
+   "chars": 1187
+  },
+  "d1/11": {
+   "hash": "9087721b4270",
+   "chars": 1179
+  },
+  "d1/12": {
+   "hash": "fc8a18f59730",
+   "chars": 1185
+  },
+  "d1/13": {
+   "hash": "be0987c50acc",
+   "chars": 1197
+  },
+  "d1/14": {
+   "hash": "60e5092f7019",
+   "chars": 1223
+  },
+  "d1/15": {
+   "hash": "72d858f3531b",
+   "chars": 1175
+  },
+  "d1/16": {
+   "hash": "cd90a3468db6",
+   "chars": 1189
+  },
+  "d1/17": {
+   "hash": "5f2558aba7f5",
+   "chars": 1147
+  },
+  "d1/18": {
+   "hash": "f8f680637e83",
+   "chars": 1220
+  },
+  "d1/19": {
+   "hash": "0df00f275726",
+   "chars": 1265
+  },
+  "d1/20": {
+   "hash": "53807b953247",
+   "chars": 1222
+  },
+  "d1/21": {
+   "hash": "1b0c5d1b08e7",
+   "chars": 1221
+  },
+  "verdict/intro": {
+   "hash": "cc556b3dd2e9",
+   "chars": 96
+  },
+  "verdict/1": {
+   "hash": "53fe1580e0f5",
+   "chars": 782
+  },
+  "verdict/2": {
+   "hash": "cbf486ee79a0",
+   "chars": 912
+  },
+  "verdict/3": {
+   "hash": "a619280d69ef",
+   "chars": 915
+  },
+  "verdict/4": {
+   "hash": "f8f5121e6615",
+   "chars": 853
+  },
+  "verdict/5": {
+   "hash": "c2cd10a4ac17",
+   "chars": 850
+  },
+  "verdict/6": {
+   "hash": "bbd956704a47",
+   "chars": 911
+  },
+  "verdict/7": {
+   "hash": "74dcc08f482e",
+   "chars": 849
+  },
+  "verdict/8": {
+   "hash": "e49a716300b9",
+   "chars": 880
+  },
+  "verdict/9": {
+   "hash": "bd5491c5894e",
+   "chars": 880
+  },
+  "verdict/11": {
+   "hash": "e19e9a6afc7f",
+   "chars": 893
+  },
+  "verdict/22": {
+   "hash": "f9ea2011f228",
+   "chars": 907
+  },
+  "verdict/33": {
+   "hash": "3c8039f19fd4",
+   "chars": 880
+  }
+ }
+}
