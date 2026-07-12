@@ -21,6 +21,8 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import catalog from "@/data/points-catalog.json";
 import { calculateReading } from "@/lib/teaser";
 import { buildSections, resolveVerdict } from "@/lib/buildReading";
+import { audioUrl, SPEEDS } from "@/lib/audio";
+import { composeCharacter } from "@/lib/characterSkills";
 import { ReadingError } from "@/components/reading/ReadingSections";
 import { decodeReadingToken, extractReadingCode, fetchReadingByCode } from "@/lib/readingLink";
 
@@ -204,6 +206,15 @@ export default function PersonaScene() {
   const sections = useMemo(() => (reading ? buildSections(reading) : []), [reading]);
   const byCode = useMemo(() => new Map(sections.map((s) => [s.code, s])), [sections]);
   const verdict = useMemo(() => resolveVerdict({ card, reading }), [card, reading]);
+  // Морфинг персонажа из карточки (та же механика скиллов, что 3D-прототип, З-22):
+  // progress = доля собранных пунктов → цвета/свечение/яркость тянутся детерминированно.
+  // Персонаж тут DOM-картинки → берём из конфига цвет тела (colors[0]), искр (colors[4])
+  // и bloom, красим ими свечение и фильтр роста. reading нет (демо) → null, откат на CSS.
+  const morph = useMemo(() => {
+    if (!reading) return null;
+    const p = N > 0 ? Math.min(1, frame / N) : 0;
+    try { return composeCharacter(reading, card?.g || "n", p); } catch { return null; }
+  }, [reading, card, frame]);
 
   // Загрузка клиента ИЗ ССЫЛКИ (как /reading): короткая /r/<code> или #c=…
   // тянется с сервера; длинная #r=… самодостаточна. Есть данные → пропускаем интро.
@@ -239,6 +250,7 @@ export default function PersonaScene() {
   }, []);
   const [musicOn, setMusicOn] = useState(false);
   const [speaking, setSpeaking] = useState(false);
+  const [speed, setSpeed] = useState(1);           // скорость озвучки (0.75×–1.5×, З-47)
   const [endReveal, setEndReveal] = useState(0);  // 0..1 — проявление блока вердикта
 
   const iconRefs = useRef([]);
@@ -249,22 +261,47 @@ export default function PersonaScene() {
   const collectedRef = useRef(new Array(N).fill(false));
   const musicRef = useRef(null);    // Web Audio: генеративный ambient (заглушка)
   const speakingRef = useRef(false);
+  const audioElRef = useRef(null);  // реальная озвучка Gacrux (public/audio/reading)
+  const speedRef = useRef(1);       // зеркало speed для обработчиков вне ре-рендера
+  const lastTextRef = useRef("");   // текст для отката на браузерный голос при 404
 
   const displayName = titleCase((name || "Traveler").trim());
 
-  // ── Прослушать текст. Заглушка: браузерный голос (SpeechSynthesis) — ВРЕМЕННО,
-  // реальный банк озвучен голосом Gacrux (C3b) и подключится по audio-manifest. ──
-  function listen(text) {
+  const stopFlag = () => { speakingRef.current = false; setSpeaking(false); };
+  function stopAll() {
+    try { const el = audioElRef.current; if (el) { el.pause(); el.removeAttribute("src"); } } catch { /* noop */ }
+    try { window.speechSynthesis?.cancel(); } catch { /* noop */ }
+    stopFlag();
+  }
+  // ── Прослушать. Приоритет: реальный голос Gacrux (public/audio/reading по
+  // audio-manifest); если файла ещё нет (404) или его нет в манифесте — откат на
+  // браузерный голос (SpeechSynthesis). Скорость — общая (speedRef). ──
+  function fallbackTTS(text) {
     try {
       const synth = window.speechSynthesis;
-      if (!synth || !text) return;
-      if (speakingRef.current) { synth.cancel(); speakingRef.current = false; setSpeaking(false); return; }
+      if (!synth || !text) { stopFlag(); return; }
       synth.cancel();
       const u = new SpeechSynthesisUtterance(text);
-      u.rate = 0.96; u.pitch = 0.95;
-      u.onend = () => { speakingRef.current = false; setSpeaking(false); };
+      u.rate = Math.min(2, Math.max(0.5, 0.96 * speedRef.current)); u.pitch = 0.95;
+      u.onend = stopFlag;
       speakingRef.current = true; setSpeaking(true); synth.speak(u);
-    } catch { /* нет TTS в браузере — молча */ }
+    } catch { stopFlag(); }
+  }
+  function listen({ pointCode = null, variantKey = null, text = "" } = {}) {
+    if (speakingRef.current) { stopAll(); return; }   // повторный клик = стоп
+    lastTextRef.current = text;
+    const url = pointCode != null ? audioUrl(pointCode, variantKey) : null;
+    const el = audioElRef.current;
+    if (url && el) {
+      try {
+        el.src = url;
+        el.playbackRate = speedRef.current;
+        speakingRef.current = true; setSpeaking(true);
+        el.play().catch(() => fallbackTTS(text)); // файла ещё нет → браузерный голос
+        return;
+      } catch { /* fallthrough */ }
+    }
+    fallbackTTS(text);
   }
 
   // ── Фоновая музыка: мягкий генеративный ambient (Web Audio) с выключением.
@@ -405,14 +442,27 @@ export default function PersonaScene() {
   useEffect(() => () => {
     if (musicRef.current) musicRef.current.stop();
     try { window.speechSynthesis?.cancel(); } catch { /* noop */ }
+    try { audioElRef.current?.pause(); } catch { /* noop */ }
   }, []);
+
+  // Скорость озвучки применяется вживую (и к реальному аудио, и к следующему TTS).
+  useEffect(() => {
+    speedRef.current = speed;
+    if (audioElRef.current) audioElRef.current.playbackRate = speed;
+  }, [speed]);
 
   // Лучший ДОСТУПНЫЙ кадр ≤ frame (сцена живёт на любом подмножестве кадров).
   let shownFrame = 0;
   for (let k = frame; k >= 1; k--) if (haveFrame[k]) { shownFrame = k; break; }
-  // Имитация «крепчания» фильтром — на сколько собранных пунктов нет своего кадра.
   const growSteps = frame - shownFrame;
-  const growFilter = `brightness(${1 + growSteps * 0.055}) saturate(${1 + growSteps * 0.04})`;
+  // Морф-производные (composeCharacter → цвет тела/искр + bloom; иначе нейтрально).
+  const progress = N > 0 ? Math.min(1, frame / N) : 0;
+  const bloom = morph ? morph.bloom : 1;                  // 0.5..2.4 (аркан D1 → свечение)
+  const glowHex = morph ? morph.colors[0] : "#5a50ff";    // цвет тела (A1 → цвет)
+  const sparkHex = morph ? morph.colors[4] : "#33e6e0";   // искры (C2 → стихия года)
+  const hexA = (hex, a) => `${hex}${Math.max(0, Math.min(255, Math.round(a * 255))).toString(16).padStart(2, "0")}`;
+  // «Крепчание»: недостающие кадры компенсируем фильтром, свечение растёт с bloom/прогрессом.
+  const growFilter = `brightness(${(1 + growSteps * 0.05 + (bloom - 1) * 0.05).toFixed(3)}) saturate(${(1 + growSteps * 0.03 + progress * 0.25).toFixed(3)})`;
 
   const full = panelIdx !== null; // клик по инвентарю → полный текст пункта (как /reading)
   const textIdx = panelIdx !== null ? panelIdx : active >= 0 ? active : null;
@@ -487,6 +537,13 @@ export default function PersonaScene() {
             <span style={{ opacity: 0.6 }}>NOMEN · </span>{displayName}
           </div>
           <div style={{ position: "fixed", zIndex: 30, top: 12, right: 14, display: "flex", gap: 8 }}>
+            <button
+              onClick={() => setSpeed((s) => SPEEDS[(SPEEDS.indexOf(s) + 1) % SPEEDS.length])}
+              title="Скорость озвучки"
+              style={{ ...ctrlBtn, width: "auto", padding: "0 12px", fontSize: 13 }}
+            >
+              {speed}×
+            </button>
             <button onClick={toggleMusic} title="Фоновая музыка" style={ctrlBtn}>
               {musicOn ? "🔊" : "🎵"}
             </button>
@@ -494,6 +551,8 @@ export default function PersonaScene() {
               К вердикту ↓
             </button>
           </div>
+          {/* Реальная озвучка Gacrux; при 404 (файла ещё нет) — откат на браузерный голос. */}
+          <audio ref={audioElRef} onEnded={stopFlag} preload="none" style={{ display: "none" }} />
         </>
       )}
 
@@ -556,12 +615,13 @@ export default function PersonaScene() {
             pointerEvents: "none",
           }}
         />
-        {/* Дыхание-свечение вокруг фигуры */}
+        {/* Дыхание-свечение вокруг фигуры — цвет тела+искр из composeCharacter (З-22) */}
         <div
           style={{
             position: "absolute", inset: "-8%", borderRadius: "50%",
-            background: `radial-gradient(closest-side, rgba(90,80,255,${0.08 + frame * 0.012}), transparent 70%)`,
+            background: `radial-gradient(closest-side, ${hexA(glowHex, 0.06 + progress * 0.16 + (bloom - 1) * 0.03)}, ${hexA(sparkHex, 0.04 + progress * 0.05)} 46%, transparent 72%)`,
             pointerEvents: "none",
+            transition: "background .6s ease",
           }}
         />
       </div>
@@ -647,7 +707,7 @@ export default function PersonaScene() {
             )}
             {/* Кнопка «слушать» (заглушка: браузерный голос; реальный — Gacrux) */}
             <button
-              onClick={() => listen(speakTextFor(cur, curSection, variantOf(cur), full))}
+              onClick={() => listen({ pointCode: cur.code, variantKey: keymap[cur.code], text: speakTextFor(cur, curSection, variantOf(cur), full) })}
               style={{
                 marginTop: 14, padding: "8px 18px", borderRadius: 999, cursor: "pointer",
                 display: "inline-flex", alignItems: "center", gap: 8, pointerEvents: "auto",
@@ -764,7 +824,11 @@ export default function PersonaScene() {
           </div>
           <div style={{ display: "flex", gap: 10, justifyContent: "center", flexWrap: "wrap" }}>
             <button
-              onClick={() => listen(verdict.paragraphs.length ? `Вердикт. ${verdict.heading || ""}. ${verdict.paragraphs.join(" ")}` : `Вердикт для ${displayName}. Все тринадцать граней собраны.`)}
+              onClick={() => listen({
+                pointCode: "verdict",
+                variantKey: verdict.isAi ? null : (reading?.a1?.value != null ? String(reading.a1.value) : null),
+                text: verdict.paragraphs.length ? `Вердикт. ${verdict.heading || ""}. ${verdict.paragraphs.join(" ")}` : `Вердикт для ${displayName}. Все тринадцать граней собраны.`,
+              })}
               style={{ padding: "11px 22px", borderRadius: 999, cursor: "pointer", background: "rgba(51,230,224,.12)", border: "1px solid #33e6e0", color: "#33e6e0", fontSize: 14, fontWeight: 600 }}
             >
               {speaking ? "⏸ Остановить" : "▶ Слушать вердикт"}
