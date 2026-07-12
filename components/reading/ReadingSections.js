@@ -230,10 +230,18 @@ export function PsychomatrixSection({ section, innerRef }) {
   );
 }
 
-// Финальный вердикт: персональный ИИ-текст из ссылки (vd) или запасной из
-// банка по числу пути. Мини-презентация: крупный заголовок, панель, финал.
-export function VerdictSection({ card, reading, verdictBank, innerRef }) {
-  const fallback = verdictBank.values[String(reading.a1?.value)] || null;
+// Финальный вердикт. Приоритет: (1) персональный ИИ-текст из ссылки (card.vd);
+// (2) монолит по 3 пунктам A1×B1×A3 из verdict3.json (ключ «7-leo-3») — цельный
+// текст, банк наполняется офлайн (З-94); (3) запасной по числу пути (verdict.json).
+// Пока банк-3 пуст (кроме пилота), почти всегда работает п.3 — как раньше.
+export function VerdictSection({ card, reading, verdictBank, verdict3Bank, innerRef }) {
+  const sign = reading.b1?.name ? String(reading.b1.name).toLowerCase() : null;
+  const key3 =
+    reading.a1?.value != null && sign && reading.a3?.value != null
+      ? `${reading.a1.value}-${sign}-${reading.a3.value}`
+      : null;
+  const monolith = (key3 && verdict3Bank?.values?.[key3]) || null;
+  const fallback = monolith || verdictBank.values[String(reading.a1?.value)] || null;
   const paragraphs = card.vd
     ? String(card.vd).split(/\n\s*\n/).map((s) => s.trim()).filter(Boolean)
     : fallback

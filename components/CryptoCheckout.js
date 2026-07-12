@@ -13,6 +13,7 @@ import {
 } from "@/lib/notify";
 import { fetchCryptoAmount } from "@/lib/rates";
 import { encodePrefill } from "@/lib/readingLink";
+import { notifyOrder } from "@/lib/order";
 import { ymGoal } from "./Analytics";
 import QRCode from "./QRCode";
 import CoinIcon, { networkColor } from "./CoinIcon";
@@ -283,6 +284,27 @@ export default function CryptoCheckout({ tier, open, onClose }) {
       paidRef.current = true;
       ymGoal("checkout_paid");
       notifyTelegram(buildOrderText(true, selected, amountText));
+      const r = result || {};
+      notifyOrder({
+        code: order?.code,
+        tierName: tier?.name,
+        price: tier?.price,
+        method: "crypto",
+        coin: selected.coin,
+        network: selected.network,
+        address: selected.address,
+        memo: memoValue || "",
+        amount: amountText,
+        amountUsd: stableAmount,
+        firstName: r.firstName,
+        lastName: r.lastName,
+        gender: r.gender,
+        birthDate: r.birthDate,
+        birthTime: r.birthTime,
+        birthPlace: r.birthPlace,
+        brand: r.brand,
+        email: r.email,
+      });
     }
     const code = order?.code?.replace("#", "") || "";
     onClose?.();
@@ -305,6 +327,27 @@ export default function CryptoCheckout({ tier, open, onClose }) {
       paidRef.current = true;
       ymGoal("checkout_paid");
       notifyTelegram(buildOrderText(true, wiseWallet, `$${stableAmount}`));
+      const r = result || {};
+      notifyOrder({
+        code: order?.code,
+        tierName: tier?.name,
+        price: tier?.price,
+        method: "wise",
+        coin: wiseWallet.coin,
+        network: wiseWallet.network,
+        address: wiseWallet.address,
+        memo: order?.code || "",
+        amount: `$${stableAmount}`,
+        amountUsd: stableAmount,
+        firstName: r.firstName,
+        lastName: r.lastName,
+        gender: r.gender,
+        birthDate: r.birthDate,
+        birthTime: r.birthTime,
+        birthPlace: r.birthPlace,
+        brand: r.brand,
+        email: r.email,
+      });
     }
     const code = order?.code?.replace("#", "") || "";
     onClose?.();

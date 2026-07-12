@@ -1,0 +1,18 @@
+{
+  "_about": "NOMEN · Verdict bank keyed by 3 points — Life Path (A1) × Sun Sign (B1) × Expression (A3). Key = `<a1>-<sunSignSlug>-<a3>`, e.g. \"7-leo-3\". The reading page looks up verdict3.values[key]; if absent it falls back to verdict.json by A1 (current behaviour). Fill this via scripts/gen-verdicts3.mjs (1728 combos, English, generated offline — mass run is deferred, see З-94). Each value uses the same shape as other banks: { heading, paragraphs[] }.",
+  "code": "verdict3",
+  "keyFormat": "<a1>-<sunSignSlug>-<a3>",
+  "a1Values": [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 22, 33],
+  "a3Values": [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 22, 33],
+  "signSlugs": ["aries", "taurus", "gemini", "cancer", "leo", "virgo", "libra", "scorpio", "sagittarius", "capricorn", "aquarius", "pisces"],
+  "values": {
+    "7-leo-3": {
+      "heading": "The Quiet Star",
+      "paragraphs": [
+        "You are a rare contradiction, and it is your gift. Your Life Path 7 pulls you inward — you are a seeker who trusts depth over dazzle, who needs solitude to hear your own truth. Yet your Leo Sun was born for the light: to be seen, to lead from the front, to warm a room simply by walking into it. Most people are one or the other. You are both — a private mind inside a public heart.",
+        "Your Expression 3 is the bridge between those two worlds. It is the channel that carries your inner depth out into the open — through words, images, ideas, performance. Where a quieter chart would keep its insight hidden, you are built to give yours a voice. When you create, you stop having to choose between being deep and being seen: your Leo shine and your 7's substance finally move as one thing.",
+        "Your work in this life is to refuse the two easy escapes — hiding your brilliance out of 7's hunger for privacy, or performing a shine with no depth beneath it. When you honour both the seeker and the star, you become someone people don't just admire, but trust. That is the whole shape of you: a light that has actually been somewhere."
+      ]
+    }
+  }
+}

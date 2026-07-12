@@ -19,6 +19,7 @@ import bankC1 from "@/data/readings/c1.json";
 import bankC2 from "@/data/readings/c2.json";
 import bankD1 from "@/data/readings/d1.json";
 import verdictBank from "@/data/readings/verdict.json";
+import verdict3Bank from "@/data/readings/verdict3.json";
 import {
   ReadingHero,
   PointSection,
@@ -287,6 +288,7 @@ export default function ReadingPage() {
         card={card}
         reading={reading}
         verdictBank={verdictBank}
+        verdict3Bank={verdict3Bank}
         innerRef={(el) => (sectionRefs.current.VERDICT = el)}
       />
 
