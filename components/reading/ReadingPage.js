@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import dynamic from "next/dynamic";
-import { decodeReadingToken } from "@/lib/readingLink";
+import { decodeReadingToken, extractReadingCode, fetchReadingByCode } from "@/lib/readingLink";
 import { calculateReading, a10Bucket } from "@/lib/teaser";
 import methodology from "@/data/methodology.json";
 import bankA1 from "@/data/readings/a1.json";
@@ -173,14 +173,18 @@ export default function ReadingPage() {
   const sceneRef = useRef(null);
   const sectionRefs = useRef({});
 
-  // Разбор ссылки: фрагмент (#r=) или query (?r=) — по паттерну OrderRef,
-  // без useSearchParams (совместимо со статическим экспортом).
+  // Разбор ссылки. Два формата:
+  //  · короткая /r/<code> (или ?c=) — карточка тянется с сервера по коду;
+  //  · длинная #r=… (или ?r=) — карточка зашита в самой ссылке (самодостаточна).
+  // Без useSearchParams — совместимо со статическим экспортом.
   useEffect(() => {
     let alive = true;
     (async () => {
       try {
-        const raw = window.location.hash || window.location.search;
-        const c = await decodeReadingToken(raw);
+        const code = extractReadingCode(window.location);
+        const c = code
+          ? await fetchReadingByCode(code)
+          : await decodeReadingToken(window.location.hash || window.location.search);
         if (alive) {
           setCard(c);
           setState("ok");

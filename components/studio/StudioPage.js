@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import {
   decodePrefill,
   encodeReadingLink,
+  saveReadingLink,
 } from "@/lib/readingLink";
 import { calculateReading } from "@/lib/teaser";
 import methodology from "@/data/methodology.json";
@@ -137,6 +138,7 @@ export default function StudioPage() {
   const [genBusy, setGenBusy] = useState(false);
   const [genNote, setGenNote] = useState("");
   const [link, setLink] = useState("");
+  const [linkNote, setLinkNote] = useState("");
   const [copied, setCopied] = useState("");
   const copyTimer = useRef(null);
 
@@ -197,9 +199,20 @@ export default function StudioPage() {
     if (card.g) payload.g = card.g;
     if (card.oc) payload.oc = card.oc.trim();
     if (verdict.trim()) payload.vd = verdict.trim();
-    const url = await encodeReadingLink(payload, window.location.origin);
-    setLink(url);
-    return url;
+    // Короткая ссылка: разбор сохраняется в базе (n8n), клиенту уходит
+    // nomen.website/r/имя-номерзаказа. Сервер недоступен → запасная длинная
+    // #r= (самодостаточна, тоже рабочая) — студия не должна вставать колом.
+    try {
+      const { url } = await saveReadingLink(payload, card.em);
+      setLink(url);
+      setLinkNote("");
+      return url;
+    } catch {
+      const url = await encodeReadingLink(payload, window.location.origin);
+      setLink(url);
+      setLinkNote("⚠️ Сервер недоступен — собрал запасную длинную ссылку (тоже рабочая).");
+      return url;
+    }
   };
 
   const copy = async (what, text) => {
@@ -434,6 +447,7 @@ export default function StudioPage() {
                 </>
               )}
             </div>
+            {linkNote && <p className="mt-2 text-xs text-amber-400/90">{linkNote}</p>}
             {link && (
               <div className="mt-4 flex flex-col items-start gap-4 sm:flex-row">
                 <div className="rounded-lg bg-white p-2">
