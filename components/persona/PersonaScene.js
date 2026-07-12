@@ -390,6 +390,10 @@ export default function PersonaScene() {
         const el = document.scrollingElement || document.documentElement;
         const max = el.scrollHeight - el.clientHeight;
         const p = max > 0 ? el.scrollTop / max : 0;
+        // Любой скролл снимает «пришпиленную» кликом панель инвентаря — иначе
+        // затемнение и текст-блок застревают (не убираются, персонажа не видно,
+        // «обратного скролла нет»). После снятия сцену снова ведёт скролл.
+        if (panelIdxRef.current !== null) { panelIdxRef.current = null; setPanelIdx(null); }
         const scaled = p * (N + 0.5);
         const vw = window.innerWidth, vh = window.innerHeight;
         const vmin = Math.min(vw, vh);
@@ -459,8 +463,12 @@ export default function PersonaScene() {
 
   // Блокируем скролл страницы под интро-экраном + гасим музыку/речь при уходе.
   useEffect(() => {
-    document.body.style.overflow = intro || recapOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    const lock = intro || recapOpen;
+    // Блокируем и body, и html: реальный скроллер сцены — documentElement,
+    // иначе оверлей «стоит», а сцена прокручивается за ним (скролл будто не работает).
+    document.body.style.overflow = lock ? "hidden" : "";
+    document.documentElement.style.overflow = lock ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; document.documentElement.style.overflow = ""; };
   }, [intro, recapOpen]);
   useEffect(() => () => {
     if (musicRef.current) musicRef.current.stop();
@@ -698,7 +706,7 @@ export default function PersonaScene() {
               background: "rgba(10,8,24,.78)", border: "1px solid #241d3e",
               backdropFilter: "blur(8px)", color: "#eaf0ff", textAlign: "center",
               pointerEvents: "auto",
-              ...(full ? { maxHeight: "74vh", overflowY: "auto" } : {}),
+              ...(full ? { maxHeight: "74vh", overflowY: "auto", overscrollBehavior: "contain", WebkitOverflowScrolling: "touch" } : {}),
             }}
           >
             <div style={{ color: accent(textIdx), display: "flex", justifyContent: "center", height: 44, alignItems: "center" }}>
@@ -860,7 +868,13 @@ export default function PersonaScene() {
             )}
             {byCode.size > 0 && (
               <button
-                onClick={() => setRecapOpen(true)}
+                onClick={() => {
+                  // Снимаем пришпиленную панель, чтобы её слои не мешали оверлею.
+                  setPanelIdx(null); panelIdxRef.current = null;
+                  if (panelBoxRef.current) panelBoxRef.current.style.opacity = 0;
+                  if (dimRef.current) dimRef.current.style.opacity = 0;
+                  setRecapOpen(true);
+                }}
                 style={{ padding: "11px 22px", borderRadius: 999, cursor: "pointer", background: "rgba(138,107,255,.14)", border: "1px solid #8a6bff", color: "#c9b8ff", fontSize: 14, fontWeight: 600 }}
               >
                 Читать полный разбор →
@@ -879,7 +893,7 @@ export default function PersonaScene() {
       {/* ── ФИНАЛ · «доработка»: полный разбор — все 13 пунктов целиком + вердикт.
            Текст тот же (единый источник buildReading), прокручиваемый оверлей. ── */}
       {recapOpen && (
-        <div style={{ position: "fixed", inset: 0, zIndex: 50, background: "rgba(5,4,15,0.97)", overflowY: "auto", WebkitOverflowScrolling: "touch" }}>
+        <div style={{ position: "fixed", inset: 0, zIndex: 60, height: "100dvh", background: "rgba(5,4,15,0.97)", overflowY: "auto", overscrollBehavior: "contain", WebkitOverflowScrolling: "touch" }}>
           <div style={{ maxWidth: 640, margin: "0 auto", padding: "0 18px 64px" }}>
             <div style={{ position: "sticky", top: 0, background: "rgba(5,4,15,0.97)", display: "flex", justifyContent: "space-between", alignItems: "center", padding: "18px 0 14px", zIndex: 1 }}>
               <div style={{ fontSize: 12.5, letterSpacing: "0.24em", color: "#33e6e0" }}>ПОЛНЫЙ РАЗБОР · {displayName}</div>
