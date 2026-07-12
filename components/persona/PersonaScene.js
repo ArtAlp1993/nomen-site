@@ -664,9 +664,12 @@ export default function PersonaScene() {
         {POINTS.map((p, i) => (
           <div
             key={p.code}
-            ref={(el) => (iconRefs.current[i] = el)}
+            // opacity ведём ТОЛЬКО через DOM в скролл-обработчике (без transition и без
+            // opacity в style-пропе) — иначе React сбрасывает её на ре-рендере и значок
+            // «тянется» 0.35с шлейфом → задвоение/залипание. Начальное 0 ставим в ref.
+            ref={(el) => { iconRefs.current[i] = el; if (el) el.style.opacity = "0"; }}
             style={{
-              position: "absolute", left: 0, top: 0, opacity: 0,
+              position: "absolute", left: 0, top: 0,
               width: 64, height: 64, borderRadius: 16,
               display: "flex", alignItems: "center", justifyContent: "center",
               color: accent(i), background: "rgba(10,8,24,.55)",
@@ -674,7 +677,6 @@ export default function PersonaScene() {
               boxShadow: `0 0 22px ${accent(i, 0.4)}`,
               backdropFilter: "blur(4px)",
               willChange: "transform, opacity",
-              transition: "opacity .35s ease",
             }}
           >
             <VariantGlyph point={p} variant={variantOf(p)} size={46} hasImg={haveIcon[p.code]} />

@@ -1125,7 +1125,7 @@
       "path": "public/persona/icons/a10/1_empty.png",
       "kind": "variant-icon",
       "present": false,
-      "symbol": "1○",
+      "symbol": "▦",
       "label": "Quiet Will",
       "variantType": "grid",
       "prompt": "NOMEN style: luminous nebula-energy being on near-black cosmic background (#05040f), soft volumetric glow, fine particle filaments, neon indigo/turquoise palette, no text, no letters, centered, symmetrical, high detail, painterly-sci-fi.\n[ИКОНКА пункт A10 · вариант \"1_empty\"] Transparent background PNG, single centered emblem, ~512px, glowing neon line-sigil. EN: Pythagorean-square cell 1, dim/empty — a single node-glyph of that trait."
@@ -1136,7 +1136,7 @@
       "path": "public/persona/icons/a10/1_some.png",
       "kind": "variant-icon",
       "present": false,
-      "symbol": "1●",
+      "symbol": "▦",
       "label": "Steady Will",
       "variantType": "grid",
       "prompt": "NOMEN style: luminous nebula-energy being on near-black cosmic background (#05040f), soft volumetric glow, fine particle filaments, neon indigo/turquoise palette, no text, no letters, centered, symmetrical, high detail, painterly-sci-fi.\n[ИКОНКА пункт A10 · вариант \"1_some\"] Transparent background PNG, single centered emblem, ~512px, glowing neon line-sigil. EN: Pythagorean-square cell 1, softly lit — a single node-glyph of that trait."
@@ -1147,7 +1147,7 @@
       "path": "public/persona/icons/a10/1_many.png",
       "kind": "variant-icon",
       "present": false,
-      "symbol": "1●●●",
+      "symbol": "▦",
       "label": "Iron Will",
       "variantType": "grid",
       "prompt": "NOMEN style: luminous nebula-energy being on near-black cosmic background (#05040f), soft volumetric glow, fine particle filaments, neon indigo/turquoise palette, no text, no letters, centered, symmetrical, high detail, painterly-sci-fi.\n[ИКОНКА пункт A10 · вариант \"1_many\"] Transparent background PNG, single centered emblem, ~512px, glowing neon line-sigil. EN: Pythagorean-square cell 1, strongly lit — a single node-glyph of that trait."
@@ -1158,7 +1158,7 @@
       "path": "public/persona/icons/a10/2_empty.png",
       "kind": "variant-icon",
       "present": false,
-      "symbol": "2○",
+      "symbol": "▦",
       "label": "Recharge Required",
       "variantType": "grid",
       "prompt": "NOMEN style: luminous nebula-energy being on near-black cosmic background (#05040f), soft volumetric glow, fine particle filaments, neon indigo/turquoise palette, no text, no letters, centered, symmetrical, high detail, painterly-sci-fi.\n[ИКОНКА пункт A10 · вариант \"2_empty\"] Transparent background PNG, single centered emblem, ~512px, glowing neon line-sigil. EN: Pythagorean-square cell 2, dim/empty — a single node-glyph of that trait."
@@ -1169,7 +1169,7 @@
       "path": "public/persona/icons/a10/2_some.png",
       "kind": "variant-icon",
       "present": false,
-      "symbol": "2●",
+      "symbol": "▦",
       "label": "Steady Current",
       "variantType": "grid",
       "prompt": "NOMEN style: luminous nebula-energy being on near-black cosmic background (#05040f), soft volumetric glow, fine particle filaments, neon indigo/turquoise palette, no text, no letters, centered, symmetrical, high detail, painterly-sci-fi.\n[ИКОНКА пункт A10 · вариант \"2_some\"] Transparent background PNG, single centered emblem, ~512px, glowing neon line-sigil. EN: Pythagorean-square cell 2, softly lit — a single node-glyph of that trait."
@@ -1180,7 +1180,7 @@
       "path": "public/persona/icons/a10/2_many.png",
       "kind": "variant-icon",
       "present": false,
-      "symbol": "2●●●",
+      "symbol": "▦",
       "label": "Live Wire",
       "variantType": "grid",
       "prompt": "NOMEN style: luminous nebula-energy being on near-black cosmic background (#05040f), soft volumetric glow, fine particle filaments, neon indigo/turquoise palette, no text, no letters, centered, symmetrical, high detail, painterly-sci-fi.\n[ИКОНКА пункт A10 · вариант \"2_many\"] Transparent background PNG, single centered emblem, ~512px, glowing neon line-sigil. EN: Pythagorean-square cell 2, strongly lit — a single node-glyph of that trait."
@@ -1191,7 +1191,7 @@
       "path": "public/persona/icons/a10/3_empty.png",
       "kind": "variant-icon",
       "present": false,
-      "symbol": "3○",
+      "symbol": "▦",
       "label": "Words Over Formulas",
       "variantType": "grid",
       "prompt": "NOMEN style: luminous nebula-energy being on near-black cosmic background (#05040f), soft volumetric glow, fine particle filaments, neon indigo/turquoise palette, no text, no letters, centered, symmetrical, high detail, painterly-sci-fi.\n[ИКОНКА пункт A10 · вариант \"3_empty\"] Transparent background PNG, single centered emblem, ~512px, glowing neon line-sigil. EN: Pythagorean-square cell 3, dim/empty — a single node-glyph of that trait."
@@ -1202,7 +1202,7 @@
       "path": "public/persona/icons/a10/3_some.png",
       "kind": "variant-icon",
       "present": false,
-      "symbol": "3●",
+      "symbol": "▦",
       "label": "Working Logic",
       "variantType": "grid",
       "prompt": "NOMEN style: luminous nebula-energy being on near-black cosmic background (#05040f), soft volumetric glow, fine particle filaments, neon indigo/turquoise palette, no text, no letters, centered, symmetrical, high detail, painterly-sci-fi.\n[ИКОНКА пункт A10 · вариант \"3_some\"] Transparent background PNG, single centered emblem, ~512px, glowing neon line-sigil. EN: Pythagorean-square cell 3, softly lit — a single node-glyph of that trait."
@@ -1213,7 +1213,7 @@
       "path": "public/persona/icons/a10/3_many.png",
       "kind": "variant-icon",
       "present": false,
-      "symbol": "3●●●",
+      "symbol": "▦",
       "label": "The Analyst",
       "variantType": "grid",
       "prompt": "NOMEN style: luminous nebula-energy being on near-black cosmic background (#05040f), soft volumetric glow, fine particle filaments, neon indigo/turquoise palette, no text, no letters, centered, symmetrical, high detail, painterly-sci-fi.\n[ИКОНКА пункт A10 · вариант \"3_many\"] Transparent background PNG, single centered emblem, ~512px, glowing neon line-sigil. EN: Pythagorean-square cell 3, strongly lit — a single node-glyph of that trait."
@@ -1224,7 +1224,7 @@
       "path": "public/persona/icons/a10/4_empty.png",
       "kind": "variant-icon",
       "present": false,
-      "symbol": "4○",
+      "symbol": "▦",
       "label": "Health by Design",
       "variantType": "grid",
       "prompt": "NOMEN style: luminous nebula-energy being on near-black cosmic background (#05040f), soft volumetric glow, fine particle filaments, neon indigo/turquoise palette, no text, no letters, centered, symmetrical, high detail, painterly-sci-fi.\n[ИКОНКА пункт A10 · вариант \"4_empty\"] Transparent background PNG, single centered emblem, ~512px, glowing neon line-sigil. EN: Pythagorean-square cell 4, dim/empty — a single node-glyph of that trait."
@@ -1235,7 +1235,7 @@
       "path": "public/persona/icons/a10/4_some.png",
       "kind": "variant-icon",
       "present": false,
-      "symbol": "4●",
+      "symbol": "▦",
       "label": "Built Solid",
       "variantType": "grid",
       "prompt": "NOMEN style: luminous nebula-energy being on near-black cosmic background (#05040f), soft volumetric glow, fine particle filaments, neon indigo/turquoise palette, no text, no letters, centered, symmetrical, high detail, painterly-sci-fi.\n[ИКОНКА пункт A10 · вариант \"4_some\"] Transparent background PNG, single centered emblem, ~512px, glowing neon line-sigil. EN: Pythagorean-square cell 4, softly lit — a single node-glyph of that trait."
@@ -1246,7 +1246,7 @@
       "path": "public/persona/icons/a10/4_many.png",
       "kind": "variant-icon",
       "present": false,
-      "symbol": "4●●●",
+      "symbol": "▦",
       "label": "Built Like a Fortress",
       "variantType": "grid",
       "prompt": "NOMEN style: luminous nebula-energy being on near-black cosmic background (#05040f), soft volumetric glow, fine particle filaments, neon indigo/turquoise palette, no text, no letters, centered, symmetrical, high detail, painterly-sci-fi.\n[ИКОНКА пункт A10 · вариант \"4_many\"] Transparent background PNG, single centered emblem, ~512px, glowing neon line-sigil. EN: Pythagorean-square cell 4, strongly lit — a single node-glyph of that trait."
@@ -1257,7 +1257,7 @@
       "path": "public/persona/icons/a10/5_empty.png",
       "kind": "variant-icon",
       "present": false,
-      "symbol": "5○",
+      "symbol": "▦",
       "label": "Earned Instinct",
       "variantType": "grid",
       "prompt": "NOMEN style: luminous nebula-energy being on near-black cosmic background (#05040f), soft volumetric glow, fine particle filaments, neon indigo/turquoise palette, no text, no letters, centered, symmetrical, high detail, painterly-sci-fi.\n[ИКОНКА пункт A10 · вариант \"5_empty\"] Transparent background PNG, single centered emblem, ~512px, glowing neon line-sigil. EN: Pythagorean-square cell 5, dim/empty — a single node-glyph of that trait."
@@ -1268,7 +1268,7 @@
       "path": "public/persona/icons/a10/5_some.png",
       "kind": "variant-icon",
       "present": false,
-      "symbol": "5●",
+      "symbol": "▦",
       "label": "Working Radar",
       "variantType": "grid",
       "prompt": "NOMEN style: luminous nebula-energy being on near-black cosmic background (#05040f), soft volumetric glow, fine particle filaments, neon indigo/turquoise palette, no text, no letters, centered, symmetrical, high detail, painterly-sci-fi.\n[ИКОНКА пункт A10 · вариант \"5_some\"] Transparent background PNG, single centered emblem, ~512px, glowing neon line-sigil. EN: Pythagorean-square cell 5, softly lit — a single node-glyph of that trait."
@@ -1279,7 +1279,7 @@
       "path": "public/persona/icons/a10/5_many.png",
       "kind": "variant-icon",
       "present": false,
-      "symbol": "5●●●",
+      "symbol": "▦",
       "label": "Second Sight",
       "variantType": "grid",
       "prompt": "NOMEN style: luminous nebula-energy being on near-black cosmic background (#05040f), soft volumetric glow, fine particle filaments, neon indigo/turquoise palette, no text, no letters, centered, symmetrical, high detail, painterly-sci-fi.\n[ИКОНКА пункт A10 · вариант \"5_many\"] Transparent background PNG, single centered emblem, ~512px, glowing neon line-sigil. EN: Pythagorean-square cell 5, strongly lit — a single node-glyph of that trait."
@@ -1290,7 +1290,7 @@
       "path": "public/persona/icons/a10/6_empty.png",
       "kind": "variant-icon",
       "present": false,
-      "symbol": "6○",
+      "symbol": "▦",
       "label": "Head Over Hands",
       "variantType": "grid",
       "prompt": "NOMEN style: luminous nebula-energy being on near-black cosmic background (#05040f), soft volumetric glow, fine particle filaments, neon indigo/turquoise palette, no text, no letters, centered, symmetrical, high detail, painterly-sci-fi.\n[ИКОНКА пункт A10 · вариант \"6_empty\"] Transparent background PNG, single centered emblem, ~512px, glowing neon line-sigil. EN: Pythagorean-square cell 6, dim/empty — a single node-glyph of that trait."
@@ -1301,7 +1301,7 @@
       "path": "public/persona/icons/a10/6_some.png",
       "kind": "variant-icon",
       "present": false,
-      "symbol": "6●",
+      "symbol": "▦",
       "label": "Capable Hands",
       "variantType": "grid",
       "prompt": "NOMEN style: luminous nebula-energy being on near-black cosmic background (#05040f), soft volumetric glow, fine particle filaments, neon indigo/turquoise palette, no text, no letters, centered, symmetrical, high detail, painterly-sci-fi.\n[ИКОНКА пункт A10 · вариант \"6_some\"] Transparent background PNG, single centered emblem, ~512px, glowing neon line-sigil. EN: Pythagorean-square cell 6, softly lit — a single node-glyph of that trait."
@@ -1312,7 +1312,7 @@
       "path": "public/persona/icons/a10/6_many.png",
       "kind": "variant-icon",
       "present": false,
-      "symbol": "6●●●",
+      "symbol": "▦",
       "label": "Born Maker",
       "variantType": "grid",
       "prompt": "NOMEN style: luminous nebula-energy being on near-black cosmic background (#05040f), soft volumetric glow, fine particle filaments, neon indigo/turquoise palette, no text, no letters, centered, symmetrical, high detail, painterly-sci-fi.\n[ИКОНКА пункт A10 · вариант \"6_many\"] Transparent background PNG, single centered emblem, ~512px, glowing neon line-sigil. EN: Pythagorean-square cell 6, strongly lit — a single node-glyph of that trait."
@@ -1323,7 +1323,7 @@
       "path": "public/persona/icons/a10/7_empty.png",
       "kind": "variant-icon",
       "present": false,
-      "symbol": "7○",
+      "symbol": "▦",
       "label": "Self-Made Luck",
       "variantType": "grid",
       "prompt": "NOMEN style: luminous nebula-energy being on near-black cosmic background (#05040f), soft volumetric glow, fine particle filaments, neon indigo/turquoise palette, no text, no letters, centered, symmetrical, high detail, painterly-sci-fi.\n[ИКОНКА пункт A10 · вариант \"7_empty\"] Transparent background PNG, single centered emblem, ~512px, glowing neon line-sigil. EN: Pythagorean-square cell 7, dim/empty — a single node-glyph of that trait."
@@ -1334,7 +1334,7 @@
       "path": "public/persona/icons/a10/7_some.png",
       "kind": "variant-icon",
       "present": false,
-      "symbol": "7●",
+      "symbol": "▦",
       "label": "A Lucky Streak",
       "variantType": "grid",
       "prompt": "NOMEN style: luminous nebula-energy being on near-black cosmic background (#05040f), soft volumetric glow, fine particle filaments, neon indigo/turquoise palette, no text, no letters, centered, symmetrical, high detail, painterly-sci-fi.\n[ИКОНКА пункт A10 · вариант \"7_some\"] Transparent background PNG, single centered emblem, ~512px, glowing neon line-sigil. EN: Pythagorean-square cell 7, softly lit — a single node-glyph of that trait."
@@ -1345,7 +1345,7 @@
       "path": "public/persona/icons/a10/7_many.png",
       "kind": "variant-icon",
       "present": false,
-      "symbol": "7●●●",
+      "symbol": "▦",
       "label": "The Gifted One",
       "variantType": "grid",
       "prompt": "NOMEN style: luminous nebula-energy being on near-black cosmic background (#05040f), soft volumetric glow, fine particle filaments, neon indigo/turquoise palette, no text, no letters, centered, symmetrical, high detail, painterly-sci-fi.\n[ИКОНКА пункт A10 · вариант \"7_many\"] Transparent background PNG, single centered emblem, ~512px, glowing neon line-sigil. EN: Pythagorean-square cell 7, strongly lit — a single node-glyph of that trait."
@@ -1356,7 +1356,7 @@
       "path": "public/persona/icons/a10/8_empty.png",
       "kind": "variant-icon",
       "present": false,
-      "symbol": "8○",
+      "symbol": "▦",
       "label": "Duty in Training",
       "variantType": "grid",
       "prompt": "NOMEN style: luminous nebula-energy being on near-black cosmic background (#05040f), soft volumetric glow, fine particle filaments, neon indigo/turquoise palette, no text, no letters, centered, symmetrical, high detail, painterly-sci-fi.\n[ИКОНКА пункт A10 · вариант \"8_empty\"] Transparent background PNG, single centered emblem, ~512px, glowing neon line-sigil. EN: Pythagorean-square cell 8, dim/empty — a single node-glyph of that trait."
@@ -1367,7 +1367,7 @@
       "path": "public/persona/icons/a10/8_some.png",
       "kind": "variant-icon",
       "present": false,
-      "symbol": "8●",
+      "symbol": "▦",
       "label": "Quietly Reliable",
       "variantType": "grid",
       "prompt": "NOMEN style: luminous nebula-energy being on near-black cosmic background (#05040f), soft volumetric glow, fine particle filaments, neon indigo/turquoise palette, no text, no letters, centered, symmetrical, high detail, painterly-sci-fi.\n[ИКОНКА пункт A10 · вариант \"8_some\"] Transparent background PNG, single centered emblem, ~512px, glowing neon line-sigil. EN: Pythagorean-square cell 8, softly lit — a single node-glyph of that trait."
@@ -1378,7 +1378,7 @@
       "path": "public/persona/icons/a10/8_many.png",
       "kind": "variant-icon",
       "present": false,
-      "symbol": "8●●●",
+      "symbol": "▦",
       "label": "The One Who Carries",
       "variantType": "grid",
       "prompt": "NOMEN style: luminous nebula-energy being on near-black cosmic background (#05040f), soft volumetric glow, fine particle filaments, neon indigo/turquoise palette, no text, no letters, centered, symmetrical, high detail, painterly-sci-fi.\n[ИКОНКА пункт A10 · вариант \"8_many\"] Transparent background PNG, single centered emblem, ~512px, glowing neon line-sigil. EN: Pythagorean-square cell 8, strongly lit — a single node-glyph of that trait."
@@ -1389,7 +1389,7 @@
       "path": "public/persona/icons/a10/9_empty.png",
       "kind": "variant-icon",
       "present": false,
-      "symbol": "9○",
+      "symbol": "▦",
       "label": "Memory With a System",
       "variantType": "grid",
       "prompt": "NOMEN style: luminous nebula-energy being on near-black cosmic background (#05040f), soft volumetric glow, fine particle filaments, neon indigo/turquoise palette, no text, no letters, centered, symmetrical, high detail, painterly-sci-fi.\n[ИКОНКА пункт A10 · вариант \"9_empty\"] Transparent background PNG, single centered emblem, ~512px, glowing neon line-sigil. EN: Pythagorean-square cell 9, dim/empty — a single node-glyph of that trait."
@@ -1400,7 +1400,7 @@
       "path": "public/persona/icons/a10/9_some.png",
       "kind": "variant-icon",
       "present": false,
-      "symbol": "9●",
+      "symbol": "▦",
       "label": "Quick Recall",
       "variantType": "grid",
       "prompt": "NOMEN style: luminous nebula-energy being on near-black cosmic background (#05040f), soft volumetric glow, fine particle filaments, neon indigo/turquoise palette, no text, no letters, centered, symmetrical, high detail, painterly-sci-fi.\n[ИКОНКА пункт A10 · вариант \"9_some\"] Transparent background PNG, single centered emblem, ~512px, glowing neon line-sigil. EN: Pythagorean-square cell 9, softly lit — a single node-glyph of that trait."
@@ -1411,7 +1411,7 @@
       "path": "public/persona/icons/a10/9_many.png",
       "kind": "variant-icon",
       "present": false,
-      "symbol": "9●●●",
+      "symbol": "▦",
       "label": "Steel-Trap Mind",
       "variantType": "grid",
       "prompt": "NOMEN style: luminous nebula-energy being on near-black cosmic background (#05040f), soft volumetric glow, fine particle filaments, neon indigo/turquoise palette, no text, no letters, centered, symmetrical, high detail, painterly-sci-fi.\n[ИКОНКА пункт A10 · вариант \"9_many\"] Transparent background PNG, single centered emblem, ~512px, glowing neon line-sigil. EN: Pythagorean-square cell 9, strongly lit — a single node-glyph of that trait."

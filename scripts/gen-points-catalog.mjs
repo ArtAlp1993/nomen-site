@@ -72,9 +72,9 @@ function symbolFor(vtype, key, values) {
       return { stub: (type === "passion" ? "P" : "L") + n, kind: "label" };
     }
     case "grid": {
-      const [n, fill] = key.split("_");
-      const dot = fill === "many" ? "●●●" : fill === "some" ? "●" : "○";
-      return { stub: `${n}${dot}`, kind: "label" };
+      // Чистый значок психоматрицы (какая ячейка сильна — видно в панели разбора);
+      // «1●●●» как летящая иконка читался мусором. ▦ = квадрат Пифагора.
+      return { stub: "▦", kind: "glyph" };
     }
     default: return { stub: key, kind: "label" };
   }
