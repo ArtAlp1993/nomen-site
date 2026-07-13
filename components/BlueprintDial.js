@@ -78,7 +78,7 @@ export default function BlueprintDial({ accent, active, webglFalse }) {
       <div
         className={
           isMobile
-            ? "relative left-1/2 aspect-square w-[136vw] max-w-[560px] -translate-x-1/2"
+            ? "relative left-1/2 aspect-square w-[130vw] max-w-[560px] -translate-x-1/2"
             : "relative mx-auto aspect-square w-full max-w-[540px] sm:max-w-[720px]"
         }
       >
