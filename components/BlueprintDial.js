@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import { useEffect, useState } from "react";
 import { iconShapes } from "./PointIcon";
 import methodology from "@/data/methodology.json";
 
@@ -60,9 +61,27 @@ const RING_PATH =
   PTS.map((p, i) => `${i ? "L" : "M"}${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(" ") + " Z";
 
 export default function BlueprintDial({ accent, active, webglFalse }) {
+  // На мобильной весь циферблат крупнее экрана (ворсинки почти касаются краёв),
+  // а радужка «раздута» zoom-ом, чтобы заполнить зазор до кольца значков.
+  // Десктоп не трогаем — он одобрен (zoom 1, блок в своей колонке).
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 640px)");
+    const sync = () => setIsMobile(mq.matches);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
+
   return (
     <>
-      <div className="relative mx-auto aspect-square w-full max-w-[540px] sm:max-w-[720px]">
+      <div
+        className={
+          isMobile
+            ? "relative left-1/2 aspect-square w-[136vw] max-w-[560px] -translate-x-1/2"
+            : "relative mx-auto aspect-square w-full max-w-[540px] sm:max-w-[720px]"
+        }
+      >
         {/* Шарик-радужка по центру, крупный; края тают в кольцо. */}
         <div
           className="absolute left-1/2 top-1/2 aspect-square w-[74%] -translate-x-1/2 -translate-y-1/2"
@@ -79,7 +98,7 @@ export default function BlueprintDial({ accent, active, webglFalse }) {
               className="h-full w-full animate-[spin_160s_linear_infinite] object-contain"
             />
           ) : active ? (
-            <BlueprintScene accent={accent} />
+            <BlueprintScene accent={accent} config={isMobile ? { zoom: 1.5 } : undefined} />
           ) : null}
         </div>
 

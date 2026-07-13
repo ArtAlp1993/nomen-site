@@ -238,9 +238,14 @@ export default function BlueprintScene({ accent, config }) {
     <Canvas
       dpr={[1, 1.5]}
       camera={{ position: [0, 0, 8.8], fov: 42 }}
-      gl={{ antialias: false, alpha: false, powerPreference: "high-performance" }}
+      gl={{ antialias: false, alpha: true, powerPreference: "high-performance" }}
       style={{ width: "100%", height: "100%" }}
       onCreated={({ gl }) => {
+        // Прозрачный фон: непрозрачная заливка #05040f перекрывала бегущую
+        // спираль за циферблатом («мёртвый квадрат» вокруг радужки). Теперь
+        // канвас прозрачен — фон страницы (спираль) виден, радужка светится
+        // поверх аддитивно. Тёмный «зрачок» — отдельный непрозрачный диск.
+        gl.setClearColor(0x000000, 0);
         gl.domElement.addEventListener(
           "webglcontextlost",
           (e) => e.preventDefault(),
@@ -248,8 +253,6 @@ export default function BlueprintScene({ accent, config }) {
         );
       }}
     >
-      <color attach="background" args={[BG]} />
-
       <ResponsiveCamera />
       <FiberIris accent={accent} reduce={reduce} cfg={cfg} />
 

@@ -126,7 +126,9 @@ export default function MethodologyDiagram() {
 
       {/* Единый «циферблат» (Артём 13.07): кольцо из 13 пунктов-значков вокруг
           шарика-радужки, «YOU» в зрачке. sceneRef — пауза WebGL вне вьюпорта. */}
-      <div ref={sceneRef} className="mt-4">
+      {/* -mx-6 sm:mx-0: на мобиле циферблат выходит за паддинги секции во всю
+          ширину экрана; overflow-x-clip обрезает то, что шире экрана. */}
+      <div ref={sceneRef} className="mt-4 -mx-6 overflow-x-clip sm:mx-0">
         <BlueprintDial
           accent={accent}
           active={sceneNear && webgl === true}
