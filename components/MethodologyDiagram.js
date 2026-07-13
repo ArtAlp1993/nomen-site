@@ -172,38 +172,41 @@ export default function MethodologyDiagram() {
                       <span className="shrink-0 sm:mt-0.5" style={{ color }}>
                         <PointIcon code={p.code} size={17} />
                       </span>
-                      <span className={wide ? "sm:max-w-[10rem]" : ""}>
-                        {(() => {
-                          const entry = labels[p.code];
-                          const text = entry ? entry.label : p.title;
-                          // Демо-страница до квиза: название пункта открыто
-                          // (нечего скрывать — значений ещё нет).
-                          if (!personalized) {
-                            return <span>{text}</span>;
-                          }
-                          // Квиз пройден: нижний блок под глазом — цельная
-                          // «запертая карта». Заблюрено ВСЁ (включая бесплатную
-                          // четвёрку — её уже показали наверху в тизере), при
-                          // доскролле весь блок приоткрывается на секунду и гаснет.
-                          return (
-                            <span
-                              className={`select-none text-foreground transition-all duration-500 ${
-                                lowerPeek
-                                  ? "opacity-100 blur-0"
-                                  : "opacity-70 blur-[5px]"
-                              }`}
-                              aria-hidden={!lowerPeek}
-                            >
-                              {text}
-                            </span>
-                          );
-                        })()}
-                      </span>
-                      {/* ⓘ — попап «какую боль закрывает этот пункт». */}
+                      {/* Кликабельно само название пункта → попап «какую боль
+                          закрывает». Отдельный кружок-ⓘ не нужен: подсветка
+                          названия при наведении и есть сигнал кликабельности. */}
                       <InfoPopover
                         title={p.title}
                         eyebrow={block}
-                        className="ml-1.5 shrink-0 self-center"
+                        trigger={
+                          <span className={wide ? "sm:max-w-[10rem]" : ""}>
+                            {(() => {
+                              const entry = labels[p.code];
+                              const text = entry ? entry.label : p.title;
+                              // Демо-страница до квиза: название пункта открыто
+                              // (нечего скрывать — значений ещё нет).
+                              if (!personalized) {
+                                return <span>{text}</span>;
+                              }
+                              // Квиз пройден: нижний блок под глазом — цельная
+                              // «запертая карта». Заблюрено ВСЁ (включая бесплатную
+                              // четвёрку — её уже показали наверху в тизере), при
+                              // доскролле весь блок приоткрывается на секунду.
+                              return (
+                                <span
+                                  className={`select-none text-foreground transition-all duration-500 ${
+                                    lowerPeek
+                                      ? "opacity-100 blur-0"
+                                      : "opacity-70 blur-[5px]"
+                                  }`}
+                                  aria-hidden={!lowerPeek}
+                                >
+                                  {text}
+                                </span>
+                              );
+                            })()}
+                          </span>
+                        }
                       >
                         {POINT_PAIN[p.code]}
                       </InfoPopover>

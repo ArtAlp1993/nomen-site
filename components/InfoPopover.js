@@ -3,14 +3,17 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 
-// Переиспользуемый info-попап: значок-триггер (голый ⓘ или ⓘ + подпись через
-// triggerLabel) и модалка с крестиком. Закрытие — по крестику, фону, Escape.
-// z-[70] выше шапки (z-50) и прогресс-бара (z-60). Паттерн модалки — как у
-// CTA-окна в TeaserReveal.
+// Переиспользуемый info-попап. Триггер (в порядке приоритета):
+//   trigger      — произвольный кликабельный узел (напр. само название пункта);
+//   triggerLabel — ⓘ + текстовая подпись;
+//   иначе        — голый кружок ⓘ.
+// Модалка с крестиком, закрытие по крестику/фону/Escape. z-[70] выше шапки
+// (z-50) и прогресс-бара (z-60). Паттерн модалки — как у CTA-окна в TeaserReveal.
 export default function InfoPopover({
   title,
   eyebrow,
   children,
+  trigger,
   triggerLabel,
   className = "",
 }) {
@@ -33,7 +36,16 @@ export default function InfoPopover({
 
   return (
     <>
-      {triggerLabel ? (
+      {trigger ? (
+        <button
+          type="button"
+          aria-label={`About ${title}`}
+          onClick={openIt}
+          className={`cursor-pointer text-left transition-colors hover:text-accent-turquoise ${className}`}
+        >
+          {trigger}
+        </button>
+      ) : triggerLabel ? (
         <button
           type="button"
           onClick={openIt}
