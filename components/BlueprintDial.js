@@ -131,7 +131,14 @@ export default function BlueprintDial({ accent, active, webglFalse }) {
           ) : active ? (
             <BlueprintScene
               accent={accent}
-              config={{ zoom }}
+              // Свечение раздельно (Артём): на мобиле шире и ярче (bloom↑ +
+              // порог↓ = светится больше областей → крупнее ореол); на десктопе
+              // чуть убавлено (было «очень яркое» после тёмной подложки).
+              config={
+                isMobile
+                  ? { zoom, bloom: 1.6, bloomThreshold: 0.1 }
+                  : { zoom, bloom: 1.0 }
+              }
               dpr={isMobile ? [1, 2] : undefined}
             />
           ) : null}

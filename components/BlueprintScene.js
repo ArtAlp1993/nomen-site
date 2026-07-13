@@ -259,7 +259,7 @@ export default function BlueprintScene({ accent, config, dpr }) {
       <EffectComposer multisampling={0}>
         <Bloom
           intensity={cfg.bloom}
-          luminanceThreshold={0.16}
+          luminanceThreshold={cfg.bloomThreshold ?? 0.16}
           luminanceSmoothing={0.75}
           mipmapBlur
         />
