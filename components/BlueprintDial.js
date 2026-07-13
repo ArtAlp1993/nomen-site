@@ -39,6 +39,16 @@ const R_ORBIT = 66;   // радиус орбиты метеора (по кром
 const DUR = 8;        // период оборота метеора, c
 const STEP = 1800;    // смена иконки в зрачке, мс
 
+// «Плёнка» вокруг шара — это его свечение (Bloom), обрезанное прямоугольником
+// canvas: когда canvas по размеру равен шару, край свечения упирается в границу
+// и виден «квадрат» (светлый на десктопе, тёмный, глушащий спираль, на мобиле).
+// Лечение: canvas на ВЕСЬ контейнер (div inset-0), а сам шар оставляем прежней
+// «офигенной» величины через zoom<1 → край свечения уходит далеко от шара,
+// естественно гаснет; closest-side-маска мягко добивает его прозрачностью у
+// самой кромки контейнера (не режет само свечение — оно живёт с запасом).
+const BALL_ZOOM = 0.63;
+const MASK = "radial-gradient(circle closest-side at 50% 50%, #000 60%, transparent 96%)";
+
 // Круговая орбита-направляющая метеора вокруг центра (по часовой).
 const ORBIT =
   `M ${C},${C - R_ORBIT} A ${R_ORBIT},${R_ORBIT} 0 1 1 ${C},${C + R_ORBIT}` +
@@ -75,11 +85,8 @@ export default function BlueprintDial({ accent, active, webglFalse }) {
       <div className="relative mx-auto aspect-square w-full max-w-[440px] sm:max-w-[720px]">
         {/* Шарик-радужка по центру, на ~15% меньше прежнего; края тают мягко. */}
         <div
-          className="absolute left-1/2 top-1/2 aspect-square w-[63%] -translate-x-1/2 -translate-y-1/2"
-          style={{
-            maskImage: "radial-gradient(circle at 50% 50%, black 66%, transparent 90%)",
-            WebkitMaskImage: "radial-gradient(circle at 50% 50%, black 66%, transparent 90%)",
-          }}
+          className="absolute inset-0"
+          style={{ maskImage: MASK, WebkitMaskImage: MASK }}
         >
           {webglFalse ? (
             // eslint-disable-next-line @next/next/no-img-element
@@ -87,9 +94,10 @@ export default function BlueprintDial({ accent, active, webglFalse }) {
               src="/blueprint-still.jpg"
               alt=""
               className="h-full w-full animate-[spin_160s_linear_infinite] object-contain"
+              style={{ transform: `scale(${BALL_ZOOM})` }}
             />
           ) : active ? (
-            <BlueprintScene accent={accent} />
+            <BlueprintScene accent={accent} config={{ zoom: BALL_ZOOM }} />
           ) : null}
         </div>
 
@@ -105,6 +113,38 @@ export default function BlueprintDial({ accent, active, webglFalse }) {
 
           {/* Тёмная подложка — держит чёрный центр и читаемость иконок. */}
           <circle cx={C} cy={C} r={R_BG} fill="#05040f" opacity="0.5" />
+
+          {/* Волны от значка при каждом переключении (круги от камня в воде):
+              key={idx} → React перемонтирует группу на смену иконки, и SMIL
+              (begin=0, без repeat) проигрывается заново. Три круга со сдвигом
+              расходятся из зрачка цветом нового значка и гаснут. */}
+          <g key={`ripple-${idx}`}>
+            {[0, 1, 2].map((k) => (
+              <circle key={k} cx={C} cy={C} fill="none" stroke={ICONS[idx].color} opacity="0">
+                <animate
+                  attributeName="r"
+                  values={`${R_BG - 4};${R_BG + 170}`}
+                  dur="1.7s"
+                  begin={`${k * 0.24}s`}
+                  fill="freeze"
+                />
+                <animate
+                  attributeName="opacity"
+                  values="0.5;0"
+                  dur="1.7s"
+                  begin={`${k * 0.24}s`}
+                  fill="freeze"
+                />
+                <animate
+                  attributeName="stroke-width"
+                  values="3;0.4"
+                  dur="1.7s"
+                  begin={`${k * 0.24}s`}
+                  fill="freeze"
+                />
+              </circle>
+            ))}
+          </g>
 
           {/* 13 иконок в центре зрачка, поочерёдно (кроссфейд 600 мс). */}
           {ICONS.map((p, i) => (
