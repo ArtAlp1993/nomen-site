@@ -124,11 +124,11 @@ export default function MethodologyDiagram() {
         subtitle="Thirteen points across four traditions, every one read from your name and the day you were born."
       />
 
-      {/* Единый «циферблат» (Артём 13.07): кольцо из 13 пунктов-значков вокруг
-          шарика-радужки, «YOU» в зрачке. sceneRef — пауза WebGL вне вьюпорта. */}
-      {/* -mx-6 sm:mx-0: на мобиле циферблат выходит за паддинги секции во всю
-          ширину экрана; overflow-x-clip обрезает то, что шире экрана. */}
-      <div ref={sceneRef} className="mt-4 -mx-6 overflow-x-clip sm:mx-0">
+      {/* Шарик-радужка (Артём 13.07, v2): циферблат убран; иконки 13 пунктов
+          всплывают поочерёдно в зрачке, метеор кружит по орбите вокруг зрачка.
+          sceneRef — пауза WebGL вне вьюпорта. Шар компактный, в колонке секции —
+          прежний full-bleed (-mx-6/overflow-x-clip) больше не нужен. */}
+      <div ref={sceneRef} className="mt-4">
         <BlueprintDial
           accent={accent}
           active={sceneNear && webgl === true}
