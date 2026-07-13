@@ -1,7 +1,9 @@
-import { Space_Grotesk, Inter } from "next/font/google";
+import { Space_Grotesk, Inter, Space_Mono } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 import SiteSpiral from "@/components/SiteSpiral";
+import ScrollProgress from "@/components/ScrollProgress";
+import SiteHeader from "@/components/SiteHeader";
 import Analytics from "@/components/Analytics";
 import FloatingDock from "@/components/FloatingDock";
 import { DevicePreviewProvider } from "@/components/DevicePreview";
@@ -16,6 +18,13 @@ const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
   weight: ["400", "500", "600"],
+});
+
+// Моноширинный для «строгих» меток/номеров (01 · …, эйбрау) — фишка редизайна.
+const spaceMono = Space_Mono({
+  variable: "--font-space-mono",
+  subsets: ["latin"],
+  weight: ["400", "700"],
 });
 
 export const metadata = {
@@ -49,7 +58,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${spaceGrotesk.variable} ${inter.variable} h-full antialiased`}
+      className={`${spaceGrotesk.variable} ${inter.variable} ${spaceMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
         {process.env.NODE_ENV === "production" && (
@@ -57,6 +66,8 @@ export default function RootLayout({ children }) {
         )}
         <SmoothScroll />
         <SiteSpiral />
+        <ScrollProgress />
+        <SiteHeader />
         <Analytics />
         <DevicePreviewProvider>{children}</DevicePreviewProvider>
         <FloatingDock />

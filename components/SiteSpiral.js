@@ -8,6 +8,10 @@ import { usePathname } from "next/navigation";
 // проскроллил ниже Hero (к секции Hook). Ниже — шире/объёмнее.
 // Фиксирована за контентом, «течёт» при скролле. Canvas, без зависимостей.
 // Уважает prefers-reduced-motion (без авто-дрейфа, только реакция на скролл).
+//
+// Перф (13.07): без дорогого canvas `shadowBlur` — свечение имитируется дешёвым
+// двойным штрихом (широкий бледный + узкий яркий). dpr ограничен 1.5 (фон не
+// требует retina). Петля встаёт на паузу, когда вкладка скрыта.
 export default function SiteSpiral() {
   const canvasRef = useRef(null);
   // На страницах с собственной полноэкранной сценой (/reading — туннель,
@@ -26,7 +30,8 @@ export default function SiteSpiral() {
     const resize = () => {
       width = window.innerWidth;
       height = window.innerHeight;
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      // Фон не требует retina-чёткости — держим dpr до 1.5 ради кадрового бюджета.
+      dpr = Math.min(window.devicePixelRatio || 1, 1.5);
       canvas.width = width * dpr;
       canvas.height = height * dpr;
       canvas.style.width = width + "px";
@@ -67,22 +72,24 @@ export default function SiteSpiral() {
 
     // Пыль, «вытряхнутая» шариком (пасхалка в CosmicScene): рождается на его
     // кончиках, резво разлетается по экрану и за несколько секунд растворяется.
+    // Цвета взрыва пасхалки: золото + энергия (ярче обычной пыльцы).
+    const BURST_COLORS = ["255,210,90", "255,180,60", "190,240,255", "51,230,224"];
     const onBurst = (ev) => {
       const points = (ev.detail && ev.detail.points) || [];
       for (const pt of points) {
-        for (let k = 0; k < 4; k++) {
+        for (let k = 0; k < 9; k++) {
           const angle = Math.random() * Math.PI * 2;
-          const speed = 40 + Math.random() * 90;
+          const speed = 90 + Math.random() * 190; // резвее обычной пыли
           dust.push({
             x: pt.x,
             y: pt.y,
             vx: Math.cos(angle) * speed,
             vy: Math.sin(angle) * speed,
-            size: 0.8 + Math.random() * 1.6,
-            color: DUST_COLORS[(Math.random() * DUST_COLORS.length) | 0],
+            size: 1 + Math.random() * 2.2, // крупнее
+            color: BURST_COLORS[(Math.random() * BURST_COLORS.length) | 0],
             tw: Math.random() * Math.PI * 2,
             wander: Math.random() * Math.PI * 2,
-            life: 7 + Math.random() * 4, // секунды до растворения
+            life: 6 + Math.random() * 4, // секунды до растворения
           });
         }
       }
@@ -91,7 +98,6 @@ export default function SiteSpiral() {
 
     let prevTime = 0;
     const drawDust = (time, dt) => {
-      const isMobile = width < 768;
       for (const p of dust) {
         if (!reduce) {
           // Хаотичное блуждание: курс частицы плавно и случайно меняется.
@@ -116,16 +122,16 @@ export default function SiteSpiral() {
           // Вытряхнутая пыль ярче обычной и тает в последние 3 секунды.
           alpha = (0.15 + twinkle * 0.25) * Math.max(0, Math.min(1, p.life / 3));
         }
+        // Без shadowBlur: лёгкий «гало»-круг под ядром даёт мягкое свечение дёшево.
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size * 2.1, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${p.color},${alpha * 0.32})`;
+        ctx.fill();
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(${p.color},${alpha})`;
-        if (!isMobile) {
-          ctx.shadowColor = `rgba(${p.color},0.5)`;
-          ctx.shadowBlur = 5;
-        }
         ctx.fill();
       }
-      ctx.shadowBlur = 0;
       if (dust.some((p) => p.life !== undefined && p.life <= 0)) {
         dust = dust.filter((p) => p.life === undefined || p.life > 0);
       }
@@ -180,7 +186,8 @@ export default function SiteSpiral() {
         ctx.stroke();
       }
 
-      // Две нити со свечением
+      // Две нити: широкий бледный «глоу»-проход + узкая яркая линия.
+      // Заменяет дорогой shadowBlur дешёвым двойным штрихом (тот же вид, легче).
       for (const offset of [0, Math.PI]) {
         ctx.beginPath();
         for (let y = -amp; y < height + amp; y += step) {
@@ -188,42 +195,63 @@ export default function SiteSpiral() {
           if (y === -amp) ctx.moveTo(x, y);
           else ctx.lineTo(x, y);
         }
-        const grad = ctx.createLinearGradient(0, 0, 0, height);
-        grad.addColorStop(0, "rgba(51,230,224,0.37)");
-        grad.addColorStop(0.5, "rgba(108,79,246,0.37)");
-        grad.addColorStop(1, "rgba(51,230,224,0.37)");
-        ctx.strokeStyle = grad;
-        ctx.lineWidth = 1.6;
-        ctx.shadowColor = "rgba(51,230,224,0.5)";
-        ctx.shadowBlur = 10;
+        const glow = ctx.createLinearGradient(0, 0, 0, height);
+        glow.addColorStop(0, "rgba(51,230,224,0.12)");
+        glow.addColorStop(0.5, "rgba(108,79,246,0.12)");
+        glow.addColorStop(1, "rgba(51,230,224,0.12)");
+        ctx.strokeStyle = glow;
+        ctx.lineWidth = 3.6;
+        ctx.stroke();
+
+        const core = ctx.createLinearGradient(0, 0, 0, height);
+        core.addColorStop(0, "rgba(51,230,224,0.4)");
+        core.addColorStop(0.5, "rgba(108,79,246,0.4)");
+        core.addColorStop(1, "rgba(51,230,224,0.4)");
+        ctx.strokeStyle = core;
+        ctx.lineWidth = 1.4;
         ctx.stroke();
       }
 
-      // Светящиеся точки на нитях
+      // Светящиеся точки на нитях (гало-круг + ядро вместо shadowBlur).
       for (const offset of [0, Math.PI]) {
         for (let y = -amp; y < height + amp; y += 26) {
           const x = strandX(y, offset);
           const depth = (Math.sin((y / wavelength) * Math.PI * 2 + phase + offset) + 1) / 2;
+          const r = 1.2 + depth * 1.8;
           ctx.beginPath();
-          ctx.arc(x, y, 1.2 + depth * 1.8, 0, Math.PI * 2);
+          ctx.arc(x, y, r * 2.2, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(51,230,224,${(0.22 + depth * 0.45) * 0.28})`;
+          ctx.fill();
+          ctx.beginPath();
+          ctx.arc(x, y, r, 0, Math.PI * 2);
           ctx.fillStyle = `rgba(190,240,255,${0.22 + depth * 0.45})`;
-          ctx.shadowColor = "rgba(51,230,224,0.8)";
-          ctx.shadowBlur = 8;
           ctx.fill();
         }
       }
-      ctx.shadowBlur = 0;
       ctx.globalAlpha = 1;
 
       rafId = requestAnimationFrame(render);
     };
 
     let rafId = requestAnimationFrame(render);
+
+    // Скрытая вкладка — глушим петлю (кадры в фоне не нужны, экономим батарею/CPU).
+    const onVisibility = () => {
+      if (document.hidden) {
+        cancelAnimationFrame(rafId);
+      } else {
+        prevTime = 0;
+        rafId = requestAnimationFrame(render);
+      }
+    };
+    document.addEventListener("visibilitychange", onVisibility);
+
     return () => {
       cancelAnimationFrame(rafId);
       window.removeEventListener("resize", resize);
       window.removeEventListener("resize", initDust);
       window.removeEventListener("nomen-dust-burst", onBurst);
+      document.removeEventListener("visibilitychange", onVisibility);
     };
   }, [hidden]);
 

@@ -33,7 +33,7 @@ export default function HowItWorks() {
         {steps.map((s, i) => (
           <Reveal key={s.step} delay={i * 0.1}>
             <Card className="h-full">
-              <span className="font-heading text-sm text-accent-turquoise">
+              <span className="font-mono text-sm tracking-widest text-accent-turquoise">
                 {s.step}
               </span>
               <h3 className="mt-3 font-heading text-xl font-semibold">

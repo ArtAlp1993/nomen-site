@@ -5,7 +5,7 @@ import KineticHeadline from "./KineticHeadline";
 
 export default function Hero() {
   return (
-    <section className="relative flex min-h-[86svh] sm:min-h-screen flex-col items-center justify-center overflow-hidden px-6 pt-10 sm:pt-0 text-center">
+    <section id="top" className="relative flex min-h-[86svh] sm:min-h-screen flex-col items-center justify-center overflow-hidden px-6 pt-10 sm:pt-0 text-center">
       {/* Живая 3D-сцена: вращающаяся сакральная геометрия + звёздное поле (Canvas). */}
       <CosmicScene className="pointer-events-none absolute inset-0 h-full w-full" />
       {/* Затемнение снизу — для читаемости текста поверх сцены. */}
@@ -34,6 +34,18 @@ export default function Hero() {
       <Reveal delay={0.3} className="relative mt-10">
         <Button href="#quiz">Reveal my blueprint</Button>
       </Reveal>
+
+      {/* Подсказка листать вниз (фишка редизайна): «SCROLL» + линия, мягко
+          плавает. Чистый CSS (animate-scroll-cue), нагрузки на скролл нет. */}
+      <div
+        aria-hidden
+        className="animate-scroll-cue pointer-events-none absolute bottom-6 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2"
+      >
+        <span className="font-mono text-[10px] tracking-[0.4em] text-foreground-muted/60">
+          SCROLL
+        </span>
+        <span className="block h-8 w-px bg-gradient-to-b from-accent-turquoise/70 to-transparent" />
+      </div>
     </section>
   );
 }

@@ -18,6 +18,7 @@
   --color-accent-turquoise: var(--accent-turquoise);
   --font-heading: var(--font-space-grotesk);
   --font-sans: var(--font-inter);
+  --font-mono: var(--font-space-mono);
 }
 
 body {
@@ -101,4 +102,56 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .btn-wiggle { animation: none !important; }
+}
+
+/* Бегущая строка методов (marquee) — фишка из редизайна. Две одинаковые
+   дорожки едут влево на половину ширины → бесшовный цикл. */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 38s linear infinite;
+}
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee { animation: none !important; }
+}
+
+/* Подсказка «SCROLL» внизу первого экрана — мягко плавает, зовёт листать. */
+@keyframes scrollDrift {
+  0%, 100% { transform: translateY(0); opacity: 0.85; }
+  50% { transform: translateY(8px); opacity: 0.4; }
+}
+.animate-scroll-cue {
+  animation: scrollDrift 2.6s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-scroll-cue { animation: none !important; }
+}
+
+/* Комета и вспышки делений циферблата (SMIL) — гасим при reduced-motion. */
+@media (prefers-reduced-motion: reduce) {
+  .nomen-comet, .node-flash { display: none; }
+}
+
+/* Появление info-попапа (окошко с крестиком). */
+@keyframes nomenPopIn {
+  from { opacity: 0; transform: translateY(10px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nomen-pop { animation: none !important; }
+}
+
+/* Белая вспышка при «взрыве» шарика (пасхалка) — ярко и быстро гаснет. */
+@keyframes nomenFlash {
+  0% { opacity: 0; }
+  12% { opacity: 0.92; }
+  100% { opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nomen-flash { animation: none !important; opacity: 0 !important; }
 }

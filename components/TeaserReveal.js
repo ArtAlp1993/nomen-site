@@ -122,8 +122,8 @@ export default function TeaserReveal({ firstName, points }) {
           >
             <Card glow className="h-full">
               <div className="flex items-start gap-3">
-                <span className="text-accent-turquoise">
-                  <PointIcon code={p.code} size={26} />
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-accent-turquoise/35 bg-accent-turquoise/[0.06] text-accent-turquoise">
+                  <PointIcon code={p.code} size={22} />
                 </span>
                 <div>
                   <span className="font-heading text-sm font-semibold">
@@ -180,8 +180,8 @@ export default function TeaserReveal({ firstName, points }) {
                 }}
                 className="flex cursor-pointer items-center gap-3 rounded-xl border border-foreground-muted/20 bg-background-alt/75 backdrop-blur-md px-4 py-3"
               >
-                <span className="text-foreground-muted">
-                  <PointIcon code={p.code} size={22} />
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-foreground-muted/20 bg-foreground-muted/[0.05] text-foreground-muted">
+                  <PointIcon code={p.code} size={18} />
                 </span>
                 {/* Проблеск: пока restPeek — пункт открыт и читаем; затем плавно
                     (700 мс) уходит под блюр. Переход по filter/opacity. */}

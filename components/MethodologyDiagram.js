@@ -1,21 +1,12 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import dynamic from "next/dynamic";
 import SectionHeading from "./ui/SectionHeading";
+import BlueprintDial from "./BlueprintDial";
+import InfoPopover from "./InfoPopover";
 import PointIcon from "./PointIcon";
 import { useResult } from "./ResultProvider";
 import methodology from "@/data/methodology.json";
-
-// 3D-сцена рендерится только на клиенте (WebGL) — иначе SSR падает.
-const BlueprintScene = dynamic(() => import("./BlueprintScene"), {
-  ssr: false,
-  loading: () => (
-    <div className="flex h-full w-full items-center justify-center text-sm text-foreground-muted">
-      Loading blueprint…
-    </div>
-  ),
-});
 
 // 4 категории традиций — каждая своим цветом (в космической палитре).
 const CATEGORY_COLOR = {
@@ -25,6 +16,23 @@ const CATEGORY_COLOR = {
   Tarot: "#5aa9ff",
 };
 const BLOCK_ORDER = ["Numerology", "Western Astrology", "Chinese Astrology", "Tarot"];
+
+// Тексты попапов «какую боль закрывает пункт» (copywriting + humanizer).
+const POINT_PAIN = {
+  A1: "Ever feel like you keep circling the same lesson? Your Life Path is the one you were set up to work on, and it tells you what your life is really about.",
+  A2: "Not sure what your natural edge is? Your Birthday Number points to the one talent you got for free.",
+  A3: "Wondering what you are actually here to build? Your Expression is the work you grow into over a lifetime.",
+  A4: "Chasing things that never quite satisfy? Your Soul Urge shows what you secretly want under all of it.",
+  A5: "Tired of being read wrong? Your Personality is the first impression you hand people before they know you.",
+  A7: "Worried about where your life is heading? Your Maturity Number shows who you settle into after about 40.",
+  A9: "Keep tripping over the same problem? This names the skill you never built, and the strength you can lean on instead.",
+  A10: "Want your strong and weak spots on one page? The Square lays out nine core traits so you can see them at a glance.",
+  A11: "Feel like you are paying off something you did not sign up for? Karmic Debt names the old lesson you brought in with you.",
+  B1: "Not sure who you are underneath the roles? Your Sun Sign is your core drive, the part of you that wants to shine.",
+  C1: "Want to know how you come across before you say a word? Your animal is your gut-level temperament.",
+  C2: "Two people, same sign, a totally different feel? Your Year Element sets the temperature of yours.",
+  D1: "Curious what your life keeps rhyming with? Your Birth Card is the archetype your story runs on.",
+};
 
 export default function MethodologyDiagram() {
   const { result } = useResult();
@@ -79,6 +87,23 @@ export default function MethodologyDiagram() {
     }
   }, []);
 
+  // Перф (13.07): WebGL-сцена (three.js + Bloom) монтируется только когда её
+  // контейнер рядом с вьюпортом. На hero и в футере r3f-петля не крутится и не
+  // отъедает кадровый бюджет скролла. Запас rootMargin монтирует заранее, чтобы
+  // к появлению сцена уже была готова (без пустого места и вспышки Loading).
+  const sceneRef = useRef(null);
+  const [sceneNear, setSceneNear] = useState(false);
+  useEffect(() => {
+    const el = sceneRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => setSceneNear(entry.isIntersecting),
+      { rootMargin: "300px 0px" }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
   // Авто-цикл категорий: радужка мягко перекрашивается, легенда подсвечивает
   // активную традицию. Живёт сама, без взаимодействия.
   const [activeBlock, setActiveBlock] = useState(0);
@@ -99,31 +124,14 @@ export default function MethodologyDiagram() {
         subtitle="Thirteen points across four traditions, every one read from your name and the day you were born."
       />
 
-      {/* Сцена без «рамки»: широкое поле уходит под заголовок и растворяется
-          по краям радиальной маской — радужка выше спирали, ниже текста. */}
-      <div className="-mt-6 flex justify-center">
-        <div
-          className="relative h-[360px] w-full max-w-4xl sm:h-[660px]"
-          role="img"
-          aria-label="A living blueprint: a luminous iris of light fibres, tinted by four traditions: numerology, astrology, Chinese astrology and tarot."
-          style={{
-            maskImage:
-              "radial-gradient(ellipse 62% 56% at 50% 50%, black 50%, transparent 76%)",
-            WebkitMaskImage:
-              "radial-gradient(ellipse 62% 56% at 50% 50%, black 50%, transparent 76%)",
-          }}
-        >
-          {webgl === false ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              src="/blueprint-still.jpg"
-              alt=""
-              className="h-full w-full scale-110 animate-[spin_160s_linear_infinite] object-contain"
-            />
-          ) : webgl ? (
-            <BlueprintScene accent={accent} />
-          ) : null}
-        </div>
+      {/* Единый «циферблат» (Артём 13.07): кольцо из 13 пунктов-значков вокруг
+          шарика-радужки, «YOU» в зрачке. sceneRef — пауза WebGL вне вьюпорта. */}
+      <div ref={sceneRef} className="mt-4">
+        <BlueprintDial
+          accent={accent}
+          active={sceneNear && webgl === true}
+          webglFalse={webgl === false}
+        />
       </div>
 
       {/* Пункты по традициям, симметрично по центру: Numerology во всю ширину
@@ -132,7 +140,7 @@ export default function MethodologyDiagram() {
       <div ref={pointsRef} className="mx-auto mt-10 grid max-w-4xl gap-4">
         {(() => {
           const panel =
-            "rounded-xl border border-foreground-muted/30 bg-background-alt/75 backdrop-blur-md p-6";
+            "rounded-xl border border-foreground-muted/30 bg-background-alt/75 backdrop-blur-md p-6 transition-all duration-500 ease-out hover:border-accent-turquoise/50 hover:shadow-[0_0_44px_-22px_rgba(51,230,224,0.55)]";
           const renderPanel = (block, wide) => {
             const items = methodology.filter((p) => p.block === block);
             const color = CATEGORY_COLOR[block];
@@ -159,7 +167,7 @@ export default function MethodologyDiagram() {
                   {items.map((p) => (
                     <li
                       key={p.code}
-                      className="flex items-center gap-2 rounded-full border border-foreground-muted/25 bg-background-alt/60 px-3 py-1.5 sm:items-start sm:gap-2.5 sm:rounded-none sm:border-0 sm:bg-transparent sm:px-0 sm:py-0"
+                      className="flex items-center gap-2 rounded-full border border-foreground-muted/25 bg-background-alt/60 px-3 py-1.5 transition-colors duration-300 hover:text-accent-turquoise sm:items-start sm:gap-2.5 sm:rounded-none sm:border-0 sm:bg-transparent sm:px-0 sm:py-0"
                     >
                       <span className="shrink-0 sm:mt-0.5" style={{ color }}>
                         <PointIcon code={p.code} size={17} />
@@ -191,6 +199,14 @@ export default function MethodologyDiagram() {
                           );
                         })()}
                       </span>
+                      {/* ⓘ — попап «какую боль закрывает этот пункт». */}
+                      <InfoPopover
+                        title={p.title}
+                        eyebrow={block}
+                        className="ml-1.5 shrink-0 self-center"
+                      >
+                        {POINT_PAIN[p.code]}
+                      </InfoPopover>
                     </li>
                   ))}
                 </ul>

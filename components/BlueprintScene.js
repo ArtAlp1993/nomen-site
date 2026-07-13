@@ -236,7 +236,7 @@ export default function BlueprintScene({ accent, config }) {
 
   return (
     <Canvas
-      dpr={[1, 1.75]}
+      dpr={[1, 1.5]}
       camera={{ position: [0, 0, 8.8], fov: 42 }}
       gl={{ antialias: false, alpha: false, powerPreference: "high-performance" }}
       style={{ width: "100%", height: "100%" }}

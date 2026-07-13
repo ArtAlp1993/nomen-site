@@ -6,6 +6,11 @@ import { useEffect, useRef } from "react";
 // каркасный икосаэдр (сакральная геометрия) со свечением рёбер и вершин,
 // парящее звёздное поле и мягкие туманности. Проекция 3D→2D считается сами.
 // Уважает prefers-reduced-motion и облегчается на мобильных.
+//
+// Перф (13.07): без дорогого canvas `shadowBlur` — свечение имитируется дешёвым
+// двойным штрихом рёбер и гало-кругом вершин. Петля встаёт на паузу, когда hero
+// ушёл за экран (IntersectionObserver) и когда вкладка скрыта — на нижних
+// секциях эта петля больше не отъедает кадровый бюджет скролла.
 
 const PHI = (1 + Math.sqrt(5)) / 2;
 
@@ -75,6 +80,7 @@ export default function CosmicScene({ className = "" }) {
     let charge = 0; // 0..1 — насколько «заряжены» кончики
     let fx = null; // {phase: "cower" | "shake" | "release", t0}
     let orbScale = 1;
+    let explodes = 0; // пасхалку можно активировать максимум 3 раза подряд
 
     const project = (v, ax, ay) => {
       // Поворот вокруг Y и X, затем перспективная проекция.
@@ -95,13 +101,16 @@ export default function CosmicScene({ className = "" }) {
 
     const onTap = (e) => {
       if (fx) return;
+      if (explodes >= 3) return; // лимит: не более 3 активаций пасхалки подряд
       // Кнопки и ссылки работают как обычно — их тапы не считаем.
       if (e.target.closest && e.target.closest("a,button,input,label")) return;
       const rect = canvas.getBoundingClientRect();
       if (rect.bottom < 0 || rect.top > window.innerHeight) return;
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
-      const r = (width < 768 ? 74 : 104) * 2.4; // зона шарика вокруг центра
+      // Щедрая зона вокруг центра: на десктопе центр шарика перекрыт заголовком
+      // и кнопкой, поэтому берём широкий радиус, чтобы клики мышью попадали.
+      const r = (width < 768 ? 74 : 104) * 3.2;
       const dx = x - width / 2;
       const dy = y - height / 2;
       if (dx * dx + dy * dy > r * r) return;
@@ -109,11 +118,13 @@ export default function CosmicScene({ className = "" }) {
       if (now - lastTap > 800) taps = 0; // серия прервана — начинаем заново
       lastTap = now;
       taps += 1;
-      if (taps >= 4) charge = Math.min(1, (taps - 3) / 6);
+      // Полный заряд к 5-му быстрому тапу (мягче: мышью на десктопе 7 кликов
+      // подряд неочевидны). Первые два «будят», с 3-го свечение нарастает.
+      if (taps >= 3) charge = Math.min(1, (taps - 2) / 3);
       // Тактильный отклик (Android; iOS Safari вибрацию из веба не даёт):
-      // с 4-го тапа — мягкий импульс, нарастающий с зарядом.
-      if (taps >= 4 && navigator.vibrate) {
-        navigator.vibrate(charge >= 1 ? [40, 60, 80] : 8 + Math.round(charge * 18));
+      // ощутимый импульс на КАЖДЫЙ тап, нарастающий по мере заряда.
+      if (navigator.vibrate) {
+        navigator.vibrate(Math.min(120, 25 + taps * 16));
       }
       if (charge >= 1) fx = { phase: "cower", t0: now };
     };
@@ -165,43 +176,52 @@ export default function CosmicScene({ className = "" }) {
 
     const drawGeometry = (ax, ay) => {
       const pts = RAW_VERTICES.map((v) => project(v, ax, ay));
-      // Рёбра со свечением и градиентом.
-      ctx.lineWidth = 1.25;
+      // Рёбра: свечение имитируем двойным штрихом (широкий бледный «глоу» +
+      // узкая яркая линия) вместо дорогого shadowBlur.
       for (const [i, j] of EDGES) {
         const a = pts[i], b = pts[j];
         const depth = (a.depth + b.depth) / 2;
         const alpha = 0.38 + (1 - (depth + PHI) / (2 * PHI)) * 0.55;
+        ctx.beginPath();
+        ctx.moveTo(a.x, a.y);
+        ctx.lineTo(b.x, b.y);
+        const glowGrad = ctx.createLinearGradient(a.x, a.y, b.x, b.y);
+        glowGrad.addColorStop(0, `rgba(108,79,246,${alpha * 0.3})`);
+        glowGrad.addColorStop(1, `rgba(51,230,224,${alpha * 0.3})`);
+        ctx.strokeStyle = glowGrad;
+        ctx.lineWidth = 3.4;
+        ctx.stroke();
         const grad = ctx.createLinearGradient(a.x, a.y, b.x, b.y);
         grad.addColorStop(0, `rgba(108,79,246,${alpha})`);
         grad.addColorStop(1, `rgba(51,230,224,${alpha})`);
         ctx.strokeStyle = grad;
-        ctx.shadowColor = "rgba(108,79,246,0.5)";
-        ctx.shadowBlur = 8;
-        ctx.beginPath();
-        ctx.moveTo(a.x, a.y);
-        ctx.lineTo(b.x, b.y);
+        ctx.lineWidth = 1.25;
         ctx.stroke();
       }
-      ctx.shadowBlur = 0;
-      // Вершины — светящиеся узлы. Заряд от тапов усиливает их свечение.
+      // Вершины — светящиеся узлы (гало-круг + ядро). Заряд от тапов усиливает.
       const glow = 1 + charge * 1.4;
       for (const p of pts) {
         const front = (p.depth + PHI) / (2 * PHI);
+        const rCore = (1.6 + front * 2.2) * (1 + charge * 0.7);
         ctx.beginPath();
-        ctx.arc(p.x, p.y, (1.6 + front * 2.2) * (1 + charge * 0.7), 0, Math.PI * 2);
+        ctx.arc(p.x, p.y, rCore * (2.4 + charge * 1.4), 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(51,230,224,${Math.min(0.6, 0.16 * glow)})`;
+        ctx.fill();
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, rCore, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(180,240,255,${Math.min(1, (0.4 + front * 0.6) * glow)})`;
-        ctx.shadowColor = "rgba(51,230,224,0.9)";
-        ctx.shadowBlur = 12 * glow;
         ctx.fill();
       }
-      ctx.shadowBlur = 0;
     };
 
     let raf;
+    let running = false;
+    let inView = true;
     let ax = -0.3;
     let ay = 0;
     const easeOut = (k) => 1 - (1 - k) * (1 - k);
     const render = (time) => {
+      if (!running) return;
       ctx.clearRect(0, 0, width, height);
       drawNebula();
       drawStars(time);
@@ -213,27 +233,31 @@ export default function CosmicScene({ className = "" }) {
       if (fx) {
         const t = time - fx.t0;
         if (fx.phase === "cower") {
-          // Глубокое сжатие — «испугался».
-          orbScale = 1 - 0.3 * easeOut(Math.min(1, t / 380));
-          if (t >= 380) fx = { phase: "shake", t0: time };
+          // Сжимается почти в точку у зрачка — «собирается перед взрывом».
+          orbScale = 1 - 0.85 * easeOut(Math.min(1, t / 460));
+          if (t >= 460) fx = { phase: "shake", t0: time };
         } else if (fx.phase === "shake") {
-          const k = Math.min(1, t / 450);
-          orbScale = 0.7;
-          shX = Math.sin(t * 0.09) * 6 * (1 - k);
-          shY = Math.cos(t * 0.13) * 4 * (1 - k);
-          if (t >= 450) {
+          const k = Math.min(1, t / 360);
+          orbScale = 0.15;
+          shX = Math.sin(t * 0.12) * 3 * (1 - k);
+          shY = Math.cos(t * 0.16) * 2.5 * (1 - k);
+          if (t >= 360) {
+            // Взрыв: золотые искры (пыль), белая вспышка + меню (React-оверлей),
+            // мощная вибрация.
+            explodes += 1;
             burst(ax, ay);
+            window.dispatchEvent(new CustomEvent("nomen-orb-explode"));
+            if (navigator.vibrate) navigator.vibrate([60, 40, 130, 40, 260]);
             fx = { phase: "release", t0: time };
           }
         } else {
-          // «Взрыв»: резко расправляется с перелётом, стряхивая крошки,
-          // затем спокойно оседает к обычному размеру.
-          if (t < 180) {
-            orbScale = 0.7 + 0.46 * easeOut(t / 180); // 0.7 → 1.16
+          // Из почти-точки резко расправляется с перелётом, затем оседает.
+          if (t < 220) {
+            orbScale = 0.15 + 1.15 * easeOut(t / 220); // 0.15 → 1.30
           } else {
-            orbScale = 1.16 - 0.16 * easeOut(Math.min(1, (t - 180) / 380));
+            orbScale = 1.3 - 0.3 * easeOut(Math.min(1, (t - 220) / 440));
           }
-          if (t >= 560) {
+          if (t >= 660) {
             fx = null;
             charge = 0;
             taps = 0;
@@ -257,20 +281,50 @@ export default function CosmicScene({ className = "" }) {
       raf = requestAnimationFrame(render);
     };
 
-    if (reduce) {
-      // Один статичный кадр — без анимации.
+    const drawStill = () => {
       ctx.clearRect(0, 0, width, height);
       drawNebula();
       drawStars(0);
       drawGeometry(ax, ay);
-    } else {
+    };
+
+    // Петля крутится только когда hero виден и вкладка активна.
+    const startLoop = () => {
+      if (running || reduce) return;
+      if (!inView || document.hidden) return;
+      running = true;
       raf = requestAnimationFrame(render);
+    };
+    const stopLoop = () => {
+      running = false;
+      cancelAnimationFrame(raf);
+    };
+
+    let io;
+    if (reduce) {
+      drawStill();
+    } else {
+      startLoop();
+      io = new IntersectionObserver(([entry]) => {
+        inView = entry.isIntersecting;
+        if (inView) startLoop();
+        else stopLoop();
+      });
+      io.observe(canvas);
     }
+    const onVis = () => {
+      if (reduce) return;
+      if (document.hidden) stopLoop();
+      else startLoop();
+    };
+    document.addEventListener("visibilitychange", onVis);
 
     return () => {
-      cancelAnimationFrame(raf);
+      stopLoop();
       window.removeEventListener("resize", resize);
       if (!reduce) window.removeEventListener("pointerdown", onTap);
+      document.removeEventListener("visibilitychange", onVis);
+      if (io) io.disconnect();
     };
   }, []);
 
