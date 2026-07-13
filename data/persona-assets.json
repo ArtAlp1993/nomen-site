@@ -4,10 +4,10 @@
     "note": "Производственный чек-лист картинок персонажа + промпты (nano banana). Рантайм НЕ читает этот файл — он авто-детектит ассеты по Image().onload; здесь список того, ЧТО сгенерить и КУДА положить.",
     "style": "NOMEN style: luminous nebula-energy being on near-black cosmic background (#05040f), soft volumetric glow, fine particle filaments, neon indigo/turquoise palette, no text, no letters, centered, symmetrical, high detail, painterly-sci-fi.",
     "frames_total": 13,
-    "frames_present": 6,
+    "frames_present": 13,
     "icons_total": 173,
     "icons_present": 0,
-    "todo": 180
+    "todo": 173
   },
   "frames": [
     {
@@ -69,7 +69,7 @@
       "frame": "s7",
       "path": "public/persona/frames/s7.jpg",
       "kind": "body-frame",
-      "present": false,
+      "present": true,
       "change": "book",
       "prompt": "NOMEN style: luminous nebula-energy being on near-black cosmic background (#05040f), soft volumetric glow, fine particle filaments, neon indigo/turquoise palette, no text, no letters, centered, symmetrical, high detail, painterly-sci-fi.\n[КАДР S7 для пункта A9 · Karmic Lessons & Hidden Passion] Прикрепить: базу N1 (нейбула-человек) и предыдущий кадр. EN: Same being, same identity/pose/framing as the base — evolve it one step: open pages of light unfolding beside the figure (lessons, hidden passion). KEEP: identity, silhouette, camera, palette, background. CHANGE: only add the described growth so the figure looks one step more \"complete\"."
     },
@@ -78,7 +78,7 @@
       "frame": "s8",
       "path": "public/persona/frames/s8.jpg",
       "kind": "body-frame",
-      "present": false,
+      "present": true,
       "change": "grid",
       "prompt": "NOMEN style: luminous nebula-energy being on near-black cosmic background (#05040f), soft volumetric glow, fine particle filaments, neon indigo/turquoise palette, no text, no letters, centered, symmetrical, high detail, painterly-sci-fi.\n[КАДР S8 для пункта A10 · Pythagorean Square] Прикрепить: базу N1 (нейбула-человек) и предыдущий кадр. EN: Same being, same identity/pose/framing as the base — evolve it one step: a 3x3 lattice of light nodes overlaid on the torso (Pythagorean square). KEEP: identity, silhouette, camera, palette, background. CHANGE: only add the described growth so the figure looks one step more \"complete\"."
     },
@@ -87,7 +87,7 @@
       "frame": "s9",
       "path": "public/persona/frames/s9.jpg",
       "kind": "body-frame",
-      "present": false,
+      "present": true,
       "change": "chain",
       "prompt": "NOMEN style: luminous nebula-energy being on near-black cosmic background (#05040f), soft volumetric glow, fine particle filaments, neon indigo/turquoise palette, no text, no letters, centered, symmetrical, high detail, painterly-sci-fi.\n[КАДР S9 для пункта A11 · Karmic Debt] Прикрепить: базу N1 (нейбула-человек) и предыдущий кадр. EN: Same being, same identity/pose/framing as the base — evolve it one step: faint broken/looping light-chains dissolving (karmic debt released). KEEP: identity, silhouette, camera, palette, background. CHANGE: only add the described growth so the figure looks one step more \"complete\"."
     },
@@ -96,7 +96,7 @@
       "frame": "s10",
       "path": "public/persona/frames/s10.jpg",
       "kind": "body-frame",
-      "present": false,
+      "present": true,
       "change": "sun",
       "prompt": "NOMEN style: luminous nebula-energy being on near-black cosmic background (#05040f), soft volumetric glow, fine particle filaments, neon indigo/turquoise palette, no text, no letters, centered, symmetrical, high detail, painterly-sci-fi.\n[КАДР S10 для пункта B1 · Sun Sign] Прикрепить: базу N1 (нейбула-человек) и предыдущий кадр. EN: Same being, same identity/pose/framing as the base — evolve it one step: a solar corona igniting behind the head (sun sign, core will). KEEP: identity, silhouette, camera, palette, background. CHANGE: only add the described growth so the figure looks one step more \"complete\"."
     },
@@ -105,7 +105,7 @@
       "frame": "s11",
       "path": "public/persona/frames/s11.jpg",
       "kind": "body-frame",
-      "present": false,
+      "present": true,
       "change": "paw",
       "prompt": "NOMEN style: luminous nebula-energy being on near-black cosmic background (#05040f), soft volumetric glow, fine particle filaments, neon indigo/turquoise palette, no text, no letters, centered, symmetrical, high detail, painterly-sci-fi.\n[КАДР S11 для пункта C1 · Chinese Zodiac Animal] Прикрепить: базу N1 (нейбула-человек) и предыдущий кадр. EN: Same being, same identity/pose/framing as the base — evolve it one step: an animal-spirit silhouette merging with the aura (Chinese zodiac temperament). KEEP: identity, silhouette, camera, palette, background. CHANGE: only add the described growth so the figure looks one step more \"complete\"."
     },
@@ -114,7 +114,7 @@
       "frame": "s12",
       "path": "public/persona/frames/s12.jpg",
       "kind": "body-frame",
-      "present": false,
+      "present": true,
       "change": "element",
       "prompt": "NOMEN style: luminous nebula-energy being on near-black cosmic background (#05040f), soft volumetric glow, fine particle filaments, neon indigo/turquoise palette, no text, no letters, centered, symmetrical, high detail, painterly-sci-fi.\n[КАДР S12 для пункта C2 · Chinese Year Element] Прикрепить: базу N1 (нейбула-человек) и предыдущий кадр. EN: Same being, same identity/pose/framing as the base — evolve it one step: the aura tinted by an elemental hue and flow (year element). KEEP: identity, silhouette, camera, palette, background. CHANGE: only add the described growth so the figure looks one step more \"complete\"."
     },
@@ -123,7 +123,7 @@
       "frame": "s13",
       "path": "public/persona/frames/s13.jpg",
       "kind": "body-frame",
-      "present": false,
+      "present": true,
       "change": "crown-open",
       "prompt": "NOMEN style: luminous nebula-energy being on near-black cosmic background (#05040f), soft volumetric glow, fine particle filaments, neon indigo/turquoise palette, no text, no letters, centered, symmetrical, high detail, painterly-sci-fi.\n[КАДР S13 для пункта D1 · Tarot Birth Card] Прикрепить: базу N1 (нейбула-человек) и предыдущий кадр. EN: Same being, same identity/pose/framing as the base — evolve it one step: an open crown of arcana-light rising, hands opening outward (tarot fate, the reveal). KEEP: identity, silhouette, camera, palette, background. CHANGE: only add the described growth so the figure looks one step more \"complete\"."
     }
