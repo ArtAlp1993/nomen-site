@@ -5,12 +5,18 @@ import { useEffect, useState } from "react";
 import { iconShapes } from "./PointIcon";
 import methodology from "@/data/methodology.json";
 
-// Композиция «шарик» (Артём 13.07, v2): внешний циферблат убран (кольцо из 13
-// значков, лучи, обод и комета по ободу). Остался шарик-радужка (WebGL), на
-// ~15% меньше прежнего. В его тёмном ЗРАЧКЕ поочерёдно всплывают 13 иконок
-// пунктов (каждая своим цветом традиции), а вокруг зрачка по орбите кружит
-// метеор с хвостом («минутная стрелка»). Чёрный фон зрачка даёт сам
-// BlueprintScene (диск pupil); тут — лёгкая подложка для читаемости иконок.
+// Композиция «шарик» (Артём 13.07): шарик-радужка (WebGL) без циферблата. В его
+// тёмном ЗРАЧКЕ поочерёдно всплывают 13 иконок пунктов (цвет по традиции), при
+// каждой смене расходятся волны «как камень в воду», а вокруг зрачка по орбите
+// кружит метеор с хвостом.
+//
+// Размер и сочность НАСТРОЕНЫ РАЗДЕЛЬНО для мобилки и десктопа (Артём):
+//  • десктоп «офигенный» не трогаем (zoom 0.63);
+//  • на мобиле шар крупнее (почти во весь экран) — контейнер шире экрана
+//    (full-bleed), край свечения уходит за экран, «плёнки» не видно;
+//  • под шаром — тёмная КРУГЛАЯ подложка: аддитивные нити горят на тёмном →
+//    сочно (откат прозрачного фона, но кругом, без «мёртвого квадрата»);
+//  • на мобиле выше dpr — резче свечение на ретине.
 
 const BlueprintScene = dynamic(() => import("./BlueprintScene"), {
   ssr: false,
@@ -33,26 +39,25 @@ const LEGEND = [
 ];
 
 const byCode = Object.fromEntries(methodology.map((m) => [m.code, m]));
-const C = 500;        // центр svg-координат
-const R_BG = 58;      // тёмная подложка под иконку (читаемость на свечении)
-const R_ORBIT = 66;   // радиус орбиты метеора (по кромке зрачка)
-const DUR = 8;        // период оборота метеора, c
-const STEP = 1800;    // смена иконки в зрачке, мс
+const C = 500;              // центр svg-координат
+const DUR = 8;              // период оборота метеора, c
+const STEP = 1800;          // смена иконки в зрачке, мс
 
-// «Плёнка» вокруг шара — это его свечение (Bloom), обрезанное прямоугольником
-// canvas: когда canvas по размеру равен шару, край свечения упирается в границу
-// и виден «квадрат» (светлый на десктопе, тёмный, глушащий спираль, на мобиле).
-// Лечение: canvas на ВЕСЬ контейнер (div inset-0), а сам шар оставляем прежней
-// «офигенной» величины через zoom<1 → край свечения уходит далеко от шара,
-// естественно гаснет; closest-side-маска мягко добивает его прозрачностью у
-// самой кромки контейнера (не режет само свечение — оно живёт с запасом).
-const BALL_ZOOM = 0.63;
+// Размер шара — раздельно. Десктоп не трогаем; на мобиле крупнее.
+const ZOOM_DESKTOP = 0.63;
+const ZOOM_MOBILE = 0.72;   // ~90vw в контейнере 124vw → зазор до края ~0.5–1 см
+
+// Маска-круг (closest-side, не farthest-corner → без «квадрата со скруглёнными
+// углами»). Тёмная КРУГЛАЯ подложка под шар: нити горят на тёмном (сочность),
+// края тают в фон. На мобиле шар крупнее → тёмный круг шире.
 const MASK = "radial-gradient(circle closest-side at 50% 50%, #000 60%, transparent 96%)";
+const PLATE_DESKTOP = "radial-gradient(circle closest-side at 50% 50%, #05040f 58%, rgba(5,4,15,0) 85%)";
+const PLATE_MOBILE = "radial-gradient(circle closest-side at 50% 50%, #05040f 80%, rgba(5,4,15,0) 100%)";
 
-// Круговая орбита-направляющая метеора вокруг центра (по часовой).
-const ORBIT =
-  `M ${C},${C - R_ORBIT} A ${R_ORBIT},${R_ORBIT} 0 1 1 ${C},${C + R_ORBIT}` +
-  ` A ${R_ORBIT},${R_ORBIT} 0 1 1 ${C},${C - R_ORBIT}`;
+// Базовая геометрия оверлея — под десктопный zoom 0.63; на мобиле множится на
+// k = zoom/0.63 (зрачок крупнее пропорционально).
+const R_BG_BASE = 58;       // тёмная подложка под иконку
+const R_ORBIT_BASE = 66;    // радиус орбиты метеора
 
 const ICONS = RING_ORDER.map((code) => {
   const m = byCode[code];
@@ -80,13 +85,40 @@ export default function BlueprintDial({ accent, active, webglFalse }) {
     return () => clearInterval(id);
   }, []);
 
+  // Мобилку/десктоп различаем, чтобы задать разный размер шара и сочность.
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 640px)");
+    const sync = () => setIsMobile(mq.matches);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
+
+  const zoom = isMobile ? ZOOM_MOBILE : ZOOM_DESKTOP;
+  const k = zoom / ZOOM_DESKTOP;               // масштаб оверлея под размер зрачка
+  const rBg = R_BG_BASE * k;
+  const rOrbit = R_ORBIT_BASE * k;
+  const iconTx = (C - 36 * k).toFixed(1);      // 36 = 12 (центр 24×24) × scale 3
+  const iconScale = (3 * k).toFixed(2);
+  const ro = rOrbit.toFixed(1);
+  const orbit = `M ${C},${(C - rOrbit).toFixed(1)} A ${ro},${ro} 0 1 1 ${C},${(C + rOrbit).toFixed(1)} A ${ro},${ro} 0 1 1 ${C},${(C - rOrbit).toFixed(1)}`;
+  const plate = isMobile ? PLATE_MOBILE : PLATE_DESKTOP;
+
   return (
     <>
-      <div className="relative mx-auto aspect-square w-full max-w-[440px] sm:max-w-[720px]">
-        {/* Шарик-радужка по центру, на ~15% меньше прежнего; края тают мягко. */}
+      <div
+        className={
+          isMobile
+            ? "relative left-1/2 aspect-square w-[124vw] max-w-[560px] -translate-x-1/2"
+            : "relative mx-auto aspect-square w-full max-w-[720px]"
+        }
+      >
+        {/* Шар: canvas на весь контейнер (свечению простор), тёмная круглая
+            подложка под ним (сочность), маска-круг мягко растворяет кромку. */}
         <div
           className="absolute inset-0"
-          style={{ maskImage: MASK, WebkitMaskImage: MASK }}
+          style={{ background: plate, maskImage: MASK, WebkitMaskImage: MASK }}
         >
           {webglFalse ? (
             // eslint-disable-next-line @next/next/no-img-element
@@ -94,14 +126,18 @@ export default function BlueprintDial({ accent, active, webglFalse }) {
               src="/blueprint-still.jpg"
               alt=""
               className="h-full w-full animate-[spin_160s_linear_infinite] object-contain"
-              style={{ transform: `scale(${BALL_ZOOM})` }}
+              style={{ transform: `scale(${zoom})` }}
             />
           ) : active ? (
-            <BlueprintScene accent={accent} config={{ zoom: BALL_ZOOM }} />
+            <BlueprintScene
+              accent={accent}
+              config={{ zoom }}
+              dpr={isMobile ? [1, 2] : undefined}
+            />
           ) : null}
         </div>
 
-        {/* Оверлей зрачка: иконки поочерёдно + метеор по орбите вокруг зрачка. */}
+        {/* Оверлей зрачка: волны + иконки поочерёдно + метеор по орбите. */}
         <svg
           viewBox="0 0 1000 1000"
           role="img"
@@ -109,37 +145,30 @@ export default function BlueprintDial({ accent, active, webglFalse }) {
           className="pointer-events-none absolute inset-0 h-full w-full"
         >
           {/* Орбита метеора — невидимая направляющая. */}
-          <path id="pupilOrbit" d={ORBIT} fill="none" stroke="none" />
+          <path id="pupilOrbit" d={orbit} fill="none" stroke="none" />
 
           {/* Тёмная подложка — держит чёрный центр и читаемость иконок. */}
-          <circle cx={C} cy={C} r={R_BG} fill="#05040f" opacity="0.5" />
+          <circle cx={C} cy={C} r={rBg.toFixed(1)} fill="#05040f" opacity="0.5" />
 
           {/* Волны от значка при каждом переключении (круги от камня в воде):
               key={idx} → React перемонтирует группу на смену иконки, и SMIL
-              (begin=0, без repeat) проигрывается заново. Три круга со сдвигом
-              расходятся из зрачка цветом нового значка и гаснут. */}
+              (begin=0, без repeat) проигрывается заново. */}
           <g key={`ripple-${idx}`}>
-            {[0, 1, 2].map((k) => (
-              <circle key={k} cx={C} cy={C} fill="none" stroke={ICONS[idx].color} opacity="0">
+            {[0, 1, 2].map((w) => (
+              <circle key={w} cx={C} cy={C} fill="none" stroke={ICONS[idx].color} opacity="0">
                 <animate
                   attributeName="r"
-                  values={`${R_BG - 4};${R_BG + 170}`}
+                  values={`${(rBg - 4).toFixed(1)};${(rBg + 170 * k).toFixed(1)}`}
                   dur="1.7s"
-                  begin={`${k * 0.24}s`}
+                  begin={`${w * 0.24}s`}
                   fill="freeze"
                 />
-                <animate
-                  attributeName="opacity"
-                  values="0.5;0"
-                  dur="1.7s"
-                  begin={`${k * 0.24}s`}
-                  fill="freeze"
-                />
+                <animate attributeName="opacity" values="0.5;0" dur="1.7s" begin={`${w * 0.24}s`} fill="freeze" />
                 <animate
                   attributeName="stroke-width"
-                  values="3;0.4"
+                  values={`${(3 * k).toFixed(1)};0.4`}
                   dur="1.7s"
-                  begin={`${k * 0.24}s`}
+                  begin={`${w * 0.24}s`}
                   fill="freeze"
                 />
               </circle>
@@ -154,7 +183,7 @@ export default function BlueprintDial({ accent, active, webglFalse }) {
             >
               <title>{p.title}</title>
               <g
-                transform={`translate(${C - 36} ${C - 36}) scale(3)`}
+                transform={`translate(${iconTx} ${iconTx}) scale(${iconScale})`}
                 fill="none"
                 stroke={p.color}
                 strokeWidth="1.7"
@@ -169,19 +198,19 @@ export default function BlueprintDial({ accent, active, webglFalse }) {
 
           {/* Метеор: хвост → halo → ядро, по орбите вокруг зрачка. */}
           <g>
-            {TAIL.map((t, k) => (
-              <circle key={k} r={t.r} fill={t.fill} opacity={t.opacity}>
+            {TAIL.map((t, w) => (
+              <circle key={w} r={(t.r * k).toFixed(1)} fill={t.fill} opacity={t.opacity}>
                 <animateMotion dur={`${DUR}s`} begin={`${-(DUR - t.lag)}s`} repeatCount="indefinite">
                   <mpath href="#pupilOrbit" />
                 </animateMotion>
               </circle>
             ))}
-            <circle r="8" fill="#33e6e0" opacity="0.18">
+            <circle r={(8 * k).toFixed(1)} fill="#33e6e0" opacity="0.18">
               <animateMotion dur={`${DUR}s`} repeatCount="indefinite">
                 <mpath href="#pupilOrbit" />
               </animateMotion>
             </circle>
-            <circle r="3.6" fill="#eafcff">
+            <circle r={(3.6 * k).toFixed(1)} fill="#eafcff">
               <animateMotion dur={`${DUR}s`} repeatCount="indefinite">
                 <mpath href="#pupilOrbit" />
               </animateMotion>

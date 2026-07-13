@@ -126,9 +126,10 @@ export default function MethodologyDiagram() {
 
       {/* Шарик-радужка (Артём 13.07, v2): циферблат убран; иконки 13 пунктов
           всплывают поочерёдно в зрачке, метеор кружит по орбите вокруг зрачка.
-          sceneRef — пауза WebGL вне вьюпорта. Шар компактный, в колонке секции —
-          прежний full-bleed (-mx-6/overflow-x-clip) больше не нужен. */}
-      <div ref={sceneRef} className="mt-4">
+          sceneRef — пауза WebGL вне вьюпорта. -mx-6/overflow-x-clip: на мобиле
+          шар full-bleed (контейнер 124vw шире экрана — свечению простор за
+          краями); overflow-x-clip срезает лишнее без горизонтального скролла. */}
+      <div ref={sceneRef} className="mt-4 -mx-6 overflow-x-clip sm:mx-0">
         <BlueprintDial
           accent={accent}
           active={sceneNear && webgl === true}
