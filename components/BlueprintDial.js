@@ -151,8 +151,9 @@ export default function BlueprintDial({ accent, active, webglFalse }) {
           ))}
         </svg>
 
-        {/* «YOU» в зрачке шарика. */}
-        <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+        {/* «YOU» в зрачке шарика. На мобильной скрыто (циферблат мелкий —
+            слово в зрачке смотрится тесно); показываем с sm и выше. */}
+        <div className="pointer-events-none absolute inset-0 hidden items-center justify-center sm:flex">
           <span
             className="font-mono text-[11px] tracking-[0.35em] text-foreground/90 sm:text-xs"
             style={{ textShadow: "0 0 8px rgba(5,4,15,0.95), 0 0 16px rgba(5,4,15,0.85)" }}

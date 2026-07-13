@@ -1,6 +1,5 @@
 import { Space_Grotesk, Inter, Space_Mono } from "next/font/google";
 import "./globals.css";
-import SmoothScroll from "@/components/SmoothScroll";
 import SiteSpiral from "@/components/SiteSpiral";
 import ScrollProgress from "@/components/ScrollProgress";
 import SiteHeader from "@/components/SiteHeader";
@@ -64,7 +63,6 @@ export default function RootLayout({ children }) {
         {process.env.NODE_ENV === "production" && (
           <meta httpEquiv="Content-Security-Policy" content={CSP} />
         )}
-        <SmoothScroll />
         <SiteSpiral />
         <ScrollProgress />
         <SiteHeader />

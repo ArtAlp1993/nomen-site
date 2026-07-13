@@ -27,6 +27,26 @@ body {
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
 }
 
+/* Скролл — НАТИВНЫЙ (аппаратный, гладкий на любом устройстве). Раньше стоял
+   Lenis (JS-скролл): на слабом железе под нагрузкой анимаций он прыгал
+   «ступеньками». Плавность переходов по якорям (#quiz, #pricing) даёт нативный
+   scroll-behavior — без JS. */
+html {
+  scroll-behavior: smooth;
+  /* Убирает серый «квадрат»-подсветку при касании на мобильных (Android/iOS
+     рисуют прямоугольник поверх задетого элемента — особенно заметно при
+     тапах по шарику-пасхалке). */
+  -webkit-tap-highlight-color: transparent;
+}
+/* Якорь не заезжает под фиксированную шапку. */
+section[id],
+[data-scroll-anchor] {
+  scroll-margin-top: 84px;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
 .text-gradient-cta {
   background: linear-gradient(90deg, var(--accent-violet), var(--accent-turquoise));
 }
