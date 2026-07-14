@@ -1,8 +1,8 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import { EASE } from "@/lib/motion";
 
-const EASE = [0.22, 1, 0.36, 1];
 const LINE1 = ["You", "were", "never", "random."];
 const LINE2 = ["You", "were", "coded."];
 

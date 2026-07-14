@@ -14,6 +14,14 @@ const btnClass =
 export default function FloatingDock() {
   const [showTop, setShowTop] = useState(false);
   const [chatOpen, setChatOpen] = useState(false);
+  // На сцене персонажа (/lab/scene, /r/<код>) стрелку «наверх» прячем — там свой
+  // поток (скролл ведёт сцену, есть «Заново»); чат оставляем в лёгком доступе.
+  const [onPersona, setOnPersona] = useState(false);
+
+  useEffect(() => {
+    const p = window.location.pathname;
+    setOnPersona(/^\/r\//.test(p) || /^\/lab\/scene\/?$/.test(p));
+  }, []);
 
   useEffect(() => {
     const onScroll = () =>
@@ -21,6 +29,14 @@ export default function FloatingDock() {
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Открыть чат по событию из любой части приложения (напр. ссылка «подробнее
+  // о расчёте → в чат» в окне пункта персонажа).
+  useEffect(() => {
+    const open = () => { setChatOpen(true); ymGoal("chat_opened"); };
+    window.addEventListener("nomen-open-chat", open);
+    return () => window.removeEventListener("nomen-open-chat", open);
   }, []);
 
   const scrollTop = () => {
@@ -34,7 +50,7 @@ export default function FloatingDock() {
 
       <div className="fixed bottom-4 right-4 z-40 flex flex-col items-center gap-2">
         <AnimatePresence>
-          {showTop && (
+          {showTop && !onPersona && (
             <motion.button
               type="button"
               aria-label="Scroll to top"

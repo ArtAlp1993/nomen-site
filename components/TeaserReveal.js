@@ -6,6 +6,7 @@ import Card from "./ui/Card";
 import Button from "./ui/Button";
 import PointIcon from "./PointIcon";
 import { ymGoal } from "./Analytics";
+import { EASE } from "@/lib/motion";
 
 // Поэтапная выдача результата: каждый избранный пункт «вычисляется» на глазах
 // (колёсико + подпись, что именно считаем), затем раскрывается. После
@@ -22,8 +23,6 @@ const STEP_MS = 2600; // «вычисление» одного пункта
 const REST_MS = 900; // пауза перед остальными пунктами
 const IDLE_MS = 20000; // предложение — только после долгой паузы без действий
 const CTA_SEEN_KEY = "nomen-cta-seen"; // показ один раз за сессию вкладки
-
-const EASE = [0.22, 1, 0.36, 1];
 
 export default function TeaserReveal({ firstName, points }) {
   const reduce = useReducedMotion();

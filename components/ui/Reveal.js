@@ -1,12 +1,12 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import { EASE } from "@/lib/motion";
 
 // Единый reveal для всего сайта: мягкий подъём + проявление (opacity/transform).
-// Одно и то же премиальное замедление ([0.22,1,0.36,1]) на всём лендинге.
-// Без filter:blur — он даёт дорогой paint на каждом кадре reveal и добавляет
-// «запинку» при входе секции; opacity и transform композитятся на GPU.
-const EASE = [0.22, 1, 0.36, 1];
+// Премиальное замедление (EASE из lib/motion) — общий темп бренда на всех
+// поверхностях. Без filter:blur — он даёт дорогой paint на каждом кадре reveal
+// и добавляет «запинку» при входе секции; opacity и transform композитятся на GPU.
 
 export default function Reveal({ children, delay = 0, className = "" }) {
   const reduce = useReducedMotion();

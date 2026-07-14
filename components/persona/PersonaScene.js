@@ -18,13 +18,41 @@
 // абзац варианта из банка data/readings. Видео-переходы Veo — через TRANSITIONS.
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import dynamic from "next/dynamic";
 import catalog from "@/data/points-catalog.json";
 import { calculateReading } from "@/lib/teaser";
-import { buildSections, resolveVerdict } from "@/lib/buildReading";
+import { buildSections, resolveVerdict, BLOCK_COLOR } from "@/lib/buildReading";
+import PointIcon from "@/components/PointIcon";
+import ValueRail from "./ValueRail";
+import methodology from "@/data/methodology.json";
 import { audioUrl, audioKey, SPEEDS } from "@/lib/audio";
 import { composeCharacter } from "@/lib/characterSkills";
 import { ReadingError } from "@/components/reading/ReadingSections";
 import { decodeReadingToken, extractReadingCode, fetchReadingByCode } from "@/lib/readingLink";
+import { EASE_CSS } from "@/lib/motion";
+
+// Брендовые шрифты — те же, что на сайте и в видео (next/font задаёт переменные
+// на <html>): заголовки Space Grotesk, метки/эйбрау/номера Space Mono, тело Inter.
+// Раньше сцена шла на system-ui и визуально выпадала из бренда.
+const FONT = {
+  heading: "var(--font-space-grotesk), system-ui, sans-serif",
+  body: "var(--font-inter), system-ui, sans-serif",
+  mono: "var(--font-space-mono), ui-monospace, monospace",
+};
+// Тёмный ореол за текстом поверх светящейся сцены (класс .readable-on-spiral сайта,
+// инлайном): нити/свечение не «прожигают» буквы панелей.
+const HALO = "0 0 6px rgba(5,4,15,.95), 0 0 16px rgba(5,4,15,.9), 0 0 30px rgba(5,4,15,.8)";
+
+// Аура-радужка — ТОТ ЖЕ WebGL-движок нитей, что центральный образ сайта
+// (components/BlueprintScene ← lib/ballFormula, свод 4.3). Здесь он живёт как
+// «аура» ЗА фигурой: параметры берём из морфинга клиента (composeCharacter),
+// так что 13 черт лепят живую радужку, а она растёт от «зародыша» к полному
+// свечению по мере собранных пунктов. Курс «гибрид» (решение Артёма 14.07):
+// кадр-фигура остаётся персонажем, радужка сводит его с сайтом и видео.
+const AuraScene = dynamic(() => import("@/components/BlueprintScene"), {
+  ssr: false,
+  loading: () => null,
+});
 
 // Имена — с заглавной каждого слова (свод правил 4.7).
 const titleCase = (s) =>
@@ -76,8 +104,6 @@ function readingKeyFor(code, R) {
 
 // Кадры персонажа: s0 = база N1 (всегда есть), s1…s13 появляются по мере генерации.
 const frameSrc = (k) => `/persona/frames/s${k}.jpg`;
-// Картинка символа варианта (banana), когда будет: /persona/icons/{code}/{key}.png.
-const variantImg = (p, v) => `/persona/icons/${p.code.toLowerCase()}/${v.key}.png`;
 // Видео-переходы Veo: { номерКадра: "/persona/transitions/t5.webm" } — заполняется
 // по мере генерации (пакет №2). Ключ k = переход S(k-1) → S(k).
 const TRANSITIONS = {};
@@ -86,33 +112,35 @@ const TRANSITIONS = {};
 const accent = (i, a = 1) =>
   `hsl(${Math.round((((i / N) * 0.8 + 0.55) % 1) * 360)} 75% 60% / ${a})`;
 
-const easeSmooth = (t) => t * t * (3 - 2 * t);
+// Цвет ТРАДИЦИИ пункта — как на сайте (Numerology/Astrology/Chinese/Tarot),
+// чтобы иконки инвентаря были в одной системе с MethodologyDiagram/BlueprintDial.
+const BLOCK_OF = Object.fromEntries(methodology.map((m) => [m.code, m.block]));
+const pointColor = (code) => BLOCK_COLOR[BLOCK_OF[code]] || "#33e6e0";
+// Короткое «что это» — одна фраза из methodology (не длинный интро банка).
+const ABOUT_OF = Object.fromEntries(methodology.map((m) => [m.code, m.about]));
+
 
 const inputStyle = {
   width: "100%", boxSizing: "border-box", marginBottom: 12, padding: "12px 14px",
-  borderRadius: 12, background: "rgba(6,4,16,.7)", border: "1px solid #2a2350",
-  color: "#eaf0ff", fontSize: 15, outline: "none",
+  borderRadius: 12, background: "rgba(6,4,16,.7)", border: "1px solid rgba(108,79,246,.35)",
+  color: "var(--foreground)", fontSize: 15, outline: "none", fontFamily: FONT.body,
 };
 const ctrlBtn = {
   height: 38, minWidth: 38, borderRadius: 999, cursor: "pointer",
   display: "inline-flex", alignItems: "center", justifyContent: "center",
-  background: "rgba(10,8,24,.7)", border: "1px solid #2a2350", color: "#eaf0ff",
-  fontSize: 16, backdropFilter: "blur(6px)",
+  background: "rgba(10,8,24,.7)", border: "1px solid rgba(108,79,246,.35)", color: "var(--foreground)",
+  fontSize: 14, backdropFilter: "blur(6px)", fontFamily: FONT.mono,
 };
-
-// Символ варианта: banana-картинка (когда есть) ИЛИ юникод-заглушка (♌, 水, 7…).
-// Числа/метки — крупный текст; глифы/эмодзи — тоже текст, но эмодзи цветные.
-function VariantGlyph({ point, variant, size, hasImg }) {
-  if (hasImg) {
-    return <img src={variantImg(point, variant)} alt={variant.key} style={{ width: size, height: size, objectFit: "contain" }} />;
-  }
-  const isNum = variant.symbolKind === "number" || variant.symbolKind === "label";
-  return (
-    <span style={{ fontSize: Math.round(size * (isNum ? 0.62 : 0.82)), fontWeight: isNum ? 700 : 400, lineHeight: 1, fontFamily: isNum ? "system-ui" : "system-ui, 'Apple Color Emoji', 'Segoe UI Symbol'" }}>
-      {variant.symbol}
-    </span>
-  );
-}
+// Кнопки окон разбора: призрачная (вторичная) и градиентная (основная).
+const btnGhost = {
+  padding: "9px 16px", borderRadius: 999, cursor: "pointer", background: "transparent",
+  border: "1px solid rgba(108,79,246,.4)", color: "#cfc9ec", fontSize: 13, fontFamily: FONT.mono,
+};
+const btnPrimary = (c) => ({
+  padding: "9px 18px", borderRadius: 999, cursor: "pointer", border: "none",
+  background: `linear-gradient(90deg, var(--accent-violet), ${c})`,
+  color: "#0a0818", fontSize: 13, fontWeight: 700, fontFamily: FONT.heading,
+});
 
 // Полный текст пункта — ТЕ ЖЕ entries/paragraphs, что рендерит /reading
 // (единый источник lib/buildReading.buildSections). full=false → тизер (первый
@@ -154,24 +182,14 @@ function SectionText({ section, full }) {
 // затем текст-блок плавно появляется, держится и плавно уходит к концу
 // сегмента — следующий пункт начинает лететь уже без блока. Скролл назад
 // отыгрывает всё в обратную сторону (всё считается от позиции скролла).
-const TOUCH_AT = 0.55;
-const PANEL_IN_A = 0.6, PANEL_IN_B = 0.7;   // появление блока
-const PANEL_OUT_A = 0.92, PANEL_OUT_B = 1.0; // уход блока
-const panelPhase = (t) => {
-  if (t <= PANEL_IN_A || t >= PANEL_OUT_B) return 0;
-  if (t < PANEL_IN_B) return (t - PANEL_IN_A) / (PANEL_IN_B - PANEL_IN_A);
-  if (t > PANEL_OUT_A) return 1 - (t - PANEL_OUT_A) / (PANEL_OUT_B - PANEL_OUT_A);
-  return 1;
-};
+const TOUCH_AT = 0.55; // доля сегмента до момента касания пункта
 
 export default function PersonaScene() {
   const [frame, setFrame] = useState(0);          // собрано пунктов = номер кадра
-  const [active, setActive] = useState(-1);       // пункт в фокусе текста (-1/-2 = края)
   const [hudIdx, setHudIdx] = useState(-1);       // пункт для HUD-строки (летит или читается)
   const [flash, setFlash] = useState(null);       // { i, ts } — вспышка касания
   const [panelIdx, setPanelIdx] = useState(null); // клик из инвентаря
   const [haveFrame, setHaveFrame] = useState({}); // какие s1…s13 существуют
-  const [haveIcon, setHaveIcon] = useState({});   // какие PNG-иконки существуют
   const [haveBg, setHaveBg] = useState(false);    // фон Ф1
   const [haveAudio, setHaveAudio] = useState({}); // какие озвучки Gacrux записаны (кнопка «Слушать» только там)
   const [haveMusic, setHaveMusic] = useState(false); // есть ли реальный фон-трек public/audio/ambient.*
@@ -242,15 +260,17 @@ export default function PersonaScene() {
   const [musicOn, setMusicOn] = useState(false);
   const [speaking, setSpeaking] = useState(false);
   const [speed, setSpeed] = useState(1);           // скорость озвучки (0.75×–1.5×, З-47)
-  const [recapOpen, setRecapOpen] = useState(false); // финал: полный разбор («доработка»)
-  const [endReveal, setEndReveal] = useState(0);  // 0..1 — проявление блока вердикта
+  const [modalFull, setModalFull] = useState(false); // окно пункта: false=короткое, true=полное
+  const [verdictOpen, setVerdictOpen] = useState(false); // окно вердикта (после 13/13)
+  const [connecting, setConnecting] = useState(null); // индекс пункта в фазе «определения значения»
+  const [audioOpen, setAudioOpen] = useState(false); // сжимаемая аудио-панель (в полном окне)
 
-  const iconRefs = useRef([]);
   const videoRef = useRef(null);
-  const panelBoxRef = useRef(null); // opacity текст-блока — напрямую, без ре-рендеров
-  const dimRef = useRef(null);      // затемнение сцены — привязано к блоку
   const panelIdxRef = useRef(null); // зеркало panelIdx для скролл-хендлера
   const collectedRef = useRef(new Array(N).fill(false));
+  const seenRef = useRef(new Array(N).fill(false)); // авто-окно уже показано (1×/пункт)
+  const maxFrameRef = useRef(0); // НАКОПИТЕЛЬНО: собранные пункты не «опустошаются» при скролле вверх
+  const connectingRef = useRef(null); // зеркало connecting для скролл-хендлера
   const musicRef = useRef(null);    // Web Audio: генеративный ambient (заглушка)
   const speakingRef = useRef(false);
   const audioElRef = useRef(null);  // реальная озвучка Gacrux (public/audio/reading)
@@ -326,11 +346,64 @@ export default function PersonaScene() {
     } catch { /* нет Web Audio — молча */ }
   }
 
-  function toVerdict() {
-    const el = document.scrollingElement || document.documentElement;
-    el.scrollTo({ top: el.scrollHeight, behavior: "smooth" });
+  function restart() {
+    setVerdictOpen(false);
+    setPanelIdx(null); panelIdxRef.current = null; setModalFull(false);
+    seenRef.current = new Array(N).fill(false);
+    maxFrameRef.current = 0; setFrame(0);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
-  function restart() { window.scrollTo({ top: 0, behavior: "smooth" }); }
+
+  // Лента «определила» значение → залетело в инвентарь → открываем короткое окно.
+  function finishConnect() {
+    const i = connectingRef.current;
+    if (i === null) return;
+    connectingRef.current = null;
+    setConnecting(null);
+    panelIdxRef.current = i; setPanelIdx(i); setModalFull(false);
+  }
+
+  // Открыть окно пункта (короткое) — из инвентаря/касания.
+  function openWindow(i, full = false) {
+    stopAll();
+    panelIdxRef.current = i; setPanelIdx(i); setModalFull(full);
+  }
+  // Закрыть окно пункта.
+  function closeWindow() {
+    stopAll();
+    panelIdxRef.current = null; setPanelIdx(null); setModalFull(false);
+  }
+  // «Дальше»: закрыть окно, снять блокировку скролла и плавно доехать до
+  // следующего касания (там откроется его окно). На последнем пункте → вердикт.
+  function goNext() {
+    const i = panelIdxRef.current;
+    closeWindow();
+    if (i === null) return;
+    if (frame >= N && i >= N - 1) { setTimeout(() => setVerdictOpen(true), 60); return; }
+    setTimeout(() => {
+      const el = document.scrollingElement || document.documentElement;
+      const max = el.scrollHeight - el.clientHeight;
+      const targetScaled = i + 1 + TOUCH_AT + 0.03;
+      const targetP = Math.min(1, targetScaled / (N + 0.5));
+      el.scrollTo({ top: Math.round(targetP * max), behavior: "smooth" });
+    }, 60);
+  }
+  // «Подробнее о расчёте» → открыть чат с вопросом (FloatingDock слушает событие).
+  function askInChat(point) {
+    try {
+      window.dispatchEvent(new CustomEvent("nomen-open-chat", {
+        detail: { q: `How is my ${point.title} calculated?` },
+      }));
+    } catch { /* noop */ }
+  }
+  // Короткая фраза «как считается»: по дате (астро/число пути/аркан) или по имени.
+  const NAME_BASED = new Set(["A3", "A4", "A5", "A9", "A10", "A11"]);
+  function howLine(section) {
+    const base = NAME_BASED.has(section.code)
+      ? "По буквам вашего имени"
+      : "По вашей дате рождения";
+    return `${base} → ${section.valueLabel || section.title}`;
+  }
 
   // Какие реальные озвучки Gacrux уже записаны — кнопку «Слушать» показываем ТОЛЬКО там.
   useEffect(() => {
@@ -370,12 +443,6 @@ export default function PersonaScene() {
       im.onload = () => setHaveFrame((h) => ({ ...h, [k]: true }));
       im.src = frameSrc(k);
     }
-    POINTS.forEach((p) => {
-      const v = variantOf(p);
-      const im = new Image();
-      im.onload = () => setHaveIcon((h) => ({ ...h, [p.code]: true }));
-      im.src = variantImg(p, v);
-    });
     const bg = new Image();
     bg.onload = () => setHaveBg(true);
     bg.src = "/persona/frames/bg.jpg";
@@ -390,33 +457,13 @@ export default function PersonaScene() {
         const el = document.scrollingElement || document.documentElement;
         const max = el.scrollHeight - el.clientHeight;
         const p = max > 0 ? el.scrollTop / max : 0;
-        // Любой скролл снимает «пришпиленную» кликом панель инвентаря — иначе
-        // затемнение и текст-блок застревают (не убираются, персонажа не видно,
-        // «обратного скролла нет»). После снятия сцену снова ведёт скролл.
-        if (panelIdxRef.current !== null) { panelIdxRef.current = null; setPanelIdx(null); }
+        // Окно открыто → скролл заблокирован эффектом, onScroll сюда не заходит.
         const scaled = p * (N + 0.5);
-        const vw = window.innerWidth, vh = window.innerHeight;
-        const vmin = Math.min(vw, vh);
-        const cx = vw / 2;
         let collected = 0;
 
         for (let i = 0; i < N; i++) {
           const t = Math.max(0, Math.min(1, scaled - i));
           const flight = Math.min(1, t / TOUCH_AT); // полёт занимает первую часть сегмента
-          const node = iconRefs.current[i];
-          if (node) {
-            // Прилёт с боков попеременно; уровни распределены по телу.
-            const side = i % 2 === 0 ? -1 : 1;
-            const level = 0.60 + (i % 5) * 0.05;
-            const e = easeSmooth(flight);
-            const xTouch = cx + side * vmin * 0.14;
-            const xFrom = cx + side * (vw / 2 + 90);
-            const x = xFrom + (xTouch - xFrom) * e;
-            const y = vh * level + Math.sin(e * Math.PI) * -vh * 0.05;
-            const scale = 0.55 + e * 0.45;
-            node.style.transform = `translate(${x}px, ${y}px) translate(-50%,-50%) scale(${scale})`;
-            node.style.opacity = t <= 0.001 ? 0 : flight >= 1 ? 0 : Math.min(1, flight * 1.8);
-          }
           if (flight >= 1) {
             collected++;
             if (!collectedRef.current[i]) {
@@ -429,26 +476,25 @@ export default function PersonaScene() {
                 videoRef.current.style.opacity = 1;
                 videoRef.current.play().catch(() => {});
               }
+              // Касание пункта → фаза «определения» (лента бежит, знаки мелькают,
+              // фиксируется твоё значение ~1с), скролл замирает; по завершении
+              // ленты (onLand) значение залетает в инвентарь и открывается окно.
+              if (!seenRef.current[i] && panelIdxRef.current === null && connectingRef.current === null) {
+                seenRef.current[i] = true;
+                connectingRef.current = i;
+                setConnecting(i);
+              }
             }
           } else {
             collectedRef.current[i] = false;
           }
         }
 
-        setFrame(collected);
-        // Текст-блок: появляется ПОСЛЕ касания, плавно уходит к концу сегмента
-        // (следующий пункт летит уже без блока). Скролл назад возвращает блок.
-        const cur = Math.min(N - 1, Math.floor(scaled));
-        const tCur = Math.max(0, Math.min(1, scaled - cur));
-        const op = p >= 0.998 ? 0 : panelPhase(tCur);
-        if (panelIdxRef.current === null) {
-          if (panelBoxRef.current) panelBoxRef.current.style.opacity = op;
-          if (dimRef.current) dimRef.current.style.opacity = op * 0.45;
-        }
-        setActive(op > 0 ? cur : p >= 0.998 ? -2 : -1);
-        setHudIdx(p >= 0.998 ? -2 : scaled > 0.2 ? cur : -1);
-        // Блок вердикта проявляется на последнем экране (p 0.965..1).
-        setEndReveal(p > 0.965 ? Math.min(1, (p - 0.965) / 0.03) : 0);
+        // Инвентарь накопительный: пункт, раз собранный, остаётся (персонаж не
+        // «раздевается» при скролле вверх); это же делает вердикт достижимым.
+        if (collected > maxFrameRef.current) maxFrameRef.current = collected;
+        setFrame(maxFrameRef.current);
+        setHudIdx(scaled > 0.2 ? Math.min(N - 1, Math.floor(scaled)) : -1);
       });
     };
     onScroll();
@@ -463,13 +509,13 @@ export default function PersonaScene() {
 
   // Блокируем скролл страницы под интро-экраном + гасим музыку/речь при уходе.
   useEffect(() => {
-    const lock = intro || recapOpen;
+    const lock = intro || verdictOpen || panelIdx !== null || connecting !== null;
     // Блокируем и body, и html: реальный скроллер сцены — documentElement,
     // иначе оверлей «стоит», а сцена прокручивается за ним (скролл будто не работает).
     document.body.style.overflow = lock ? "hidden" : "";
     document.documentElement.style.overflow = lock ? "hidden" : "";
     return () => { document.body.style.overflow = ""; document.documentElement.style.overflow = ""; };
-  }, [intro, recapOpen]);
+  }, [intro, verdictOpen, panelIdx, connecting]);
   useEffect(() => () => {
     if (musicRef.current) musicRef.current.stop();
     try { audioElRef.current?.pause(); } catch { /* noop */ }
@@ -491,20 +537,36 @@ export default function PersonaScene() {
   const bloom = morph ? morph.bloom : 1;                  // 0.5..2.4 (аркан D1 → свечение)
   const glowHex = morph ? morph.colors[0] : "#5a50ff";    // цвет тела (A1 → цвет)
   const sparkHex = morph ? morph.colors[4] : "#33e6e0";   // искры (C2 → стихия года)
+  // Аура-конфиг: морфинг клиента (растёт от зародыша) с лёгким подъёмом яркости
+  // и свечения, чтобы радужка читалась и на ранних пунктах. Демо (нет reading) →
+  // undefined = дефолтная живая радужка (как на сайте).
+  const auraCfg = morph
+    ? { ...morph, opacity: Math.min(1, morph.opacity + 0.22), bloom: morph.bloom + 0.5 }
+    : undefined;
   const hexA = (hex, a) => `${hex}${Math.max(0, Math.min(255, Math.round(a * 255))).toString(16).padStart(2, "0")}`;
   // «Крепчание»: недостающие кадры компенсируем фильтром, свечение растёт с bloom/прогрессом.
   const growFilter = `brightness(${(1 + growSteps * 0.05 + (bloom - 1) * 0.05).toFixed(3)}) saturate(${(1 + growSteps * 0.03 + progress * 0.25).toFixed(3)})`;
 
-  const full = panelIdx !== null; // клик по инвентарю → полный текст пункта (как /reading)
-  const textIdx = panelIdx !== null ? panelIdx : active >= 0 ? active : null;
+  const full = modalFull;         // false = короткое окно, true = полное
+  const textIdx = panelIdx;       // какой пункт открыт в окне
   const cur = textIdx !== null ? POINTS[textIdx] : null;
   const curSection = cur ? byCode.get(cur.code) : null;
+  const curColor = cur ? pointColor(cur.code) : "#33e6e0";
+
+  // Фокус ленты: пункт, который сейчас ищется (connecting) или следующий к сбору.
+  const focusIdx = connecting !== null ? connecting : Math.min(frame, N - 1);
+  const focusPt = POINTS[focusIdx];
+  const focusVariants = focusPt.variants;
+  const railSymbolsRaw = focusVariants.map((v) => v.symbol).filter(Boolean);
+  const railSymbols = railSymbolsRaw.length ? railSymbolsRaw : ["·"];
+  const railSel = Math.max(0, focusVariants.findIndex((v) => v.key === keymap[focusPt.code]));
+  const railColor = pointColor(focusPt.code);
 
   // Клиентская ссылка есть, но не открылась → та же панель ошибки, что на /reading.
   if (loadError) return <ReadingError />;
 
   return (
-    <div style={{ background: BG, minHeight: "100vh", fontFamily: "system-ui" }}>
+    <div style={{ background: "var(--background)", minHeight: "100vh", fontFamily: FONT.body }}>
       {/* ── Интро-экран: имя + дата рождения (фирменный стиль) ── */}
       {intro && (
         <div
@@ -521,9 +583,9 @@ export default function PersonaScene() {
               boxShadow: "0 0 60px rgba(120,90,255,.22)", backdropFilter: "blur(10px)",
             }}
           >
-            <div style={{ fontSize: 13, letterSpacing: "0.34em", color: "#8a6bff", marginBottom: 6 }}>NOMEN</div>
-            <h1 style={{ margin: "0 0 6px", fontSize: 24, color: "#eaf0ff", fontWeight: 600 }}>Собери своего персонажа</h1>
-            <p style={{ margin: "0 0 22px", fontSize: 13.5, color: "#9aa0c0", lineHeight: 1.5 }}>
+            <div style={{ fontSize: 12, letterSpacing: "0.4em", color: "var(--accent-turquoise)", marginBottom: 8, fontFamily: FONT.mono, textTransform: "uppercase" }}>NOMEN</div>
+            <h1 style={{ margin: "0 0 6px", fontSize: 26, color: "var(--foreground)", fontWeight: 600, fontFamily: FONT.heading, textShadow: HALO }}>Собери своего персонажа</h1>
+            <p style={{ margin: "0 0 22px", fontSize: 13.5, color: "var(--foreground-muted)", lineHeight: 1.5 }}>
               13 граней твоей карты присоединятся к энергетическому образу. Введи данные — и листай.
             </p>
             <input
@@ -545,15 +607,17 @@ export default function PersonaScene() {
               }}
               disabled={!birth}
               style={{
-                width: "100%", marginTop: 8, padding: "13px 0", borderRadius: 12,
+                width: "100%", marginTop: 8, padding: "13px 0", borderRadius: 999,
                 cursor: birth ? "pointer" : "not-allowed", opacity: birth ? 1 : 0.5,
                 border: "none", fontSize: 15, fontWeight: 700, color: "#0a0818",
-                background: "linear-gradient(90deg,#8a6bff,#33e6e0)",
+                fontFamily: FONT.heading,
+                background: "linear-gradient(90deg, var(--accent-violet), var(--accent-turquoise))",
+                boxShadow: "0 0 40px -10px rgba(51,230,224,.6)",
               }}
             >
               Раскрыть меня →
             </button>
-            <div style={{ marginTop: 12, fontSize: 11.5, color: "#6c7095", lineHeight: 1.4 }}>
+            <div style={{ marginTop: 12, fontSize: 11.5, color: "var(--foreground-muted)", lineHeight: 1.4 }}>
               Расчёт — движком сайта (тот же, что в разборе). Число пути, знак, стихия, аркан
               считаются от даты; выражение/душа/личность — от написания имени.
             </div>
@@ -561,26 +625,12 @@ export default function PersonaScene() {
         </div>
       )}
 
-      {/* ── Имя клиента (чип) + контролы: музыка, к вердикту ── */}
+      {/* ── Верхний бар: только имя персонажа «Имя · Nomen» (аудио — в полном окне) ── */}
       {!intro && (
         <>
-          <div style={{ position: "fixed", zIndex: 30, top: 16, left: 16, fontSize: 13, color: "#c9b8ff", letterSpacing: "0.06em", pointerEvents: "none" }}>
-            <span style={{ opacity: 0.6 }}>NOMEN · </span>{displayName}
-          </div>
-          <div style={{ position: "fixed", zIndex: 30, top: 12, right: 14, display: "flex", gap: 8 }}>
-            <button
-              onClick={() => setSpeed((s) => SPEEDS[(SPEEDS.indexOf(s) + 1) % SPEEDS.length])}
-              title="Скорость озвучки"
-              style={{ ...ctrlBtn, width: "auto", padding: "0 12px", fontSize: 13 }}
-            >
-              {speed}×
-            </button>
-            <button onClick={toggleMusic} title="Фоновая музыка" style={ctrlBtn}>
-              {musicOn ? "🔊" : "🎵"}
-            </button>
-            <button onClick={toVerdict} title="К вердикту" style={{ ...ctrlBtn, width: "auto", padding: "0 14px", gap: 6, fontSize: 13, color: "#33e6e0", borderColor: "#33e6e0" }}>
-              К вердикту ↓
-            </button>
+          <div style={{ position: "fixed", zIndex: 30, top: 16, left: 16, fontSize: 13, color: "#c9b8ff", letterSpacing: "0.18em", pointerEvents: "none", fontFamily: FONT.mono, textShadow: HALO }}>
+            <span style={{ color: "var(--foreground)" }}>{displayName}</span>
+            <span style={{ opacity: 0.55 }}> · Nomen</span>
           </div>
           {/* Реальная озвучка Gacrux (только записанные файлы, без браузерного голоса). */}
           <audio ref={audioElRef} onEnded={stopFlag} preload="none" style={{ display: "none" }} />
@@ -602,13 +652,31 @@ export default function PersonaScene() {
         )}
       </div>
 
+      {/* ── Слой 0.5: аура-радужка — тот же WebGL, что на сайте; параметры из
+           морфинга клиента (composeCharacter), растёт с собранными пунктами.
+           Живёт ЗА фигурой, края тают маской-кругом, аддитивное свечение. ── */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: "fixed", left: "64%", top: "46%", zIndex: 0,
+          transform: "translate(-50%,-50%)",
+          // Вертикальный эллипс — «намёк на форму тела», аура обтягивает стоящую фигуру.
+          width: "min(90vh, 820px)", aspectRatio: "0.82 / 1",
+          pointerEvents: "none", opacity: 1,
+          WebkitMaskImage: "radial-gradient(ellipse 58% 62% at 50% 48%, #000 52%, transparent 92%)",
+          maskImage: "radial-gradient(ellipse 58% 62% at 50% 48%, #000 52%, transparent 92%)",
+        }}
+      >
+        <AuraScene accent={sparkHex} config={auraCfg} dpr={[1, 1.5]} />
+      </div>
+
       {/* ── Слой 1: персонаж (стопка кадров + видео-переход) ── */}
       <div
         style={{
-          position: "fixed", left: "50%", top: "44%", zIndex: 1,
+          position: "fixed", left: "64%", top: "46%", zIndex: 1,
           transform: `translate(-50%,-50%) scale(${1 + frame * 0.012})`,
-          height: "82vh", aspectRatio: "893 / 1600",
-          transition: "transform .6s ease",
+          height: "62vh", aspectRatio: "893 / 1600",
+          transition: `transform .6s ${EASE_CSS}`,
           // Растворяем края JPEG-кадра в фон страницы (фон кадра не идеально чёрный).
           WebkitMaskImage: "radial-gradient(ellipse 62% 55% at 50% 46%, #000 60%, transparent 82%)",
           maskImage: "radial-gradient(ellipse 62% 55% at 50% 46%, #000 60%, transparent 82%)",
@@ -619,7 +687,7 @@ export default function PersonaScene() {
           src={frameSrc(0)} alt="Энергетический персонаж"
           style={{
             position: "absolute", inset: 0, width: "100%", height: "100%",
-            objectFit: "contain", filter: growFilter, transition: "filter .6s ease",
+            objectFit: "contain", filter: growFilter, transition: `filter .6s ${EASE_CSS}`,
           }}
         />
         {/* Текущий сгенерённый кадр — кроссфейдом поверх базы */}
@@ -633,7 +701,7 @@ export default function PersonaScene() {
                 position: "absolute", inset: 0, width: "100%", height: "100%",
                 objectFit: "contain", filter: growFilter,
                 opacity: k === shownFrame ? 1 : 0,
-                transition: "opacity .55s ease, filter .6s ease",
+                transition: `opacity .55s ${EASE_CSS}, filter .6s ${EASE_CSS}`,
               }}
             />
           );
@@ -654,35 +722,11 @@ export default function PersonaScene() {
             position: "absolute", inset: "-8%", borderRadius: "50%",
             background: `radial-gradient(closest-side, ${hexA(glowHex, 0.06 + progress * 0.16 + (bloom - 1) * 0.03)}, ${hexA(sparkHex, 0.04 + progress * 0.05)} 46%, transparent 72%)`,
             pointerEvents: "none",
-            transition: "background .6s ease",
+            transition: `background .6s ${EASE_CSS}`,
           }}
         />
       </div>
 
-      {/* ── Слой 2: летящие иконки пунктов ── */}
-      <div style={{ position: "fixed", inset: 0, zIndex: 2, pointerEvents: "none" }}>
-        {POINTS.map((p, i) => (
-          <div
-            key={p.code}
-            // opacity ведём ТОЛЬКО через DOM в скролл-обработчике (без transition и без
-            // opacity в style-пропе) — иначе React сбрасывает её на ре-рендере и значок
-            // «тянется» 0.35с шлейфом → задвоение/залипание. Начальное 0 ставим в ref.
-            ref={(el) => { iconRefs.current[i] = el; if (el) el.style.opacity = "0"; }}
-            style={{
-              position: "absolute", left: 0, top: 0,
-              width: 64, height: 64, borderRadius: 16,
-              display: "flex", alignItems: "center", justifyContent: "center",
-              color: accent(i), background: "rgba(10,8,24,.55)",
-              border: `1px solid ${accent(i)}`,
-              boxShadow: `0 0 22px ${accent(i, 0.4)}`,
-              backdropFilter: "blur(4px)",
-              willChange: "transform, opacity",
-            }}
-          >
-            <VariantGlyph point={p} variant={variantOf(p)} size={46} hasImg={haveIcon[p.code]} />
-          </div>
-        ))}
-      </div>
 
       {/* ── Слой 3: вспышка касания ── */}
       {flash && (
@@ -696,237 +740,203 @@ export default function PersonaScene() {
         />
       )}
 
-      {/* ── Затемнение под текст (opacity ведёт скролл-хендлер) ── */}
-      <div ref={dimRef} style={{ position: "fixed", inset: 0, zIndex: 4, background: BG, opacity: 0, pointerEvents: "none", transition: "opacity .15s linear" }} />
+      {/* ── ПОСТОЯННАЯ лента значений: слева от фигуры, над аурой. В покое медленно
+           крутит значения текущего пункта; при касании (connecting) ускоряется,
+           садится на твоё значение и вызывает onLand → окно. ── */}
+      {!intro && !loadError && (
+        <div style={{ position: "fixed", zIndex: 2, left: "46%", top: "46%", transform: "translate(-50%,-50%)", pointerEvents: "none", display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
+          {connecting !== null && (
+            <div style={{ fontFamily: FONT.mono, fontSize: 10, letterSpacing: "0.24em", textTransform: "uppercase", color: "#9aa0c0", textShadow: HALO, whiteSpace: "nowrap" }}>Определяем {focusPt.title}…</div>
+          )}
+          <div style={{ padding: "6px 8px", borderRadius: 14, transition: "background .3s, border-color .3s, box-shadow .3s", background: connecting !== null ? "rgba(10,8,24,.5)" : "rgba(10,8,24,.14)", border: `1px solid ${connecting !== null ? railColor + "44" : "rgba(108,79,246,.12)"}`, boxShadow: connecting !== null ? `0 0 34px ${railColor}22` : "none" }}>
+            <ValueRail symbols={railSymbols} selectedIdx={railSel} color={railColor} seekKey={connecting} onLand={finishConnect} />
+          </div>
+        </div>
+      )}
 
-      {/* ── Слой 5: текст пункта (банк студии data/readings); появляется ПОСЛЕ касания ── */}
-      <div ref={panelBoxRef} style={{ position: "fixed", zIndex: 5, left: 0, right: 0, top: "16%", display: "flex", justifyContent: "center", pointerEvents: "none", opacity: 0, transition: "opacity .15s linear" }}>
-        {cur && (
-          <div
-            style={{
-              maxWidth: 460, margin: "0 20px", padding: "22px 26px", borderRadius: 16,
-              background: "rgba(10,8,24,.78)", border: "1px solid #241d3e",
-              backdropFilter: "blur(8px)", color: "#eaf0ff", textAlign: "center",
-              pointerEvents: "auto",
-              ...(full ? { maxHeight: "74vh", overflowY: "auto", overscrollBehavior: "contain", WebkitOverflowScrolling: "touch" } : {}),
-            }}
-          >
-            <div style={{ color: accent(textIdx), display: "flex", justifyContent: "center", height: 44, alignItems: "center" }}>
-              <VariantGlyph point={cur} variant={variantOf(cur)} size={40} hasImg={haveIcon[cur.code]} />
+      {/* ── КОРОТКОЕ окно пункта: слева, НЕ перекрывает фигуру справа.
+           «Что это и для чего» + «как считается» одной фразой (+ ссылка в чат). ── */}
+      {cur && !full && (
+        <div onClick={closeWindow} style={{ position: "fixed", zIndex: 20, inset: 0, display: "flex", alignItems: "center", justifyContent: "center", padding: 20, background: "rgba(5,4,15,.5)", backdropFilter: "blur(2px)" }}>
+          <div onClick={(e) => e.stopPropagation()} style={{ width: "100%", maxWidth: 430, maxHeight: "86vh", overflowY: "auto", overscrollBehavior: "contain", padding: "18px 22px 20px", borderRadius: 18, background: "rgba(10,8,24,.96)", border: `1px solid ${curColor}66`, boxShadow: `0 0 60px ${curColor}2e`, backdropFilter: "blur(10px)", animation: "nomenPopIn .3s ease" }}>
+            {/* Шапка: иконка + код + закрыть */}
+            <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 10 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 10, color: curColor }}>
+                <PointIcon code={cur.code} size={26} />
+                <span style={{ fontFamily: FONT.mono, fontSize: 10.5, letterSpacing: "0.24em", textTransform: "uppercase", opacity: 0.85 }}>{cur.code} · {textIdx + 1}/{N}</span>
+              </div>
+              <button onClick={closeWindow} title="Закрыть" style={{ background: "transparent", border: "none", color: "#8f95b3", fontSize: 16, cursor: "pointer", padding: 2, lineHeight: 1 }}>✕</button>
             </div>
-            <div style={{ margin: "10px 0 2px", fontSize: 12, letterSpacing: "0.14em", color: "#8f95b3" }}>
-              {cur.code} · POINT {textIdx + 1} OF {N}
-            </div>
-            <h2 style={{ margin: "4px 0 4px", fontSize: 21 }}>{cur.title}</h2>
-            <div style={{ margin: "0 0 10px", fontSize: 14, color: "#c9b8ff", fontWeight: 600 }}>
-              {curSection?.valueLabel || variantOf(cur).label}
-            </div>
-            {/* Текст пункта — точь-в-точь как на /reading (единый источник buildReading).
-                Полный текст по клику из инвентаря (full), иначе тизер-абзац при скролле. */}
-            {curSection ? (
-              <SectionText section={curSection} full={full} />
-            ) : (
-              <p
-                style={{
-                  margin: 0, color: "#9aa0c0", fontSize: 14, lineHeight: 1.55,
-                  display: "-webkit-box", WebkitLineClamp: 6, WebkitBoxOrient: "vertical", overflow: "hidden",
-                }}
-              >
-                {variantOf(cur).blurb || ""}
+
+            {/* Главное: ЧТО определяли + ЧТО получилось + краткий смысл */}
+            <h2 style={{ margin: "6px 0 2px", fontSize: 20, fontFamily: FONT.heading, color: "var(--foreground)" }}>{cur.title}</h2>
+            <div style={{ margin: "0 0 10px", fontSize: 15, color: curColor, fontWeight: 700 }}>{curSection?.valueLabel || variantOf(cur).label}</div>
+            <p style={{ margin: "0 0 6px", fontSize: 13.5, lineHeight: 1.5, color: "#d7d2ee" }}>{ABOUT_OF[cur.code] || cur.title}</p>
+            {curSection?.entries?.[0]?.paragraphs?.[0] && (
+              <p style={{ margin: "0 0 12px", fontSize: 13, lineHeight: 1.55, color: "#a6a0c6", display: "-webkit-box", WebkitLineClamp: 3, WebkitBoxOrient: "vertical", overflow: "hidden" }}>
+                {curSection.entries[0].paragraphs[0]}
               </p>
             )}
-            {!full && curSection && (
-              <div style={{ marginTop: 8, fontSize: 12, color: "#6c7095" }}>
-                Полный разбор пункта — по клику в инвентаре ниже
-              </div>
-            )}
-            {/* Кнопка «Слушать» — ТОЛЬКО где записан реальный голос Gacrux (без браузерного). */}
-            {haveAudio[audioKey(cur.code, keymap[cur.code])] && (
-              <button
-                onClick={() => listen({ pointCode: cur.code, variantKey: keymap[cur.code] })}
-                style={{
-                  marginTop: 14, padding: "8px 18px", borderRadius: 999, cursor: "pointer",
-                  display: "inline-flex", alignItems: "center", gap: 8, pointerEvents: "auto",
-                  background: "rgba(51,230,224,.1)", border: "1px solid #33e6e0", color: "#33e6e0", fontSize: 13, fontWeight: 600,
-                }}
-              >
-                {speaking ? "⏸ Остановить" : "▶ Слушать"}
-              </button>
-            )}
-            {panelIdx !== null && (
-              <button
-                onClick={() => {
-                  setPanelIdx(null);
-                  panelIdxRef.current = null;
-                  if (panelBoxRef.current) panelBoxRef.current.style.opacity = 0;
-                  if (dimRef.current) dimRef.current.style.opacity = 0;
-                }}
-                style={{
-                  marginTop: 14, padding: "7px 18px", borderRadius: 10, cursor: "pointer",
-                  background: "transparent", border: "1px solid #3a3160", color: "#bfc6ea", fontSize: 13,
-                }}
-              >
-                Close
-              </button>
-            )}
+
+            <div style={{ borderTop: "1px solid rgba(108,79,246,.18)", margin: "6px 0 12px" }} />
+
+            {/* Действия — аккуратными ссылками. Полный разбор — первым. */}
+            <button onClick={() => setModalFull(true)} style={{ display: "block", width: "100%", textAlign: "left", background: "transparent", border: "none", cursor: "pointer", padding: "2px 0 8px", color: curColor, fontFamily: FONT.heading, fontSize: 16, fontWeight: 700 }}>
+              Полный разбор пункта →
+            </button>
+            <button onClick={goNext} style={{ display: "block", width: "100%", textAlign: "left", background: "transparent", border: "none", cursor: "pointer", padding: "2px 0 10px", color: "#c9b8ff", fontFamily: FONT.mono, fontSize: 13.5 }}>
+              {frame >= N && textIdx >= N - 1 ? "К вердикту ↓" : "Продолжить поиск →"}
+            </button>
+            {/* Мелко: методика расчёта → в чат */}
+            <div style={{ fontSize: 11.5, lineHeight: 1.45, color: "#7c7fa0" }}>
+              {curSection ? `${howLine(curSection)}. ` : ""}Как посчитано, по какой формуле —{" "}
+              <button onClick={() => askInChat(cur)} style={{ background: "transparent", border: "none", color: curColor, fontSize: 11.5, cursor: "pointer", padding: 0, fontFamily: FONT.mono, textDecoration: "underline", opacity: 0.9 }}>спросить в чате</button>.
+            </div>
           </div>
-        )}
-      </div>
+        </div>
+      )}
 
-      {/* ── HUD-подсказка ── */}
-      <div style={{ position: "fixed", zIndex: 5, bottom: 86, left: 0, right: 0, textAlign: "center", color: "#8f95b3", fontSize: 13, pointerEvents: "none" }}>
-        {hudIdx === -1 && panelIdx === null && (
-          <div style={{ fontSize: 15, color: "#33e6e0" }}>Листай вниз — пункты присоединяются к персонажу ↓</div>
-        )}
-        {hudIdx === -2 && panelIdx === null && endReveal < 0.3 && (
-          <div style={{ fontSize: 15, color: "#33e6e0" }}>Все {N} пунктов собраны ✦ инвентарь кликабелен</div>
-        )}
-        {hudIdx >= 0 && panelIdx === null && <div>Пункт {hudIdx + 1} из {N} · персонаж крепчает</div>}
-      </div>
+      {/* ── ПОЛНОЕ окно пункта: на весь экран, фигуры не видно; имя+Nomen сверху ── */}
+      {cur && full && (
+        <div style={{ position: "fixed", inset: 0, zIndex: 40, background: "rgba(5,4,15,0.97)", overflowY: "auto", overscrollBehavior: "contain", WebkitOverflowScrolling: "touch" }}>
+          <div style={{ maxWidth: 640, margin: "0 auto", padding: "0 20px 72px" }}>
+            <div style={{ position: "sticky", top: 0, background: "rgba(5,4,15,0.97)", display: "flex", justifyContent: "space-between", alignItems: "center", padding: "16px 0 12px", zIndex: 1 }}>
+              <span style={{ fontFamily: FONT.mono, fontSize: 12.5, letterSpacing: "0.18em", color: "#c9b8ff" }}><span style={{ color: "var(--foreground)" }}>{displayName}</span> · Nomen</span>
+              <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
+                {/* Аудио-панель (сжимаемая): динамик с волнами → голос/музыка/скорость */}
+                <button onClick={() => setAudioOpen((o) => !o)} title="Звук" aria-label="Звук"
+                  style={{ ...ctrlBtn, width: "auto", padding: "0 10px", color: audioOpen ? "var(--accent-turquoise)" : "var(--foreground)", borderColor: audioOpen ? "var(--accent-turquoise)" : "rgba(108,79,246,.35)" }}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M4 9v6h4l5 4V5L8 9H4z" />
+                    <path d="M16.5 9a3.5 3.5 0 0 1 0 6" />
+                    <path d="M19 6.5a7 7 0 0 1 0 11" />
+                  </svg>
+                </button>
+                {audioOpen && (
+                  <div style={{ display: "flex", gap: 6, alignItems: "center", animation: "nomenPopIn .2s ease" }}>
+                    {haveAudio[audioKey(cur.code, keymap[cur.code])] ? (
+                      <button onClick={() => listen({ pointCode: cur.code, variantKey: keymap[cur.code] })} style={{ height: 34, padding: "0 12px", borderRadius: 999, cursor: "pointer", background: "rgba(51,230,224,.1)", border: "1px solid var(--accent-turquoise)", color: "var(--accent-turquoise)", fontSize: 11.5, fontFamily: FONT.mono }}>{speaking ? "⏸ голос" : "▶ голос"}</button>
+                    ) : (
+                      <span style={{ fontSize: 10.5, color: "#6c7095", fontFamily: FONT.mono, whiteSpace: "nowrap" }}>голос скоро</span>
+                    )}
+                    <button onClick={toggleMusic} title="Фоновая музыка" style={{ height: 34, padding: "0 12px", borderRadius: 999, cursor: "pointer", background: "rgba(10,8,24,.6)", border: `1px solid ${musicOn ? "var(--accent-violet)" : "rgba(108,79,246,.3)"}`, color: musicOn ? "#c9b8ff" : "#9aa0c0", fontSize: 11.5, fontFamily: FONT.mono }}>♪ {musicOn ? "вкл" : "выкл"}</button>
+                    <button onClick={() => setSpeed((s) => SPEEDS[(SPEEDS.indexOf(s) + 1) % SPEEDS.length])} title="Скорость озвучки" style={{ height: 34, padding: "0 12px", borderRadius: 999, cursor: "pointer", background: "rgba(10,8,24,.6)", border: "1px solid rgba(108,79,246,.3)", color: "#cfc9ec", fontSize: 11.5, fontFamily: FONT.mono }}>{speed}×</button>
+                  </div>
+                )}
+                <button onClick={() => setModalFull(false)} style={{ ...ctrlBtn, width: "auto", padding: "0 12px", fontSize: 12 }}>◀ Назад</button>
+                <button onClick={closeWindow} style={{ ...ctrlBtn, width: "auto", padding: "0 12px", fontSize: 12 }}>Закрыть ✕</button>
+              </div>
+            </div>
+            <div style={{ display: "flex", alignItems: "center", gap: 12, margin: "22px 0 8px", color: curColor }}>
+              <PointIcon code={cur.code} size={34} />
+              <div>
+                <div style={{ fontFamily: FONT.mono, fontSize: 11, letterSpacing: "0.22em", textTransform: "uppercase", opacity: 0.8 }}>{cur.code} · POINT {textIdx + 1} OF {N}</div>
+                <h2 style={{ margin: "2px 0 0", fontSize: 26, fontFamily: FONT.heading, color: "var(--foreground)" }}>{cur.title}</h2>
+              </div>
+            </div>
+            {curSection?.valueLabel && <div style={{ fontSize: 15, fontWeight: 600, color: "#c9b8ff", marginBottom: 12 }}>{curSection.valueLabel}</div>}
+            {curSection ? <SectionText section={curSection} full /> : <p style={{ color: "#9aa0c0", fontSize: 14, lineHeight: 1.6 }}>{variantOf(cur).blurb || ""}</p>}
+            <div style={{ display: "flex", gap: 10, marginTop: 24, flexWrap: "wrap" }}>
+              <button onClick={() => setModalFull(false)} style={btnGhost}>◀ Назад</button>
+              <button onClick={goNext} style={btnPrimary(curColor)}>{frame >= N && textIdx >= N - 1 ? "К вердикту ↓" : "Дальше ↓"}</button>
+            </div>
+          </div>
+        </div>
+      )}
 
-      {/* ── Слой 6: инвентарь-бар (13 ячеек, кликабельные) ── */}
+      {/* ── HUD: подсказка / кнопка вердикта (когда все 13 собраны) ── */}
+      {panelIdx === null && !verdictOpen && (
+        <div style={{ position: "fixed", zIndex: 8, bottom: 22, left: 0, right: 0, textAlign: "center", pointerEvents: "none", fontFamily: FONT.mono, textShadow: HALO }}>
+          {frame >= N ? (
+            <button onClick={() => setVerdictOpen(true)} style={{ ...btnPrimary("var(--accent-turquoise)"), pointerEvents: "auto", padding: "12px 26px", fontSize: 14 }}>Показать вердикт ✦</button>
+          ) : hudIdx < 0 ? (
+            <div style={{ fontSize: 14, color: "var(--accent-turquoise)" }}>Листай вниз — грани присоединяются к персонажу ↓</div>
+          ) : (
+            <div style={{ fontSize: 13, color: "#8f95b3" }}>Грань {hudIdx + 1} из {N} · персонаж крепчает</div>
+          )}
+        </div>
+      )}
+
+      {/* ── Инвентарь: вертикальная колонка СЛЕВА (13 ячеек, PointIcon в цвете
+           традиции — одна система иконок с сайтом; заполняется сверху вниз) ── */}
       <div
         style={{
-          position: "fixed", zIndex: 6, bottom: 18, left: "50%", transform: "translateX(-50%)",
-          display: "flex", gap: 8, padding: "10px 12px", borderRadius: 16,
-          background: "rgba(10,8,24,.7)", border: "1px solid #241d3e", backdropFilter: "blur(8px)",
-          maxWidth: "94vw", overflowX: "auto",
+          position: "fixed", zIndex: 6, left: 12, top: "50%", transform: "translateY(-50%)",
+          display: "flex", flexDirection: "column", gap: 4, padding: "8px 6px", borderRadius: 16,
+          background: "rgba(10,8,24,.55)", border: "1px solid rgba(108,79,246,.22)", backdropFilter: "blur(8px)",
+          maxHeight: "94vh", overflowY: "auto",
         }}
       >
         {POINTS.map((p, i) => {
           const got = i < frame;
+          const col = pointColor(p.code);
+          const v = variantOf(p);
           return (
             <button
               key={p.code}
-              onClick={() => {
-                const next = panelIdx === i ? null : i;
-                setPanelIdx(next);
-                panelIdxRef.current = next;
-                if (panelBoxRef.current) panelBoxRef.current.style.opacity = next === null ? 0 : 1;
-                if (dimRef.current) dimRef.current.style.opacity = next === null ? 0 : 0.45;
-              }}
+              onClick={() => (got ? openWindow(i, false) : null)}
               title={p.title}
               style={{
-                width: 42, height: 42, borderRadius: 11, cursor: "pointer", flex: "none",
-                display: "flex", alignItems: "center", justifyContent: "center",
-                color: got ? accent(i) : "#3c3a55",
-                background: got ? "rgba(20,16,44,.9)" : "rgba(12,10,28,.6)",
-                border: `1px solid ${got ? accent(i) : "#241d3e"}`,
-                boxShadow: got ? `0 0 14px ${accent(i, 0.33)}` : "none",
-                transition: "all .35s ease",
+                width: 44, borderRadius: 10, cursor: "pointer", flex: "none",
+                display: "flex", flexDirection: "column", alignItems: "center", gap: 1, padding: "4px 2px",
+                color: got ? col : "#4a4766",
+                background: got ? "rgba(20,16,44,.85)" : "rgba(12,10,28,.5)",
+                border: `1px solid ${got ? col : "rgba(108,79,246,.18)"}`,
+                boxShadow: got ? `0 0 12px ${col}44` : "none",
+                transition: `all .35s ${EASE_CSS}`,
+                opacity: got ? 1 : 0.55,
               }}
             >
-              <span style={{ opacity: got ? 1 : 0.4 }}>
-                <VariantGlyph point={p} variant={variantOf(p)} size={26} hasImg={haveIcon[p.code]} />
+              <PointIcon code={p.code} size={19} />
+              <span style={{ fontFamily: FONT.mono, fontSize: 8, lineHeight: 1, letterSpacing: "0.02em", maxWidth: 40, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                {got ? (v.symbolKind === "number" || v.symbolKind === "label" ? v.symbol : v.key) : "·"}
               </span>
             </button>
           );
         })}
       </div>
 
-      {/* ── Блок ВЕРДИКТА (финал): проявляется на последнем экране, снизу ── */}
-      <div
-        style={{
-          position: "fixed", zIndex: 7, left: 0, right: 0, bottom: 78,
-          display: "flex", justifyContent: "center",
-          padding: "0 20px", opacity: endReveal,
-          pointerEvents: endReveal > 0.5 ? "auto" : "none", transition: "opacity .2s linear",
-        }}
-      >
-        <div
-          style={{
-            maxWidth: 480, textAlign: "center", padding: "30px 28px", borderRadius: 20,
-            background: "rgba(10,8,24,.82)", border: "1px solid #2a2350",
-            boxShadow: "0 0 50px rgba(120,90,255,.2)", backdropFilter: "blur(10px)",
-          }}
-        >
-          <div style={{ fontSize: 12, letterSpacing: "0.28em", color: "#33e6e0", marginBottom: 8 }}>ВЕРДИКТ</div>
-          <h2 style={{ margin: "0 0 4px", fontSize: 23, color: "#eaf0ff" }}>{displayName}, in one thread</h2>
-          {birth && <div style={{ fontSize: 12.5, color: "#8f95b3", marginBottom: 6 }}>рождён(а) {birth}</div>}
-          {verdict.heading && !verdict.isAi && (
-            <div style={{ fontSize: 13.5, color: "#c9b8ff", fontWeight: 600, marginBottom: 12 }}>{verdict.heading}</div>
-          )}
-          {/* Сводный вердикт — единый источник (resolveVerdict): ИИ-текст из ссылки
-              (card.vd) → монолит по 3 пунктам → запасной по числу пути. */}
-          <div style={{ maxHeight: "42vh", overflowY: "auto", textAlign: "left", margin: "6px 0 18px" }}>
-            {verdict.paragraphs.length ? (
-              verdict.paragraphs.map((p, k) => (
-                <p key={k} style={{ margin: "0 0 10px", fontSize: 14.5, color: "#c9c3e6", lineHeight: 1.6 }}>{p}</p>
-              ))
-            ) : (
-              <p style={{ margin: 0, fontSize: 14.5, color: "#c9c3e6", lineHeight: 1.6, textAlign: "center" }}>
-                Все 13 граней собраны — путь, дар, знак, стихия и аркан сплелись в один рисунок.
-              </p>
-            )}
-          </div>
-          <div style={{ display: "flex", gap: 10, justifyContent: "center", flexWrap: "wrap" }}>
-            {!verdict.isAi && reading?.a1?.value != null && haveAudio[audioKey("verdict", String(reading.a1.value))] && (
-              <button
-                onClick={() => listen({ pointCode: "verdict", variantKey: String(reading.a1.value) })}
-                style={{ padding: "11px 22px", borderRadius: 999, cursor: "pointer", background: "rgba(51,230,224,.12)", border: "1px solid #33e6e0", color: "#33e6e0", fontSize: 14, fontWeight: 600 }}
-              >
-                {speaking ? "⏸ Остановить" : "▶ Слушать вердикт"}
-              </button>
-            )}
-            {byCode.size > 0 && (
-              <button
-                onClick={() => {
-                  // Снимаем пришпиленную панель, чтобы её слои не мешали оверлею.
-                  setPanelIdx(null); panelIdxRef.current = null;
-                  if (panelBoxRef.current) panelBoxRef.current.style.opacity = 0;
-                  if (dimRef.current) dimRef.current.style.opacity = 0;
-                  setRecapOpen(true);
-                }}
-                style={{ padding: "11px 22px", borderRadius: 999, cursor: "pointer", background: "rgba(138,107,255,.14)", border: "1px solid #8a6bff", color: "#c9b8ff", fontSize: 14, fontWeight: 600 }}
-              >
-                Читать полный разбор →
-              </button>
-            )}
-            <button
-              onClick={restart}
-              style={{ padding: "11px 22px", borderRadius: 999, cursor: "pointer", background: "transparent", border: "1px solid #3a3160", color: "#bfc6ea", fontSize: 14 }}
-            >
-              ↑ Заново
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* ── ФИНАЛ · «доработка»: полный разбор — все 13 пунктов целиком + вердикт.
-           Текст тот же (единый источник buildReading), прокручиваемый оверлей. ── */}
-      {recapOpen && (
-        <div style={{ position: "fixed", inset: 0, zIndex: 60, height: "100dvh", background: "rgba(5,4,15,0.97)", overflowY: "auto", overscrollBehavior: "contain", WebkitOverflowScrolling: "touch" }}>
-          <div style={{ maxWidth: 640, margin: "0 auto", padding: "0 18px 64px" }}>
-            <div style={{ position: "sticky", top: 0, background: "rgba(5,4,15,0.97)", display: "flex", justifyContent: "space-between", alignItems: "center", padding: "18px 0 14px", zIndex: 1 }}>
-              <div style={{ fontSize: 12.5, letterSpacing: "0.24em", color: "#33e6e0" }}>ПОЛНЫЙ РАЗБОР · {displayName}</div>
-              <button onClick={() => { stopAll(); setRecapOpen(false); }} style={{ ...ctrlBtn, width: "auto", padding: "0 14px", fontSize: 13 }}>Закрыть ✕</button>
+      {/* ── Окно ВЕРДИКТА (после 13/13): сгенерированный итог + все 13 граней
+           ссылками-раскрытиями (клик открывает полный разбор пункта). ── */}
+      {verdictOpen && (
+        <div style={{ position: "fixed", inset: 0, zIndex: 50, background: "rgba(5,4,15,0.98)", overflowY: "auto", overscrollBehavior: "contain", WebkitOverflowScrolling: "touch" }}>
+          <div style={{ maxWidth: 680, margin: "0 auto", padding: "0 20px 72px" }}>
+            <div style={{ position: "sticky", top: 0, background: "rgba(5,4,15,0.98)", display: "flex", justifyContent: "space-between", alignItems: "center", padding: "16px 0 12px", zIndex: 1 }}>
+              <span style={{ fontFamily: FONT.mono, fontSize: 12.5, letterSpacing: "0.18em", color: "#c9b8ff" }}><span style={{ color: "var(--foreground)" }}>{displayName}</span> · Nomen · Verdict</span>
+              <button onClick={() => setVerdictOpen(false)} style={{ ...ctrlBtn, width: "auto", padding: "0 14px", fontSize: 13 }}>Закрыть ✕</button>
             </div>
-            {POINTS.map((p, i) => {
-              const s = byCode.get(p.code);
-              if (!s) return null;
-              return (
-                <div key={p.code} style={{ margin: "0 0 28px" }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 4 }}>
-                    <span style={{ fontSize: 11.5, letterSpacing: "0.14em", color: accent(i) }}>{p.code} · {s.title}</span>
-                    {haveAudio[audioKey(p.code, keymap[p.code])] && (
-                      <button
-                        onClick={() => listen({ pointCode: p.code, variantKey: keymap[p.code] })}
-                        title="Слушать пункт"
-                        style={{ ...ctrlBtn, height: 26, minWidth: 26, fontSize: 12, borderColor: "#2a2350" }}
-                      >▶</button>
-                    )}
-                  </div>
-                  {s.valueLabel && <div style={{ fontSize: 15, fontWeight: 600, color: "#c9b8ff", marginBottom: 8 }}>{s.valueLabel}</div>}
-                  <SectionText section={s} full />
-                </div>
-              );
-            })}
-            <div style={{ borderTop: "1px solid #2a2350", margin: "6px 0 22px" }} />
-            <div style={{ fontSize: 12.5, letterSpacing: "0.24em", color: "#33e6e0", marginBottom: 8 }}>ВЕРДИКТ · {displayName}, in one thread</div>
-            {verdict.heading && !verdict.isAi && <div style={{ fontSize: 15, fontWeight: 600, color: "#c9b8ff", marginBottom: 8 }}>{verdict.heading}</div>}
-            {verdict.paragraphs.map((p, k) => (
-              <p key={k} style={{ margin: "0 0 10px", fontSize: 14.5, color: "#c9c3e6", lineHeight: 1.6 }}>{p}</p>
-            ))}
+            <div style={{ fontFamily: FONT.mono, fontSize: 11, letterSpacing: "0.32em", color: "var(--accent-turquoise)", textTransform: "uppercase", margin: "8px 0 4px" }}>Вердикт</div>
+            <h2 style={{ margin: "0 0 4px", fontSize: 27, fontFamily: FONT.heading, color: "var(--foreground)", textShadow: HALO }}>{displayName}, in one thread</h2>
+            {birth && <div style={{ fontSize: 12.5, color: "#8f95b3", marginBottom: 8, fontFamily: FONT.mono }}>born {birth}</div>}
+            {verdict.heading && !verdict.isAi && <div style={{ fontSize: 14, color: "#c9b8ff", fontWeight: 600, marginBottom: 12 }}>{verdict.heading}</div>}
+            <div style={{ margin: "6px 0 24px" }}>
+              {verdict.paragraphs.length ? verdict.paragraphs.map((p, k) => (
+                <p key={k} style={{ margin: "0 0 10px", fontSize: 15, color: "#c9c3e6", lineHeight: 1.6 }}>{p}</p>
+              )) : (
+                <p style={{ fontSize: 15, color: "#c9c3e6", lineHeight: 1.6 }}>Все 13 граней собраны — путь, дар, знак, стихия и аркан сплелись в один рисунок.</p>
+              )}
+            </div>
+            <div style={{ fontFamily: FONT.mono, fontSize: 11, letterSpacing: "0.22em", color: "#8f95b3", textTransform: "uppercase", marginBottom: 10 }}>13 граней — открыть разбор</div>
+            <div style={{ display: "grid", gap: 8 }}>
+              {POINTS.map((p, i) => {
+                const s = byCode.get(p.code);
+                const col = pointColor(p.code);
+                return (
+                  <button key={p.code} onClick={() => { setVerdictOpen(false); openWindow(i, true); }}
+                    style={{ display: "flex", alignItems: "center", gap: 12, textAlign: "left", padding: "10px 14px", borderRadius: 12, cursor: "pointer", background: "rgba(20,16,44,.6)", border: `1px solid ${col}33`, color: "var(--foreground)" }}>
+                    <span style={{ color: col, flex: "none", display: "inline-flex" }}><PointIcon code={p.code} size={22} /></span>
+                    <span style={{ flex: 1, minWidth: 0 }}>
+                      <span style={{ display: "block", fontSize: 14, fontWeight: 600 }}>{p.title}</span>
+                      <span style={{ display: "block", fontSize: 12, color: "#9aa0c0", fontFamily: FONT.mono, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{s?.valueLabel || variantOf(p).label}</span>
+                    </span>
+                    <span style={{ color: col, opacity: 0.7 }}>→</span>
+                  </button>
+                );
+              })}
+            </div>
+            <div style={{ display: "flex", gap: 10, marginTop: 24, flexWrap: "wrap" }}>
+              <button onClick={restart} style={btnGhost}>↑ Заново</button>
+            </div>
           </div>
         </div>
       )}

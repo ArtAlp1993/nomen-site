@@ -17,8 +17,8 @@ import { notifyOrder } from "@/lib/order";
 import { ymGoal } from "./Analytics";
 import QRCode from "./QRCode";
 import CoinIcon, { networkColor } from "./CoinIcon";
+import { EASE } from "@/lib/motion";
 
-const EASE = [0.22, 1, 0.36, 1];
 const WISE_URL = "https://wise.com/pay/me/artemi463";
 
 // Аккуратный формат количества монеты: без «хвоста» лишних нулей.
@@ -110,8 +110,6 @@ export default function CryptoCheckout({ tier, open, onClose }) {
         ln: cleanField(r.lastName),
         g: r.gender || "",
         bd: r.birthDate || "",
-        bt: r.birthTime || "",
-        bp: cleanField(r.birthPlace),
         br: cleanField(r.brand),
         em: cleanField(r.email),
         oc: order?.code || "",
@@ -130,9 +128,7 @@ export default function CryptoCheckout({ tier, open, onClose }) {
     // «Адрес:/Сумма:» в сообщении оператору.
     const name =
       cleanField([r.firstName, r.lastName].filter(Boolean).join(" ")) || "—";
-    const birth = cleanField(
-      [r.birthDate, r.birthTime, r.birthPlace].filter(Boolean).join(", ")
-    );
+    const birth = cleanField(r.birthDate || "");
     const memo = memoValueFor(w, order);
     return [
       paid
@@ -173,9 +169,7 @@ export default function CryptoCheckout({ tier, open, onClose }) {
         const r = result || {};
         const name =
           cleanField([r.firstName, r.lastName].filter(Boolean).join(" ")) || "—";
-        const birth = cleanField(
-          [r.birthDate, r.birthTime, r.birthPlace].filter(Boolean).join(", ")
-        );
+        const birth = cleanField(r.birthDate || "");
         notifyTelegram(
           [
             "🛒 NOMEN — новый заказ (ждём оплату)",
@@ -300,8 +294,6 @@ export default function CryptoCheckout({ tier, open, onClose }) {
         lastName: r.lastName,
         gender: r.gender,
         birthDate: r.birthDate,
-        birthTime: r.birthTime,
-        birthPlace: r.birthPlace,
         brand: r.brand,
         email: r.email,
       });
@@ -343,8 +335,6 @@ export default function CryptoCheckout({ tier, open, onClose }) {
         lastName: r.lastName,
         gender: r.gender,
         birthDate: r.birthDate,
-        birthTime: r.birthTime,
-        birthPlace: r.birthPlace,
         brand: r.brand,
         email: r.email,
       });

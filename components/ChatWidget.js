@@ -7,13 +7,13 @@ import kb from "@/data/chat-kb.json";
 import { ymGoal } from "./Analytics";
 import { notifyTelegram } from "@/lib/notify";
 import { libraryAnswer } from "@/lib/libraryAnswer";
+import { EASE } from "@/lib/motion";
 
 // Мини-чат без бэкенда: отвечает по базе знаний (data/chat-kb.json) и FAQ.
 // Тупик (два промаха подряд или просьба позвать человека) → предлагает
 // оставить email; переписка и email улетают Артёму в Telegram (notifyTelegram
 // из lib/notify.js; без заданных реквизитов чат работает, просто без уведомлений).
 
-const EASE = [0.22, 1, 0.36, 1];
 const STOP_WORDS = new Set(
   "a an and are as at be but by for from how i in is it my of on or the to what when where which who will with you your me do does can".split(" ")
 );
