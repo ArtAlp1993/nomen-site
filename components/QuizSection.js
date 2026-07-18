@@ -4,6 +4,7 @@ import { useState } from "react";
 import SectionHeading from "./ui/SectionHeading";
 import QuizWizard from "./QuizWizard";
 import TeaserReveal from "./TeaserReveal";
+import Button from "./ui/Button";
 import { useResult } from "./ResultProvider";
 import { calculateTeaser } from "@/lib/teaser";
 import { notifyLead } from "@/lib/lead";
@@ -57,9 +58,41 @@ export default function QuizSection() {
         {result && (
           <>
             <TeaserReveal firstName={result.firstName} points={result.points} />
+
+            {/* Постоянный видимый путь к оплате (Артём 18.07): после тизера человек
+                НЕ должен искать, где платить, и должен понимать, что это платный
+                серьёзный продукт. Модалка одноразовая — эта карточка остаётся всегда. */}
+            <div className="mx-auto mt-12 max-w-2xl rounded-2xl border border-accent-turquoise/40 bg-accent-turquoise/[0.05] p-6 text-center sm:p-8">
+              <p className="font-heading text-xs uppercase tracking-[0.3em] text-accent-turquoise">
+                This was your free preview
+              </p>
+              <h3 className="mt-3 font-heading text-xl font-semibold sm:text-2xl">
+                Your full blueprint goes far deeper
+              </h3>
+              <p className="mt-3 text-sm text-foreground-muted">
+                The preview is a small taste. Your full reading decodes all 13
+                points of who you are — every number, sign and card explained in
+                depth — a real map for how to move through life. A serious,
+                one-time investment in understanding yourself.
+              </p>
+              <div className="mt-6 flex justify-center">
+                <Button
+                  href="#pricing"
+                  onClick={() => ymGoal("teaser_unlock")}
+                  className="w-full sm:w-auto"
+                >
+                  Unlock my full reading →
+                </Button>
+              </div>
+              <p className="mt-3 text-xs text-foreground-muted/80">
+                One-time payment · delivered to your email, usually within a few
+                hours.
+              </p>
+            </div>
+
             {/* Пересдать квиз: чистит сохранённый результат (и для тестов,
                 и для клиента, который опечатался в имени). */}
-            <p className="mt-10 text-center">
+            <p className="mt-8 text-center">
               <button
                 type="button"
                 onClick={resetResult}

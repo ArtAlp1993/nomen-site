@@ -21,7 +21,7 @@ const CALC_TEXT = {
 };
 const STEP_MS = 2600; // «вычисление» одного пункта
 const REST_MS = 900; // пауза перед остальными пунктами
-const IDLE_MS = 20000; // предложение — только после долгой паузы без действий
+const CTA_AFTER_BLUR_MS = 2800; // предложение оплаты — вскоре после блюра пунктов (или по 1-му скроллу)
 const CTA_SEEN_KEY = "nomen-cta-seen"; // показ один раз за сессию вкладки
 
 export default function TeaserReveal({ firstName, points }) {
@@ -55,43 +55,46 @@ export default function TeaserReveal({ firstName, points }) {
     return () => clearTimeout(t);
   }, [revealed, showRest, featured.length]);
 
-  // Предложение полного разбора — НЕ по грубому таймеру, а после долгой паузы
-  // без прокрутки/жестов. Пока человек листает и рассматривает — не трогаем.
+  // Предложение полного разбора (Артём 18.07): выпадает СРАЗУ после того, как
+  // бесплатные пункты показались и заблюрились (~блюр = пейвол), ИЛИ как только
+  // человек начал листать дальше — тогда и предлагаем оплатить. Раньше ждали
+  // 20с простоя (активный скроллер его не видел) — регрессия, чинить.
   // Показывается максимум ОДИН раз за сессию вкладки (reload не повторяет).
   useEffect(() => {
     if (!showRest || cta || ctaClosed) return;
     try {
       if (sessionStorage.getItem(CTA_SEEN_KEY)) return; // уже показывали
     } catch {
-      /* storage недоступен — просто показываем по idle */
+      /* storage недоступен — просто показываем по таймеру */
     }
-    let idle;
-    const arm = () => {
-      clearTimeout(idle);
-      idle = setTimeout(() => {
-        setCta(true);
-        try {
-          sessionStorage.setItem(CTA_SEEN_KEY, "1");
-        } catch {
-          /* не критично */
-        }
-        ymGoal("cta_shown");
-      }, IDLE_MS);
+    let shown = false;
+    const show = () => {
+      if (shown) return;
+      shown = true;
+      setCta(true);
+      try {
+        sessionStorage.setItem(CTA_SEEN_KEY, "1");
+      } catch {
+        /* не критично */
+      }
+      ymGoal("cta_shown");
     };
-    const onActivity = () => arm();
-    arm(); // начать отсчёт после раскрытия
-    window.addEventListener("wheel", onActivity, { passive: true });
-    window.addEventListener("touchmove", onActivity, { passive: true });
-    window.addEventListener("scroll", onActivity, { passive: true });
-    if (window.__lenis) window.__lenis.on("scroll", onActivity);
+    // 1) через короткую паузу после показа пунктов (успел проблюриться → зовём);
+    // 2) либо сразу на первом жесте прокрутки — что раньше.
+    const t = setTimeout(show, CTA_AFTER_BLUR_MS);
+    const onScroll = () => show();
+    window.addEventListener("wheel", onScroll, { passive: true });
+    window.addEventListener("touchmove", onScroll, { passive: true });
+    window.addEventListener("scroll", onScroll, { passive: true });
+    if (window.__lenis) window.__lenis.on("scroll", onScroll);
     return () => {
-      clearTimeout(idle);
-      window.removeEventListener("wheel", onActivity);
-      window.removeEventListener("touchmove", onActivity);
-      window.removeEventListener("scroll", onActivity);
-      if (window.__lenis) window.__lenis.off("scroll", onActivity);
+      clearTimeout(t);
+      window.removeEventListener("wheel", onScroll);
+      window.removeEventListener("touchmove", onScroll);
+      window.removeEventListener("scroll", onScroll);
+      if (window.__lenis) window.__lenis.off("scroll", onScroll);
     };
-  }, [showRest, cta, ctaClosed, reduce]);
+  }, [showRest, cta, ctaClosed]);
 
   // Проблеск верхнего блока: как только показались «остальные» пункты — держим
   // их открытыми 2 секунды (заманка), затем возвращаем блюр (пейвол).
@@ -234,12 +237,13 @@ export default function TeaserReveal({ firstName, points }) {
                 {firstName ? `${firstName},` : "Ready?"}
               </p>
               <h3 className="mt-3 font-heading text-2xl font-semibold">
-                Your full reading is already calculated
+                That was your free preview
               </h3>
               <p className="mt-3 text-sm text-foreground-muted">
-                What you see above is a real slice. The complete 13-point
-                reading, with every number, sign and card explained, is one
-                step away.
+                What you see above is a small taste. Your full reading decodes
+                all 13 points — every number, sign and card explained in depth —
+                a real map for how to move through life. It&apos;s a serious,
+                one-time investment in understanding yourself.
               </p>
               <div className="mt-6 flex flex-col items-center gap-3">
                 <Button
