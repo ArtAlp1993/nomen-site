@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "./ui/Button";
 import Card from "./ui/Card";
 import SectionHeading from "./ui/SectionHeading";
@@ -8,6 +8,20 @@ import Reveal from "./ui/Reveal";
 import CryptoCheckout from "./CryptoCheckout";
 import { useResult } from "./ResultProvider";
 import pricing from "@/data/pricing.json";
+
+// Событие «открой оплату прямо сейчас» (21.07, З-391). Артём: «после того как
+// заблюрится — чтобы ему подтянулось, что типа давай оплачивай, нажимает кнопку и его
+// подтягивает туда». Раньше кнопки после блюра и после теста вели на якорь `#pricing`:
+// человек долистывал до тарифов и должен был нажать ЕЩЁ раз, уже выбрав тариф. Два
+// клика на самом горячем месте пути.
+//
+// Почему событие, а не общий стейт: чекаут живёт внутри этой секции и знает про тарифы,
+// а звать его нужно из двух чужих компонентов (тизер и квиз). Событие связывает их, не
+// растаскивая состояние оплаты по всему дереву.
+export const СОБЫТИЕ_ОПЛАТЫ = "nomen:открыть-оплату";
+export function открытьОплату() {
+  if (typeof window !== "undefined") window.dispatchEvent(new CustomEvent(СОБЫТИЕ_ОПЛАТЫ));
+}
 
 export default function PricingSection() {
   const { result } = useResult();
@@ -25,6 +39,24 @@ export default function PricingSection() {
     }
     setCheckoutTier(tier);
   };
+
+  // Слушаем зов извне и открываем оплату на ЖИВОМ тарифе. `comingSoon` пропускаем:
+  // открыть чекаут на том, чего ещё нет, значит собрать деньги за непроданное.
+  useEffect(() => {
+    const наЗов = () => {
+      const живой = pricing.find((t) => !t.comingSoon);
+      if (!живой) return;
+      // Прокручиваем к тарифам ТОЖЕ: если человек закроет чекаут, он окажется там,
+      // где решение принимают, а не посреди тизера.
+      const el = document.querySelector("#pricing");
+      if (typeof window !== "undefined" && window.__lenis && el) window.__lenis.scrollTo(el, { offset: -20 });
+      else el?.scrollIntoView({ behavior: "smooth" });
+      startCheckout(живой);
+    };
+    window.addEventListener(СОБЫТИЕ_ОПЛАТЫ, наЗов);
+    return () => window.removeEventListener(СОБЫТИЕ_ОПЛАТЫ, наЗов);
+    // startCheckout зависит от result: без него оплату открывать нельзя — нет имени и почты.
+  }, [result]);
 
   return (
     <section id="pricing" className="mx-auto max-w-6xl px-6 py-24 sm:py-32">

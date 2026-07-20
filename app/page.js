@@ -1,4 +1,10 @@
-import IntroPreloader from "@/components/IntroPreloader";
+// ⚠️ IntroPreloader СНЯТ 21.07 (З-391). Артём: «когда заходишь на наш сайт, сначала
+// что-то перекрывает, плашка в начале — нужно, чтобы клиент попадал на оплату удобно
+// и быстро». Заставка держала ВЕСЬ экран 1.4 с плюс 0.6 с затухания. Для холодного
+// трафика с TikTok это две секунды пустоты до первого слова о продукте — самая дорогая
+// пара секунд на всём пути, потому что решение «остаться или уйти» принимается там.
+// Файл components/IntroPreloader.js оставлен на месте: удалять нечего, он рабочий,
+// просто не нужен на входе.
 import { ResultProvider } from "@/components/ResultProvider";
 import Hero from "@/components/Hero";
 import Marquee from "@/components/Marquee";
@@ -17,7 +23,6 @@ import Footer from "@/components/Footer";
 export default function Home() {
   return (
     <>
-      <IntroPreloader />
       <ResultProvider>
         <main className="flex-1">
           <Hero />

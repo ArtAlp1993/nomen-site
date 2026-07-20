@@ -9,6 +9,7 @@ import { useResult } from "./ResultProvider";
 import { calculateTeaser } from "@/lib/teaser";
 import { notifyLead } from "@/lib/lead";
 import { ymGoal } from "./Analytics";
+import { открытьОплату } from "./PricingSection";
 
 export default function QuizSection() {
   const { result, setResult, resetResult } = useResult();
@@ -76,12 +77,16 @@ export default function QuizSection() {
                 one-time investment in understanding yourself.
               </p>
               <div className="mt-6 flex justify-center">
+                {/* Прямо в оплату (21.07, З-391): прошёл тест → результат → ОДНА кнопка.
+                    Раньше вела на якорь #pricing, и человек искал, куда нажимать дальше. */}
                 <Button
-                  href="#pricing"
-                  onClick={() => ymGoal("teaser_unlock")}
+                  onClick={() => {
+                    ymGoal("teaser_unlock");
+                    открытьОплату();
+                  }}
                   className="w-full sm:w-auto"
                 >
-                  Unlock my full reading →
+                  Unlock my full reading — $9.90
                 </Button>
               </div>
               <p className="mt-3 text-xs text-foreground-muted/80">

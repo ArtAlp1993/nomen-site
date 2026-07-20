@@ -6,6 +6,7 @@ import Card from "./ui/Card";
 import Button from "./ui/Button";
 import PointIcon from "./PointIcon";
 import { ymGoal } from "./Analytics";
+import { открытьОплату } from "./PricingSection";
 import { EASE } from "@/lib/motion";
 
 // Поэтапная выдача результата: каждый избранный пункт «вычисляется» на глазах
@@ -246,14 +247,17 @@ export default function TeaserReveal({ firstName, points }) {
                 one-time investment in understanding yourself.
               </p>
               <div className="mt-6 flex flex-col items-center gap-3">
+                {/* Прямо в оплату, а не на якорь #pricing (21.07, З-391): раньше отсюда
+                    человек попадал к тарифам и должен был нажать ЕЩЁ раз. Два клика в
+                    самом горячем месте — сразу после того, как разбор заблюрился. */}
                 <Button
-                  href="#pricing"
                   onClick={() => {
                     ymGoal("cta_unlock");
                     closeCta();
+                    открытьОплату();
                   }}
                 >
-                  Unlock my full reading
+                  Unlock my full reading — $9.90
                 </Button>
                 <button
                   type="button"
