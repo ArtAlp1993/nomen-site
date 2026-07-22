@@ -28,6 +28,11 @@ jobs:
           # Без секрета берётся dev-соль — ссылки продолжат работать, но
           # подпись предсказуема. Задать: Settings → Secrets → Actions.
           NEXT_PUBLIC_READING_SALT: ${{ secrets.NEXT_PUBLIC_READING_SALT || 'nomen-dev-salt' }}
+      # Сторож служебных страниц (Contact/Refunds/Delivery/Privacy/Terms…):
+      # проверяет собранный out/, поэтому живёт здесь, а не в verify.yml —
+      # там сборки нет. Деплой падает, если страница пропала из сборки или
+      # в неё вернулась почта-заглушка.
+      - run: npm run verify:legal
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./out

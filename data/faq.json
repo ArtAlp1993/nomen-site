@@ -21,10 +21,10 @@
   },
   {
     "question": "What payment methods do you accept?",
-    "answer": "Two ways right now: a USD transfer via Wise, or crypto in a coin you already hold. Card payments through Stripe are coming next. Whichever you choose, we confirm the payment ourselves and then email your reading."
+    "answer": "Card payments (Visa, Mastercard) through Stripe are being enabled now. Alongside them we accept a USD transfer via Wise, or crypto in a coin you already hold. Whichever you choose, the payment is confirmed before we email your reading."
   },
   {
     "question": "Can I get a refund?",
-    "answer": "If something goes wrong on our end, like the wrong data being used or a reading that never arrived, email us and we'll make it right. Reach out before requesting a refund so we can fix it first."
+    "answer": "Yes, in the cases set out in our Refund Policy: a duplicate payment, a technical failure, a reading that never arrived, or wrong data used through our mistake. Email admin@nomen.website with your order code and we'll fix it or refund you. A delivered, correct personalised reading is generally non-refundable, since it's written specifically for you."
   }
 ]

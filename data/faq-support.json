@@ -1,0 +1,30 @@
+[
+  {
+    "question": "Is my payment information secure?",
+    "answer": "Yes. Card payments are handled by Stripe on its own payment form — your card number goes straight to Stripe and never passes through our site, so we cannot see or store it. We receive only the confirmation that the payment succeeded."
+  },
+  {
+    "question": "Is this a subscription?",
+    "answer": "No. Every purchase is a single one-time payment. There is no recurring charge, no auto-renewal and nothing to cancel later."
+  },
+  {
+    "question": "Can I buy more than one reading?",
+    "answer": "Yes — order as many as you like, one per person. Each order needs its own name and date of birth, and each arrives as its own private link. A compatibility reading for two people is in development."
+  },
+  {
+    "question": "Do I need an account?",
+    "answer": "No. There is no registration and no password. Your reading lives at a private link that we email you, and that link is yours to keep."
+  },
+  {
+    "question": "What if the reading never arrives?",
+    "answer": "Check your Spam and Promotions folders first, then email admin@nomen.website with your order code. We reissue the link at no cost, or refund you in full — your choice. Anything not delivered within 24 hours counts as non-delivery."
+  },
+  {
+    "question": "Can you delete my data?",
+    "answer": "Yes. Email admin@nomen.website and we will delete your name, date of birth, email and reading. We keep only the payment record required for accounting. Requests are completed within 30 days."
+  },
+  {
+    "question": "Who do I contact for support?",
+    "answer": "One address for everything: admin@nomen.website, read by a person. Support hours are Monday to Friday, 09:00–18:00 (UTC+7), and we reply within 24 hours."
+  }
+]
