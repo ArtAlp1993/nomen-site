@@ -49,6 +49,11 @@ export default function Footer() {
             >
               NOMEN
             </Link>
+            {/* Одна строка о том, что здесь продаётся: платёжные системы
+                ищут ответ на «что это за бизнес» именно в футере. */}
+            <span className="max-w-[15rem] text-xs text-foreground-muted/80">
+              Personalised personality reports, delivered digitally.
+            </span>
             <a
               href={`mailto:${legal.supportEmail}`}
               className="hover:text-accent-turquoise"

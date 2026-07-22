@@ -1,6 +1,7 @@
 import Link from "next/link";
 import LegalPage from "@/components/ui/LegalPage";
 import legal from "@/data/legal.json";
+import { operatorLine } from "@/lib/legal";
 
 export const metadata = {
   title: "Privacy Policy · NOMEN",
@@ -24,9 +25,9 @@ const sections = [
     body: (
       <>
         <p>
-          {legal.siteName} is operated by {legal.company}, {legal.country}. We
-          sell personalised personality reports, and this policy explains what
-          happens to the data you give us along the way.
+          {legal.siteName} is operated by {operatorLine()}. We sell personalised
+          personality reports, and this policy explains what happens to the data
+          you give us along the way.
         </p>
         <p>
           For questions about your data, or to exercise any of the rights
@@ -324,7 +325,7 @@ const sections = [
     body: (
       <>
         <p>
-          {legal.company}, {legal.country}
+          {operatorLine()}
           <br />
           Website: {legal.siteUrl}
           <br />

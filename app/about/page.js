@@ -2,6 +2,7 @@ import Link from "next/link";
 import Card from "@/components/ui/Card";
 import Footer from "@/components/Footer";
 import legal from "@/data/legal.json";
+import { operatorLine } from "@/lib/legal";
 
 export const metadata = {
   title: "About NOMEN",
@@ -129,9 +130,7 @@ export default function AboutPage() {
               <dt className="font-mono text-[11px] uppercase tracking-[0.2em] text-foreground-muted/70">
                 Operated by
               </dt>
-              <dd className="mt-1">
-                {legal.company}, {legal.country}
-              </dd>
+              <dd className="mt-1">{operatorLine()}</dd>
             </div>
             <div>
               <dt className="font-mono text-[11px] uppercase tracking-[0.2em] text-foreground-muted/70">

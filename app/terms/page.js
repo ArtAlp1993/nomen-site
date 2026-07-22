@@ -1,6 +1,7 @@
 import Link from "next/link";
 import LegalPage from "@/components/ui/LegalPage";
 import legal from "@/data/legal.json";
+import { governingLawText, operatorLine } from "@/lib/legal";
 
 export const metadata = {
   title: "Terms of Service · NOMEN",
@@ -38,8 +39,7 @@ const sections = [
               Сторож scripts/verify-legal.mjs ловит такие стыки. */}
           These Terms of Service (the &quot;Terms&quot;) govern your use of{" "}
           {legal.siteName}, and everything we sell through it (the
-          &quot;Service&quot;). The Service is operated by {legal.company},{" "}
-          {legal.country}.
+          &quot;Service&quot;). The Service is operated by {operatorLine()}.
         </p>
         <p>
           By using the site, requesting a free preview or placing an order, you
@@ -255,9 +255,8 @@ const sections = [
     title: "Governing law",
     body: (
       <p>
-        These Terms are governed by the laws of {legal.governingLaw}. Before
-        going anywhere else, please write to us — nearly everything is solved by
-        one email.
+        {governingLawText()} Before going anywhere else, please write to us —
+        nearly everything is solved by one email.
       </p>
     ),
   },
@@ -267,7 +266,7 @@ const sections = [
     body: (
       <>
         <p>
-          {legal.company}, {legal.country}
+          {operatorLine()}
           <br />
           Website: {legal.siteUrl}
           <br />

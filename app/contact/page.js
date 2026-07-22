@@ -2,6 +2,7 @@ import Link from "next/link";
 import Card from "@/components/ui/Card";
 import Footer from "@/components/Footer";
 import legal from "@/data/legal.json";
+import { operatorLine } from "@/lib/legal";
 
 export const metadata = {
   title: "Contact · NOMEN",
@@ -117,9 +118,7 @@ export default function ContactPage() {
             <strong className="text-foreground">order code (#XXXXX)</strong>{" "}
             from the checkout screen, or the email address you paid with.
           </p>
-          <p className="mt-3">
-            Business details: {legal.company}, {legal.country}.
-          </p>
+          <p className="mt-3">Operated by {operatorLine()}.</p>
           <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2">
             <Link href="/faq/" className="hover:text-accent-turquoise">
               FAQ

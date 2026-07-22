@@ -16,6 +16,7 @@ import AuthoritySection from "@/components/AuthoritySection";
 import PricingSection from "@/components/PricingSection";
 import TrustSection from "@/components/TrustSection";
 import FAQSection from "@/components/FAQSection";
+import PoliciesSection from "@/components/PoliciesSection";
 import FinalCta from "@/components/FinalCta";
 import OrbBurstMenu from "@/components/OrbBurstMenu";
 import Footer from "@/components/Footer";
@@ -35,6 +36,7 @@ export default function Home() {
           <PricingSection />
           <TrustSection />
           <FAQSection />
+          <PoliciesSection />
           <FinalCta />
         </main>
         <OrbBurstMenu />

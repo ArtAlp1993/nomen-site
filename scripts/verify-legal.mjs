@@ -26,17 +26,16 @@ const PAGES = {
 };
 
 // Текст, которого в проде быть не должно ни на одной странице.
+// Квадратные скобки — из первой версии реквизитов: сайт живой, показывать
+// на нём «[LEGAL ENTITY — to be filled]» нельзя (решение Артёма 22.07 —
+// пишем нейтральное «NOMEN», пока юрлицо оформляется).
 const FORBIDDEN = [
   ["nomen.example", "почта-заглушка (несуществующий домен)"],
   ["early draft", "формулировка «черновик» — читается как «сайт не готов»"],
   ["to be reviewed before launch", "пометка о недоделанности"],
-];
-
-// Плейсхолдеры из data/legal.json: заполняются перед подачей ссылки в Stripe.
-const PLACEHOLDERS = [
-  ["[LEGAL ENTITY", "юрлицо"],
-  ["[COUNTRY", "страна"],
-  ["[JURISDICTION", "юрисдикция"],
+  ["[LEGAL ENTITY", "незаполненный плейсхолдер юрлица виден посетителю"],
+  ["[COUNTRY", "незаполненный плейсхолдер страны виден посетителю"],
+  ["[JURISDICTION", "незаполненный плейсхолдер юрисдикции виден посетителю"],
 ];
 
 let fails = 0;
@@ -65,12 +64,6 @@ for (const [page, required] of Object.entries(PAGES)) {
     if (html.toLowerCase().includes(needle.toLowerCase()))
       fail(`${page}: ${why} — «${needle}»`);
 
-  // Плейсхолдер — не ошибка сборки, а незакрытая задача Артёма: страницы
-  // рабочие, но показывать их Stripe в таком виде нельзя.
-  for (const [needle, what] of PLACEHOLDERS)
-    if (html.includes(needle))
-      warn(`${page}: не подставлено — ${what}`);
-
   // Сквозная навигация: с каждой служебной страницы должен быть путь к
   // остальным (проверяющий ходит по футеру).
   for (const other of ["/terms/", "/privacy/", "/contact/"])
@@ -87,23 +80,35 @@ for (const [page, required] of Object.entries(PAGES)) {
   console.log(`OK ${page}/`);
 }
 
-// Футер главной — единственная навигация в служебные страницы.
+// Главная: вход в служебные страницы (секция «Before you buy» + футер).
 const home = join(OUT, "index.html");
 if (existsSync(home)) {
   const html = readFileSync(home, "utf8");
   for (const link of ["/about/", "/contact/", "/faq/", "/refunds/", "/delivery/", "/terms/", "/privacy/"])
     if (!html.includes(`href="${link}"`))
-      fail(`главная: в футере нет ссылки на ${link}`);
+      fail(`главная: нет ссылки на ${link}`);
   if (!html.includes("admin@nomen.website"))
-    fail("главная: в футере нет адреса поддержки");
-  console.log("OK / (футер главной)");
+    fail("главная: нет адреса поддержки");
+  // FAQ-гармошка на главной остаётся (требование Артёма 22.07: «выпадающие
+  // списки удобные, убирать не надо») — страница /faq живёт рядом, не вместо.
+  if (!html.includes("How does NOMEN actually work?"))
+    fail("главная: пропала FAQ-гармошка");
+  if (!html.includes('id="policies"'))
+    fail("главная: пропала секция со ссылками на условия");
+  console.log("OK / (секция условий + FAQ + футер)");
 } else {
   fail("не собралась главная страница");
 }
 
-if (warns)
-  console.log(
-    `\n⚠️  Плейсхолдеров: ${warns}. Заполни data/legal.json (company / country / governingLaw)\n   ПЕРЕД тем, как давать ссылку проверяющему Stripe.`
+// Реквизиты: пока юрисдикция не названа, документы говорят обтекаемо.
+// Это не ошибка — но и забыть об этом нельзя, поэтому предупреждаем.
+const legalCfg = JSON.parse(
+  readFileSync(new URL("../data/legal.json", import.meta.url), "utf8")
+);
+if (!legalCfg.country || !legalCfg.governingLaw)
+  warn(
+    "юрлицо/юрисдикция в data/legal.json не заполнены — Terms говорят обтекаемо. " +
+      "Заполнить, когда оформители Артёма назовут компанию и страну."
   );
 
 console.log(fails ? `\n❌ FAILS: ${fails}` : "\n✅ ВСЁ ЧИСТО");
